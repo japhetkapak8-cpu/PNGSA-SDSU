@@ -1,0 +1,125 @@
+/* ========================================
+   MODERN NAVIGATION
+======================================== */
+
+.nav-container {
+  width: min(1250px, 95%);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  /* Keep all links on one row */
+  flex-wrap: nowrap;
+
+  /* Smaller spacing because there are many links */
+  gap: 6px;
+}
+
+
+/* Navigation links */
+
+.nav-links a {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 10px;
+
+  color: #ddd;
+  border-radius: 50px;
+
+  font-size: 0.82rem;
+  white-space: nowrap;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* ========================================
+   HOVER EFFECT
+======================================== */
+
+.nav-links a:hover {
+  color: #ffd100;
+  background: rgba(255, 209, 0, 0.10);
+  transform: translateY(-2px);
+}
+
+
+/* ========================================
+   ACTIVE / CURRENT PAGE
+======================================== */
+
+.nav-links a.active {
+  color: #111;
+  background: #ffd100;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 0 0 4px rgba(255, 209, 0, 0.15);
+}
+
+
+/* Small circle underneath active page */
+
+.nav-links a.active::after {
+  content: "";
+
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+
+  left: 50%;
+  bottom: -10px;
+
+  transform: translateX(-50%);
+
+  background: #ffd100;
+  border-radius: 50%;
+}
+
+
+/* ========================================
+   CLICK ANIMATION
+======================================== */
+
+.nav-links a:active {
+  transform: scale(0.94);
+}
+
+
+/* ========================================
+   MOBILE / SMALL LAPTOP
+======================================== */
+
+@media (max-width: 1100px) {
+
+  .nav-links a {
+    width: 100%;
+    justify-content: flex-start;
+
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+
+  .nav-links a.active::after {
+    width: 5px;
+    height: 5px;
+
+    left: 5px;
+    top: 50%;
+    bottom: auto;
+
+    transform: translateY(-50%);
+  }
+}

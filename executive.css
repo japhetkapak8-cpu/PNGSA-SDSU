@@ -1,0 +1,39 @@
+
+/* ========================================
+   EXECUTIVE CONTACT LINKS
+======================================== */
+
+.executive-contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.executive-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  background: #fff;
+  transition: 0.2s ease;
+}
+
+.executive-contact-link:hover {
+  transform: translateY(-2px);
+  border-color: #0033a0;
+  color: #0033a0;
+}
+
+.executive-contact-link i {
+  font-size: 1rem;
+}
