@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Membership | PNGSA SDSU</title>
+  <meta name="description" content="Papua New Guinea Student Association at South Dakota State University.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-container">
+    <a href="index.html" class="logo">
+      <img src="images/pngsa_logo.png" alt="PNGSA Logo" class="logo-image">
+      <div class="logo-text">
+        <strong>PNGSA</strong>
+        <span>SDSU</span>
+      </div>
+    </a>
+
+    <button class="menu-button" id="menuButton" aria-label="Open navigation menu">☰</button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="about.html">About</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="membership.html">Membership</a>
+      <a href="events.html">Events</a>
+      <a href="newstudents.html">New Students</a>
+      <a href="scholarships.html">Scholarships</a>
+      <a href="apply.html">Apply to SDSU</a>
+      <a href="studentmap.html">Student Map</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-label">Membership</p>
+      <h1>Become part of PNGSA.</h1>
+      <p>
+        Membership is open to Papua New Guinean students, friends of PNG,
+        and students interested in learning more about Papua New Guinea.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt-section">
+    <div class="container two-column">
+      <div>
+        <h2>Why join?</h2>
+        <div class="membership-benefits">
+          <p>✓ Student community</p>
+          <p>✓ Cultural events</p>
+          <p>✓ Leadership opportunities</p>
+          <p>✓ Networking</p>
+          <p>✓ Student support</p>
+        </div>
+      </div>
+
+      <form class="form-card" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <h3>Membership Application</h3>
+
+        <label for="member-name">Full Name</label>
+        <input type="text" id="member-name" name="name" required>
+
+        <label for="member-email">SDSU Email</label>
+        <input type="email" id="member-email" name="email" required>
+
+        <label for="major">Major</label>
+        <input type="text" id="major" name="major">
+
+        <label for="year">Classification</label>
+        <select id="year" name="classification">
+          <option value="">Select one</option>
+          <option>Freshman</option>
+          <option>Sophomore</option>
+          <option>Junior</option>
+          <option>Senior</option>
+          <option>Graduate Student</option>
+        </select>
+
+        <label for="membership-message">Why are you interested in PNGSA?</label>
+        <textarea id="membership-message" name="message" rows="4"></textarea>
+
+        <button type="submit" class="btn primary-btn">Submit Application</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-divider"></div>
+
+  <div class="container footer-content">
+    <div class="footer-brand">
+      <h3>PNGSA • SDSU</h3>
+      <p>Papua New Guinea Student Association</p>
+    </div>
+
+    <div class="social-container">
+      <h4>Connect With Us</h4>
+      <div class="social-icons">
+        <a href="https://discord.gg/4hGfnpWQuy" target="_blank" aria-label="Discord">
+          <i class="fa-brands fa-discord"></i>
+        </a>
+        <a href="https://www.instagram.com/sdstate_pngsa/" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61592000978106" target="_blank" aria-label="Facebook">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://vm.tiktok.com/ZT9khb7f3Nuee-M3mWZ/" target="_blank" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+        <a href="https://youtube.com/@sdstate_pngsa?si=c355kcBJf1O5AAPI" target="_blank" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">
+    © <span id="currentYear"></span>
+    Papua New Guinea Student Association at South Dakota State University.
+    All rights reserved.
+  </div>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>
