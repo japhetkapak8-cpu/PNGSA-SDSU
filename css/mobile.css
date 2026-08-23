@@ -7,21 +7,47 @@
   html,
   body {
     width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
   }
 
-  * {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
-  /* Navigation */
+  /* Reduce container width nicely on phone */
+  .container {
+    width: 92%;
+    max-width: 100%;
+  }
+
+  /* ========================================
+     NAVIGATION
+  ======================================== */
+
+  .nav-container {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
   .nav-links {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
+
     overflow-x: auto;
-    white-space: nowrap;
+    overflow-y: hidden;
+
     width: 100%;
+    white-space: nowrap;
+
+    gap: 8px;
+
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
 
   .nav-links::-webkit-scrollbar {
@@ -31,18 +57,60 @@
   .nav-links a {
     flex: 0 0 auto;
     width: auto;
+    font-size: 0.85rem;
+    padding: 10px 8px;
   }
 
+  /* ========================================
+     WELCOME HEADING
+  ======================================== */
 
-  /* Cards */
-  .cards {
+  .section-heading {
+    display: grid;
     grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: start;
   }
 
+  /* ========================================
+     HOME PAGE CARDS
+  ======================================== */
 
-  /* PNG Night */
-  .png-night-content {
+  .feature-grid {
+    display: grid;
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
+  .feature-card {
+    width: 100%;
+    padding: 25px;
+  }
+
+  /* ========================================
+     PNG NIGHT
+  ======================================== */
+
+  .two-column {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .png-night-card {
+    width: 100%;
+    padding: 25px;
+  }
+
+  /* ========================================
+     GENERAL MOBILE SPACING
+  ======================================== */
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
 }

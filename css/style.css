@@ -705,7 +705,7 @@ footer {
   }
 }
 
-@media (max-width: 110px) {
+@media (max-width: 1100x) {
   .menu-button {
     display: block;
   }
