@@ -8,7 +8,7 @@
   body {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: visible;
   }
 
   *,
@@ -17,20 +17,34 @@
     box-sizing: border-box;
   }
 
-  /* Reduce container width nicely on phone */
+
+  /* ========================================
+     CONTAINER
+  ======================================== */
+
   .container {
     width: 92%;
     max-width: 100%;
   }
 
+
   /* ========================================
-     NAVIGATION
+     HIDE LOGO ON PHONE
+  ======================================== */
+
+  .logo {
+    display: none;
+  }
+
+
+  /* ========================================
+     NAVIGATION - SWIPE SIDE TO SIDE
   ======================================== */
 
   .nav-container {
     width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
+    max-width: 100%;
+    padding: 0 10px;
   }
 
   .nav-links {
@@ -38,16 +52,19 @@
     flex-direction: row;
     flex-wrap: nowrap;
 
+    width: 100%;
+
     overflow-x: auto;
     overflow-y: hidden;
 
-    width: 100%;
     white-space: nowrap;
 
-    gap: 8px;
+    gap: 10px;
 
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+
+    scroll-snap-type: x proximity;
   }
 
   .nav-links::-webkit-scrollbar {
@@ -56,10 +73,16 @@
 
   .nav-links a {
     flex: 0 0 auto;
+
     width: auto;
+
     font-size: 0.85rem;
-    padding: 10px 8px;
+
+    padding: 14px 10px;
+
+    scroll-snap-align: start;
   }
+
 
   /* ========================================
      WELCOME HEADING
@@ -68,24 +91,50 @@
   .section-heading {
     display: grid;
     grid-template-columns: 1fr;
+
     gap: 20px;
+
     align-items: start;
   }
 
+
   /* ========================================
-     HOME PAGE CARDS
+     HOME CARDS - SWIPE SIDE TO SIDE
   ======================================== */
 
   .feature-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: flex;
+
+    width: 100%;
+
+    gap: 16px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+
+    padding-bottom: 10px;
+  }
+
+  .feature-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .feature-card {
-    width: 100%;
+    flex: 0 0 85%;
+
+    width: 85%;
+
     padding: 25px;
+
+    scroll-snap-align: start;
   }
+
 
   /* ========================================
      PNG NIGHT
@@ -93,17 +142,21 @@
 
   .two-column {
     display: grid;
+
     grid-template-columns: 1fr;
+
     gap: 30px;
   }
 
   .png-night-card {
     width: 100%;
+
     padding: 25px;
   }
 
+
   /* ========================================
-     GENERAL MOBILE SPACING
+     MOBILE SPACING
   ======================================== */
 
   .section {
@@ -113,4 +166,5 @@
   .hero h1 {
     font-size: clamp(3rem, 14vw, 5rem);
   }
+
 }
