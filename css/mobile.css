@@ -1,0 +1,48 @@
+/* ========================================
+   PNGSA MOBILE STYLES
+======================================== */
+
+@media (max-width: 768px) {
+
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Navigation */
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links a {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+
+  /* Cards */
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* PNG Night */
+  .png-night-content {
+    grid-template-columns: 1fr;
+  }
+
+}
