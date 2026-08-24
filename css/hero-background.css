@@ -1,0 +1,27 @@
+.hero {
+    position: relative;
+
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(30, 0, 0, 0.98) 2%,
+            rgba(55, 3, 0, 0.94) 2%,
+            rgba(85, 12, 0, 0.82) 60%,
+            rgba(100, 25, 0, 0.58) 75%,
+            rgba(80, 20, 0, 0.40) 90%
+        ),
+        url("../images/background.jpg");
+
+    /* Slight zoom */
+    background-size: 115% auto;
+
+    /* Top-center, moved down slightly */
+    background-position: center 25%;
+
+    background-repeat: no-repeat;
+
+    min-height: 740px;
+    width: 100%;
+
+    color: white;
+}
