@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PNGSA SDSU//Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:pngsa-independence-2026@pngsa-sdsu
+DTSTAMP:20260824T000000Z
+DTSTART;TZID=America/Chicago:20260920T180000
+DTEND;TZID=America/Chicago:20260920T210000
+SUMMARY:PNGSA Post Independence Celebration
+LOCATION:SDSU Campus\, Brookings\, SD
+DESCRIPTION:An evening celebrating Papua New Guinea through traditional performances\, music\, food\, and culture.
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

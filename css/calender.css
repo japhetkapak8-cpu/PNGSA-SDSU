@@ -1,0 +1,32 @@
+.event-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.event-separator {
+  color: #999;
+  font-weight: 400;
+}
+
+.event-calendar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #111;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition: 0.2s ease;
+}
+
+.event-calendar-btn:hover {
+  color: #d4ad00;
+}
+
+.event-calendar-btn i {
+  font-size: 1rem;
+}
