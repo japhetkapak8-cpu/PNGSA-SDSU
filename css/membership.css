@@ -1,0 +1,13 @@
+.jacks-club-section {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.jacks-club-section .membership-note {
+  margin-bottom: 15px;
+}
+
+.jacks-club-section .primary-btn {
+  display: inline-block;
+  margin: 0;
+}

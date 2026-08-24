@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/membership.css">
   <link rel="stylesheet" href="css/mobile.css">
  
 </head>
@@ -55,8 +56,11 @@
 
   <section class="section alt-section">
     <div class="container two-column">
+
+      <!-- LEFT SIDE -->
       <div>
         <h2>Why join?</h2>
+
         <div class="membership-benefits">
           <p>✓ Student community</p>
           <p>✓ Cultural events</p>
@@ -64,9 +68,27 @@
           <p>✓ Networking</p>
           <p>✓ Student support</p>
         </div>
+
+        <div class="jacks-club-section">
+          <p class="membership-note">
+            Click the button below to join PNGSA on Jacks Club Hub.
+          </p>
+
+          <button
+            class="btn primary-btn"
+            onclick="window.location.href='https://sdstate.campuslabs.com/engage/organization/pngsa';">
+            Join PNGSA On Jacks Club Hub
+          </button>
+        </div>
       </div>
 
-      <form class="form-card" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+      <!-- RIGHT SIDE -->
+      <form
+        class="form-card"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST">
+
         <h3>Membership Application</h3>
 
         <label for="member-name">Full Name</label>
@@ -88,14 +110,23 @@
           <option>Graduate Student</option>
         </select>
 
-        <label for="membership-message">Why are you interested in PNGSA?</label>
-        <textarea id="membership-message" name="message" rows="4"></textarea>
+        <label for="membership-message">
+          Why are you interested in PNGSA?
+        </label>
 
-        <button type="submit" class="btn primary-btn">Submit Application</button>
+        <textarea
+          id="membership-message"
+          name="message"
+          rows="4">
+        </textarea>
+
+        <button type="submit" class="btn primary-btn">
+          Submit Application
+        </button>
+
       </form>
     </div>
   </section>
-
 </main>
 
 <footer>
