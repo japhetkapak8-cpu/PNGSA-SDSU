@@ -1,0 +1,21 @@
+/* ========================================
+   FOOTER LEGAL LINKS
+======================================== */
+
+.footer-legal {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.footer-legal a {
+  color: #0160e4;
+  text-decoration: none;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.footer-legal a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
