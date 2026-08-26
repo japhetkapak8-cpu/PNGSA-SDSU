@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PNGSA Admin Dashboard</title>
+
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+  <div class="admin-layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-header">
+
+        <img
+          src="../images/pngsa_logo.png"
+          alt="PNGSA"
+          class="sidebar-logo"
+        >
+
+        <h2>PNGSA</h2>
+
+        <span>Admin Portal</span>
+
+      </div>
+
+      <nav class="sidebar-nav">
+
+        <a href="dashboard.html" class="active">
+          Dashboard
+        </a>
+
+        <a href="elections.html">
+          Elections
+        </a>
+
+        <a href="candidates.html">
+          Candidates
+        </a>
+
+        <a href="voters.html">
+          Eligible Voters
+        </a>
+
+        <a href="results.html">
+          Results
+        </a>
+
+        <a href="../index.html">
+          View Website
+        </a>
+
+      </nav>
+
+      <button id="logoutButton" class="logout-button">
+        Sign Out
+      </button>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="admin-main">
+
+      <header class="admin-header">
+
+        <div>
+          <h1>Election Dashboard</h1>
+
+          <p>
+            Papua New Guinea Student Association
+          </p>
+        </div>
+
+        <div class="admin-user">
+          <span id="adminEmail">
+            Loading...
+          </span>
+        </div>
+
+      </header>
+
+
+      <!-- SUMMARY -->
+
+      <section class="dashboard-grid">
+
+        <div class="stat-card">
+
+          <h3>Eligible Voters</h3>
+
+          <p class="stat-number" id="eligibleCount">
+            0
+          </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <h3>Votes Submitted</h3>
+
+          <p class="stat-number" id="voteCount">
+            0
+          </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <h3>Candidates</h3>
+
+          <p class="stat-number" id="candidateCount">
+            0
+          </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <h3>Election Status</h3>
+
+          <p
+            class="status-badge closed"
+            id="electionStatus"
+          >
+            Closed
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- CURRENT ELECTION -->
+
+      <section class="admin-panel">
+
+        <div class="panel-header">
+
+          <div>
+            <h2>Current Election</h2>
+
+            <p>
+              Manage the active PNGSA executive election.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="election-info">
+
+          <div>
+
+            <strong>Election</strong>
+
+            <p id="currentElectionName">
+              No election configured
+            </p>
+
+          </div>
+
+
+          <div>
+
+            <strong>Start</strong>
+
+            <p id="electionStart">
+              —
+            </p>
+
+          </div>
+
+
+          <div>
+
+            <strong>End</strong>
+
+            <p id="electionEnd">
+              —
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- QUICK LINKS -->
+
+      <section class="admin-panel">
+
+        <h2>Election Management</h2>
+
+        <div class="action-grid">
+
+
+          <a
+            href="elections.html"
+            class="action-card"
+          >
+
+            <h3>Manage Election</h3>
+
+            <p>
+              Create, open, close, and configure elections.
+            </p>
+
+          </a>
+
+
+          <a
+            href="candidates.html"
+            class="action-card"
+          >
+
+            <h3>Manage Candidates</h3>
+
+            <p>
+              Add executive candidates and assign positions.
+            </p>
+
+          </a>
+
+
+          <a
+            href="voters.html"
+            class="action-card"
+          >
+
+            <h3>Manage Voters</h3>
+
+            <p>
+              Control which PNGSA members are eligible to vote.
+            </p>
+
+          </a>
+
+
+          <a
+            href="results.html"
+            class="action-card"
+          >
+
+            <h3>Election Results</h3>
+
+            <p>
+              View private totals and determine election winners.
+            </p>
+
+          </a>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="module" src="js/dashboard.js"></script>
+
+</body>
+</html>
