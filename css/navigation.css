@@ -130,3 +130,38 @@
   }
 
 }
+
+/* ========================================
+   MEMBER / ADMIN PORTAL LINKS
+======================================== */
+
+.portal-link {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  white-space: nowrap;
+
+  text-decoration: none;
+}
+
+.portal-link i {
+  font-size: 13px;
+}
+
+.portal-link span {
+  font-size: inherit;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .portal-link {
+    flex-shrink: 0;
+  }
+
+}

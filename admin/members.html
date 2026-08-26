@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Members | PNGSA Admin</title>
+
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  >
+
+
+  <!-- ========================================
+       FONT AWESOME
+  ========================================= -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+
+  <!-- ========================================
+       ADMIN CSS
+  ========================================= -->
+
+  <link
+    rel="stylesheet"
+    href="css/admin.css"
+  >
+
+
+  <!-- ========================================
+       MEMBERS CSS
+  ========================================= -->
+
+  <link
+    rel="stylesheet"
+    href="css/members.css"
+  >
+
+</head>
+
+
+<body>
+
+
+  <div class="admin-layout">
+
+
+    <!-- ========================================
+         SIDEBAR
+    ========================================= -->
+
+    <aside class="sidebar">
+
+
+      <!-- SIDEBAR HEADER -->
+
+      <div class="sidebar-header">
+
+        <img
+          src="../images/pngsa_logo.png"
+          alt="PNGSA Logo"
+          class="sidebar-logo"
+        >
+
+        <h2>
+          PNGSA
+        </h2>
+
+        <span>
+          Admin Portal
+        </span>
+
+      </div>
+
+
+
+      <!-- ========================================
+           ADMIN NAVIGATION
+      ========================================= -->
+
+      <nav class="sidebar-nav">
+
+
+        <!-- DASHBOARD -->
+
+        <a href="dashboard.html">
+
+          <i class="fa-solid fa-chart-line"></i>
+
+          Dashboard
+
+        </a>
+
+
+
+        <!-- MEMBERS -->
+
+        <a
+          href="members.html"
+          class="active"
+        >
+
+          <i class="fa-solid fa-users"></i>
+
+          Members
+
+        </a>
+
+
+
+        <!-- ELECTIONS -->
+
+        <a href="elections.html">
+
+          <i class="fa-solid fa-check-to-slot"></i>
+
+          Elections
+
+        </a>
+
+
+
+        <!-- CANDIDATES -->
+
+        <a href="candidates.html">
+
+          <i class="fa-solid fa-user-tie"></i>
+
+          Candidates
+
+        </a>
+
+
+
+        <!-- ELIGIBLE VOTERS -->
+
+        <a href="voters.html">
+
+          <i class="fa-solid fa-user-check"></i>
+
+          Eligible Voters
+
+        </a>
+
+
+
+        <!-- RESULTS -->
+
+        <a href="results.html">
+
+          <i class="fa-solid fa-chart-column"></i>
+
+          Results
+
+        </a>
+
+
+
+        <!-- WEBSITE -->
+
+        <a href="../index.html">
+
+          <i class="fa-solid fa-globe"></i>
+
+          View Website
+
+        </a>
+
+
+      </nav>
+
+
+
+      <!-- ========================================
+           LOGOUT BUTTON
+      ========================================= -->
+
+      <button
+        id="logoutButton"
+        class="logout-button"
+        type="button"
+      >
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        Sign Out
+
+      </button>
+
+
+    </aside>
+
+
+
+    <!-- ========================================
+         MAIN ADMIN CONTENT
+    ========================================= -->
+
+    <main class="admin-main">
+
+
+
+      <!-- ========================================
+           PAGE HEADER
+      ========================================= -->
+
+      <header class="admin-header">
+
+
+        <div>
+
+          <p class="admin-section-label">
+            PNGSA Administration
+          </p>
+
+
+          <h1>
+            Members
+          </h1>
+
+
+          <p>
+            View and manage PNGSA student members.
+          </p>
+
+        </div>
+
+
+
+        <!-- SIGNED IN USER -->
+
+        <div class="admin-user">
+
+          <span>
+            Signed in as
+          </span>
+
+          <strong id="adminEmail">
+            Loading...
+          </strong>
+
+        </div>
+
+
+      </header>
+
+
+
+      <!-- ========================================
+           MEMBER STATISTICS
+      ========================================= -->
+
+      <section class="dashboard-grid">
+
+
+
+        <!-- TOTAL MEMBERS -->
+
+        <div class="stat-card">
+
+          <h3>
+            Total Members
+          </h3>
+
+          <p
+            class="stat-number"
+            id="totalMembers"
+          >
+            0
+          </p>
+
+        </div>
+
+
+
+        <!-- ELIGIBLE VOTERS -->
+
+        <div class="stat-card">
+
+          <h3>
+            Eligible Voters
+          </h3>
+
+          <p
+            class="stat-number"
+            id="eligibleMembers"
+          >
+            0
+          </p>
+
+        </div>
+
+
+
+        <!-- ADMINISTRATORS -->
+
+        <div class="stat-card">
+
+          <h3>
+            Administrators
+          </h3>
+
+          <p
+            class="stat-number"
+            id="adminCount"
+          >
+            0
+          </p>
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- ========================================
+           STUDENT DIRECTORY
+      ========================================= -->
+
+      <section class="admin-panel">
+
+
+
+        <!-- ========================================
+             DIRECTORY TOOLBAR
+        ========================================= -->
+
+        <div class="members-toolbar">
+
+
+          <div>
+
+            <h2>
+              Student Directory
+            </h2>
+
+            <p>
+              PNGSA members registered with the system.
+            </p>
+
+          </div>
+
+
+
+          <!-- ========================================
+               SEARCH BOX
+          ========================================= -->
+
+          <div class="member-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+              type="search"
+              id="memberSearch"
+              placeholder="Search members..."
+              autocomplete="off"
+            >
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- ========================================
+             MEMBER TABLE
+        ========================================= -->
+
+        <div class="table-container">
+
+
+          <table class="members-table">
+
+
+            <!-- ========================================
+                 TABLE HEADER
+            ========================================= -->
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  Name
+                </th>
+
+                <th>
+                  Email
+                </th>
+
+                <th>
+                  Major
+                </th>
+
+                <th>
+                  Year
+                </th>
+
+                <th>
+                  Living Area
+                </th>
+
+                <th>
+                  Role
+                </th>
+
+                <th>
+                  Voting
+                </th>
+
+                <th>
+                  Joined
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+
+            <!-- ========================================
+                 TABLE BODY
+
+                 members.js will automatically
+                 replace this loading row.
+            ========================================= -->
+
+            <tbody id="membersTableBody">
+
+              <tr>
+
+                <td
+                  colspan="8"
+                  class="loading-members"
+                >
+
+                  <i
+                    class="fa-solid fa-spinner fa-spin"
+                  ></i>
+
+                  Loading members...
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+
+          </table>
+
+
+        </div>
+
+
+      </section>
+
+
+    </main>
+
+
+  </div>
+
+
+
+  <!-- ========================================
+       MEMBERS JAVASCRIPT
+  ========================================= -->
+
+  <script
+    type="module"
+    src="js/members.js"
+  ></script>
+
+
+</body>
+
+</html>

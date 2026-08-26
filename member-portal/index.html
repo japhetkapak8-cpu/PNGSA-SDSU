@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Member Login | PNGSA SDSU</title>
+
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/member.css"
+  >
+</head>
+
+
+<body class="member-login-page">
+
+  <main class="member-login-wrapper">
+
+    <section class="member-login-card">
+
+      <a
+        href="../index.html"
+        class="member-logo"
+      >
+        <img
+          src="../images/pngsa_logo.png"
+          alt="PNGSA Logo"
+        >
+      </a>
+
+      <p class="member-eyebrow">
+        Papua New Guinea Student Association
+      </p>
+
+      <h1>Member Portal</h1>
+
+      <p class="member-login-description">
+        Sign in to manage your PNGSA profile and participate
+        in eligible elections.
+      </p>
+
+
+      <form id="memberLoginForm">
+
+        <div class="form-group">
+
+          <label for="email">
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="name@jacks.sdstate.edu"
+            autocomplete="email"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="password">
+            Password
+          </label>
+
+          <div class="password-wrapper">
+
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            >
+
+            <button
+              type="button"
+              id="togglePassword"
+              class="password-toggle"
+              aria-label="Show password"
+            >
+              <i class="fa-solid fa-eye"></i>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="member-primary-button"
+          id="loginButton"
+        >
+          Sign In
+        </button>
+
+
+        <p
+          id="loginMessage"
+          class="form-message"
+          aria-live="polite"
+        ></p>
+
+      </form>
+
+
+      <div class="member-login-footer">
+
+        <p>
+          Member accounts are created or invited by PNGSA administrators.
+        </p>
+
+        <a href="../index.html">
+          ← Return to PNGSA Website
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script
+    type="module"
+    src="js/login.js"
+  ></script>
+
+</body>
+
+</html>

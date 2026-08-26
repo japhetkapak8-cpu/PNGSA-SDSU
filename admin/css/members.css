@@ -1,0 +1,400 @@
+/* ========================================
+   PNGSA ADMIN - MEMBERS PAGE
+======================================== */
+
+
+/* ========================================
+   MEMBERS HEADER / TOOLBAR
+======================================== */
+
+.members-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  margin-bottom: 25px;
+}
+
+.members-toolbar h2 {
+  margin: 0 0 5px;
+
+  color: #0b2545;
+}
+
+.members-toolbar p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+
+/* ========================================
+   MEMBER SEARCH
+======================================== */
+
+.member-search {
+  position: relative;
+
+  width: 300px;
+}
+
+.member-search i {
+  position: absolute;
+
+  left: 14px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #8a94a3;
+
+  pointer-events: none;
+}
+
+.member-search input {
+  width: 100%;
+
+  padding:
+    12px
+    15px
+    12px
+    40px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #1f2937;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.member-search input:focus {
+  border-color: #0b5fa5;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(11, 95, 165, 0.1);
+}
+
+
+/* ========================================
+   TABLE CONTAINER
+======================================== */
+
+.table-container {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+
+/* ========================================
+   MEMBERS TABLE
+======================================== */
+
+.members-table {
+  width: 100%;
+
+  min-width: 750px;
+
+  border-collapse: collapse;
+}
+
+.members-table thead {
+  background: #f5f7fa;
+}
+
+.members-table th {
+  padding: 14px 16px;
+
+  text-align: left;
+
+  color: #667085;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+
+  border-bottom:
+    1px solid #e5e7eb;
+}
+
+.members-table td {
+  padding: 16px;
+
+  color: #374151;
+
+  font-size: 14px;
+
+  border-bottom:
+    1px solid #edf0f3;
+
+  vertical-align: middle;
+}
+
+.members-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.members-table tbody tr {
+  transition:
+    background 0.2s ease;
+}
+
+.members-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+
+/* ========================================
+   MEMBER NAME
+======================================== */
+
+.members-table td strong {
+  color: #0b2545;
+
+  font-weight: 700;
+}
+
+
+/* ========================================
+   MEMBER ROLE BADGES
+======================================== */
+
+.member-role {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding:
+    6px 10px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* ADMIN */
+
+.member-role.admin {
+  background: #dbeafe;
+
+  color: #1d4ed8;
+}
+
+
+/* NORMAL MEMBER */
+
+.member-role.member {
+  background: #f3f4f6;
+
+  color: #4b5563;
+}
+
+
+/* ========================================
+   VOTER STATUS
+======================================== */
+
+.voter-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding:
+    6px 10px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* ELIGIBLE */
+
+.voter-status.eligible {
+  background: #dcfce7;
+
+  color: #166534;
+}
+
+
+/* NOT ELIGIBLE */
+
+.voter-status.not-eligible {
+  background: #fee2e2;
+
+  color: #991b1b;
+}
+
+
+/* ========================================
+   LOADING / EMPTY MESSAGE
+======================================== */
+
+.loading-members {
+  padding: 40px !important;
+
+  text-align: center;
+
+  color: #6b7280 !important;
+}
+
+
+/* ========================================
+   MEMBER ACTION BUTTONS
+======================================== */
+
+.member-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.member-action-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding:
+    7px 10px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #374151;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.member-action-button:hover {
+  background: #f3f4f6;
+
+  border-color: #9ca3af;
+}
+
+
+/* ========================================
+   MEMBER INFORMATION CARD
+======================================== */
+
+.member-info-card {
+  padding: 20px;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+.member-info-card h3 {
+  margin:
+    0 0 15px;
+
+  color: #0b2545;
+}
+
+.member-info-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 18px;
+}
+
+.member-info-item span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #6b7280;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+}
+
+.member-info-item strong {
+  color: #1f2937;
+
+  font-size: 14px;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+  .members-toolbar {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .member-search {
+    width: 100%;
+  }
+
+  .member-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-container {
+    border-radius: 8px;
+  }
+
+  .members-table th,
+  .members-table td {
+    padding: 13px;
+  }
+
+}
