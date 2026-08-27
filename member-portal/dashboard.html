@@ -9,21 +9,29 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Member Dashboard | PNGSA SDSU</title>
+  <title>Dashboard | PNGSA Member Portal</title>
 
   <meta
     name="robots"
     content="noindex, nofollow"
   >
 
+  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   >
 
+  <!-- Existing Member CSS -->
   <link
     rel="stylesheet"
     href="css/member.css"
+  >
+
+  <!-- Dashboard CSS -->
+  <link
+    rel="stylesheet"
+    href="css/dashboard.css"
   >
 </head>
 
@@ -31,6 +39,11 @@
 <body>
 
 <div class="member-layout">
+
+
+  <!-- ========================================
+       SIDEBAR
+  ========================================= -->
 
   <aside class="member-sidebar">
 
@@ -43,7 +56,9 @@
 
       <h2>PNGSA</h2>
 
-      <span>Member Portal</span>
+      <span>
+        Member Portal
+      </span>
 
     </div>
 
@@ -58,28 +73,61 @@
         Dashboard
       </a>
 
+
       <a href="profile.html">
         <i class="fa-solid fa-user"></i>
         My Profile
       </a>
+
 
       <a href="vote.html">
         <i class="fa-solid fa-check-to-slot"></i>
         Vote
       </a>
 
-      <a href="../index.html">
-        <i class="fa-solid fa-globe"></i>
-        PNGSA Website
+
+      <a href="#">
+        <i class="fa-solid fa-bullhorn"></i>
+        Announcements
+      </a>
+
+
+      <a href="#">
+        <i class="fa-solid fa-calendar-days"></i>
+        Events
+      </a>
+
+
+      <a href="#">
+        <i class="fa-solid fa-briefcase"></i>
+        Opportunities
+      </a>
+
+
+      <a href="#">
+        <i class="fa-solid fa-folder-open"></i>
+        Resources
+      </a>
+
+
+      <a href="#">
+        <i class="fa-solid fa-file-lines"></i>
+        My Documents
+      </a>
+
+
+      <a href="#">
+        <i class="fa-solid fa-gear"></i>
+        Settings
       </a>
 
     </nav>
 
 
     <button
+      type="button"
       id="logoutButton"
       class="member-logout-button"
-      type="button"
     >
       <i class="fa-solid fa-right-from-bracket"></i>
       Sign Out
@@ -88,198 +136,888 @@
   </aside>
 
 
-  <main class="member-main">
 
-    <header class="member-page-header">
+  <!-- ========================================
+       MAIN
+  ========================================= -->
+
+  <main class="dashboard-main">
+
+
+    <!-- ========================================
+         HEADER
+    ========================================= -->
+
+    <header class="dashboard-header">
 
       <div>
 
-        <p class="member-page-label">
-          PNGSA Member Portal
+        <p class="dashboard-eyebrow">
+          PNGSA MEMBER PORTAL
         </p>
 
         <h1>
-          Welcome,
-          <span id="memberFirstName">
-            Member
-          </span>
+          Welcome back,
+          <span id="welcomeName">Member</span>! 👋
         </h1>
 
         <p>
-          Manage your membership information and election access.
+          Stay connected, get involved, and represent PNGSA with pride.
         </p>
 
       </div>
 
 
-      <div class="signed-in-card">
+      <div class="signed-in-box">
 
-        <span>Signed in as</span>
+        <i class="fa-regular fa-user"></i>
 
-        <strong id="memberEmail">
-          Loading...
-        </strong>
+        <div>
+
+          <span>
+            Signed in as
+          </span>
+
+          <strong id="memberEmail">
+            Loading...
+          </strong>
+
+        </div>
 
       </div>
 
     </header>
 
 
-    <section class="member-stat-grid">
 
-      <article class="member-stat-card">
+    <!-- ========================================
+         TOP DASHBOARD
+    ========================================= -->
 
-        <span class="stat-icon">
-          <i class="fa-solid fa-id-card"></i>
-        </span>
+    <section class="dashboard-top-grid">
 
-        <div>
-          <p>Profile</p>
-          <strong id="profileStatus">
-            Checking...
-          </strong>
+
+      <!-- PROFILE CARD -->
+
+      <article class="profile-summary-card">
+
+        <div class="dashboard-avatar">
+
+          <img
+            id="dashboardProfilePhoto"
+            src=""
+            alt="Member profile"
+            hidden
+          >
+
+          <div
+            id="dashboardAvatarFallback"
+            class="avatar-fallback"
+          >
+            <i class="fa-solid fa-user"></i>
+          </div>
+
         </div>
 
-      </article>
+
+        <div class="profile-summary-info">
+
+          <h2 id="profileFullName">
+            Loading...
+          </h2>
 
 
-      <article class="member-stat-card">
+          <span class="membership-badge">
+            PNGSA Member
+          </span>
 
-        <span class="stat-icon">
-          <i class="fa-solid fa-check"></i>
-        </span>
-
-        <div>
-          <p>Voting Eligibility</p>
-          <strong id="eligibilityStatus">
-            Checking...
-          </strong>
-        </div>
-
-      </article>
-
-
-      <article class="member-stat-card">
-
-        <span class="stat-icon">
-          <i class="fa-solid fa-calendar-check"></i>
-        </span>
-
-        <div>
-          <p>Election</p>
-          <strong id="electionStatus">
-            Checking...
-          </strong>
-        </div>
-
-      </article>
-
-    </section>
-
-
-    <section
-      class="member-alert"
-      id="profileAlert"
-      hidden
-    >
-
-      <div>
-
-        <i class="fa-solid fa-circle-info"></i>
-
-        <div>
-          <h3>Complete your profile</h3>
 
           <p>
-            Please complete your student information before continuing.
-          </p>
-        </div>
+            <i class="fa-solid fa-location-dot"></i>
 
-      </div>
-
-      <a
-        href="profile.html"
-        class="small-button"
-      >
-        Complete Profile
-      </a>
-
-    </section>
-
-
-    <section class="member-panel">
-
-      <div class="member-panel-header">
-
-        <div>
-          <p class="member-page-label">
-            Account
+            <span id="profileMajor">
+              Not provided
+            </span>
           </p>
 
-          <h2>Your Information</h2>
+
+          <p>
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+            <span id="profileYear">
+              Not provided
+            </span>
+
+            <span class="profile-divider">•</span>
+
+            Expected Graduation:
+
+            <strong id="profileGraduation">
+              Not provided
+            </strong>
+
+          </p>
+
+
+          <p>
+
+            <i class="fa-solid fa-calendar"></i>
+
+            Member since
+
+            <span id="memberSince">
+              —
+            </span>
+
+          </p>
+
+
+          <p>
+
+            <i class="fa-solid fa-id-card"></i>
+
+            SDSU ID:
+
+            <span id="studentId">
+              Not provided
+            </span>
+
+          </p>
+
         </div>
+
+      </article>
+
+
+
+      <!-- PROFILE COMPLETION -->
+
+      <article class="status-card">
+
+        <div class="card-heading">
+
+          <div class="card-icon blue">
+            <i class="fa-regular fa-clipboard"></i>
+          </div>
+
+          <span>
+            Profile Completion
+          </span>
+
+        </div>
+
+
+        <div
+          class="completion-circle"
+          id="completionCircle"
+        >
+
+          <div>
+
+            <strong id="completionPercent">
+              0%
+            </strong>
+
+            <span>
+              Complete
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <p
+          class="status-description"
+          id="completionMessage"
+        >
+          Checking your profile...
+        </p>
+
 
         <a
           href="profile.html"
-          class="outline-button"
+          class="card-link"
         >
-          Edit Profile
+          Complete Profile
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+      </article>
+
+
+
+      <!-- VOTING -->
+
+      <article class="status-card">
+
+        <div class="card-heading">
+
+          <div class="card-icon purple">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+
+          <span>
+            Voting Eligibility
+          </span>
+
+        </div>
+
+
+        <div
+          class="big-status"
+          id="votingStatus"
+        >
+          Checking...
+        </div>
+
+
+        <p
+          class="status-description"
+          id="votingDescription"
+        >
+          Checking your election eligibility.
+        </p>
+
+
+        <a
+          href="vote.html"
+          class="card-link"
+        >
+          View Requirements
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+      </article>
+
+
+
+      <!-- MEMBERSHIP -->
+
+      <article class="status-card">
+
+        <div class="card-heading">
+
+          <div class="card-icon green">
+            <i class="fa-solid fa-users"></i>
+          </div>
+
+          <span>
+            Membership Status
+          </span>
+
+        </div>
+
+
+        <div class="big-status active-status">
+          Active
+        </div>
+
+
+        <p class="status-description">
+          Your membership is active and in good standing.
+        </p>
+
+
+        <a
+          href="profile.html"
+          class="card-link"
+        >
+          Membership Details
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+      </article>
+
+    </section>
+
+
+
+    <!-- ========================================
+         INFORMATION GRID
+    ========================================= -->
+
+    <section class="information-grid">
+
+
+      <!-- ACADEMIC -->
+
+      <article class="information-card">
+
+        <div class="information-title">
+
+          <div class="card-icon blue">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+
+          <h2>
+            Academic Information
+          </h2>
+
+        </div>
+
+
+        <div class="information-list">
+
+          <div>
+            <span>University</span>
+            <strong id="academicUniversity">
+              South Dakota State University
+            </strong>
+          </div>
+
+
+          <div>
+            <span>Major / Program</span>
+            <strong id="academicMajor">
+              Not provided
+            </strong>
+          </div>
+
+
+          <div>
+            <span>Minor(s)</span>
+            <strong id="academicMinor">
+              Not provided
+            </strong>
+          </div>
+
+
+          <div>
+            <span>Degree Level</span>
+            <strong id="degreeLevel">
+              Not provided
+            </strong>
+          </div>
+
+
+          <div>
+            <span>Year of Study</span>
+            <strong id="academicYear">
+              Not provided
+            </strong>
+          </div>
+
+
+          <div>
+            <span>Academic Status</span>
+            <strong id="academicStatus">
+              Not provided
+            </strong>
+          </div>
+
+        </div>
+
+
+        <a
+          href="profile.html"
+          class="card-link bottom-link"
+        >
+          View Academic Details
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+      </article>
+
+
+
+      <!-- SPONSORSHIP -->
+
+      <article class="information-card">
+
+        <div class="information-title">
+
+          <div class="card-icon purple">
+            <i class="fa-solid fa-briefcase"></i>
+          </div>
+
+          <h2>
+            Sponsorship Information
+          </h2>
+
+        </div>
+
+
+        <div class="information-list">
+
+          <div>
+
+            <span>
+              Currently Sponsored
+            </span>
+
+            <strong id="currentlySponsored">
+              Not provided
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Sponsor / Organization
+            </span>
+
+            <strong id="sponsorOrganization">
+              Not provided
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Sponsorship Program
+            </span>
+
+            <strong id="sponsorshipProgram">
+              Not provided
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Sponsorship Status
+            </span>
+
+            <strong id="sponsorshipStatus">
+              Not provided
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Expected End Year
+            </span>
+
+            <strong id="sponsorshipEndYear">
+              Not provided
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Sponsorship Issues
+            </span>
+
+            <strong id="sponsorshipIssues">
+              Not provided
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <a
+          href="profile.html"
+          class="card-link bottom-link"
+        >
+          View Sponsorship Details
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+      </article>
+
+
+
+      <!-- CAREER -->
+
+      <article class="information-card">
+
+        <div class="information-title">
+
+          <div class="card-icon green">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+          </div>
+
+          <h2>
+            Career & Future Plans
+          </h2>
+
+        </div>
+
+
+        <div class="information-list">
+
+          <div>
+
+            <span>
+              Career Interests
+            </span>
+
+            <strong id="careerInterests">
+              Not provided
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Plans to Return to PNG
+            </span>
+
+            <strong id="returnToPNG">
+              Not provided
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Interested in PNG Employment
+            </span>
+
+            <strong id="pngEmployment">
+              Not provided
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Interested in Internships
+            </span>
+
+            <strong id="internships">
+              Not provided
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <a
+          href="profile.html"
+          class="card-link bottom-link"
+        >
+          View Career Details
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+      </article>
+
+    </section>
+
+
+
+    <!-- ========================================
+         ACTIVITY GRID
+    ========================================= -->
+
+    <section class="activity-grid">
+
+
+      <!-- ANNOUNCEMENTS -->
+
+      <article class="activity-card">
+
+        <div class="activity-heading">
+
+          <div class="information-title">
+
+            <div class="card-icon blue">
+              <i class="fa-solid fa-bullhorn"></i>
+            </div>
+
+            <h2>
+              Announcements
+            </h2>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="small-outline-button"
+          >
+            View All
+          </button>
+
+        </div>
+
+
+        <div class="announcement-list">
+
+          <div class="announcement-item">
+
+            <span class="announcement-dot"></span>
+
+            <div>
+
+              <strong>
+                Welcome to the PNGSA Member Portal
+              </strong>
+
+              <p>
+                Stay connected with PNGSA news and activities.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="announcement-item">
+
+            <span class="announcement-dot"></span>
+
+            <div>
+
+              <strong>
+                Keep your profile updated
+              </strong>
+
+              <p>
+                Please make sure your student information is current.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- EVENTS -->
+
+      <article class="activity-card">
+
+        <div class="activity-heading">
+
+          <div class="information-title">
+
+            <div class="card-icon purple">
+              <i class="fa-solid fa-calendar-days"></i>
+            </div>
+
+            <h2>
+              Upcoming Events
+            </h2>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="small-outline-button"
+          >
+            View All
+          </button>
+
+        </div>
+
+
+        <div class="empty-dashboard-state">
+
+          <i class="fa-regular fa-calendar"></i>
+
+          <strong>
+            No upcoming events
+          </strong>
+
+          <p>
+            Upcoming PNGSA events will appear here.
+          </p>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- ELECTION -->
+
+      <article class="activity-card">
+
+        <div class="information-title">
+
+          <div class="card-icon gold">
+            <i class="fa-solid fa-box-ballot"></i>
+          </div>
+
+          <h2>
+            Current Election
+          </h2>
+
+        </div>
+
+
+        <div class="election-empty-state">
+
+          <i class="fa-solid fa-check-to-slot"></i>
+
+          <h3 id="electionTitle">
+            No Open Election
+          </h3>
+
+          <p id="electionDescription">
+            There is currently no open PNGSA election.
+          </p>
+
+        </div>
+
+
+        <div class="election-notice">
+
+          <i class="fa-regular fa-lightbulb"></i>
+
+          <span>
+            You will be able to vote when an election is open
+            and you are eligible.
+          </span>
+
+        </div>
+
+
+        <a
+          href="vote.html"
+          class="card-link bottom-link"
+        >
+          View Election Information
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+      </article>
+
+    </section>
+
+
+
+    <!-- ========================================
+         QUICK ACCESS
+    ========================================= -->
+
+    <section class="quick-access-card">
+
+      <h2>
+        Quick Access
+      </h2>
+
+
+      <div class="quick-access-grid">
+
+
+        <a href="profile.html">
+
+          <i class="fa-solid fa-user"></i>
+
+          <div>
+
+            <strong>
+              My Profile
+            </strong>
+
+            <span>
+              Update your information
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <a href="vote.html">
+
+          <i class="fa-solid fa-check-to-slot"></i>
+
+          <div>
+
+            <strong>
+              Vote
+            </strong>
+
+            <span>
+              View election status
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <a href="#">
+
+          <i class="fa-solid fa-briefcase"></i>
+
+          <div>
+
+            <strong>
+              Opportunities
+            </strong>
+
+            <span>
+              Scholarships & Jobs
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <a href="#">
+
+          <i class="fa-solid fa-folder"></i>
+
+          <div>
+
+            <strong>
+              Resources
+            </strong>
+
+            <span>
+              Documents & Guides
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <a href="#">
+
+          <i class="fa-solid fa-gear"></i>
+
+          <div>
+
+            <strong>
+              Settings
+            </strong>
+
+            <span>
+              Account preferences
+            </span>
+
+          </div>
+
         </a>
 
       </div>
 
-
-      <div class="profile-summary-grid">
-
-        <div>
-          <span>Name</span>
-          <strong id="summaryName">—</strong>
-        </div>
-
-        <div>
-          <span>Major</span>
-          <strong id="summaryMajor">—</strong>
-        </div>
-
-        <div>
-          <span>Year</span>
-          <strong id="summaryYear">—</strong>
-        </div>
-
-        <div>
-          <span>Living Area</span>
-          <strong id="summaryLivingArea">—</strong>
-        </div>
-
-      </div>
-
     </section>
 
-
-    <section class="member-panel">
-
-      <div class="member-panel-header">
-
-        <div>
-          <p class="member-page-label">
-            Election
-          </p>
-
-          <h2>Current Election</h2>
-        </div>
-
-      </div>
-
-
-      <div id="electionCard">
-
-        <p class="muted-text">
-          Checking for an active election...
-        </p>
-
-      </div>
-
-    </section>
 
   </main>
 
@@ -288,9 +1026,8 @@
 
 <script
   type="module"
-  src="js/dashboard.js"
+  src="js/dashboard.js?v=2"
 ></script>
 
 </body>
-
 </html>

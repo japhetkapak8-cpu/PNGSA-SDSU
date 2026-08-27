@@ -46,7 +46,7 @@
     rel="stylesheet"
     href="css/members.css"
   >
-
+ <link rel="stylesheet" href="css/member-detail.css" >
 </head>
 
 
@@ -62,8 +62,6 @@
 
     <aside class="sidebar">
 
-
-      <!-- SIDEBAR HEADER -->
 
       <div class="sidebar-header">
 
@@ -92,8 +90,6 @@
       <nav class="sidebar-nav">
 
 
-        <!-- DASHBOARD -->
-
         <a href="dashboard.html">
 
           <i class="fa-solid fa-chart-line"></i>
@@ -102,9 +98,6 @@
 
         </a>
 
-
-
-        <!-- MEMBERS -->
 
         <a
           href="members.html"
@@ -118,9 +111,6 @@
         </a>
 
 
-
-        <!-- ELECTIONS -->
-
         <a href="elections.html">
 
           <i class="fa-solid fa-check-to-slot"></i>
@@ -129,9 +119,6 @@
 
         </a>
 
-
-
-        <!-- CANDIDATES -->
 
         <a href="candidates.html">
 
@@ -142,9 +129,6 @@
         </a>
 
 
-
-        <!-- ELIGIBLE VOTERS -->
-
         <a href="voters.html">
 
           <i class="fa-solid fa-user-check"></i>
@@ -154,9 +138,6 @@
         </a>
 
 
-
-        <!-- RESULTS -->
-
         <a href="results.html">
 
           <i class="fa-solid fa-chart-column"></i>
@@ -165,9 +146,6 @@
 
         </a>
 
-
-
-        <!-- WEBSITE -->
 
         <a href="../index.html">
 
@@ -183,7 +161,7 @@
 
 
       <!-- ========================================
-           LOGOUT BUTTON
+           LOGOUT
       ========================================= -->
 
       <button
@@ -204,15 +182,14 @@
 
 
     <!-- ========================================
-         MAIN ADMIN CONTENT
+         MAIN CONTENT
     ========================================= -->
 
     <main class="admin-main">
 
 
-
       <!-- ========================================
-           PAGE HEADER
+           HEADER
       ========================================= -->
 
       <header class="admin-header">
@@ -224,11 +201,9 @@
             PNGSA Administration
           </p>
 
-
           <h1>
             Members
           </h1>
-
 
           <p>
             View and manage PNGSA student members.
@@ -236,9 +211,6 @@
 
         </div>
 
-
-
-        <!-- SIGNED IN USER -->
 
         <div class="admin-user">
 
@@ -258,14 +230,11 @@
 
 
       <!-- ========================================
-           MEMBER STATISTICS
+           STATISTICS
       ========================================= -->
 
       <section class="dashboard-grid">
 
-
-
-        <!-- TOTAL MEMBERS -->
 
         <div class="stat-card">
 
@@ -283,9 +252,6 @@
         </div>
 
 
-
-        <!-- ELIGIBLE VOTERS -->
-
         <div class="stat-card">
 
           <h3>
@@ -301,9 +267,6 @@
 
         </div>
 
-
-
-        <!-- ADMINISTRATORS -->
 
         <div class="stat-card">
 
@@ -332,7 +295,6 @@
       <section class="admin-panel">
 
 
-
         <!-- ========================================
              DIRECTORY TOOLBAR
         ========================================= -->
@@ -353,21 +315,54 @@
           </div>
 
 
+          <div class="members-toolbar-actions">
 
-          <!-- ========================================
-               SEARCH BOX
-          ========================================= -->
 
-          <div class="member-search">
+            <!-- SEARCH -->
 
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="member-search">
 
-            <input
-              type="search"
-              id="memberSearch"
-              placeholder="Search members..."
-              autocomplete="off"
+              <i class="fa-solid fa-magnifying-glass"></i>
+
+              <input
+                type="search"
+                id="memberSearch"
+                placeholder="Search members..."
+                autocomplete="off"
+              >
+
+            </div>
+
+
+            <!-- CSV EXPORT -->
+
+            <button
+              type="button"
+              id="exportCsvButton"
+              class="export-button"
             >
+
+              <i class="fa-solid fa-file-csv"></i>
+
+              CSV
+
+            </button>
+
+
+            <!-- PDF EXPORT -->
+
+            <button
+              type="button"
+              id="exportPdfButton"
+              class="export-button"
+            >
+
+              <i class="fa-solid fa-file-pdf"></i>
+
+              PDF
+
+            </button>
+
 
           </div>
 
@@ -386,13 +381,13 @@
           <table class="members-table">
 
 
-            <!-- ========================================
-                 TABLE HEADER
-            ========================================= -->
-
             <thead>
 
               <tr>
+
+                <th>
+                  Photo
+                </th>
 
                 <th>
                   Name
@@ -411,10 +406,6 @@
                 </th>
 
                 <th>
-                  Living Area
-                </th>
-
-                <th>
                   Role
                 </th>
 
@@ -423,7 +414,7 @@
                 </th>
 
                 <th>
-                  Joined
+                  Details
                 </th>
 
               </tr>
@@ -432,14 +423,8 @@
 
 
 
-            <!-- ========================================
-                 TABLE BODY
-
-                 members.js will automatically
-                 replace this loading row.
-            ========================================= -->
-
             <tbody id="membersTableBody">
+
 
               <tr>
 
@@ -458,6 +443,7 @@
 
               </tr>
 
+
             </tbody>
 
 
@@ -473,7 +459,95 @@
     </main>
 
 
+
+    <!-- ========================================
+         MEMBER DETAILS MODAL
+    ========================================= -->
+
+    <div
+      class="member-modal"
+      id="memberModal"
+      hidden
+    >
+
+
+      <!-- DARK BACKGROUND -->
+
+      <div
+        class="member-modal-overlay"
+        id="memberModalOverlay"
+      ></div>
+
+
+
+      <!-- MODAL CARD -->
+
+      <div class="member-modal-card">
+
+
+        <div class="member-modal-header">
+
+
+          <div>
+
+            <p class="admin-section-label">
+              PNGSA Student Record
+            </p>
+
+            <h2>
+              Member Details
+            </h2>
+
+          </div>
+
+
+          <button
+            type="button"
+            id="closeMemberModal"
+            class="modal-close-button"
+            aria-label="Close member details"
+          >
+
+            <i class="fa-solid fa-xmark"></i>
+
+          </button>
+
+
+        </div>
+
+
+
+        <div id="memberDetailsContent">
+
+          <p>
+            Loading member information...
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
   </div>
+
+
+
+  <!-- ========================================
+       PDF EXPORT LIBRARIES
+  ========================================= -->
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+  ></script>
+
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"
+  ></script>
 
 
 

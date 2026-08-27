@@ -3,6 +3,7 @@ from "../../js/supabase.js";
 
 
 let currentUser = null;
+let currentProfile = null;
 
 
 // ========================================
@@ -12,12 +13,16 @@ let currentUser = null;
 async function authenticateMember() {
 
   const {
-    data: { session }
+    data: { session },
+    error
   } =
     await supabase.auth.getSession();
 
 
-  if (!session) {
+  if (
+    error ||
+    !session
+  ) {
 
     window.location.replace(
       "index.html"
@@ -31,10 +36,18 @@ async function authenticateMember() {
     session.user;
 
 
-  document.getElementById(
-    "memberEmail"
-  ).textContent =
-    currentUser.email;
+  const memberEmail =
+    document.getElementById(
+      "memberEmail"
+    );
+
+
+  if (memberEmail) {
+
+    memberEmail.textContent =
+      currentUser.email;
+
+  }
 
 
   return true;
@@ -48,19 +61,19 @@ async function authenticateMember() {
 
 async function loadProfile() {
 
+  console.log(
+    "Loading profile for:",
+    currentUser.id
+  );
+
+
   const {
     data,
     error
   } =
     await supabase
       .from("profiles")
-      .select(`
-        full_name,
-        major,
-        year_of_study,
-        living_area,
-        eligible_to_vote
-      `)
+      .select("*")
       .eq(
         "id",
         currentUser.id
@@ -68,89 +81,539 @@ async function loadProfile() {
       .single();
 
 
-  if (
-    error ||
-    !data
-  ) {
+  if (error) {
 
-    console.error(error);
+    console.error(
+      "PROFILE LOAD ERROR:",
+      error
+    );
+
+
+    const profileName =
+      document.getElementById(
+        "profileFullName"
+      );
+
+
+    if (profileName) {
+
+      profileName.textContent =
+        "Unable to load profile";
+
+    }
+
 
     return;
+
   }
 
 
-  const firstName =
-    data.full_name
-      ? data.full_name.split(" ")[0]
-      : "Member";
+  if (!data) {
+
+    console.error(
+      "No profile record found."
+    );
+
+    return;
+
+  }
 
 
-  document.getElementById(
-    "memberFirstName"
-  ).textContent =
-    firstName;
+  console.log(
+    "PROFILE LOADED:",
+    data
+  );
 
 
-  document.getElementById(
-    "summaryName"
-  ).textContent =
-    data.full_name || "Not provided";
+  currentProfile =
+    data;
 
 
-  document.getElementById(
-    "summaryMajor"
-  ).textContent =
-    data.major || "Not provided";
+  populateDashboard(
+    data
+  );
 
 
-  document.getElementById(
-    "summaryYear"
-  ).textContent =
-    data.year_of_study ||
-    "Not provided";
-
-
-  document.getElementById(
-    "summaryLivingArea"
-  ).textContent =
-    data.living_area ||
-    "Not provided";
-
-
-  const complete =
-    data.full_name &&
-    data.major &&
-    data.year_of_study &&
-    data.living_area;
-
-
-  document.getElementById(
-    "profileStatus"
-  ).textContent =
-    complete
-      ? "Complete"
-      : "Incomplete";
-
-
-  document.getElementById(
-    "profileAlert"
-  ).hidden =
-    Boolean(complete);
-
-
-  document.getElementById(
-    "eligibilityStatus"
-  ).textContent =
-    data.eligible_to_vote
-      ? "Eligible"
-      : "Not Eligible";
+  calculateProfileCompletion(
+    data
+  );
 
 }
 
 
 
 // ========================================
-// ACTIVE ELECTION
+// POPULATE DASHBOARD
+// ========================================
+
+function populateDashboard(profile) {
+
+
+  // ========================================
+  // NAME
+  // ========================================
+
+  const fullName =
+    profile.full_name ||
+    "Member";
+
+
+  const firstName =
+    fullName
+      .trim()
+      .split(" ")[0];
+
+
+  setText(
+    "welcomeName",
+    firstName
+  );
+
+
+  setText(
+    "profileFullName",
+    fullName
+  );
+
+
+
+  // ========================================
+  // PROFILE SUMMARY
+  // ========================================
+
+  setText(
+    "profileMajor",
+    profile.major
+  );
+
+
+  setText(
+    "profileYear",
+    profile.year_of_study
+  );
+
+
+  setText(
+    "profileGraduation",
+    profile.expected_graduation
+  );
+
+
+
+  // ========================================
+  // MEMBER SINCE
+  // ========================================
+
+  setText(
+    "memberSince",
+    formatDate(
+      profile.created_at
+    )
+  );
+
+
+
+  // ========================================
+  // PROFILE PHOTO
+  // ========================================
+
+  const photo =
+    document.getElementById(
+      "dashboardProfilePhoto"
+    );
+
+
+  const fallback =
+    document.getElementById(
+      "dashboardAvatarFallback"
+    );
+
+
+  if (
+    photo &&
+    fallback
+  ) {
+
+    if (
+      profile.avatar_url &&
+      profile.avatar_url.trim() !== ""
+    ) {
+
+      photo.src =
+        profile.avatar_url;
+
+
+      photo.hidden =
+        false;
+
+
+      fallback.hidden =
+        true;
+
+
+      photo.onerror =
+        function() {
+
+          photo.hidden =
+            true;
+
+          fallback.hidden =
+            false;
+
+        };
+
+    }
+
+    else {
+
+      photo.hidden =
+        true;
+
+      fallback.hidden =
+        false;
+
+    }
+
+  }
+
+
+
+  // ========================================
+  // VOTING ELIGIBILITY
+  // ========================================
+
+  const votingStatus =
+    document.getElementById(
+      "votingStatus"
+    );
+
+
+  const votingDescription =
+    document.getElementById(
+      "votingDescription"
+    );
+
+
+  if (
+    votingStatus &&
+    votingDescription
+  ) {
+
+    if (
+      profile.eligible_to_vote === true
+    ) {
+
+      votingStatus.textContent =
+        "Eligible";
+
+
+      votingStatus.className =
+        "big-status eligible";
+
+
+      votingDescription.textContent =
+        "You are eligible to vote in PNGSA elections.";
+
+    }
+
+    else {
+
+      votingStatus.textContent =
+        "Not Eligible";
+
+
+      votingStatus.className =
+        "big-status";
+
+
+      votingDescription.textContent =
+        "You are not currently eligible to vote.";
+
+    }
+
+  }
+
+
+
+  // ========================================
+  // ACADEMIC INFORMATION
+  // ========================================
+
+  setText(
+    "academicUniversity",
+    profile.university ||
+    "South Dakota State University"
+  );
+
+
+  setText(
+    "academicMajor",
+    profile.major
+  );
+
+
+  setText(
+    "academicMinor",
+    profile.minor
+  );
+
+
+  setText(
+    "degreeLevel",
+    profile.degree_level
+  );
+
+
+  setText(
+    "academicYear",
+    profile.year_of_study
+  );
+
+
+  setText(
+    "academicStatus",
+    profile.academic_status
+  );
+
+
+
+  // ========================================
+  // SPONSORSHIP INFORMATION
+  // ========================================
+
+  setText(
+    "currentlySponsored",
+    profile.sponsorship_status
+  );
+
+
+  setText(
+    "sponsorOrganization",
+    profile.sponsor_name
+  );
+
+
+  setText(
+    "sponsorshipProgram",
+    profile.sponsorship_program
+  );
+
+
+  setText(
+    "sponsorshipStatus",
+    profile.sponsorship_current_status ||
+    profile.sponsorship_status
+  );
+
+
+  setText(
+    "sponsorshipEndYear",
+    profile.sponsorship_end_year
+  );
+
+
+  setText(
+    "sponsorshipIssues",
+    profile.sponsorship_issues
+  );
+
+
+
+  // ========================================
+  // CAREER INFORMATION
+  // ========================================
+
+  setText(
+    "careerInterests",
+    profile.career_interest
+  );
+
+
+  setText(
+    "returnToPNG",
+    profile.return_to_png
+  );
+
+
+  setText(
+    "pngEmployment",
+    booleanText(
+      profile.interested_png_employment
+    )
+  );
+
+
+  setText(
+    "internships",
+    booleanText(
+      profile.interested_internships
+    )
+  );
+
+}
+
+
+
+// ========================================
+// PROFILE COMPLETION
+// ========================================
+
+function calculateProfileCompletion(profile) {
+
+  /*
+    These are the fields that count
+    toward the completion percentage.
+  */
+
+  const fields = [
+
+    profile.full_name,
+    profile.date_of_birth,
+    profile.gender,
+    profile.personal_email,
+    profile.phone_number,
+
+    profile.province,
+    profile.district,
+    profile.home_town,
+    profile.living_area,
+
+    profile.major,
+    profile.degree_level,
+    profile.year_of_study,
+    profile.expected_graduation,
+    profile.academic_status,
+
+    profile.sponsorship_status,
+
+    profile.career_interest,
+    profile.return_to_png
+
+  ];
+
+
+  const completed =
+    fields.filter(
+      value => {
+
+        if (
+          value === null ||
+          value === undefined
+        ) {
+
+          return false;
+
+        }
+
+
+        return (
+          String(value)
+            .trim()
+            .length > 0
+        );
+
+      }
+    ).length;
+
+
+  const percentage =
+    Math.round(
+      (
+        completed /
+        fields.length
+      ) * 100
+    );
+
+
+  // ========================================
+  // NUMBER
+  // ========================================
+
+  setText(
+    "completionPercent",
+    `${percentage}%`
+  );
+
+
+
+  // ========================================
+  // CIRCLE
+  // ========================================
+
+  const circle =
+    document.getElementById(
+      "completionCircle"
+    );
+
+
+  if (circle) {
+
+    circle.style.setProperty(
+      "--progress",
+      `${percentage * 3.6}deg`
+    );
+
+  }
+
+
+
+  // ========================================
+  // COMPLETION MESSAGE
+  // ========================================
+
+  const completionMessage =
+    document.getElementById(
+      "completionMessage"
+    );
+
+
+  if (!completionMessage) {
+
+    return;
+
+  }
+
+
+  if (
+    percentage === 100
+  ) {
+
+    completionMessage.textContent =
+      "Your profile is complete.";
+
+  }
+
+  else if (
+    percentage >= 80
+  ) {
+
+    completionMessage.textContent =
+      "Great job! Just a few details left.";
+
+  }
+
+  else if (
+    percentage >= 50
+  ) {
+
+    completionMessage.textContent =
+      "Your profile still needs some information.";
+
+  }
+
+  else {
+
+    completionMessage.textContent =
+      "Please complete your member profile.";
+
+  }
+
+}
+
+
+
+// ========================================
+// LOAD ACTIVE ELECTION
 // ========================================
 
 async function loadElection() {
@@ -175,16 +638,26 @@ async function loadElection() {
       .maybeSingle();
 
 
-  const status =
+  const title =
     document.getElementById(
-      "electionStatus"
+      "electionTitle"
     );
 
 
-  const card =
+  const description =
     document.getElementById(
-      "electionCard"
+      "electionDescription"
     );
+
+
+  if (
+    !title ||
+    !description
+  ) {
+
+    return;
+
+  }
 
 
   if (
@@ -192,91 +665,168 @@ async function loadElection() {
     !data
   ) {
 
-    status.textContent =
-      "Closed";
+    title.textContent =
+      "No Open Election";
 
-    card.innerHTML = `
-      <p class="muted-text">
-        There is currently no open PNGSA election.
-      </p>
-    `;
+
+    description.textContent =
+      "There is currently no open PNGSA election.";
+
 
     return;
+
   }
 
 
-  status.textContent =
-    "Open";
+  title.textContent =
+    data.name ||
+    "PNGSA Election";
 
 
-  const endDate =
+  if (
     data.end_time
-      ? new Date(
-          data.end_time
-        ).toLocaleString()
-      : "Not specified";
+  ) {
+
+    const endDate =
+      new Date(
+        data.end_time
+      ).toLocaleString(
+        "en-US",
+        {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          hour: "numeric",
+          minute: "2-digit"
+        }
+      );
 
 
-  card.innerHTML = `
+    description.textContent =
+      `Voting is open until ${endDate}.`;
 
-    <h3>
-      ${escapeHTML(data.name)}
-    </h3>
+  }
 
-    <p>
-      Voting is currently open.
-    </p>
+  else {
 
-    <p>
-      <strong>Voting closes:</strong>
-      ${escapeHTML(endDate)}
-    </p>
+    description.textContent =
+      "Voting is currently open.";
 
-    <a
-      href="vote.html"
-      class="member-primary-button"
-    >
-      Vote Now
-    </a>
-
-  `;
+  }
 
 }
 
 
 
 // ========================================
-// ESCAPE HTML
+// SET TEXT
 // ========================================
 
-function escapeHTML(value) {
+function setText(
+  id,
+  value
+) {
 
-  return String(value)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
+  const element =
+    document.getElementById(
+      id
     );
+
+
+  if (!element) {
+
+    return;
+
+  }
+
+
+  if (
+    value === null ||
+    value === undefined ||
+    value === ""
+  ) {
+
+    element.textContent =
+      "Not provided";
+
+    return;
+
+  }
+
+
+  element.textContent =
+    String(value);
+
+}
+
+
+
+// ========================================
+// BOOLEAN TEXT
+// ========================================
+
+function booleanText(value) {
+
+  if (
+    value === true
+  ) {
+
+    return "Yes";
+
+  }
+
+
+  if (
+    value === false
+  ) {
+
+    return "No";
+
+  }
+
+
+  return "Not provided";
+
+}
+
+
+
+// ========================================
+// FORMAT DATE
+// ========================================
+
+function formatDate(value) {
+
+  if (!value) {
+
+    return "Not provided";
+
+  }
+
+
+  const date =
+    new Date(value);
+
+
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
+
+    return value;
+
+  }
+
+
+  return date.toLocaleDateString(
+    "en-US",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    }
+  );
 
 }
 
@@ -286,15 +836,20 @@ function escapeHTML(value) {
 // LOGOUT
 // ========================================
 
-document
-  .getElementById(
+const logoutButton =
+  document.getElementById(
     "logoutButton"
-  )
-  .addEventListener(
+  );
+
+
+if (logoutButton) {
+
+  logoutButton.addEventListener(
     "click",
     async function() {
 
       await supabase.auth.signOut();
+
 
       window.location.replace(
         "index.html"
@@ -302,6 +857,8 @@ document
 
     }
   );
+
+}
 
 
 
@@ -316,11 +873,14 @@ async function initialize() {
 
 
   if (!authenticated) {
+
     return;
+
   }
 
 
   await loadProfile();
+
 
   await loadElection();
 

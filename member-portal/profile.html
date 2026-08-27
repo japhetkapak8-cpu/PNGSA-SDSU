@@ -11,6 +11,11 @@
 
   <title>My Profile | PNGSA SDSU</title>
 
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  >
+
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -20,12 +25,22 @@
     rel="stylesheet"
     href="css/member.css"
   >
+
+  <link
+    rel="stylesheet"
+    href="css/profile.css"
+  >
 </head>
 
 
 <body>
 
 <div class="member-layout">
+
+
+  <!-- ========================================
+       SIDEBAR
+  ========================================= -->
 
   <aside class="member-sidebar">
 
@@ -83,7 +98,17 @@
   </aside>
 
 
-  <main class="member-main">
+
+  <!-- ========================================
+       MAIN CONTENT
+  ========================================= -->
+
+  <main class="member-main profile-page">
+
+
+    <!-- ========================================
+         PAGE HEADER
+    ========================================= -->
 
     <header class="member-page-header">
 
@@ -93,172 +118,992 @@
           Member Information
         </p>
 
-        <h1>My Profile</h1>
+        <h1>
+          My Profile
+        </h1>
 
         <p>
-          Keep your PNGSA student information up to date.
+          Complete and keep your PNGSA student information up to date.
         </p>
 
       </div>
 
+
       <div class="signed-in-card">
-        <span>Signed in as</span>
-        <strong id="memberEmail">Loading...</strong>
+
+        <span>
+          Signed in as
+        </span>
+
+        <strong id="memberEmail">
+          Loading...
+        </strong>
+
       </div>
 
     </header>
 
 
-    <section class="member-panel profile-form-panel">
 
-      <form id="profileForm">
+    <!-- ========================================
+         PROFILE FORM
+    ========================================= -->
 
-
-        <div class="profile-form-grid">
-
-
-          <div class="form-group">
-
-            <label for="fullName">
-              Full Name
-            </label>
-
-            <input
-              type="text"
-              id="fullName"
-              required
-            >
-
-          </div>
+    <form id="profileForm">
 
 
-          <div class="form-group">
-
-            <label for="email">
-              Email
-            </label>
-
-            <input
-              type="email"
-              id="email"
-              readonly
-            >
-
-          </div>
+      <div class="profile-columns">
 
 
-          <div class="form-group">
 
-            <label for="major">
-              Major
-            </label>
+        <!-- ========================================
+             LEFT COLUMN
+        ========================================= -->
 
-            <input
-              type="text"
-              id="major"
-              placeholder="Geographic Information Science"
-              required
-            >
-
-          </div>
+        <div class="profile-column">
 
 
-          <div class="form-group">
+          <!-- ========================================
+               PERSONAL INFORMATION
+          ========================================= -->
 
-            <label for="yearOfStudy">
-              Year of Study
-            </label>
+          <section class="member-panel profile-section">
 
-            <select
-              id="yearOfStudy"
-              required
-            >
+            <div class="profile-section-title">
 
-              <option value="">
-                Select year
-              </option>
+              <i class="fa-solid fa-user"></i>
 
-              <option value="Freshman">
-                Freshman
-              </option>
+              <h2>
+                1. Personal Information
+              </h2>
 
-              <option value="Sophomore">
-                Sophomore
-              </option>
-
-              <option value="Junior">
-                Junior
-              </option>
-
-              <option value="Senior">
-                Senior
-              </option>
-
-              <option value="Graduate">
-                Graduate Student
-              </option>
-
-              <option value="Other">
-                Other
-              </option>
-
-            </select>
-
-          </div>
+            </div>
 
 
-          <div class="form-group full-width">
+            <!-- PROFILE PICTURE -->
 
-            <label for="livingArea">
-              Living Area
-            </label>
+            <div class="profile-photo-section">
 
-            <input
-              type="text"
-              id="livingArea"
-              placeholder="Example: Brookings, Campus Housing, Off Campus"
-              required
-            >
+              <div class="profile-photo-preview">
 
-            <small>
-              Please provide a general area only. A street address is not required.
-            </small>
+                <img
+                  id="profilePhotoPreview"
+                  src="../images/default-profile.png"
+                  alt="Profile photo"
+                >
 
-          </div>
+              </div>
+
+
+              <div class="profile-photo-controls">
+
+                <label for="profilePhoto">
+                  Profile Picture
+                </label>
+
+                <input
+                  type="file"
+                  id="profilePhoto"
+                  accept="image/jpeg,image/png,image/webp"
+                >
+
+                <small>
+                  JPG, PNG, or WEBP. Maximum 5 MB.
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div class="profile-form-grid">
+
+
+              <div class="form-group">
+
+                <label for="fullName">
+                  Full Name
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="fullName"
+                  placeholder="Enter your full name"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="dateOfBirth">
+                  Date of Birth
+                </label>
+
+                <input
+                  type="date"
+                  id="dateOfBirth"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="gender">
+                  Gender
+                </label>
+
+                <select id="gender">
+
+                  <option value="">
+                    Select gender
+                  </option>
+
+                  <option value="Male">
+                    Male
+                  </option>
+
+                  <option value="Female">
+                    Female
+                  </option>
+
+                  <option value="Prefer not to say">
+                    Prefer not to say
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="email">
+                  SDSU Email
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  readonly
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="personalEmail">
+                  Personal Email
+                </label>
+
+                <input
+                  type="email"
+                  id="personalEmail"
+                  placeholder="Enter personal email"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="phoneNumber">
+                  Phone Number
+                </label>
+
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  placeholder="Example: 605-555-1234"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="province">
+                  PNG Province
+                  <span class="required">*</span>
+                </label>
+
+                <select
+                  id="province"
+                  required
+                >
+
+                  <option value="">
+                    Select province
+                  </option>
+
+                  <option value="Bougainville">Bougainville</option>
+                  <option value="Central">Central</option>
+                  <option value="Chimbu">Chimbu</option>
+                  <option value="East New Britain">East New Britain</option>
+                  <option value="East Sepik">East Sepik</option>
+                  <option value="Eastern Highlands">Eastern Highlands</option>
+                  <option value="Enga">Enga</option>
+                  <option value="Gulf">Gulf</option>
+                  <option value="Hela">Hela</option>
+                  <option value="Jiwaka">Jiwaka</option>
+                  <option value="Madang">Madang</option>
+                  <option value="Manus">Manus</option>
+                  <option value="Milne Bay">Milne Bay</option>
+                  <option value="Morobe">Morobe</option>
+                  <option value="National Capital District">National Capital District</option>
+                  <option value="New Ireland">New Ireland</option>
+                  <option value="Northern">Northern</option>
+                  <option value="Southern Highlands">Southern Highlands</option>
+                  <option value="West New Britain">West New Britain</option>
+                  <option value="West Sepik">West Sepik</option>
+                  <option value="Western">Western</option>
+                  <option value="Western Highlands">Western Highlands</option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="district">
+                  District
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="district"
+                  placeholder="Enter your district"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group full-width">
+
+                <label for="homeTown">
+                  Home Town / Village
+                </label>
+
+                <input
+                  type="text"
+                  id="homeTown"
+                  placeholder="Enter your home town or village in PNG"
+                >
+
+              </div>
+
+
+              <div class="form-group full-width">
+
+                <label for="livingArea">
+                  Current Living Area
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="livingArea"
+                  placeholder="Example: Brookings, Campus Housing, Off Campus"
+                  required
+                >
+
+                <small>
+                  Please provide a general area only. A street address is not required.
+                </small>
+
+              </div>
+
+
+            </div>
+
+          </section>
+
+
+
+          <!-- ========================================
+               ACADEMIC INFORMATION
+          ========================================= -->
+
+          <section class="member-panel profile-section">
+
+            <div class="profile-section-title">
+
+              <i class="fa-solid fa-graduation-cap"></i>
+
+              <h2>
+                2. Academic Information
+              </h2>
+
+            </div>
+
+
+            <div class="profile-form-grid">
+
+
+              <div class="form-group">
+
+                <label for="university">
+                  University
+                </label>
+
+                <input
+                  type="text"
+                  id="university"
+                  value="South Dakota State University"
+                  readonly
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="major">
+                  Major / Program
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="major"
+                  placeholder="Example: Geographic Information Science"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="minor">
+                  Minor(s)
+                </label>
+
+                <input
+                  type="text"
+                  id="minor"
+                  placeholder="Enter your minor(s)"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="degreeLevel">
+                  Degree Level
+                  <span class="required">*</span>
+                </label>
+
+                <select
+                  id="degreeLevel"
+                  required
+                >
+
+                  <option value="">
+                    Select degree level
+                  </option>
+
+                  <option value="Bachelor's">
+                    Bachelor's
+                  </option>
+
+                  <option value="Master's">
+                    Master's
+                  </option>
+
+                  <option value="Doctoral">
+                    Doctoral / PhD
+                  </option>
+
+                  <option value="Other">
+                    Other
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="yearOfStudy">
+                  Year of Study
+                  <span class="required">*</span>
+                </label>
+
+                <select
+                  id="yearOfStudy"
+                  required
+                >
+
+                  <option value="">
+                    Select year
+                  </option>
+
+                  <option value="Freshman">
+                    Freshman
+                  </option>
+
+                  <option value="Sophomore">
+                    Sophomore
+                  </option>
+
+                  <option value="Junior">
+                    Junior
+                  </option>
+
+                  <option value="Senior">
+                    Senior
+                  </option>
+
+                  <option value="Graduate">
+                    Graduate Student
+                  </option>
+
+                  <option value="Other">
+                    Other
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="expectedGraduation">
+                  Expected Graduation
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="expectedGraduation"
+                  placeholder="Example: May 2027"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group full-width">
+
+                <label for="academicStatus">
+                  Academic Status
+                  <span class="required">*</span>
+                </label>
+
+                <select
+                  id="academicStatus"
+                  required
+                >
+
+                  <option value="">
+                    Select status
+                  </option>
+
+                  <option value="Currently Enrolled">
+                    Currently Enrolled
+                  </option>
+
+                  <option value="On Leave">
+                    On Leave
+                  </option>
+
+                  <option value="Graduated">
+                    Graduated
+                  </option>
+
+                  <option value="Completed">
+                    Completed
+                  </option>
+
+                </select>
+
+              </div>
+
+
+            </div>
+
+          </section>
 
 
         </div>
 
 
-        <div class="profile-actions">
 
-          <button
-            type="submit"
-            class="member-primary-button"
-          >
-            <i class="fa-solid fa-floppy-disk"></i>
-            Save Profile
-          </button>
+        <!-- ========================================
+             RIGHT COLUMN
+        ========================================= -->
+
+        <div class="profile-column">
 
 
-          <a
-            href="dashboard.html"
-            class="outline-button"
-          >
-            Cancel
-          </a>
+          <!-- ========================================
+               SPONSORSHIP
+          ========================================= -->
+
+          <section class="member-panel profile-section">
+
+            <div class="profile-section-title">
+
+              <i class="fa-solid fa-briefcase"></i>
+
+              <h2>
+                3. Sponsorship Information
+              </h2>
+
+            </div>
+
+
+            <div class="profile-form-grid">
+
+
+              <div class="form-group">
+
+                <label for="sponsorshipStatus">
+                  Are you currently sponsored?
+                  <span class="required">*</span>
+                </label>
+
+                <select
+                  id="sponsorshipStatus"
+                  required
+                >
+
+                  <option value="">
+                    Select
+                  </option>
+
+                  <option value="Yes">
+                    Yes
+                  </option>
+
+                  <option value="No">
+                    No
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="sponsorshipType">
+                  Sponsorship Type
+                </label>
+
+                <select id="sponsorshipType">
+
+                  <option value="">
+                    Select type
+                  </option>
+
+                  <option value="PNG Government">
+                    PNG Government
+                  </option>
+
+                  <option value="Provincial Government">
+                    Provincial Government
+                  </option>
+
+                  <option value="Corporate">
+                    Corporate
+                  </option>
+
+                  <option value="University">
+                    University
+                  </option>
+
+                  <option value="Private Organization">
+                    Private Organization
+                  </option>
+
+                  <option value="Self-Sponsored">
+                    Self-Sponsored
+                  </option>
+
+                  <option value="Other">
+                    Other
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="sponsorName">
+                  Sponsor / Organization Name
+                </label>
+
+                <input
+                  type="text"
+                  id="sponsorName"
+                  placeholder="Enter sponsor name"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="sponsorshipProgram">
+                  Scholarship / Sponsorship Program
+                </label>
+
+                <input
+                  type="text"
+                  id="sponsorshipProgram"
+                  placeholder="Enter program name"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="sponsorshipStartYear">
+                  Sponsorship Start Year
+                </label>
+
+                <input
+                  type="number"
+                  id="sponsorshipStartYear"
+                  placeholder="2024"
+                  min="2000"
+                  max="2100"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="sponsorshipEndYear">
+                  Expected Sponsorship End Year
+                </label>
+
+                <input
+                  type="number"
+                  id="sponsorshipEndYear"
+                  placeholder="2027"
+                  min="2000"
+                  max="2100"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="sponsorshipCurrentStatus">
+                  Sponsorship Current Status
+                </label>
+
+                <select id="sponsorshipCurrentStatus">
+
+                  <option value="">
+                    Select status
+                  </option>
+
+                  <option value="Active">
+                    Active
+                  </option>
+
+                  <option value="Pending">
+                    Pending
+                  </option>
+
+                  <option value="Completed">
+                    Completed
+                  </option>
+
+                  <option value="Suspended">
+                    Suspended
+                  </option>
+
+                  <option value="Other">
+                    Other
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="sponsorshipIssues">
+                  Current Sponsorship Issues
+                </label>
+
+                <input
+                  type="text"
+                  id="sponsorshipIssues"
+                  placeholder="Optional"
+                >
+
+              </div>
+
+
+            </div>
+
+          </section>
+
+
+
+          <!-- ========================================
+               CAREER
+          ========================================= -->
+
+          <section class="member-panel profile-section">
+
+            <div class="profile-section-title">
+
+              <i class="fa-solid fa-arrow-trend-up"></i>
+
+              <h2>
+                4. Career & Future Plans
+              </h2>
+
+            </div>
+
+
+            <div class="profile-form-grid">
+
+
+              <div class="form-group full-width">
+
+                <label for="careerInterest">
+                  Career Interests / Field
+                </label>
+
+                <input
+                  type="text"
+                  id="careerInterest"
+                  placeholder="Example: GIS, Engineering, Education, Healthcare"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="returnToPNG">
+                  Planning to return to PNG after graduation?
+                </label>
+
+                <select id="returnToPNG">
+
+                  <option value="">
+                    Select
+                  </option>
+
+                  <option value="Yes">
+                    Yes
+                  </option>
+
+                  <option value="No">
+                    No
+                  </option>
+
+                  <option value="Undecided">
+                    Undecided
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="pngEmployment">
+                  Interested in PNG employment opportunities?
+                </label>
+
+                <select id="pngEmployment">
+
+                  <option value="">
+                    Select
+                  </option>
+
+                  <option value="Yes">
+                    Yes
+                  </option>
+
+                  <option value="No">
+                    No
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="internshipInterest">
+                  Interested in internship opportunities?
+                </label>
+
+                <select id="internshipInterest">
+
+                  <option value="">
+                    Select
+                  </option>
+
+                  <option value="Yes">
+                    Yes
+                  </option>
+
+                  <option value="No">
+                    No
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="careerNotes">
+                  Career Goals / Notes
+                </label>
+
+                <input
+                  type="text"
+                  id="careerNotes"
+                  placeholder="Optional"
+                >
+
+              </div>
+
+
+            </div>
+
+          </section>
+
+
+
+          <!-- ========================================
+               CONSENT
+          ========================================= -->
+
+          <section class="member-panel profile-section">
+
+  <div class="profile-section-title">
+
+    <i class="fa-solid fa-shield-halved"></i>
+
+    <h2>
+      5. Information Sharing Consent
+    </h2>
+
+  </div>
+
+
+  <div class="consent-information">
+
+    <i class="fa-solid fa-circle-info"></i>
+
+    <p>
+      PNGSA may share relevant information with appropriate Papua New Guinea
+      government agencies, scholarship bodies, or educational authorities
+      for scholarship, sponsorship, student-support, and educational
+      coordination purposes.
+    </p>
+
+  </div>
+
+
+  <label class="consent-checkbox">
+
+    <input
+      type="checkbox"
+      id="infoSharingConsent"
+      required
+    >
+
+    <span>
+      I consent to PNGSA sharing the information I have provided
+      as described above.
+      <strong class="required">*</strong>
+    </span>
+
+  </label>
+
+
+  <div class="privacy-notice">
+
+    <i class="fa-solid fa-lock"></i>
+
+    <p>
+      Your information is confidential and should only be used
+      for legitimate PNGSA administration and approved coordination.
+    </p>
+
+  </div>
+
+</section>
+
 
         </div>
 
 
-        <p
-          id="profileMessage"
-          class="form-message"
-        ></p>
+      </div>
 
-      </form>
 
-    </section>
+
+      <!-- ========================================
+           ACTIONS
+      ========================================= -->
+
+      <div class="profile-actions">
+
+        <button
+          type="submit"
+          class="member-primary-button"
+        >
+
+          <i class="fa-solid fa-floppy-disk"></i>
+
+          Save Profile
+
+        </button>
+
+
+        <a
+          href="dashboard.html"
+          class="outline-button"
+        >
+          Cancel
+        </a>
+
+      </div>
+
+
+      <p
+        id="profileMessage"
+        class="form-message"
+      ></p>
+
+
+    </form>
+
 
   </main>
 
