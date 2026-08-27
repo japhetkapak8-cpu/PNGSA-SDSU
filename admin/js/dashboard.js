@@ -1,6 +1,5 @@
 import { supabase }
-from "..js/supabase.js";
-
+from "../../js/supabase.js";
 
 async function protectAdminPage() {
 
