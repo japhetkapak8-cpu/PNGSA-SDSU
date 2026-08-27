@@ -1,0 +1,1051 @@
+/* ========================================
+   PNGSA ADMIN EVENTS PAGE
+======================================== */
+
+
+/* ========================================
+   EVENT STATISTICS
+======================================== */
+
+.event-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+
+.event-stat-card {
+  background: #ffffff;
+
+  border-radius: 14px;
+
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.06);
+
+  border:
+    1px solid rgba(0, 0, 0, 0.05);
+}
+
+
+.event-stat-icon {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eaf4ff;
+
+  color: #1476c9;
+
+  font-size: 21px;
+}
+
+
+.event-stat-card span {
+  display: block;
+
+  color: #7a8493;
+
+  font-size: 14px;
+
+  margin-bottom: 5px;
+}
+
+
+.event-stat-card strong {
+  display: block;
+
+  font-size: 28px;
+
+  color: #162033;
+}
+
+
+/* ========================================
+   PANEL HEADER
+======================================== */
+
+.event-panel-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 22px;
+}
+
+
+.event-panel-header h2 {
+  margin-bottom: 4px;
+}
+
+
+.event-panel-header p {
+  margin: 0;
+
+  color: #727d8d;
+}
+
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.primary-button,
+.secondary-button,
+.danger-button {
+  border: none;
+
+  border-radius: 9px;
+
+  padding: 11px 17px;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease,
+    background 0.15s ease;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+}
+
+
+.primary-button {
+  background: #1476c9;
+
+  color: #ffffff;
+}
+
+
+.primary-button:hover {
+  background: #0f63a9;
+
+  transform: translateY(-1px);
+}
+
+
+.secondary-button {
+  background: #edf1f5;
+
+  color: #293445;
+}
+
+
+.secondary-button:hover {
+  background: #e0e6ec;
+}
+
+
+.danger-button {
+  background: #c62828;
+
+  color: white;
+}
+
+
+.danger-button:hover {
+  background: #a91f1f;
+}
+
+
+/* ========================================
+   FILTERS
+======================================== */
+
+.event-filters {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 22px;
+}
+
+
+.event-search {
+  flex: 1;
+
+  min-width: 240px;
+
+  position: relative;
+}
+
+
+.event-search i {
+  position: absolute;
+
+  left: 14px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #8a94a3;
+}
+
+
+.event-search input {
+  width: 100%;
+
+  padding: 11px 14px 11px 40px;
+
+  border:
+    1px solid #dfe5ec;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  background: white;
+}
+
+
+.event-filters select {
+  min-width: 160px;
+
+  padding: 11px 12px;
+
+  border:
+    1px solid #dfe5ec;
+
+  border-radius: 9px;
+
+  background: white;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  outline: none;
+}
+
+
+.event-search input:focus,
+.event-filters select:focus {
+  border-color: #1476c9;
+
+  box-shadow:
+    0 0 0 3px rgba(20, 118, 201, 0.10);
+}
+
+
+/* ========================================
+   EVENT LIST
+======================================== */
+
+.admin-events-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+
+.admin-event-card {
+  background: #ffffff;
+
+  border:
+    1px solid #e2e7ed;
+
+  border-radius: 12px;
+
+  padding: 18px;
+
+  display: grid;
+
+  grid-template-columns:
+    76px
+    minmax(0, 1fr)
+    auto;
+
+  gap: 18px;
+
+  align-items: center;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+.admin-event-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 18px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ========================================
+   DATE BOX
+======================================== */
+
+.admin-event-date {
+  width: 70px;
+
+  min-height: 74px;
+
+  background: #eef6fd;
+
+  border-radius: 10px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.admin-event-date span {
+  color: #1476c9;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+
+.admin-event-date strong {
+  font-size: 28px;
+
+  line-height: 1;
+
+  margin-top: 3px;
+
+  color: #162033;
+}
+
+
+/* ========================================
+   EVENT DETAILS
+======================================== */
+
+.admin-event-info {
+  min-width: 0;
+}
+
+
+.admin-event-title-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 7px;
+}
+
+
+.admin-event-info h3 {
+  margin: 0;
+
+  font-size: 18px;
+
+  color: #182133;
+}
+
+
+.event-category-badge,
+.event-status-badge,
+.featured-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 5px 9px;
+
+  border-radius: 50px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+.event-category-badge {
+  background: #eaf4ff;
+
+  color: #1268ae;
+}
+
+
+.event-status-badge.published {
+  background: #e8f7ed;
+
+  color: #1f7a3f;
+}
+
+
+.event-status-badge.draft {
+  background: #f1f2f4;
+
+  color: #596273;
+}
+
+
+.event-status-badge.past {
+  background: #fff0e6;
+
+  color: #a65219;
+}
+
+
+.featured-badge {
+  background: #fff8dc;
+
+  color: #9a7200;
+}
+
+
+.admin-event-meta {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 7px;
+
+  color: #717b89;
+
+  font-size: 13px;
+}
+
+
+.admin-event-meta span {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+
+.admin-event-description {
+  margin: 10px 0 0;
+
+  color: #606a77;
+
+  line-height: 1.55;
+
+  font-size: 14px;
+}
+
+
+/* ========================================
+   RSVP SUMMARY
+======================================== */
+
+.admin-event-rsvp {
+  display: flex;
+
+  gap: 14px;
+
+  margin-top: 12px;
+
+  flex-wrap: wrap;
+}
+
+
+.rsvp-item {
+  font-size: 13px;
+
+  color: #697384;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+}
+
+
+.rsvp-item strong {
+  color: #263142;
+}
+
+
+/* ========================================
+   EVENT ACTIONS
+======================================== */
+
+.admin-event-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.icon-button {
+  width: 38px;
+
+  height: 38px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  cursor: pointer;
+
+  background: #edf2f7;
+
+  color: #354153;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+.icon-button:hover {
+  background: #e1e7ee;
+
+  transform: translateY(-1px);
+}
+
+
+.icon-button.edit {
+  color: #1476c9;
+}
+
+
+.icon-button.delete {
+  color: #ba2525;
+}
+
+
+/* ========================================
+   EMPTY / LOADING STATE
+======================================== */
+
+.events-loading,
+.events-empty {
+  padding: 55px 20px;
+
+  text-align: center;
+
+  color: #7a8492;
+}
+
+
+.events-loading i,
+.events-empty i {
+  display: block;
+
+  font-size: 32px;
+
+  margin-bottom: 12px;
+
+  color: #1476c9;
+}
+
+
+.events-empty h3 {
+  color: #263142;
+
+  margin-bottom: 5px;
+}
+
+
+/* ========================================
+   MODAL
+======================================== */
+
+.event-modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 2000;
+
+  padding: 25px;
+
+  background:
+    rgba(6, 27, 51, 0.62);
+
+  display: none;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.event-modal.show {
+  display: flex;
+}
+
+
+.event-modal-content {
+  width: min(760px, 100%);
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  border-radius: 15px;
+
+  padding: 25px;
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.25);
+}
+
+
+.event-modal-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  align-items: flex-start;
+
+  padding-bottom: 18px;
+
+  margin-bottom: 21px;
+
+  border-bottom:
+    1px solid #e5e8ed;
+}
+
+
+.event-modal-header h2 {
+  margin: 0 0 5px;
+}
+
+
+.event-modal-header p {
+  color: #737d89;
+
+  margin: 0;
+}
+
+
+.modal-close {
+  width: 38px;
+
+  height: 38px;
+
+  border: none;
+
+  background: #edf1f5;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  color: #444f5f;
+
+  font-size: 17px;
+}
+
+
+/* ========================================
+   FORM
+======================================== */
+
+.form-group {
+  margin-bottom: 17px;
+}
+
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-weight: 600;
+
+  color: #293445;
+
+  font-size: 14px;
+}
+
+
+.form-group label span {
+  color: #c62828;
+}
+
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+
+  border:
+    1px solid #d9e0e8;
+
+  border-radius: 9px;
+
+  padding: 11px 12px;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  outline: none;
+
+  background: #ffffff;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #1476c9;
+
+  box-shadow:
+    0 0 0 3px rgba(20, 118, 201, 0.10);
+}
+
+
+.form-group textarea {
+  resize: vertical;
+
+  min-height: 120px;
+}
+
+
+.form-group small {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #88919e;
+
+  font-size: 12px;
+}
+
+
+.form-row {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 15px;
+}
+
+
+/* ========================================
+   ICON INPUT
+======================================== */
+
+.input-icon {
+  position: relative;
+}
+
+
+.input-icon i {
+  position: absolute;
+
+  top: 50%;
+
+  left: 13px;
+
+  transform: translateY(-50%);
+
+  color: #858f9c;
+}
+
+
+.input-icon input {
+  padding-left: 37px;
+}
+
+
+/* ========================================
+   EVENT OPTIONS
+======================================== */
+
+.event-options {
+  display: grid;
+
+  gap: 11px;
+
+  margin-top: 10px;
+
+  padding-top: 18px;
+
+  border-top:
+    1px solid #e6e9ed;
+}
+
+
+.event-option {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 12px;
+
+  padding: 13px;
+
+  background: #f8fafc;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+
+.event-option input {
+  margin-top: 3px;
+}
+
+
+.event-option div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+
+.event-option strong {
+  color: #253041;
+
+  font-size: 14px;
+}
+
+
+.event-option span {
+  color: #7a8492;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   MODAL ACTIONS
+======================================== */
+
+.modal-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 24px;
+}
+
+
+/* ========================================
+   DELETE MODAL
+======================================== */
+
+.delete-modal-content {
+  width: min(430px, 100%);
+
+  text-align: center;
+}
+
+
+.delete-icon {
+  width: 62px;
+
+  height: 62px;
+
+  margin:
+    0 auto
+    16px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #feecec;
+
+  color: #c62828;
+
+  font-size: 23px;
+}
+
+
+.delete-modal-content p {
+  color: #707987;
+
+  line-height: 1.6;
+}
+
+
+.delete-modal-content .modal-actions {
+  justify-content: center;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 1050px) {
+
+  .event-stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 760px) {
+
+  .event-stats {
+    grid-template-columns: 1fr;
+  }
+
+
+  .event-panel-header {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .event-panel-header .primary-button {
+    width: 100%;
+  }
+
+
+  .event-filters {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .event-search {
+    min-width: 100%;
+  }
+
+
+  .event-filters select {
+    width: 100%;
+  }
+
+
+  .admin-event-card {
+    grid-template-columns:
+      65px
+      minmax(0, 1fr);
+  }
+
+
+  .admin-event-actions {
+    grid-column: 1 / -1;
+
+    justify-content: flex-end;
+  }
+
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+
+  .event-modal {
+    padding: 12px;
+  }
+
+
+  .event-modal-content {
+    padding: 18px;
+
+    max-height: 95vh;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .admin-event-card {
+    display: block;
+  }
+
+
+  .admin-event-date {
+    margin-bottom: 14px;
+  }
+
+
+  .admin-event-actions {
+    margin-top: 15px;
+
+    justify-content: flex-start;
+  }
+
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+
+  .modal-actions button {
+    width: 100%;
+  }
+
+}

@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>PNGSA Admin | Events</title>
+
+  <!-- FONT AWESOME -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <!-- MAIN ADMIN CSS -->
+  <link
+    rel="stylesheet"
+    href="css/admin.css"
+  >
+
+  <!-- EVENTS CSS -->
+  <link
+    rel="stylesheet"
+    href="css/events.css"
+  >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-layout">
+
+
+  <!-- =========================================
+       SIDEBAR
+  ========================================== -->
+
+  <aside class="sidebar">
+
+
+    <div class="sidebar-header">
+
+      <img
+        src="../images/pngsa_logo.png"
+        alt="PNGSA Logo"
+        class="sidebar-logo"
+      >
+
+      <h2>PNGSA</h2>
+
+      <span>Admin Portal</span>
+
+    </div>
+
+
+
+    <nav class="sidebar-nav">
+
+
+      <a href="dashboard.html">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+        Dashboard
+
+      </a>
+
+
+      <a href="members.html">
+
+        <i class="fa-solid fa-users"></i>
+
+        Members
+
+      </a>
+
+
+      <a href="elections.html">
+
+        <i class="fa-solid fa-check-to-slot"></i>
+
+        Elections
+
+      </a>
+
+
+      <!-- ACTIVE PAGE -->
+
+      <a
+        href="events.html"
+        class="active"
+      >
+
+        <i class="fa-solid fa-calendar-days"></i>
+
+        Events
+
+      </a>
+
+
+      <a href="candidates.html">
+
+        <i class="fa-solid fa-user-tie"></i>
+
+        Candidates
+
+      </a>
+
+
+      <a href="voters.html">
+
+        <i class="fa-solid fa-user-check"></i>
+
+        Eligible Voters
+
+      </a>
+
+
+      <a href="results.html">
+
+        <i class="fa-solid fa-chart-column"></i>
+
+        Results
+
+      </a>
+
+
+      <a href="../index.html">
+
+        <i class="fa-solid fa-globe"></i>
+
+        View Website
+
+      </a>
+
+
+    </nav>
+
+
+
+    <button
+      id="logoutButton"
+      class="logout-button"
+      type="button"
+    >
+
+      <i class="fa-solid fa-right-from-bracket"></i>
+
+      Sign Out
+
+    </button>
+
+
+  </aside>
+
+
+
+  <!-- =========================================
+       MAIN CONTENT
+  ========================================== -->
+
+  <main class="admin-main">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="admin-header">
+
+
+      <div>
+
+        <h1>Events Management</h1>
+
+        <p>
+          Create and manage PNGSA events for all members.
+        </p>
+
+      </div>
+
+
+      <div class="admin-user">
+
+        <span id="adminEmail">
+          Loading...
+        </span>
+
+      </div>
+
+
+    </header>
+
+
+
+    <!-- =========================================
+         EVENT SUMMARY
+    ========================================== -->
+
+    <section class="event-stats">
+
+
+      <div class="event-stat-card">
+
+        <div class="event-stat-icon">
+
+          <i class="fa-solid fa-calendar-days"></i>
+
+        </div>
+
+        <div>
+
+          <span>Upcoming Events</span>
+
+          <strong id="upcomingCount">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="event-stat-card">
+
+        <div class="event-stat-icon">
+
+          <i class="fa-solid fa-users"></i>
+
+        </div>
+
+        <div>
+
+          <span>Total RSVPs</span>
+
+          <strong id="totalRsvpCount">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="event-stat-card">
+
+        <div class="event-stat-icon">
+
+          <i class="fa-solid fa-star"></i>
+
+        </div>
+
+        <div>
+
+          <span>Featured Events</span>
+
+          <strong id="featuredCount">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="event-stat-card">
+
+        <div class="event-stat-icon">
+
+          <i class="fa-solid fa-calendar-check"></i>
+
+        </div>
+
+        <div>
+
+          <span>Published</span>
+
+          <strong id="publishedCount">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         EVENTS MANAGEMENT PANEL
+    ========================================== -->
+
+    <section class="admin-panel">
+
+
+      <div class="panel-header event-panel-header">
+
+
+        <div>
+
+          <h2>PNGSA Events</h2>
+
+          <p>
+            Events published here automatically appear
+            in the member portal.
+          </p>
+
+        </div>
+
+
+
+        <button
+          id="addEventButton"
+          class="primary-button"
+          type="button"
+        >
+
+          <i class="fa-solid fa-plus"></i>
+
+          Add Event
+
+        </button>
+
+
+      </div>
+
+
+
+      <!-- FILTERS -->
+
+      <div class="event-filters">
+
+
+        <div class="event-search">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          <input
+            type="search"
+            id="eventSearch"
+            placeholder="Search events..."
+          >
+
+        </div>
+
+
+
+        <select id="categoryFilter">
+
+          <option value="">
+            All Categories
+          </option>
+
+          <option value="General Meeting">
+            General Meeting
+          </option>
+
+          <option value="Cultural">
+            Cultural
+          </option>
+
+          <option value="Social">
+            Social
+          </option>
+
+          <option value="Academic">
+            Academic
+          </option>
+
+          <option value="Volunteer">
+            Volunteer
+          </option>
+
+          <option value="Sports">
+            Sports
+          </option>
+
+          <option value="PNG Night">
+            PNG Night
+          </option>
+
+        </select>
+
+
+
+        <select id="statusFilter">
+
+          <option value="">
+            All Events
+          </option>
+
+          <option value="published">
+            Published
+          </option>
+
+          <option value="draft">
+            Draft
+          </option>
+
+          <option value="past">
+            Past Events
+          </option>
+
+        </select>
+
+
+      </div>
+
+
+
+      <!-- EVENT LIST -->
+
+      <div
+        id="eventsContainer"
+        class="admin-events-list"
+      >
+
+        <div class="events-loading">
+
+          <i class="fa-solid fa-spinner fa-spin"></i>
+
+          Loading events...
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+</div>
+
+
+
+<!-- =========================================
+     ADD / EDIT EVENT MODAL
+========================================== -->
+
+<div
+  id="eventModal"
+  class="event-modal"
+>
+
+
+  <div class="event-modal-content">
+
+
+    <!-- MODAL HEADER -->
+
+    <div class="event-modal-header">
+
+
+      <div>
+
+        <h2 id="eventModalTitle">
+          Add Event
+        </h2>
+
+        <p>
+          Event information will be displayed
+          in the PNGSA member portal.
+        </p>
+
+      </div>
+
+
+
+      <button
+        id="closeEventModal"
+        class="modal-close"
+        type="button"
+        aria-label="Close"
+      >
+
+        <i class="fa-solid fa-xmark"></i>
+
+      </button>
+
+
+    </div>
+
+
+
+    <!-- EVENT FORM -->
+
+    <form id="eventForm">
+
+
+      <input
+        type="hidden"
+        id="eventId"
+      >
+
+
+
+      <!-- TITLE -->
+
+      <div class="form-group">
+
+        <label for="eventTitle">
+
+          Event Title
+
+          <span>*</span>
+
+        </label>
+
+        <input
+          type="text"
+          id="eventTitle"
+          placeholder="Example: PNGSA General Meeting"
+          required
+        >
+
+      </div>
+
+
+
+      <!-- CATEGORY / LOCATION -->
+
+      <div class="form-row">
+
+
+        <div class="form-group">
+
+          <label for="eventCategory">
+
+            Category
+
+          </label>
+
+          <select id="eventCategory">
+
+            <option value="General Meeting">
+              General Meeting
+            </option>
+
+            <option value="Cultural">
+              Cultural
+            </option>
+
+            <option value="Social">
+              Social
+            </option>
+
+            <option value="Academic">
+              Academic
+            </option>
+
+            <option value="Volunteer">
+              Volunteer
+            </option>
+
+            <option value="Sports">
+              Sports
+            </option>
+
+            <option value="PNG Night">
+              PNG Night
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+          <label for="eventLocation">
+
+            Location
+
+          </label>
+
+          <div class="input-icon">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <input
+              type="text"
+              id="eventLocation"
+              placeholder="Volstorff Ballroom"
+            >
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- DATE -->
+
+      <div class="form-row">
+
+
+        <div class="form-group">
+
+          <label for="eventStart">
+
+            Start Date & Time
+
+            <span>*</span>
+
+          </label>
+
+          <input
+            type="datetime-local"
+            id="eventStart"
+            required
+          >
+
+        </div>
+
+
+
+        <div class="form-group">
+
+          <label for="eventEnd">
+
+            End Date & Time
+
+          </label>
+
+          <input
+            type="datetime-local"
+            id="eventEnd"
+          >
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- SHORT DESCRIPTION -->
+
+      <div class="form-group">
+
+        <label for="eventShortDescription">
+
+          Short Description
+
+        </label>
+
+        <input
+          type="text"
+          id="eventShortDescription"
+          maxlength="180"
+          placeholder="Short description shown on event cards"
+        >
+
+        <small>
+          Maximum 180 characters
+        </small>
+
+      </div>
+
+
+
+      <!-- DESCRIPTION -->
+
+      <div class="form-group">
+
+        <label for="eventDescription">
+
+          Event Description
+
+        </label>
+
+        <textarea
+          id="eventDescription"
+          rows="6"
+          placeholder="Enter full event details..."
+        ></textarea>
+
+      </div>
+
+
+
+      <!-- OPTIONS -->
+
+      <div class="event-options">
+
+
+        <label class="event-option">
+
+          <input
+            type="checkbox"
+            id="rsvpEnabled"
+            checked
+          >
+
+          <div>
+
+            <strong>
+              Enable RSVP
+            </strong>
+
+            <span>
+              Allow members to indicate whether they
+              are attending.
+            </span>
+
+          </div>
+
+        </label>
+
+
+
+        <label class="event-option">
+
+          <input
+            type="checkbox"
+            id="featuredEvent"
+          >
+
+          <div>
+
+            <strong>
+              Featured Event
+            </strong>
+
+            <span>
+              Highlight this event in the member portal.
+            </span>
+
+          </div>
+
+        </label>
+
+
+
+        <label class="event-option">
+
+          <input
+            type="checkbox"
+            id="publishEvent"
+            checked
+          >
+
+          <div>
+
+            <strong>
+              Publish Event
+            </strong>
+
+            <span>
+              Make this event visible to PNGSA members.
+            </span>
+
+          </div>
+
+        </label>
+
+
+      </div>
+
+
+
+      <!-- FORM ACTIONS -->
+
+      <div class="modal-actions">
+
+
+        <button
+          type="button"
+          id="cancelEventButton"
+          class="secondary-button"
+        >
+
+          Cancel
+
+        </button>
+
+
+
+        <button
+          type="submit"
+          class="primary-button"
+        >
+
+          <i class="fa-solid fa-floppy-disk"></i>
+
+          Save Event
+
+        </button>
+
+
+      </div>
+
+
+    </form>
+
+
+  </div>
+
+
+</div>
+
+
+
+<!-- =========================================
+     DELETE CONFIRMATION MODAL
+========================================== -->
+
+<div
+  id="deleteModal"
+  class="event-modal"
+>
+
+
+  <div class="event-modal-content delete-modal-content">
+
+
+    <div class="delete-icon">
+
+      <i class="fa-solid fa-trash"></i>
+
+    </div>
+
+
+    <h2>
+      Delete Event?
+    </h2>
+
+
+    <p>
+
+      This event will be removed from all member
+      calendars and its RSVP records will also
+      be deleted.
+
+    </p>
+
+
+    <div class="modal-actions">
+
+
+      <button
+        id="cancelDeleteButton"
+        class="secondary-button"
+        type="button"
+      >
+
+        Cancel
+
+      </button>
+
+
+      <button
+        id="confirmDeleteButton"
+        class="danger-button"
+        type="button"
+      >
+
+        Delete Event
+
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================== -->
+
+<script
+  type="module"
+  src="js/events.js"
+></script>
+
+
+</body>
+
+</html>

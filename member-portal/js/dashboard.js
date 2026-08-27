@@ -860,7 +860,350 @@ if (logoutButton) {
 
 }
 
+// ========================================
+// LOAD FEATURED EVENT
+// ========================================
 
+async function loadFeaturedEvent() {
+
+  const container =
+    document.getElementById(
+      "dashboardFeaturedEvent"
+    );
+
+
+  if (!container) {
+
+    console.warn(
+      "dashboardFeaturedEvent not found."
+    );
+
+    return;
+  }
+
+
+  try {
+
+    const {
+      data,
+      error
+    } =
+      await supabase
+
+        .from("events")
+
+        .select(`
+          id,
+          title,
+          category,
+          location,
+          start_at,
+          end_at,
+          short_description,
+          description,
+          featured,
+          is_published
+        `)
+
+        .eq(
+          "is_published",
+          true
+        )
+
+        .eq(
+          "featured",
+          true
+        )
+
+        .order(
+          "start_at",
+          {
+            ascending: true
+          }
+        )
+
+        .limit(1)
+
+        .maybeSingle();
+
+
+    if (error) {
+
+      throw error;
+    }
+
+
+    if (!data) {
+
+      container.innerHTML = `
+
+        <div class="empty-dashboard-state">
+
+          <i class="fa-regular fa-calendar"></i>
+
+          <strong>
+            No featured event
+          </strong>
+
+          <p>
+            Upcoming PNGSA events will appear here.
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+    }
+
+
+    const eventDate =
+      new Date(
+        data.start_at
+      );
+
+
+    const month =
+      eventDate.toLocaleString(
+        "en-US",
+        {
+          month: "short"
+        }
+      );
+
+
+    const day =
+      eventDate.getDate();
+
+
+    const dateText =
+      eventDate.toLocaleDateString(
+        "en-US",
+        {
+          weekday: "short",
+          month: "short",
+          day: "numeric"
+        }
+      );
+
+
+    const timeText =
+      eventDate.toLocaleTimeString(
+        "en-US",
+        {
+          hour: "numeric",
+          minute: "2-digit"
+        }
+      );
+
+
+    container.innerHTML = `
+
+      <div class="dashboard-event">
+
+
+        <div class="dashboard-event-date">
+
+          <span>
+            ${month}
+          </span>
+
+          <strong>
+            ${day}
+          </strong>
+
+        </div>
+
+
+        <div class="dashboard-event-content">
+
+
+          <div class="dashboard-event-badges">
+
+
+            ${
+              data.category
+                ? `
+                  <span class="dashboard-event-category">
+
+                    ${
+                      escapeDashboardHTML(
+                        data.category
+                      )
+                    }
+
+                  </span>
+                `
+                : ""
+            }
+
+
+            <span class="dashboard-featured-badge">
+
+              <i class="fa-solid fa-star"></i>
+
+              Featured
+
+            </span>
+
+
+          </div>
+
+
+          <h3>
+
+            ${
+              escapeDashboardHTML(
+                data.title
+              )
+            }
+
+          </h3>
+
+
+          <div class="dashboard-event-meta">
+
+
+            <span>
+
+              <i class="fa-regular fa-calendar"></i>
+
+              ${dateText}
+
+            </span>
+
+
+            <span>
+
+              <i class="fa-regular fa-clock"></i>
+
+              ${timeText}
+
+            </span>
+
+
+            ${
+              data.location
+                ? `
+                  <span>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    ${
+                      escapeDashboardHTML(
+                        data.location
+                      )
+                    }
+
+                  </span>
+                `
+                : ""
+            }
+
+
+          </div>
+
+
+          ${
+            data.short_description
+              ? `
+                <p>
+
+                  ${
+                    escapeDashboardHTML(
+                      data.short_description
+                    )
+                  }
+
+                </p>
+              `
+              : ""
+          }
+
+
+        </div>
+
+
+      </div>
+
+    `;
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "FEATURED EVENT LOAD ERROR:",
+      error
+    );
+
+
+    container.innerHTML = `
+
+      <div class="empty-dashboard-state">
+
+        <i class="fa-solid fa-triangle-exclamation"></i>
+
+        <strong>
+          Event could not be loaded
+        </strong>
+
+        <p>
+          ${
+            escapeDashboardHTML(
+              error.message ||
+              "Unknown error"
+            )
+          }
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+// ========================================
+// ESCAPE EVENT HTML
+// ========================================
+
+function escapeDashboardHTML(
+  value
+) {
+
+  return String(
+    value || ""
+  )
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
 
 // ========================================
 // START
@@ -879,10 +1222,22 @@ async function initialize() {
   }
 
 
+  console.log("1. Member authenticated");
+
+
   await loadProfile();
+
+  console.log("2. Profile loaded");
 
 
   await loadElection();
+
+  console.log("3. Election loaded");
+
+
+  await loadFeaturedEvent();
+
+  console.log("4. Featured event loaded");
 
 }
 

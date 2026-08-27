@@ -33,6 +33,11 @@
     rel="stylesheet"
     href="css/dashboard.css"
   >
+   <!-- Dashboard event Card CSS -->
+  <link
+    rel="stylesheet"
+    href="css/dashboard-event.css"
+  >
 </head>
 
 
@@ -92,7 +97,7 @@
       </a>
 
 
-      <a href="#">
+      <a href="events.html">
         <i class="fa-solid fa-calendar-days"></i>
         Events
       </a>
@@ -801,51 +806,67 @@
 
 
 
-      <!-- EVENTS -->
+      <!-- ========================================
+     FEATURED / UPCOMING EVENT
+======================================== -->
 
-      <article class="activity-card">
+<article class="activity-card">
 
-        <div class="activity-heading">
+  <div class="activity-heading">
 
-          <div class="information-title">
+    <div class="information-title">
 
-            <div class="card-icon purple">
-              <i class="fa-solid fa-calendar-days"></i>
-            </div>
+      <div class="card-icon purple">
+        <i class="fa-solid fa-calendar-days"></i>
+      </div>
 
-            <h2>
-              Upcoming Events
-            </h2>
+      <h2>
+        Upcoming Event
+      </h2>
 
-          </div>
-
-
-          <button
-            type="button"
-            class="small-outline-button"
-          >
-            View All
-          </button>
-
-        </div>
+    </div>
 
 
-        <div class="empty-dashboard-state">
+    <a
+      href="events.html"
+      class="small-outline-button"
+    >
+      View All
+    </a>
 
-          <i class="fa-regular fa-calendar"></i>
+  </div>
 
-          <strong>
-            No upcoming events
-          </strong>
 
-          <p>
-            Upcoming PNGSA events will appear here.
-          </p>
+  <!-- EVENT WILL BE INSERTED HERE BY JS -->
 
-        </div>
+  <div
+    id="dashboardFeaturedEvent"
+    class="dashboard-featured-event"
+  >
 
-      </article>
+    <div class="empty-dashboard-state">
 
+      <i class="fa-solid fa-spinner fa-spin"></i>
+
+      <strong>
+        Loading event...
+      </strong>
+
+    </div>
+
+  </div>
+
+
+  <a
+    href="events.html"
+    class="card-link bottom-link"
+  >
+    View Event Details
+
+    <i class="fa-solid fa-arrow-right"></i>
+  </a>
+
+</article>
 
 
       <!-- ELECTION -->
@@ -1026,7 +1047,7 @@
 
 <script
   type="module"
-  src="js/dashboard.js?v=2"
+  src="js/dashboard.js?v=4"
 ></script>
 
 </body>

@@ -1,0 +1,365 @@
+/* ========================================
+   DASHBOARD - FEATURED UPCOMING EVENT
+======================================== */
+
+.dashboard-featured-event {
+  width: 100%;
+  margin-top: 14px;
+}
+
+
+/* ========================================
+   EVENT LAYOUT
+======================================== */
+
+.dashboard-event {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+
+  gap: 18px;
+
+  width: 100%;
+  padding: 8px 0 16px;
+}
+
+
+/* ========================================
+   DATE BLOCK
+======================================== */
+
+.dashboard-event-date {
+  width: 82px;
+  min-height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f2edff 0%,
+      #f8f6ff 100%
+    );
+
+  border: 1px solid #e7ddff;
+
+  text-align: center;
+}
+
+
+/* MONTH */
+
+.dashboard-event-date span {
+  display: block;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+
+  text-transform: uppercase;
+
+  color: #5d32c7;
+}
+
+
+/* DAY NUMBER */
+
+.dashboard-event-date strong {
+  display: block;
+
+  margin: 6px 0;
+
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+
+  color: #071d3b;
+}
+
+
+/* ========================================
+   EVENT CONTENT
+======================================== */
+
+.dashboard-event-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ========================================
+   BADGES
+======================================== */
+
+.dashboard-event-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-bottom: 9px;
+}
+
+
+/* CATEGORY */
+
+.dashboard-event-category {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+
+  padding: 5px 9px;
+
+  border-radius: 999px;
+
+  background: #f1ebff;
+
+  color: #6335c8;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* FEATURED */
+
+.dashboard-featured-badge {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+
+  gap: 5px;
+
+  padding: 5px 9px;
+
+  border-radius: 999px;
+
+  background: #fff4d9;
+
+  color: #a56a00;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+.dashboard-featured-badge i {
+  font-size: 10px;
+}
+
+
+/* ========================================
+   EVENT TITLE
+======================================== */
+
+.dashboard-event-content h3 {
+  margin: 0 0 11px;
+
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.3;
+
+  color: #071d3b;
+}
+
+
+/* ========================================
+   DATE / TIME / LOCATION
+======================================== */
+
+.dashboard-event-meta {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  margin-bottom: 11px;
+
+  font-size: 13px;
+
+  color: #334155;
+}
+
+
+.dashboard-event-meta span {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 8px;
+
+  line-height: 1.35;
+}
+
+
+.dashboard-event-meta i {
+  width: 14px;
+
+  margin-top: 2px;
+
+  color: #173f73;
+
+  text-align: center;
+}
+
+
+/* ========================================
+   DESCRIPTION
+======================================== */
+
+.dashboard-event-content > p {
+  margin: 2px 0 0;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  color: #53657a;
+}
+
+
+/* ========================================
+   MAKE ENTIRE EVENT CARD FEEL FEATURED
+======================================== */
+
+.activity-card:has(
+  #dashboardFeaturedEvent
+) {
+  border:
+    1px solid
+    #dfd2ff;
+
+  box-shadow:
+    0 5px 20px
+    rgba(85, 52, 150, 0.08);
+}
+
+
+/* ========================================
+   EVENT DETAILS BOTTOM LINK
+======================================== */
+
+.activity-card:has(
+  #dashboardFeaturedEvent
+)
+.bottom-link {
+  margin-top: auto;
+
+  border-radius: 9px;
+
+  background: #faf8ff;
+
+  color: #5d32c7;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.activity-card:has(
+  #dashboardFeaturedEvent
+)
+.bottom-link:hover {
+  background: #f2edff;
+
+  transform: translateY(-1px);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (
+  max-width: 700px
+) {
+
+  .dashboard-event {
+    grid-template-columns: 64px 1fr;
+
+    gap: 12px;
+  }
+
+
+  .dashboard-event-date {
+    width: 64px;
+    min-height: 120px;
+
+    border-radius: 11px;
+  }
+
+
+  .dashboard-event-date span {
+    font-size: 12px;
+  }
+
+
+  .dashboard-event-date strong {
+    font-size: 30px;
+  }
+
+
+  .dashboard-event-content h3 {
+    font-size: 16px;
+  }
+
+
+  .dashboard-event-meta {
+    font-size: 12px;
+  }
+
+
+  .dashboard-event-content > p {
+    font-size: 12px;
+  }
+
+}
+
+
+/* ========================================
+   VERY SMALL PHONES
+======================================== */
+
+@media (
+  max-width: 430px
+) {
+
+  .dashboard-event {
+    grid-template-columns: 1fr;
+  }
+
+
+  .dashboard-event-date {
+    width: 100%;
+    min-height: auto;
+
+    padding: 10px 14px;
+
+    flex-direction: row;
+
+    justify-content: flex-start;
+
+    gap: 8px;
+  }
+
+
+  .dashboard-event-date strong {
+    margin: 0;
+
+    font-size: 24px;
+  }
+
+
+  .dashboard-event-badges {
+    margin-top: 2px;
+  }
+
+}
