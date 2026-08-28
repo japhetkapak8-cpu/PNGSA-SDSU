@@ -11,544 +11,29 @@
     >
 
     <title>
-        PNGSA Election Results
+        PNGSA Admin | Election Results
     </title>
 
 
-    <style>
-
-        /* =========================================
-           GLOBAL
-        ========================================= */
-
-        * {
-            box-sizing: border-box;
-        }
-
-
-        body {
-
-            margin: 0;
-
-            font-family:
-                Arial,
-                sans-serif;
-
-            background:
-                #f4f6f9;
-
-            color:
-                #062756;
-        }
-
-
-        .layout {
-
-            display: flex;
-
-            min-height: 100vh;
-        }
-
-
-
-        /* =========================================
-           SIDEBAR
-        ========================================= */
-
-        .sidebar {
-
-            width: 270px;
-
-            min-height: 100vh;
-
-            background:
-                #062544;
-
-            color: white;
-
-            padding:
-                35px 18px;
-        }
-
-
-        .sidebar-title {
-
-            text-align: center;
-
-            margin-bottom: 40px;
-        }
-
-
-        .sidebar-title h2 {
-
-            margin: 0;
-
-            font-size: 25px;
-        }
-
-
-        .sidebar-title p {
-
-            margin-top: 5px;
-        }
-
-
-        .sidebar a {
-
-            display: block;
-
-            color: white;
-
-            text-decoration: none;
-
-            padding:
-                14px 16px;
-
-            margin-bottom: 8px;
-
-            border-radius: 8px;
-        }
-
-
-        .sidebar a:hover,
-        .sidebar a.active {
-
-            background:
-                #147bc1;
-        }
-
-
-
-        /* =========================================
-           MAIN
-        ========================================= */
-
-        .main {
-
-            flex: 1;
-
-            padding: 40px;
-        }
-
-
-        .page-header h1 {
-
-            margin: 0;
-
-            font-size: 34px;
-        }
-
-
-        .page-header p {
-
-            color:
-                #526477;
-
-            margin-top: 8px;
-        }
-
-
-
-        /* =========================================
-           CARD
-        ========================================= */
-
-        .card {
-
-            background: white;
-
-            border-radius: 14px;
-
-            padding: 28px;
-
-            margin-top: 25px;
-
-            box-shadow:
-                0 3px 14px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .06
-                );
-        }
-
-
-
-        /* =========================================
-           FILTERS
-        ========================================= */
-
-        .filters {
-
-            display: grid;
-
-            grid-template-columns:
-                220px
-                minmax(
-                    0,
-                    1fr
-                );
-
-            gap: 20px;
-
-            align-items: end;
-        }
-
-
-        label {
-
-            display: block;
-
-            font-weight: bold;
-
-            margin-bottom: 8px;
-        }
-
-
-        select {
-
-            width: 100%;
-
-            padding: 13px;
-
-            border:
-                1px solid
-                #ccd6e0;
-
-            border-radius: 8px;
-
-            font-size: 15px;
-
-            background: white;
-
-            color:
-                #062756;
-        }
-
-
-
-        /* =========================================
-           CURRENT ELECTION INFO
-        ========================================= */
-
-        .election-info {
-
-            margin-top: 20px;
-
-            padding: 15px 18px;
-
-            border-radius: 10px;
-
-            background:
-                #f6f9fc;
-
-            border:
-                1px solid
-                #e0e7ef;
-        }
-
-
-        .election-info-title {
-
-            font-size: 18px;
-
-            font-weight: bold;
-
-            margin-bottom: 7px;
-        }
-
-
-        .election-info-details {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 12px 24px;
-
-            color:
-                #526477;
-
-            font-size: 14px;
-        }
-
-
-        .status-badge {
-
-            display: inline-block;
-
-            border-radius: 20px;
-
-            padding:
-                4px 10px;
-
-            font-size: 12px;
-
-            font-weight: bold;
-        }
-
-
-        .status-open {
-
-            background:
-                #ddf7e5;
-
-            color:
-                #147333;
-        }
-
-
-        .status-closed {
-
-            background:
-                #ffe0e0;
-
-            color:
-                #9d2020;
-        }
-
-
-        .status-draft {
-
-            background:
-                #e7edf4;
-
-            color:
-                #40556b;
-        }
-
-
-
-        /* =========================================
-           STATS
-        ========================================= */
-
-        .stats {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    3,
-                    1fr
-                );
-
-            gap: 20px;
-
-            margin-top: 25px;
-        }
-
-
-        .stat-card {
-
-            background: white;
-
-            padding: 24px;
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 3px 12px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .06
-                );
-        }
-
-
-        .stat-card p {
-
-            margin: 0;
-
-            color:
-                #526477;
-
-            font-weight: bold;
-        }
-
-
-        .stat-card h2 {
-
-            margin-bottom: 0;
-
-            font-size: 30px;
-        }
-
-
-
-        /* =========================================
-           RESULTS
-        ========================================= */
-
-        .position-section {
-
-            margin-top: 30px;
-        }
-
-
-        .position-section h2 {
-
-            border-bottom:
-                1px solid
-                #e2e7ed;
-
-            padding-bottom: 12px;
-        }
-
-
-        .candidate-result {
-
-            border:
-                1px solid
-                #dce3eb;
-
-            border-radius: 10px;
-
-            padding: 18px;
-
-            margin-top: 12px;
-        }
-
-
-        .candidate-top {
-
-            display: flex;
-
-            justify-content:
-                space-between;
-
-            align-items: center;
-
-            gap: 15px;
-        }
-
-
-        .candidate-name {
-
-            font-size: 18px;
-
-            font-weight: bold;
-        }
-
-
-        .vote-number {
-
-            font-weight: bold;
-        }
-
-
-        .bar-background {
-
-            width: 100%;
-
-            height: 11px;
-
-            background:
-                #e6ebf1;
-
-            border-radius: 20px;
-
-            margin-top: 13px;
-
-            overflow: hidden;
-        }
-
-
-        .bar {
-
-            height: 100%;
-
-            background:
-                #147bc1;
-
-            border-radius: 20px;
-        }
-
-
-        .leading {
-
-            display: inline-block;
-
-            background:
-                #dff6e5;
-
-            color:
-                #157233;
-
-            padding:
-                5px 10px;
-
-            border-radius: 20px;
-
-            font-size: 12px;
-
-            font-weight: bold;
-
-            margin-left: 8px;
-        }
-
-
-        .empty-message {
-
-            text-align: center;
-
-            padding:
-                40px 20px;
-
-            color:
-                #526477;
-        }
-
-
-
-        /* =========================================
-           MOBILE
-        ========================================= */
-
-        @media(
-            max-width: 800px
-        ) {
-
-            .sidebar {
-
-                width: 200px;
-            }
-
-
-            .main {
-
-                padding: 25px;
-            }
-
-
-            .stats {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .filters {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .candidate-top {
-
-                flex-direction:
-                    column;
-
-                align-items:
-                    flex-start;
-            }
-        }
-
-    </style>
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- SHARED ADMIN PORTAL CSS -->
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
+
+
+    <!-- RESULTS PAGE CSS -->
+    <link
+        rel="stylesheet"
+        href="css/results.css?v=2"
+    >
 
 </head>
 
@@ -556,184 +41,245 @@
 <body>
 
 
-<div class="layout">
+<div class="admin-layout">
 
 
-    <!-- =========================================
+    <!-- ==================================================
          SIDEBAR
-    ========================================= -->
+    =================================================== -->
 
     <aside class="sidebar">
 
 
-        <div class="sidebar-title">
+        <div class="sidebar-header">
+
+            <img
+                src="../images/pngsa_logo.png"
+                alt="PNGSA Logo"
+                class="sidebar-logo"
+            >
 
             <h2>
                 PNGSA
             </h2>
 
-            <p>
+            <span>
                 Admin Portal
-            </p>
+            </span>
 
         </div>
 
 
-        <a href="dashboard.html">
-
-            Dashboard
-
-        </a>
+        <nav class="sidebar-nav">
 
 
-        <a href="members.html">
+            <a href="dashboard.html">
 
-            Members
+                <i class="fa-solid fa-chart-line"></i>
 
-        </a>
+                <span>
+                    Dashboard
+                </span>
 
-
-        <a href="elections.html">
-
-            Elections
-
-        </a>
+            </a>
 
 
-        <a href="events.html">
+            <a href="members.html">
 
-            Events
+                <i class="fa-solid fa-users"></i>
 
-        </a>
+                <span>
+                    Members
+                </span>
 
-
-        <a href="candidates.html">
-
-            Candidates
-
-        </a>
+            </a>
 
 
-        <a href="voters.html">
+            <a href="elections.html">
 
-            Eligible Voters
+                <i class="fa-solid fa-check-to-slot"></i>
 
-        </a>
+                <span>
+                    Elections
+                </span>
+
+            </a>
 
 
-        <a
-            href="results.html"
-            class="active"
+            <a href="events.html">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <span>
+                    Events
+                </span>
+
+            </a>
+
+
+            <a href="candidates.html">
+
+                <i class="fa-solid fa-user-tie"></i>
+
+                <span>
+                    Candidates
+                </span>
+
+            </a>
+
+
+            <a href="voters.html">
+
+                <i class="fa-solid fa-user-check"></i>
+
+                <span>
+                    Eligible Voters
+                </span>
+
+            </a>
+
+
+            <a
+                href="results.html"
+                class="active"
+            >
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                <span>
+                    Results
+                </span>
+
+            </a>
+             </a>
+     <a href="announcements.html" > <i class="fa-solid fa-bullhorn"></i>
+        <span> Announcements </span>
+       </a>
+
+            <a href="../index.html">
+
+                <i class="fa-solid fa-globe"></i>
+
+                <span>
+                    View Website
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <button
+            id="logoutButton"
+            class="logout-button"
+            type="button"
         >
 
-            Results
+            <i class="fa-solid fa-right-from-bracket"></i>
 
-        </a>
+            <span>
+                Sign Out
+            </span>
 
-
-        <a href="../index.html">
-
-            View Website
-
-        </a>
+        </button>
 
 
     </aside>
 
 
+    <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
 
-    <!-- =========================================
-         MAIN
-    ========================================= -->
-
-    <main class="main">
-
-
-        <div class="page-header">
+    <main class="admin-main">
 
 
-            <h1>
+        <!-- ==============================================
+             PAGE HEADER
+        =============================================== -->
 
-                Election Results
+        <header class="admin-header">
 
-            </h1>
+            <div>
 
+                <h1>
+                    Election Results
+                </h1>
 
-            <p>
+                <p>
+                    View PNGSA election participation and candidate results.
+                </p>
 
-                View PNGSA election participation
-                and candidate results.
+            </div>
 
-            </p>
-
-
-        </div>
-
-
-
-        <!-- =========================================
-             FILTERS
-        ========================================= -->
-
-        <section class="card">
+        </header>
 
 
-            <div class="filters">
+        <!-- ==================================================
+             FILTER PANEL
+        =================================================== -->
 
+        <section class="results-panel">
+
+
+            <div class="results-panel-header">
 
                 <div>
 
+                    <h2>
+                        Select Election
+                    </h2>
 
-                    <label
-                        for="yearSelect"
-                    >
-
-                        Election Year
-
-                    </label>
-
-
-                    <select
-                        id="yearSelect"
-                    >
-
-                        <option value="all">
-
-                            All Years
-
-                        </option>
-
-                    </select>
-
+                    <p>
+                        Choose an election year and election to view results.
+                    </p>
 
                 </div>
 
 
+                <div class="results-panel-icon">
 
-                <div>
+                    <i class="fa-solid fa-filter"></i>
+
+                </div>
+
+            </div>
 
 
-                    <label
-                        for="electionSelect"
-                    >
+            <div class="results-filters">
 
-                        Select Election
 
+                <div class="results-filter-group">
+
+                    <label for="yearSelect">
+                        Election Year
                     </label>
 
+                    <select id="yearSelect">
 
-                    <select
-                        id="electionSelect"
-                    >
-
-                        <option value="">
-
-                            Loading elections...
-
+                        <option value="all">
+                            All Years
                         </option>
 
                     </select>
 
+                </div>
+
+
+                <div class="results-filter-group">
+
+                    <label for="electionSelect">
+                        Select Election
+                    </label>
+
+                    <select id="electionSelect">
+
+                        <option value="">
+                            Loading elections...
+                        </option>
+
+                    </select>
 
                 </div>
 
@@ -741,129 +287,156 @@
             </div>
 
 
-
-            <!-- =================================
-                 SELECTED ELECTION INFO
-            ================================= -->
+            <!-- SELECTED ELECTION INFO -->
 
             <div
                 id="electionInfo"
                 class="election-info"
-                style="display:none;"
+                style="display: none;"
             >
-
             </div>
 
 
         </section>
 
 
+        <!-- ==================================================
+             SUMMARY STATISTICS
+        =================================================== -->
 
-        <!-- =========================================
-             SUMMARY
-        ========================================= -->
-
-        <div
+        <section
             class="stats"
             id="summary"
         >
 
 
-            <div class="stat-card">
+            <!-- ELIGIBLE VOTERS -->
+
+            <article class="stat-card">
+
+                <div class="result-stat-icon">
+
+                    <i class="fa-solid fa-user-check"></i>
+
+                </div>
 
 
-                <p>
+                <div class="result-stat-content">
 
-                    Eligible Voters
+                    <p>
+                        Eligible Voters
+                    </p>
 
-                </p>
+                    <h2 id="eligibleCount">
+                        0
+                    </h2>
 
+                </div>
 
-                <h2
-                    id="eligibleCount"
-                >
-
-                    0
-
-                </h2>
-
-
-            </div>
+            </article>
 
 
+            <!-- BALLOTS SUBMITTED -->
 
-            <div class="stat-card">
+            <article class="stat-card">
 
+                <div class="result-stat-icon">
 
-                <p>
+                    <i class="fa-solid fa-box-ballot"></i>
 
-                    Ballots Submitted
-
-                </p>
-
-
-                <h2
-                    id="ballotCount"
-                >
-
-                    0
-
-                </h2>
+                </div>
 
 
-            </div>
+                <div class="result-stat-content">
+
+                    <p>
+                        Ballots Submitted
+                    </p>
+
+                    <h2 id="ballotCount">
+                        0
+                    </h2>
+
+                </div>
+
+            </article>
 
 
+            <!-- PARTICIPATION -->
 
-            <div class="stat-card">
+            <article class="stat-card">
 
+                <div class="result-stat-icon">
 
-                <p>
+                    <i class="fa-solid fa-chart-pie"></i>
 
-                    Participation
-
-                </p>
-
-
-                <h2
-                    id="participationCount"
-                >
-
-                    0%
-
-                </h2>
+                </div>
 
 
-            </div>
+                <div class="result-stat-content">
+
+                    <p>
+                        Participation
+                    </p>
+
+                    <h2 id="participationCount">
+                        0%
+                    </h2>
+
+                </div>
+
+            </article>
 
 
-        </div>
+        </section>
 
 
-
-        <!-- =========================================
+        <!-- ==================================================
              CANDIDATE RESULTS
-        ========================================= -->
+        =================================================== -->
 
-        <section class="card">
+        <section class="results-panel">
 
 
-            <h2>
+            <div class="results-panel-header">
 
-                Candidate Results
+                <div>
 
-            </h2>
+                    <h2>
+                        Candidate Results
+                    </h2>
+
+                    <p>
+                        Vote totals and participation by election position.
+                    </p>
+
+                </div>
+
+
+                <div class="results-panel-icon">
+
+                    <i class="fa-solid fa-chart-bar"></i>
+
+                </div>
+
+            </div>
 
 
             <div id="results">
 
+                <div class="results-loading">
 
-                <div class="empty-message">
+                    <i
+                        class="
+                            fa-solid
+                            fa-spinner
+                            fa-spin
+                        "
+                    ></i>
 
                     Loading election results...
 
                 </div>
-
 
             </div>
 
@@ -877,12 +450,10 @@
 </div>
 
 
-
 <script
     type="module"
-    src="js/results.js"
->
-</script>
+    src="js/results.js?v=2"
+></script>
 
 
 </body>

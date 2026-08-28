@@ -1,0 +1,541 @@
+/* =====================================================
+   PNGSA ADMIN
+   ELIGIBLE VOTERS PAGE
+===================================================== */
+
+
+/* =====================================================
+   PANEL
+===================================================== */
+
+.voter-panel {
+    width: 100%;
+
+    padding: 24px;
+
+    margin-bottom: 24px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e8ef;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 3px 14px
+        rgba(15, 35, 55, 0.05);
+}
+
+
+/* =====================================================
+   PANEL HEADER
+===================================================== */
+
+.voter-panel-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 24px;
+}
+
+
+.voter-panel-header h2 {
+    margin: 0 0 5px;
+
+    color: #082a55;
+
+    font-size: 21px;
+
+    font-weight: 750;
+}
+
+
+.voter-panel-header p {
+    margin: 0;
+
+    color: #718096;
+
+    font-size: 13px;
+}
+
+
+.voter-panel-icon {
+    width: 48px;
+
+    height: 48px;
+
+    min-width: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #eaf4ff;
+
+    color: #1476c9;
+
+    font-size: 20px;
+}
+
+
+/* =====================================================
+   ELECTION SELECT
+===================================================== */
+
+.voter-election-select {
+    margin-bottom: 20px;
+}
+
+
+.voter-election-select label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #334155;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.voter-election-select select {
+    width: 100%;
+
+    height: 44px;
+
+    padding: 0 12px;
+
+    border: 1px solid #cfd9e3;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+
+.voter-election-select select:focus {
+    border-color: #1476c9;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(20, 118, 201, 0.1);
+}
+
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.voter-toolbar {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 20px 0;
+}
+
+
+.voter-toolbar-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.primary-button,
+.secondary-button {
+    min-height: 42px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 10px 15px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.primary-button {
+    background: #1476c9;
+
+    color: #ffffff;
+}
+
+
+.primary-button:hover {
+    background: #0f65ad;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 12px
+        rgba(20, 118, 201, 0.18);
+}
+
+
+.secondary-button {
+    background: #edf2f7;
+
+    color: #334155;
+}
+
+
+.secondary-button:hover {
+    background: #dde6ef;
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.voter-message {
+    min-height: 18px;
+
+    margin-bottom: 10px;
+
+    color: #536579;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   MEMBER LIST
+===================================================== */
+
+.members-list {
+    width: 100%;
+
+    margin-top: 10px;
+
+    border: 1px solid #e1e8ef;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+
+/* =====================================================
+   MEMBER ROW
+===================================================== */
+
+.member-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-bottom: 1px solid #edf1f5;
+
+    transition:
+        background-color 0.2s ease;
+}
+
+
+.member-row:last-child {
+    border-bottom: none;
+}
+
+
+.member-row:hover {
+    background: #f8fafc;
+}
+
+
+.member-row input[type="checkbox"] {
+    width: 18px;
+
+    height: 18px;
+
+    min-width: 18px;
+
+    accent-color: #1476c9;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   MEMBER DETAILS
+===================================================== */
+
+.member-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.member-name {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #082a55;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    overflow-wrap: anywhere;
+}
+
+
+.member-email {
+    color: #718096;
+
+    font-size: 12px;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =====================================================
+   ELIGIBLE BADGE
+===================================================== */
+
+.eligible-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    flex-shrink: 0;
+
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    background: #e8f8ed;
+
+    color: #16833b;
+
+    font-size: 11px;
+
+    font-weight: 750;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.voters-loading {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    min-height: 140px;
+
+    color: #66788a;
+
+    font-size: 14px;
+}
+
+
+.voters-loading i {
+    color: #1476c9;
+
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.voters-empty {
+    padding: 40px 20px;
+
+    text-align: center;
+
+    color: #66788a;
+}
+
+
+.voters-empty i {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #9aabba;
+
+    font-size: 30px;
+}
+
+
+.voters-empty h3 {
+    margin: 0 0 6px;
+
+    color: #334155;
+
+    font-size: 18px;
+}
+
+
+.voters-empty p {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (
+    max-width: 800px
+) {
+
+    .voter-toolbar {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .voter-toolbar-left {
+        width: 100%;
+    }
+
+
+    .voter-toolbar-left button {
+        flex: 1;
+    }
+
+
+    .primary-button {
+        width: 100%;
+    }
+
+}
+
+
+/* =====================================================
+   PHONE
+===================================================== */
+
+@media (
+    max-width: 520px
+) {
+
+    .voter-panel {
+        padding: 17px;
+
+        border-radius: 12px;
+    }
+
+
+    .voter-panel-header {
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+
+    .voter-panel-header h2 {
+        font-size: 19px;
+    }
+
+
+    .voter-panel-icon {
+        width: 42px;
+
+        height: 42px;
+
+        min-width: 42px;
+
+        font-size: 17px;
+    }
+
+
+    .voter-toolbar-left {
+        flex-direction: column;
+    }
+
+
+    .voter-toolbar-left button {
+        width: 100%;
+    }
+
+
+    .member-row {
+        align-items: flex-start;
+
+        padding: 13px;
+    }
+
+
+    .eligible-badge {
+        display: none;
+    }
+
+}

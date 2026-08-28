@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -12,224 +11,367 @@
     >
 
     <title>
-        PNGSA Eligible Voters
+        PNGSA Admin | Eligible Voters
     </title>
 
-    <style>
 
-        * {
-            box-sizing: border-box;
-        }
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
-            color: #062756;
-        }
 
-        .layout {
-            display: flex;
-            min-height: 100vh;
-        }
+    <!-- SHARED ADMIN CSS -->
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
 
-        .sidebar {
-            width: 260px;
-            background: #041d3a;
-            padding: 30px 18px;
-            color: white;
-        }
 
-        .sidebar h2 {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .sidebar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 14px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-        }
-
-        .sidebar a.active,
-        .sidebar a:hover {
-            background: #1477bd;
-        }
-
-        .main {
-            flex: 1;
-            padding: 35px;
-        }
-
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 14px;
-            margin-bottom: 25px;
-        }
-
-        select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccd5e0;
-            border-radius: 7px;
-        }
-
-        .member-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px;
-            border-bottom: 1px solid #e2e7ed;
-        }
-
-        .member-row input {
-            width: 18px;
-            height: 18px;
-        }
-
-        button {
-            border: none;
-            border-radius: 7px;
-            padding: 11px 17px;
-            cursor: pointer;
-            margin-right: 8px;
-        }
-
-        .primary {
-            background: #0875c1;
-            color: white;
-        }
-
-        .secondary {
-            background: #e7edf4;
-        }
-
-        .toolbar {
-            margin: 18px 0;
-        }
-
-    </style>
+    <!-- ELIGIBLE VOTERS CSS -->
+    <link
+        rel="stylesheet"
+        href="css/voters.css?v=1"
+    >
 
 </head>
 
 
 <body>
 
-<div class="layout">
+
+<div class="admin-layout">
+
+
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
 
     <aside class="sidebar">
 
-        <h2>
-            PNGSA
-            <br>
-            Admin Portal
-        </h2>
 
-        <a href="dashboard.html">
-            Dashboard
-        </a>
+        <div class="sidebar-header">
 
-        <a href="members.html">
-            Members
-        </a>
+            <img
+                src="../images/pngsa_logo.png"
+                alt="PNGSA Logo"
+                class="sidebar-logo"
+            >
 
-        <a href="elections.html">
-            Elections
-        </a>
+            <h2>
+                PNGSA
+            </h2>
 
-        <a href="events.html">
-            Events
-        </a>
+            <span>
+                Admin Portal
+            </span>
 
-        <a href="candidates.html">
-            Candidates
-        </a>
+        </div>
 
-        <a
-            href="voters.html"
-            class="active"
+
+        <nav class="sidebar-nav">
+
+
+            <a href="dashboard.html">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="members.html">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>
+                    Members
+                </span>
+
+            </a>
+
+
+            <a href="elections.html">
+
+                <i class="fa-solid fa-check-to-slot"></i>
+
+                <span>
+                    Elections
+                </span>
+
+            </a>
+
+
+            <a href="events.html">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <span>
+                    Events
+                </span>
+
+            </a>
+
+
+            <a href="candidates.html">
+
+                <i class="fa-solid fa-user-tie"></i>
+
+                <span>
+                    Candidates
+                </span>
+
+            </a>
+
+
+            <a
+                href="voters.html"
+                class="active"
+            >
+
+                <i class="fa-solid fa-user-check"></i>
+
+                <span>
+                    Eligible Voters
+                </span>
+
+            </a>
+
+
+            <a href="results.html">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                <span>
+                    Results
+                </span>
+
+            </a>
+             </a>
+            <a href="announcements.html" > <i class="fa-solid fa-bullhorn"></i>
+                <span> Announcements </span>
+            </a>
+
+            <a href="../index.html">
+
+                <i class="fa-solid fa-globe"></i>
+
+                <span>
+                    View Website
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <button
+            id="logoutButton"
+            class="logout-button"
+            type="button"
         >
-            Eligible Voters
-        </a>
 
-        <a href="results.html">
-            Results
-        </a>
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>
+                Sign Out
+            </span>
+
+        </button>
+
 
     </aside>
 
 
-    <main class="main">
+    <!-- ==================================================
+         MAIN
+    =================================================== -->
 
-        <h1>
-            Eligible Voters
-        </h1>
+    <main class="admin-main">
 
-        <section class="card">
 
-            <label>
-                <strong>
+        <!-- ==============================================
+             HEADER
+        =============================================== -->
+
+        <header class="admin-header">
+
+            <div>
+
+                <h1>
+                    Eligible Voters
+                </h1>
+
+                <p>
+                    Select which PNGSA members are eligible to vote in an election.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==================================================
+             VOTER MANAGEMENT PANEL
+        =================================================== -->
+
+        <section class="voter-panel">
+
+
+            <div class="voter-panel-header">
+
+                <div>
+
+                    <h2>
+                        Manage Voter Eligibility
+                    </h2>
+
+                    <p>
+                        Choose an election and select eligible members.
+                    </p>
+
+                </div>
+
+
+                <div class="voter-panel-icon">
+
+                    <i class="fa-solid fa-user-check"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==============================================
+                 ELECTION SELECT
+            =============================================== -->
+
+            <div class="voter-election-select">
+
+                <label for="electionSelect">
                     Election
-                </strong>
-            </label>
+                </label>
 
-            <br>
+                <select id="electionSelect">
 
-            <select id="electionSelect">
-            </select>
+                    <option value="">
+                        Loading elections...
+                    </option>
+
+                </select>
+
+            </div>
 
 
-            <div class="toolbar">
+            <!-- ==============================================
+                 TOOLBAR
+            =============================================== -->
 
-                <button
-                    id="selectAllBtn"
-                    class="secondary"
-                >
-                    Select All
-                </button>
+            <div class="voter-toolbar">
 
-                <button
-                    id="clearAllBtn"
-                    class="secondary"
-                >
-                    Clear All
-                </button>
+
+                <div class="voter-toolbar-left">
+
+                    <button
+                        id="selectAllBtn"
+                        class="secondary-button"
+                        type="button"
+                    >
+
+                        <i class="fa-solid fa-check-double"></i>
+
+                        Select All
+
+                    </button>
+
+
+                    <button
+                        id="clearAllBtn"
+                        class="secondary-button"
+                        type="button"
+                    >
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                        Clear All
+
+                    </button>
+
+                </div>
+
 
                 <button
                     id="saveBtn"
-                    class="primary"
+                    class="primary-button"
+                    type="button"
                 >
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
                     Save Eligible Voters
+
                 </button>
 
+
+            </div>
+
+
+            <!-- ==============================================
+                 MESSAGE
+            =============================================== -->
+
+            <div
+                id="message"
+                class="voter-message"
+            >
             </div>
 
 
-            <p id="message">
-            </p>
+            <!-- ==============================================
+                 MEMBERS
+            =============================================== -->
 
+            <div
+                id="membersList"
+                class="members-list"
+            >
 
-            <div id="membersList">
+                <div class="voters-loading">
 
-                Loading members...
+                    <i
+                        class="
+                            fa-solid
+                            fa-spinner
+                            fa-spin
+                        "
+                    ></i>
+
+                    Loading members...
+
+                </div>
 
             </div>
+
 
         </section>
 
+
     </main>
+
 
 </div>
 
 
 <script
     type="module"
-    src="js/voters.js">
-</script>
+    src="js/voters.js?v=2"
+></script>
+
 
 </body>
 

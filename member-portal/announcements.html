@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        PNGSA Member Portal | Announcements
+    </title>
+
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- SHARED MEMBER PORTAL CSS -->
+    <link
+        rel="stylesheet"
+        href="css/member.css"
+    >
+
+
+    <!-- ANNOUNCEMENTS PAGE CSS -->
+    <link
+        rel="stylesheet"
+        href="css/announcements.css?v=2"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="member-layout">
+
+
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+    <aside class="member-sidebar">
+
+
+        <div class="member-sidebar-header">
+
+            <img
+                src="../images/pngsa_logo.png"
+                alt="PNGSA Logo"
+                class="member-sidebar-logo"
+            >
+
+            <h2>
+                PNGSA
+            </h2>
+
+            <span>
+                Member Portal
+            </span>
+
+        </div>
+
+
+        <nav class="member-nav">
+
+
+            <a href="dashboard.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="profile.html">
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+
+            <a href="vote.html">
+
+                <i class="fa-solid fa-check-to-slot"></i>
+
+                <span>
+                    Vote
+                </span>
+
+            </a>
+
+
+            <!-- ANNOUNCEMENTS -->
+
+            <a
+                href="announcements.html"
+                class="active announcement-nav-link"
+            >
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                <span>
+                    Announcements
+                </span>
+
+                <span
+                    id="announcementNavBadge"
+                    class="announcement-nav-badge hidden"
+                >
+                </span>
+
+            </a>
+
+
+            <a href="events.html">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <span>
+                    Events
+                </span>
+
+            </a>
+
+
+            <a href="opportunities.html">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                <span>
+                    Opportunities
+                </span>
+
+            </a>
+
+
+            <a href="resources.html">
+
+                <i class="fa-solid fa-folder-open"></i>
+
+                <span>
+                    Resources
+                </span>
+
+            </a>
+
+
+            <a href="documents.html">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                <span>
+                    My Documents
+                </span>
+
+            </a>
+
+
+            <a href="settings.html">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <button
+            id="logoutButton"
+            class="member-logout-button"
+            type="button"
+        >
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>
+                Sign Out
+            </span>
+
+        </button>
+
+
+    </aside>
+
+
+    <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+
+    <main class="announcements-main">
+
+
+        <!-- ==================================================
+             HEADER
+        =================================================== -->
+
+        <header class="announcements-header">
+
+
+            <div>
+
+                <p class="announcements-eyebrow">
+                    PNGSA MEMBER PORTAL
+                </p>
+
+
+                <h1>
+                    Announcements
+                </h1>
+
+
+                <p class="announcements-description">
+
+                    Stay informed about PNGSA updates, meetings,
+                    events, opportunities, deadlines, and important
+                    messages from the executive team.
+
+                </p>
+
+            </div>
+
+
+            <div class="announcement-header-icon">
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+            </div>
+
+
+        </header>
+
+
+        <!-- ==================================================
+             HERO NOTICE
+        =================================================== -->
+
+        <section class="announcement-hero">
+
+
+            <div class="announcement-hero-icon">
+
+                <i class="fa-solid fa-bell"></i>
+
+            </div>
+
+
+            <div>
+
+                <span class="announcement-hero-label">
+                    PNGSA NOTICE BOARD
+                </span>
+
+
+                <h2>
+                    Stay connected with PNGSA
+                </h2>
+
+
+                <p>
+
+                    New announcements from PNGSA leadership will
+                    appear here automatically once they are published.
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ==================================================
+             CONTROLS
+        =================================================== -->
+
+        <section class="announcement-controls">
+
+
+            <div class="announcement-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="search"
+                    id="announcementSearch"
+                    placeholder="Search announcements..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <select
+                id="categoryFilter"
+                class="announcement-filter"
+            >
+
+                <option value="all">
+                    All Categories
+                </option>
+
+                <option value="general">
+                    General
+                </option>
+
+                <option value="important">
+                    Important
+                </option>
+
+                <option value="event">
+                    Events
+                </option>
+
+                <option value="meeting">
+                    Meetings
+                </option>
+
+                <option value="opportunity">
+                    Opportunities
+                </option>
+
+                <option value="deadline">
+                    Deadlines
+                </option>
+
+            </select>
+
+
+        </section>
+
+
+        <!-- ==================================================
+             ANNOUNCEMENT SUMMARY
+        =================================================== -->
+
+        <section class="announcement-summary">
+
+
+            <div>
+
+                <span id="announcementCount">
+                    0 announcements
+                </span>
+
+            </div>
+
+
+            <div class="announcement-summary-status">
+
+                <span class="status-dot"></span>
+
+                Live PNGSA updates
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ==================================================
+             ANNOUNCEMENTS LIST
+        =================================================== -->
+
+        <section
+            id="announcementsList"
+            class="announcements-list"
+        >
+
+
+            <div class="announcements-loading">
+
+                <i
+                    class="
+                        fa-solid
+                        fa-spinner
+                        fa-spin
+                    "
+                ></i>
+
+
+                <p>
+                    Loading announcements...
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+<!-- ==================================================
+     ANNOUNCEMENT MODAL
+=================================================== -->
+
+<div
+    id="announcementModal"
+    class="announcement-modal"
+>
+
+    <div
+        class="announcement-modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="announcementModalTitle"
+    >
+
+
+        <button
+            id="announcementModalClose"
+            class="announcement-modal-close"
+            type="button"
+            aria-label="Close announcement"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div
+            id="announcementModalMeta"
+            class="announcement-modal-meta"
+        >
+        </div>
+
+
+        <h2 id="announcementModalTitle">
+        </h2>
+
+
+        <div
+            id="announcementModalDate"
+            class="announcement-modal-date"
+        >
+        </div>
+
+
+        <div
+            id="announcementModalMessage"
+            class="announcement-modal-message"
+        >
+        </div>
+
+
+        <div
+            id="announcementModalFooter"
+            class="announcement-modal-footer"
+        >
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script
+    type="module"
+    src="js/announcements.js?v=2"
+></script>
+
+
+</body>
+
+</html>

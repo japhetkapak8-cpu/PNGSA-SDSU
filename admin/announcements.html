@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>PNGSA Admin | Announcements</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/announcements.css?v=3">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <img
+                src="../images/pngsa_logo.png"
+                alt="PNGSA Logo"
+                class="sidebar-logo"
+            >
+
+            <h2>PNGSA</h2>
+            <span>Admin Portal</span>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="members.html">
+                <i class="fa-solid fa-users"></i>
+                <span>Members</span>
+            </a>
+
+            <a href="elections.html">
+                <i class="fa-solid fa-check-to-slot"></i>
+                <span>Elections</span>
+            </a>
+
+            <a href="events.html">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Events</span>
+            </a>
+
+            <a href="candidates.html">
+                <i class="fa-solid fa-user-tie"></i>
+                <span>Candidates</span>
+            </a>
+
+            <a href="voters.html">
+                <i class="fa-solid fa-user-check"></i>
+                <span>Eligible Voters</span>
+            </a>
+
+            <a href="results.html">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Results</span>
+            </a>
+
+            <a href="announcements.html" class="active">
+                <i class="fa-solid fa-bullhorn"></i>
+                <span>Announcements</span>
+            </a>
+
+            <a href="../index.html">
+                <i class="fa-solid fa-globe"></i>
+                <span>View Website</span>
+            </a>
+
+        </nav>
+
+        <button
+            id="logoutButton"
+            class="logout-button"
+            type="button"
+        >
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Sign Out</span>
+        </button>
+
+    </aside>
+
+    <main class="admin-main">
+
+        <header class="admin-header">
+            <div>
+                <h1>Announcements</h1>
+                <p>Create and publish updates for PNGSA members.</p>
+            </div>
+        </header>
+
+        <section class="announcement-stats">
+
+            <article class="announcement-stat-card">
+                <div class="announcement-stat-icon">
+                    <i class="fa-solid fa-bullhorn"></i>
+                </div>
+                <div>
+                    <p>Total</p>
+                    <h2 id="totalCount">0</h2>
+                </div>
+            </article>
+
+            <article class="announcement-stat-card">
+                <div class="announcement-stat-icon published">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div>
+                    <p>Published</p>
+                    <h2 id="publishedCount">0</h2>
+                </div>
+            </article>
+
+            <article class="announcement-stat-card">
+                <div class="announcement-stat-icon draft">
+                    <i class="fa-solid fa-file-pen"></i>
+                </div>
+                <div>
+                    <p>Drafts</p>
+                    <h2 id="draftCount">0</h2>
+                </div>
+            </article>
+
+            <article class="announcement-stat-card">
+                <div class="announcement-stat-icon pinned">
+                    <i class="fa-solid fa-thumbtack"></i>
+                </div>
+                <div>
+                    <p>Pinned</p>
+                    <h2 id="pinnedCount">0</h2>
+                </div>
+            </article>
+
+        </section>
+
+        <section class="announcement-panel">
+
+            <div class="announcement-panel-header">
+                <div>
+                    <h2 id="formTitle">Create Announcement</h2>
+                    <p>Write an announcement for members of PNGSA.</p>
+                </div>
+
+                <div class="announcement-panel-icon">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+            </div>
+
+            <form id="announcementForm">
+
+                <input type="hidden" id="announcementId">
+
+                <div class="announcement-form-grid">
+
+                    <div class="form-group full-width">
+                        <label for="announcementTitle">Title</label>
+                        <input
+                            type="text"
+                            id="announcementTitle"
+                            maxlength="120"
+                            placeholder="Example: PNGSA General Meeting"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="announcementCategory">Category</label>
+
+                        <select id="announcementCategory" required>
+                            <option value="general">General</option>
+                            <option value="important">Important</option>
+                            <option value="event">Event</option>
+                            <option value="meeting">Meeting</option>
+                            <option value="opportunity">Opportunity</option>
+                            <option value="deadline">Deadline</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="announcementPriority">Priority</label>
+
+                        <select id="announcementPriority" required>
+                            <option value="normal">Normal</option>
+                            <option value="important">Important</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="announcementContent">
+                            Announcement Message
+                        </label>
+
+                        <textarea
+                            id="announcementContent"
+                            rows="8"
+                            maxlength="5000"
+                            placeholder="Write the full announcement here..."
+                            required
+                        ></textarea>
+
+                        <div class="character-count">
+                            <span id="characterCount">0</span> / 5000
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+
+                        <label>Attachments</label>
+
+                        <input
+                            type="file"
+                            id="announcementFiles"
+                            class="announcement-file-input"
+                            multiple
+                            accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png"
+                        >
+
+                        <label
+                            for="announcementFiles"
+                            class="announcement-upload-label"
+                        >
+                            <div class="announcement-upload-icon">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+
+                            <div class="announcement-upload-text">
+                                <strong>Attach files</strong>
+                                <span>
+                                    PDF, Word, Excel, PowerPoint, JPG or PNG
+                                </span>
+                            </div>
+                        </label>
+
+                        <div
+                            id="selectedFiles"
+                            class="selected-files"
+                        ></div>
+
+                        <div
+                            id="existingAttachments"
+                            class="existing-attachments"
+                        ></div>
+
+                        <p class="upload-help">
+                            You can attach multiple files. Maximum 10 MB per file.
+                        </p>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="authorName">Published By</label>
+
+                        <input
+                            type="text"
+                            id="authorName"
+                            value="PNGSA Executive Team"
+                            maxlength="100"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Options</label>
+
+                        <div class="announcement-options">
+
+                            <label class="option-toggle">
+
+                                <input
+                                    type="checkbox"
+                                    id="pinAnnouncement"
+                                >
+
+                                <span class="option-box">
+                                    <i class="fa-solid fa-thumbtack"></i>
+                                    Pin announcement
+                                </span>
+
+                            </label>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div
+                    id="formMessage"
+                    class="form-message"
+                ></div>
+
+                <div class="announcement-form-actions">
+
+                    <button
+                        type="button"
+                        id="cancelEditButton"
+                        class="secondary-button hidden"
+                    >
+                        <i class="fa-solid fa-xmark"></i>
+                        Cancel Edit
+                    </button>
+
+                    <button
+                        type="button"
+                        id="saveDraftButton"
+                        class="secondary-button"
+                    >
+                        <i class="fa-solid fa-file-pen"></i>
+                        Save Draft
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="publishButton"
+                        class="primary-button"
+                    >
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Publish Announcement
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+        <section class="announcement-panel">
+
+            <div class="announcement-panel-header">
+                <div>
+                    <h2>Manage Announcements</h2>
+                    <p>
+                        Review, edit, publish, pin, or remove announcements.
+                    </p>
+                </div>
+
+                <div class="announcement-panel-icon">
+                    <i class="fa-solid fa-list"></i>
+                </div>
+            </div>
+
+            <div class="announcement-list-controls">
+
+                <div class="announcement-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="search"
+                        id="announcementSearch"
+                        placeholder="Search announcements..."
+                    >
+                </div>
+
+                <select id="statusFilter">
+                    <option value="all">All Statuses</option>
+                    <option value="published">Published</option>
+                    <option value="draft">Draft</option>
+                    <option value="pinned">Pinned</option>
+                </select>
+
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="general">General</option>
+                    <option value="important">Important</option>
+                    <option value="event">Event</option>
+                    <option value="meeting">Meeting</option>
+                    <option value="opportunity">Opportunity</option>
+                    <option value="deadline">Deadline</option>
+                </select>
+
+            </div>
+
+            <div
+                id="announcementsList"
+                class="admin-announcements-list"
+            >
+                <div class="announcements-loading">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    Loading announcements...
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script
+    type="module"
+    src="js/announcements.js?v=3"
+></script>
+
+</body>
+</html>
