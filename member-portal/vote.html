@@ -1,221 +1,241 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+    <meta charset="UTF-8">
 
-  <title>Vote | PNGSA SDSU</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  >
+    <title>
+        Vote | PNGSA Member Portal
+    </title>
 
-  <link
-    rel="stylesheet"
-    href="css/member.css"
-  >
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- SHARED MEMBER PORTAL STYLES -->
+    <link rel="stylesheet" href="css/member.css">
+    <link rel="stylesheet" href="css/vote.css">
+
 </head>
 
 
 <body>
 
+
 <div class="member-layout">
 
-   <!-- ========================================
-       SIDEBAR
-  ========================================= -->
 
-  <aside class="member-sidebar">
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
 
-    <div class="member-sidebar-header">
-
-      <img
-        src="../images/pngsa_logo.png"
-        alt="PNGSA Logo"
-      >
-
-      <h2>PNGSA</h2>
-
-      <span>
-        Member Portal
-      </span>
-
-    </div>
+    <aside class="member-sidebar">
 
 
-    <nav class="member-nav">
+        <div class="member-sidebar-header">
 
-      <a
-        href="dashboard.html">
-        <i class="fa-solid fa-house"></i>
-        Dashboard
-      </a>
+            <img
+                src="../images/pngsa_logo.png"
+                alt="PNGSA Logo"
+            >
 
+            <h2>
+                PNGSA
+            </h2>
 
-      <a href="profile.html">
-        <i class="fa-solid fa-user"></i>
-        My Profile
-      </a>
-
-
-      <a href="vote.html" class="active">
-        <i class="fa-solid fa-check-to-slot"></i>
-        Vote
-      </a>
-
-
-      <a href="#">
-        <i class="fa-solid fa-bullhorn"></i>
-        Announcements
-      </a>
-
-
-        <a href="events.html">
-        <i class="fa-solid fa-calendar-days"></i>
-        Events
-      </a>
-
-
-      <a href="#">
-        <i class="fa-solid fa-briefcase"></i>
-        Opportunities
-      </a>
-
-
-      <a href="#">
-        <i class="fa-solid fa-folder-open"></i>
-        Resources
-      </a>
-
-
-      <a href="#">
-        <i class="fa-solid fa-file-lines"></i>
-        My Documents
-      </a>
-
-
-      <a href="#">
-        <i class="fa-solid fa-gear"></i>
-        Settings
-      </a>
-
-    </nav>
-
-
-    <button
-      type="button"
-      id="logoutButton"
-      class="member-logout-button"
-    >
-      <i class="fa-solid fa-right-from-bracket"></i>
-      Sign Out
-    </button>
-
-  </aside>
-
-
-
-
-  <main class="member-main">
-
-    <header class="member-page-header">
-
-      <div>
-
-        <p class="member-page-label">
-          PNGSA Elections
-        </p>
-
-        <h1>Vote</h1>
-
-        <p>
-          Cast your ballot for the current PNGSA executive election.
-        </p>
-
-      </div>
-
-
-      <div class="signed-in-card">
-
-        <span>Signed in as</span>
-
-        <strong id="memberEmail">
-          Loading...
-        </strong>
-
-      </div>
-
-    </header>
-
-
-    <section
-      id="voteMessagePanel"
-      class="member-panel"
-    >
-
-      <p class="muted-text">
-        Checking election eligibility...
-      </p>
-
-    </section>
-
-
-    <form
-      id="ballotForm"
-      hidden
-    >
-
-      <div id="ballotPositions"></div>
-
-
-      <section class="member-panel ballot-submit-panel">
-
-        <div>
-
-          <h2>Submit Ballot</h2>
-
-          <p>
-            Review your selections before submitting.
-            Your ballot cannot be changed after submission.
-          </p>
+            <span>
+                Member Portal
+            </span>
 
         </div>
 
 
+        <nav class="member-nav">
+
+
+            <a href="dashboard.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </a>
+
+
+            <a href="profile.html">
+
+                <i class="fa-solid fa-user"></i>
+
+                My Profile
+
+            </a>
+
+
+            <a
+                href="vote.html"
+                class="active"
+            >
+
+                <i class="fa-solid fa-check-to-slot"></i>
+
+                Vote
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                Announcements
+
+            </a>
+
+
+            <a href="events.html">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                Events
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                Opportunities
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-solid fa-folder-open"></i>
+
+                Resources
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                My Documents
+
+            </a>
+
+
+            <a href="settings.html">
+
+                <i class="fa-solid fa-gear"></i>
+
+                Settings
+
+            </a>
+
+
+        </nav>
+
+
         <button
-          type="submit"
-          class="member-primary-button"
-          id="submitBallotButton"
+            type="button"
+            id="logoutButton"
+            class="member-logout-button"
         >
-          <i class="fa-solid fa-check-to-slot"></i>
-          Submit My Vote
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Sign Out
+
         </button>
 
 
-        <p
-          id="ballotMessage"
-          class="form-message"
-        ></p>
+    </aside>
 
-      </section>
 
-    </form>
+    <!-- ==================================================
+         MAIN
+    =================================================== -->
 
-  </main>
+    <main class="vote-main">
+
+
+        <!-- ==============================================
+             HEADER
+        =============================================== -->
+
+        <header class="vote-header">
+
+            <p class="vote-eyebrow">
+                PNGSA MEMBER PORTAL
+            </p>
+
+            <h1>
+                Vote
+            </h1>
+
+            <p>
+                View the current PNGSA election and submit your ballot.
+            </p>
+
+        </header>
+
+
+        <!-- ==============================================
+             VOTE CONTENT
+        =============================================== -->
+
+        <div id="content">
+
+
+            <section class="vote-card">
+
+                <i
+                    class="
+                        fa-solid
+                        fa-spinner
+                        fa-spin
+                    "
+                ></i>
+
+                Loading election...
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
 
 </div>
 
 
 <script
-  type="module"
-  src="js/vote.js"
+    type="module"
+    src="js/vote.js?v=2"
 ></script>
+
 
 </body>
 

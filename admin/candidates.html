@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        PNGSA Admin | Candidates
+    </title>
+
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- SHARED ADMIN STYLES -->
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
+
+
+    <!-- CANDIDATE PAGE STYLES -->
+    <link
+        rel="stylesheet"
+        href="css/candidates.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-layout">
+
+
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="sidebar-header">
+
+            <img
+                src="../images/pngsa_logo.png"
+                alt="PNGSA Logo"
+                class="sidebar-logo"
+            >
+
+            <h2>
+                PNGSA
+            </h2>
+
+            <span>
+                Admin Portal
+            </span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+
+            <a href="dashboard.html">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="members.html">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>
+                    Members
+                </span>
+
+            </a>
+
+
+            <a href="elections.html">
+
+                <i class="fa-solid fa-check-to-slot"></i>
+
+                <span>
+                    Elections
+                </span>
+
+            </a>
+
+
+            <a href="events.html">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <span>
+                    Events
+                </span>
+
+            </a>
+
+
+            <a
+                href="candidates.html"
+                class="active"
+            >
+
+                <i class="fa-solid fa-user-tie"></i>
+
+                <span>
+                    Candidates
+                </span>
+
+            </a>
+
+
+            <a href="voters.html">
+
+                <i class="fa-solid fa-user-check"></i>
+
+                <span>
+                    Eligible Voters
+                </span>
+
+            </a>
+
+
+            <a href="results.html">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                <span>
+                    Results
+                </span>
+
+            </a>
+
+
+            <a href="../index.html">
+
+                <i class="fa-solid fa-globe"></i>
+
+                <span>
+                    View Website
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <button
+            id="logoutButton"
+            class="logout-button"
+            type="button"
+        >
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>
+                Sign Out
+            </span>
+
+        </button>
+
+
+    </aside>
+
+
+    <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- ==============================================
+             PAGE HEADER
+        =============================================== -->
+
+        <header class="admin-header">
+
+            <div>
+
+                <h1>
+                    Candidate Management
+                </h1>
+
+                <p>
+                    Create election positions and manage PNGSA candidates.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==================================================
+             ADD POSITION
+        =================================================== -->
+
+        <section class="admin-panel">
+
+
+            <div class="election-panel-header">
+
+                <div>
+
+                    <h2>
+                        Add Election Position
+                    </h2>
+
+                    <p>
+                        Create positions that candidates can run for.
+                    </p>
+
+                </div>
+
+
+                <div class="candidate-panel-icon">
+
+                    <i class="fa-solid fa-list-ol"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="candidate-form-grid">
+
+
+                <div class="form-group full-width">
+
+                    <label for="positionElection">
+
+                        Election
+
+                    </label>
+
+
+                    <select id="positionElection">
+
+                        <option value="">
+                            Select election
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="positionName">
+
+                        Position Name
+
+                    </label>
+
+
+                    <input
+                        id="positionName"
+                        type="text"
+                        placeholder="Example: President"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="positionOrder">
+
+                        Display Order
+
+                    </label>
+
+
+                    <input
+                        id="positionOrder"
+                        type="number"
+                        value="0"
+                        min="0"
+                    >
+
+                </div>
+
+
+                <div class="form-group full-width">
+
+                    <button
+                        id="addPositionBtn"
+                        class="primary-button"
+                        type="button"
+                    >
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Add Position
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                id="positionMessage"
+                class="form-message"
+            ></div>
+
+
+        </section>
+
+
+        <!-- ==================================================
+             ADD CANDIDATE
+        =================================================== -->
+
+        <section class="admin-panel">
+
+
+            <div class="election-panel-header">
+
+                <div>
+
+                    <h2>
+                        Add Candidate
+                    </h2>
+
+                    <p>
+                        Add a candidate to an election position.
+                    </p>
+
+                </div>
+
+
+                <div class="candidate-panel-icon">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="candidate-form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="candidateElection">
+
+                        Election
+
+                    </label>
+
+
+                    <select id="candidateElection">
+
+                        <option value="">
+                            Select election
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="candidatePosition">
+
+                        Position
+
+                    </label>
+
+
+                    <select id="candidatePosition">
+
+                        <option value="">
+                            Select position
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full-width">
+
+                    <label for="candidateName">
+
+                        Candidate Name
+
+                    </label>
+
+
+                    <input
+                        id="candidateName"
+                        type="text"
+                        placeholder="Enter candidate name"
+                    >
+
+                </div>
+
+
+                <div class="form-group full-width">
+
+                    <label for="candidateBio">
+
+                        Biography
+
+                    </label>
+
+
+                    <textarea
+                        id="candidateBio"
+                        placeholder="Enter a short candidate biography"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group full-width">
+
+                    <label for="candidatePhoto">
+
+                        Photo URL
+
+                    </label>
+
+
+                    <input
+                        id="candidatePhoto"
+                        type="url"
+                        placeholder="https://example.com/photo.jpg"
+                    >
+
+
+                    <small class="field-help">
+
+                        Optional. Paste a direct image URL for the candidate.
+
+                    </small>
+
+                </div>
+
+
+                <div class="form-group full-width">
+
+                    <button
+                        id="addCandidateBtn"
+                        class="primary-button"
+                        type="button"
+                    >
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                        Add Candidate
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                id="candidateMessage"
+                class="form-message"
+            ></div>
+
+
+        </section>
+
+
+        <!-- ==================================================
+             CURRENT CANDIDATES
+        =================================================== -->
+
+        <section class="admin-panel">
+
+
+            <div class="election-panel-header">
+
+                <div>
+
+                    <h2>
+                        Current Candidates
+                    </h2>
+
+                    <p>
+                        Candidates are grouped by election position.
+                    </p>
+
+                </div>
+
+
+                <div class="candidate-panel-icon">
+
+                    <i class="fa-solid fa-users"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- OPTIONAL FILTER -->
+
+            <div class="candidate-filter-row">
+
+
+                <div class="candidate-filter-select">
+
+                    <label for="candidateListElection">
+
+                        Election
+
+                    </label>
+
+
+                    <select id="candidateListElection">
+
+                        <option value="all">
+                            All Elections
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- JS RENDERS CANDIDATES HERE -->
+
+            <div id="candidateList">
+
+
+                <div class="candidate-loading">
+
+                    <i
+                        class="
+                            fa-solid
+                            fa-spinner
+                            fa-spin
+                        "
+                    ></i>
+
+                    Loading candidates...
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+<!-- ==================================================
+     CANDIDATE JAVASCRIPT
+=================================================== -->
+
+<script
+    type="module"
+    src="js/candidates.js?v=2"
+></script>
+
+
+</body>
+
+</html>

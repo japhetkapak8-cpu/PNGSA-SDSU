@@ -1,5 +1,5 @@
 import { supabase }
-from "./supabase.js";
+from "../../js/supabase.js";
 
 const form =
   document.getElementById(

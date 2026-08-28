@@ -2,736 +2,921 @@ import { supabase }
 from "../../js/supabase.js";
 
 
+const content =
+    document.getElementById(
+        "content"
+    );
+
+
 let currentUser = null;
 
-let activeElection = null;
+let currentElection = null;
 
-let candidates = [];
+let positions = [];
 
 
-// ========================================
-// AUTHENTICATE
-// ========================================
-
-async function authenticateMember() {
-
-  const {
-    data: { session }
-  } =
-    await supabase.auth.getSession();
-
-
-  if (!session) {
-
-    window.location.replace(
-      "index.html"
-    );
-
-    return false;
-  }
-
-
-  currentUser =
-    session.user;
-
-
-  document.getElementById(
-    "memberEmail"
-  ).textContent =
-    currentUser.email;
-
-
-  return true;
-}
-
-
-
-// ========================================
-// CHECK ELIGIBILITY
-// ========================================
-
-async function checkEligibility() {
-
-  const {
-    data,
-    error
-  } =
-    await supabase
-      .from("profiles")
-      .select(`
-        eligible_to_vote,
-        full_name,
-        major,
-        year_of_study,
-        living_area
-      `)
-      .eq(
-        "id",
-        currentUser.id
-      )
-      .single();
-
-
-  if (
-    error ||
-    !data
-  ) {
-
-    showMessage(
-      "Unable to verify your voting eligibility."
-    );
-
-    return false;
-  }
-
-
-  const profileComplete =
-    data.full_name &&
-    data.major &&
-    data.year_of_study &&
-    data.living_area;
-
-
-  if (!profileComplete) {
-
-    showMessage(`
-      Please complete your member profile before voting.
-      <br><br>
-      <a
-        href="profile.html"
-        class="small-button"
-      >
-        Complete Profile
-      </a>
-    `);
-
-    return false;
-  }
-
-
-  if (!data.eligible_to_vote) {
-
-    showMessage(
-      "Your account is not currently eligible to vote."
-    );
-
-    return false;
-  }
-
-
-  return true;
-}
-
-
-
-// ========================================
-// GET ACTIVE ELECTION
-// ========================================
-
-async function loadElection() {
-
-  const {
-    data,
-    error
-  } =
-    await supabase
-      .from("elections")
-      .select("*")
-      .eq(
-        "status",
-        "open"
-      )
-      .maybeSingle();
-
-
-  if (
-    error ||
-    !data
-  ) {
-
-    showMessage(
-      "There is currently no open election."
-    );
-
-    return false;
-  }
-
-
-  activeElection =
-    data;
-
-
-  return true;
-}
-
-
-
-// ========================================
-// CHECK EXISTING BALLOT
-// ========================================
-
-async function checkAlreadyVoted() {
-
-  const {
-    data,
-    error
-  } =
-    await supabase
-      .from("ballots")
-      .select("id")
-      .eq(
-        "election_id",
-        activeElection.id
-      )
-      .eq(
-        "voter_id",
-        currentUser.id
-      )
-      .maybeSingle();
-
-
-  if (error) {
-
-    console.error(error);
-
-    return false;
-  }
-
-
-  if (data) {
-
-    showMessage(`
-      <strong>Your ballot has already been submitted.</strong>
-      <br><br>
-      Thank you for participating in the PNGSA election.
-    `);
-
-    return true;
-  }
-
-
-  return false;
-}
-
-
-
-// ========================================
-// LOAD CANDIDATES
-// ========================================
-
-async function loadCandidates() {
-
-  const {
-    data,
-    error
-  } =
-    await supabase
-      .from("candidates")
-      .select(`
-        id,
-        name,
-        position,
-        bio
-      `)
-      .eq(
-        "election_id",
-        activeElection.id
-      )
-      .order(
-        "position",
-        {
-          ascending: true
-        }
-      );
-
-
-  if (error) {
-
-    console.error(error);
-
-    showMessage(
-      "Unable to load election candidates."
-    );
-
-    return;
-  }
-
-
-  candidates =
-    data || [];
-
-
-  displayBallot();
-
-}
-
-
-
-// ========================================
-// DISPLAY BALLOT
-// ========================================
-
-function displayBallot() {
-
-  const container =
-    document.getElementById(
-      "ballotPositions"
-    );
-
-
-  if (
-    candidates.length === 0
-  ) {
-
-    showMessage(
-      "No candidates have been added to this election."
-    );
-
-    return;
-  }
-
-
-  const positions =
-    [
-      ...new Set(
-        candidates.map(
-          candidate =>
-            candidate.position
-        )
-      )
-    ];
-
-
-  container.innerHTML =
-    positions
-      .map(
-        position => {
-
-
-          const positionCandidates =
-            candidates.filter(
-              candidate =>
-                candidate.position ===
-                position
-            );
-
-
-          return `
-
-            <section
-              class="ballot-position"
-            >
-
-              <h2>
-                ${escapeHTML(position)}
-              </h2>
-
-
-              <div
-                class="candidate-grid"
-              >
-
-                ${
-                  positionCandidates
-                    .map(
-                      candidate => `
-
-                        <div
-                          class="candidate-option"
-                        >
-
-                          <input
-                            type="radio"
-                            name="${escapeHTML(position)}"
-                            id="candidate-${candidate.id}"
-                            value="${candidate.id}"
-                            required
-                          >
-
-                          <label
-                            for="candidate-${candidate.id}"
-                          >
-
-                            <h3>
-                              ${escapeHTML(candidate.name)}
-                            </h3>
-
-                            <p>
-                              ${
-                                escapeHTML(
-                                  candidate.bio ||
-                                  "PNGSA executive candidate"
-                                )
-                              }
-                            </p>
-
-                          </label>
-
-                        </div>
-
-                      `
-                    )
-                    .join("")
-                }
-
-              </div>
-
-            </section>
-
-          `;
-
-        }
-      )
-      .join("");
-
-
-  document.getElementById(
-    "voteMessagePanel"
-  ).hidden =
-    true;
-
-
-  document.getElementById(
-    "ballotForm"
-  ).hidden =
-    false;
-
-}
-
-
-
-// ========================================
-// SUBMIT BALLOT
-// ========================================
-
-document
-  .getElementById(
-    "ballotForm"
-  )
-  .addEventListener(
-    "submit",
-    async function(event) {
-
-      event.preventDefault();
-
-
-      const confirmVote =
-        window.confirm(
-          "Submit your ballot? You will not be able to change it after submission."
-        );
-
-
-      if (!confirmVote) {
-        return;
-      }
-
-
-      const button =
-        document.getElementById(
-          "submitBallotButton"
-        );
-
-
-      const message =
-        document.getElementById(
-          "ballotMessage"
-        );
-
-
-      button.disabled =
-        true;
-
-
-      message.textContent =
-        "Submitting ballot...";
-
-
-      const selectedVotes = [];
-
-
-      const positions =
-        [
-          ...new Set(
-            candidates.map(
-              candidate =>
-                candidate.position
-            )
-          )
-        ];
-
-
-      for (
-        const position
-        of positions
-      ) {
-
-        const selected =
-          document.querySelector(
-            `input[name="${CSS.escape(position)}"]:checked`
-          );
-
-
-        if (!selected) {
-
-          message.textContent =
-            `Please select a candidate for ${position}.`;
-
-          message.className =
-            "form-message error";
-
-          button.disabled =
-            false;
-
-          return;
-        }
-
-
-        selectedVotes.push({
-
-          position,
-
-          candidateId:
-            Number(selected.value)
-
-        });
-
-      }
-
-
-      // Create ballot
-
-      const {
-        data: ballot,
-        error: ballotError
-      } =
-        await supabase
-          .from("ballots")
-          .insert({
-
-            election_id:
-              activeElection.id,
-
-            voter_id:
-              currentUser.id
-
-          })
-          .select("id")
-          .single();
-
-
-      if (ballotError) {
-
-        console.error(
-          ballotError
-        );
-
-
-        if (
-          ballotError.code ===
-          "23505"
-        ) {
-
-          showMessage(
-            "Your ballot has already been submitted."
-          );
-
-          return;
-        }
-
-
-        message.textContent =
-          "Unable to submit your ballot.";
-
-        message.className =
-          "form-message error";
-
-        button.disabled =
-          false;
-
-        return;
-      }
-
-
-      const voteRows =
-        selectedVotes.map(
-          vote => ({
-
-            ballot_id:
-              ballot.id,
-
-            candidate_id:
-              vote.candidateId,
-
-            position:
-              vote.position
-
-          })
-        );
-
-
-      const {
-        error: voteError
-      } =
-        await supabase
-          .from("votes")
-          .insert(
-            voteRows
-          );
-
-
-      if (voteError) {
-
-        console.error(
-          voteError
-        );
-
-        message.textContent =
-          "Your ballot was created, but the selections could not be recorded. Please contact a PNGSA administrator.";
-
-        message.className =
-          "form-message error";
-
-        return;
-      }
-
-
-      document.getElementById(
-        "ballotForm"
-      ).hidden =
-        true;
-
-
-      showMessage(`
-        <strong>Your ballot was submitted successfully.</strong>
-        <br><br>
-        Thank you for participating in the PNGSA election.
-      `);
-
-    }
-  );
-
-
-
-// ========================================
-// MESSAGE
-// ========================================
-
-function showMessage(content) {
-
-  const panel =
-    document.getElementById(
-      "voteMessagePanel"
-    );
-
-
-  panel.hidden =
-    false;
-
-
-  panel.innerHTML =
-    `<p>${content}</p>`;
-
-}
-
-
-
-// ========================================
-// ESCAPE HTML
-// ========================================
-
-function escapeHTML(value) {
-
-  return String(value)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
-
-
-
-// ========================================
-// LOGOUT
-// ========================================
-
-document
-  .getElementById(
-    "logoutButton"
-  )
-  .addEventListener(
-    "click",
-    async function() {
-
-      await supabase.auth.signOut();
-
-      window.location.replace(
-        "index.html"
-      );
-
-    }
-  );
-
-
-
-// ========================================
-// START
-// ========================================
+// ======================================================
+// INITIALIZE
+// ======================================================
 
 async function initialize() {
 
-  if (
-    !await authenticateMember()
-  ) {
-    return;
-  }
+    const authenticated =
+        await authenticateMember();
 
 
-  if (
-    !await checkEligibility()
-  ) {
-    return;
-  }
+    if (!authenticated) {
+        return;
+    }
 
 
-  if (
-    !await loadElection()
-  ) {
-    return;
-  }
-
-
-  if (
-    await checkAlreadyVoted()
-  ) {
-    return;
-  }
-
-
-  await loadCandidates();
-
+    await loadElection();
 }
 
 
 initialize();
+
+
+// ======================================================
+// AUTHENTICATION
+// ======================================================
+
+async function authenticateMember() {
+
+    const {
+        data: {
+            session
+        }
+    } =
+        await supabase.auth
+            .getSession();
+
+
+    if (!session) {
+
+        window.location.replace(
+            "index.html"
+        );
+
+        return false;
+    }
+
+
+    currentUser =
+        session.user;
+
+
+    return true;
+}
+
+
+// ======================================================
+// LOAD OPEN ELECTION
+// ======================================================
+
+async function loadElection() {
+
+    const {
+        data,
+        error
+    } =
+        await supabase
+            .from("elections")
+            .select("*")
+            .eq(
+                "status",
+                "open"
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            )
+            .limit(1)
+            .maybeSingle();
+
+
+    if (error) {
+
+        console.error(error);
+
+        showError(
+            error.message
+        );
+
+        return;
+    }
+
+
+    if (!data) {
+
+        content.innerHTML =
+            `
+            <section class="card">
+
+                <h2>
+                    No Election Currently Open
+                </h2>
+
+                <p>
+                    There is currently no PNGSA election
+                    available for voting.
+                </p>
+
+            </section>
+            `;
+
+        return;
+    }
+
+
+    currentElection =
+        data;
+
+
+    const now =
+        new Date();
+
+
+    if (
+        currentElection.start_at &&
+        now <
+        new Date(
+            currentElection.start_at
+        )
+    ) {
+
+        content.innerHTML =
+            `
+            <section class="card">
+
+                <h2>
+                    Voting Has Not Started
+                </h2>
+
+                <p>
+                    Voting begins:
+                    ${
+                        new Date(
+                            currentElection.start_at
+                        ).toLocaleString()
+                    }
+                </p>
+
+            </section>
+            `;
+
+        return;
+    }
+
+
+    if (
+        currentElection.end_at &&
+        now >
+        new Date(
+            currentElection.end_at
+        )
+    ) {
+
+        content.innerHTML =
+            `
+            <section class="card">
+
+                <h2>
+                    Voting Has Ended
+                </h2>
+
+                <p>
+                    This election is no longer accepting votes.
+                </p>
+
+            </section>
+            `;
+
+        return;
+    }
+
+
+    await checkEligibility();
+}
+
+
+// ======================================================
+// CHECK ELIGIBILITY
+// ======================================================
+
+async function checkEligibility() {
+
+    const {
+        data,
+        error
+    } =
+        await supabase
+            .from(
+                "eligible_voters"
+            )
+            .select("id")
+            .eq(
+                "election_id",
+                currentElection.id
+            )
+            .eq(
+                "user_id",
+                currentUser.id
+            )
+            .maybeSingle();
+
+
+    if (error) {
+
+        console.error(error);
+
+        showError(
+            error.message
+        );
+
+        return;
+    }
+
+
+    if (!data) {
+
+        content.innerHTML =
+            `
+            <section class="card">
+
+                <h2>
+                    Not Eligible to Vote
+                </h2>
+
+                <p>
+                    Your account is not listed as an eligible
+                    voter for this election.
+                </p>
+
+            </section>
+            `;
+
+        return;
+    }
+
+
+    await checkAlreadyVoted();
+}
+
+
+// ======================================================
+// CHECK WHETHER MEMBER ALREADY VOTED
+// ======================================================
+
+async function checkAlreadyVoted() {
+
+    const {
+        data,
+        error
+    } =
+        await supabase
+            .from(
+                "election_votes"
+            )
+            .select(
+                "id",
+                {
+                    count:
+                        "exact"
+                }
+            )
+            .eq(
+                "election_id",
+                currentElection.id
+            )
+            .eq(
+                "voter_id",
+                currentUser.id
+            );
+
+
+    if (error) {
+
+        console.error(error);
+
+        showError(
+            error.message
+        );
+
+        return;
+    }
+
+
+    if (
+        data &&
+        data.length > 0
+    ) {
+
+        showAlreadyVoted();
+
+        return;
+    }
+
+
+    await loadBallot();
+}
+
+
+// ======================================================
+// LOAD POSITIONS + CANDIDATES
+// ======================================================
+
+async function loadBallot() {
+
+    const {
+        data,
+        error
+    } =
+        await supabase
+            .from(
+                "election_positions"
+            )
+            .select(`
+                id,
+                name,
+                display_order,
+                candidates (
+                    id,
+                    name,
+                    bio,
+                    photo_url,
+                    approved
+                )
+            `)
+            .eq(
+                "election_id",
+                currentElection.id
+            )
+            .order(
+                "display_order",
+                {
+                    ascending: true
+                }
+            );
+
+
+    if (error) {
+
+        console.error(error);
+
+        showError(
+            error.message
+        );
+
+        return;
+    }
+
+
+    positions =
+        (data || [])
+        .map(
+            position => ({
+
+                ...position,
+
+                candidates:
+                    (
+                        position.candidates
+                        || []
+                    )
+                    .filter(
+                        candidate =>
+                            candidate.approved
+                            !== false
+                    )
+            })
+        );
+
+
+    renderBallot();
+}
+
+
+// ======================================================
+// RENDER BALLOT
+// ======================================================
+
+function renderBallot() {
+
+    if (
+        positions.length === 0
+    ) {
+
+        content.innerHTML =
+            `
+            <section class="card">
+
+                <h2>
+                    Ballot Not Ready
+                </h2>
+
+                <p>
+                    No election positions have been configured.
+                </p>
+
+            </section>
+            `;
+
+        return;
+    }
+
+
+    let deadline = "";
+
+
+    if (
+        currentElection.end_at
+    ) {
+
+        deadline =
+            `
+            <div class="notice">
+
+                Voting closes:
+
+                <strong>
+                    ${
+                        new Date(
+                            currentElection.end_at
+                        ).toLocaleString()
+                    }
+                </strong>
+
+            </div>
+            `;
+    }
+
+
+    const positionHTML =
+        positions.map(
+            position => {
+
+                const candidates =
+                    position.candidates
+                    || [];
+
+
+                const candidateHTML =
+                    candidates.length
+                    ?
+                    candidates.map(
+                        candidate => `
+                            <label class="candidate">
+
+                                <input
+                                    type="radio"
+                                    name="position-${position.id}"
+                                    value="${candidate.id}"
+                                    data-position-id="${position.id}"
+                                >
+
+                                <span class="candidate-name">
+                                    ${
+                                        escapeHTML(
+                                            candidate.name
+                                        )
+                                    }
+                                </span>
+
+                                ${
+                                    candidate.bio
+                                    ?
+                                    `
+                                    <div class="candidate-bio">
+                                        ${
+                                            escapeHTML(
+                                                candidate.bio
+                                            )
+                                        }
+                                    </div>
+                                    `
+                                    :
+                                    ""
+                                }
+
+                            </label>
+                        `
+                    ).join("")
+                    :
+                    `
+                    <p>
+                        No candidates have been added
+                        for this position.
+                    </p>
+                    `;
+
+
+                return `
+                    <div class="position">
+
+                        <h2>
+                            ${
+                                escapeHTML(
+                                    position.name
+                                )
+                            }
+                        </h2>
+
+                        ${candidateHTML}
+
+                    </div>
+                `;
+            }
+        ).join("");
+
+
+    content.innerHTML =
+        `
+        <section class="card">
+
+            <h1>
+                ${
+                    escapeHTML(
+                        currentElection.title
+                    )
+                }
+            </h1>
+
+            <p>
+                ${
+                    escapeHTML(
+                        currentElection.description
+                        || ""
+                    )
+                }
+            </p>
+
+            ${deadline}
+
+            <div class="notice">
+
+                Select one candidate for each position.
+                Once you submit your ballot,
+                it cannot be changed.
+
+            </div>
+
+
+            <form id="ballotForm">
+
+                ${positionHTML}
+
+                <br>
+
+                <button
+                    type="submit"
+                    id="submitVoteBtn"
+                >
+                    Submit Ballot
+                </button>
+
+            </form>
+
+        </section>
+        `;
+
+
+    document
+        .getElementById(
+            "ballotForm"
+        )
+        .addEventListener(
+            "submit",
+            submitBallot
+        );
+}
+
+
+// ======================================================
+// SUBMIT BALLOT
+// ======================================================
+
+async function submitBallot(
+    event
+) {
+
+    event.preventDefault();
+
+
+    const votes = [];
+
+
+    for (
+        const position
+        of positions
+    ) {
+
+        const candidates =
+            position.candidates
+            || [];
+
+
+        if (
+            candidates.length === 0
+        ) {
+
+            continue;
+        }
+
+
+        const selected =
+            document.querySelector(
+                `
+                input[
+                    name="position-${position.id}"
+                ]:checked
+                `
+            );
+
+
+        if (!selected) {
+
+            alert(
+                `Please select a candidate for ${position.name}.`
+            );
+
+            return;
+        }
+
+
+        votes.push({
+
+            election_id:
+                currentElection.id,
+
+            position_id:
+                position.id,
+
+            candidate_id:
+                selected.value,
+
+            voter_id:
+                currentUser.id
+        });
+    }
+
+
+    if (
+        votes.length === 0
+    ) {
+
+        alert(
+            "There are no candidates available to vote for."
+        );
+
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "Submit your ballot? Your vote cannot be changed after submission."
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    const button =
+        document.getElementById(
+            "submitVoteBtn"
+        );
+
+
+    button.disabled =
+        true;
+
+    button.textContent =
+        "Submitting...";
+
+
+    // Check again before insert
+
+    const {
+        data: existingVotes,
+        error: existingError
+    } =
+        await supabase
+            .from(
+                "election_votes"
+            )
+            .select("id")
+            .eq(
+                "election_id",
+                currentElection.id
+            )
+            .eq(
+                "voter_id",
+                currentUser.id
+            );
+
+
+    if (existingError) {
+
+        button.disabled =
+            false;
+
+        button.textContent =
+            "Submit Ballot";
+
+        alert(
+            existingError.message
+        );
+
+        return;
+    }
+
+
+    if (
+        existingVotes &&
+        existingVotes.length > 0
+    ) {
+
+        showAlreadyVoted();
+
+        return;
+    }
+
+
+    const {
+        error
+    } =
+        await supabase
+            .from(
+                "election_votes"
+            )
+            .insert(
+                votes
+            );
+
+
+    if (error) {
+
+        console.error(error);
+
+
+        button.disabled =
+            false;
+
+        button.textContent =
+            "Submit Ballot";
+
+
+        if (
+            error.code === "23505"
+        ) {
+
+            showAlreadyVoted();
+
+            return;
+        }
+
+
+        alert(
+            error.message
+        );
+
+        return;
+    }
+
+
+    showSuccess();
+}
+
+
+// ======================================================
+// SUCCESS
+// ======================================================
+
+function showSuccess() {
+
+    content.innerHTML =
+        `
+        <section class="card success">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Vote Submitted
+            </h2>
+
+            <p>
+                Your ballot has been successfully recorded.
+            </p>
+
+            <p>
+                Thank you for participating in the
+                PNGSA election.
+            </p>
+
+            <br>
+
+            <a href="dashboard.html">
+                Return to Dashboard
+            </a>
+
+        </section>
+        `;
+}
+
+
+// ======================================================
+// ALREADY VOTED
+// ======================================================
+
+function showAlreadyVoted() {
+
+    content.innerHTML =
+        `
+        <section class="card success">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Ballot Already Submitted
+            </h2>
+
+            <p>
+                You have already voted in
+                ${
+                    escapeHTML(
+                        currentElection.title
+                    )
+                }.
+            </p>
+
+            <p>
+                Your ballot cannot be submitted again.
+            </p>
+
+            <br>
+
+            <a href="dashboard.html">
+                Return to Dashboard
+            </a>
+
+        </section>
+        `;
+}
+
+
+// ======================================================
+// ERROR
+// ======================================================
+
+function showError(
+    errorMessage
+) {
+
+    content.innerHTML =
+        `
+        <section class="card">
+
+            <h2>
+                Unable to Load Voting
+            </h2>
+
+            <p>
+                ${
+                    escapeHTML(
+                        errorMessage
+                    )
+                }
+            </p>
+
+        </section>
+        `;
+}
+
+
+// ======================================================
+// HTML ESCAPE
+// ======================================================
+
+function escapeHTML(
+    value
+) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        value ?? "";
+
+    return div.innerHTML;
+}

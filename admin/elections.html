@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        PNGSA Elections
+    </title>
+
+
+    <!-- ========================================
+         FONT AWESOME
+    ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- ========================================
+         SHARED ADMIN CSS
+    ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
+
+
+    <!-- ========================================
+         ELECTION PAGE CSS
+    ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="css/elections.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-layout">
+
+
+    <!-- ========================================
+         SIDEBAR
+    ========================================= -->
+
+    <aside class="sidebar">
+
+
+        <!-- SIDEBAR HEADER -->
+
+        <div class="sidebar-header">
+
+            <img
+                src="../images/pngsa_logo.png"
+                alt="PNGSA Logo"
+                class="sidebar-logo"
+            >
+
+            <h2>
+                PNGSA
+            </h2>
+
+            <span>
+                Admin Portal
+            </span>
+
+        </div>
+
+
+        <!-- SIDEBAR NAV -->
+
+        <nav class="sidebar-nav">
+
+
+            <a href="dashboard.html">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="members.html">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>
+                    Members
+                </span>
+
+            </a>
+
+
+            <a
+                href="elections.html"
+                class="active"
+            >
+
+                <i class="fa-solid fa-check-to-slot"></i>
+
+                <span>
+                    Elections
+                </span>
+
+            </a>
+
+
+            <a href="events.html">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <span>
+                    Events
+                </span>
+
+            </a>
+
+
+            <a href="candidates.html">
+
+                <i class="fa-solid fa-user-tie"></i>
+
+                <span>
+                    Candidates
+                </span>
+
+            </a>
+
+
+            <a href="voters.html">
+
+                <i class="fa-solid fa-user-check"></i>
+
+                <span>
+                    Eligible Voters
+                </span>
+
+            </a>
+
+
+            <a href="results.html">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                <span>
+                    Results
+                </span>
+
+            </a>
+
+
+            <a href="../index.html">
+
+                <i class="fa-solid fa-globe"></i>
+
+                <span>
+                    View Website
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- SIGN OUT -->
+
+        <button
+            id="logoutButton"
+            class="logout-button"
+            type="button"
+        >
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>
+                Sign Out
+            </span>
+
+        </button>
+
+
+    </aside>
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ========================================= -->
+
+    <main class="admin-main">
+
+
+        <!-- ====================================
+             PAGE HEADER
+        ===================================== -->
+
+        <header class="admin-header">
+
+            <div>
+
+                <h1>
+                    Election Management
+                </h1>
+
+                <p>
+                    Create, configure, open, and close PNGSA elections.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- ====================================
+             ELECTION STATISTICS
+        ===================================== -->
+
+        <section class="election-stats">
+
+
+            <div class="election-stat-card">
+
+                <div class="election-stat-icon">
+
+                    <i class="fa-solid fa-check-to-slot"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Elections
+                    </span>
+
+                    <strong id="totalElectionCount">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="election-stat-card">
+
+                <div class="election-stat-icon">
+
+                    <i class="fa-solid fa-circle-play"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Open
+                    </span>
+
+                    <strong id="openElectionCount">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="election-stat-card">
+
+                <div class="election-stat-icon">
+
+                    <i class="fa-solid fa-file-pen"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Draft
+                    </span>
+
+                    <strong id="draftElectionCount">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="election-stat-card">
+
+                <div class="election-stat-icon">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Closed
+                    </span>
+
+                    <strong id="closedElectionCount">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ====================================
+             CREATE ELECTION
+        ===================================== -->
+
+        <section class="admin-panel">
+
+
+            <div class="election-panel-header">
+
+                <div>
+
+                    <h2>
+                        Create Election
+                    </h2>
+
+                    <p>
+                        Set up a new PNGSA election and voting period.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="electionForm">
+
+
+                <div class="election-form-grid">
+
+
+                    <!-- ELECTION TITLE -->
+
+                    <div class="form-group full-width">
+
+                        <label for="title">
+
+                            Election Title
+
+                            <span>
+                                *
+                            </span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="title"
+                            required
+                            placeholder="2026 PNGSA Executive Election"
+                        >
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-group full-width">
+
+                        <label for="description">
+
+                            Description
+
+                        </label>
+
+                        <textarea
+                            id="description"
+                            placeholder="Enter a short description of this election."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- YEAR -->
+
+                    <div class="form-group">
+
+                        <label for="electionYear">
+
+                            Election Year
+
+                            <span>
+                                *
+                            </span>
+
+                        </label>
+
+                        <input
+                            type="number"
+                            id="electionYear"
+                            min="2020"
+                            max="2100"
+                            value="2026"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- TERM -->
+
+                    <div class="form-group">
+
+                        <label for="electionTerm">
+
+                            Election Term
+
+                            <span>
+                                *
+                            </span>
+
+                        </label>
+
+                        <select
+                            id="electionTerm"
+                            required
+                        >
+
+                            <option value="Spring">
+                                Spring
+                            </option>
+
+                            <option value="Summer">
+                                Summer
+                            </option>
+
+                            <option
+                                value="Fall"
+                                selected
+                            >
+                                Fall
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- START -->
+
+                    <div class="form-group">
+
+                        <label for="startAt">
+
+                            Voting Start
+
+                        </label>
+
+                        <input
+                            type="datetime-local"
+                            id="startAt"
+                        >
+
+                    </div>
+
+
+                    <!-- END -->
+
+                    <div class="form-group">
+
+                        <label for="endAt">
+
+                            Voting End
+
+                        </label>
+
+                        <input
+                            type="datetime-local"
+                            id="endAt"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- FORM BUTTON -->
+
+                <div class="election-form-actions">
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Create Election
+
+                    </button>
+
+                </div>
+
+
+                <div id="message"></div>
+
+
+            </form>
+
+
+        </section>
+
+
+        <!-- ====================================
+             EXISTING ELECTIONS
+        ===================================== -->
+
+        <section class="admin-panel">
+
+
+            <div class="election-panel-header">
+
+                <div>
+
+                    <h2>
+                        Existing Elections
+                    </h2>
+
+                    <p>
+                        Review and manage PNGSA election records.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTERS -->
+
+            <div class="election-filters">
+
+
+                <div class="election-search">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="search"
+                        id="electionSearch"
+                        placeholder="Search elections..."
+                    >
+
+                </div>
+
+
+                <select id="yearFilter">
+
+                    <option value="all">
+                        All Years
+                    </option>
+
+                </select>
+
+
+                <select id="statusFilter">
+
+                    <option value="all">
+                        All Statuses
+                    </option>
+
+                    <option value="draft">
+                        Draft
+                    </option>
+
+                    <option value="open">
+                        Open
+                    </option>
+
+                    <option value="closed">
+                        Closed
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+            <!-- ELECTION LIST -->
+
+            <div id="electionsList">
+
+                <div class="elections-loading">
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    Loading elections...
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+<!-- ========================================
+     JAVASCRIPT
+========================================= -->
+
+<script
+    type="module"
+    src="js/elections.js"
+></script>
+
+
+</body>
+
+</html>
