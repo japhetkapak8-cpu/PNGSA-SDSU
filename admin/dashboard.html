@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--=========================
-      HEADER LINK
-  ===========================-->
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -13,176 +12,355 @@
 
   <title>PNGSA Admin Dashboard</title>
 
+
+  <!-- FONT AWESOME -->
+
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   >
+
+
+  <!-- ADMIN CSS -->
 
   <link
     rel="stylesheet"
     href="css/admin.css"
   >
 
+
+  <!-- DASHBOARD CSS -->
+
   <link
     rel="stylesheet"
     href="css/dashboard.css"
   >
+
 </head>
+
 
 <body>
 
+
   <div class="admin-layout">
 
-    <!-- ============================
-         SIDEBAR          
-    ================================ -->
+
+    <!-- ========================================
+         SIDEBAR
+    ========================================= -->
 
     <aside class="sidebar">
 
-  <div class="sidebar-header">
 
-    <img
-      src="../images/pngsa_logo.png"
-      alt="PNGSA Logo"
-      class="sidebar-logo"
-    >
+      <!-- SIDEBAR HEADER -->
 
-    <h2>PNGSA</h2>
+      <div class="sidebar-header">
 
-    <span>Admin Portal</span>
+        <img
+          src="../images/pngsa_logo.png"
+          alt="PNGSA Logo"
+          class="sidebar-logo"
+        >
 
-  </div>
+        <h2>
+          PNGSA
+        </h2>
+
+        <span>
+          Admin Portal
+        </span>
+
+      </div>
 
 
-  <nav class="sidebar-nav">
 
-    <a
-      href="dashboard.html"
-      class="active"
-    >
-      <i class="fa-solid fa-chart-line"></i>
-      Dashboard
-    </a>
+      <!-- ========================================
+           NAVIGATION
+      ========================================= -->
 
-    <a href="members.html">
-      <i class="fa-solid fa-users"></i>
-      Members
-    </a>
- </a>
-    <a href="invite-members.html">
-      <i class="fa-solid fa-user-plus"></i>
-      Invite Members
-    </a>
-    <a href="elections.html">
-      <i class="fa-solid fa-check-to-slot"></i>
-      Elections
-    </a>
- <a href="events.html">
-      <i class="fa-solid fa-calendar-days"></i>
-      Events
-    </a>
-    <a href="candidates.html">
-      <i class="fa-solid fa-user-tie"></i>
-      Candidates
-    </a>
+      <nav class="sidebar-nav">
 
-    <a href="voters.html">
-      <i class="fa-solid fa-user-check"></i>
-      Eligible Voters
-    </a>
 
-    <a href="results.html">
-      <i class="fa-solid fa-chart-column"></i>
-      Results
-    </a>
-     <a href="announcements.html" > <i class="fa-solid fa-bullhorn"></i>
-        <span> Announcements </span>
-       </a>
+        <!-- DASHBOARD -->
+
+        <a
+          href="dashboard.html"
+          class="active"
+        >
+
+          <i class="fa-solid fa-chart-line"></i>
+
+          <span>
+            Dashboard
+          </span>
+
+        </a>
+
+
+
+        <!-- MEMBERS -->
+
         <a href="members.html">
-      <i class="fa-solid fa-users"></i>
-      Members
-   
 
-  </nav>
+          <i class="fa-solid fa-users"></i>
 
+          <span>
+            Members
+          </span>
 
-  <button
-    id="logoutButton"
-    class="logout-button"
-    type="button"
-  >
-    <i class="fa-solid fa-right-from-bracket"></i>
-    Sign Out
-  </button>
-
-</aside>
+        </a>
 
 
-    <!--============================
-          MAIN CONTENT
-    =============================== -->
+
+        <!-- INVITE MEMBERS -->
+
+        <a href="invite-members.html">
+
+          <i class="fa-solid fa-user-plus"></i>
+
+          <span>
+            Invite Members
+          </span>
+
+        </a>
+
+
+
+        <!-- ELECTIONS -->
+
+        <a href="elections.html">
+
+          <i class="fa-solid fa-check-to-slot"></i>
+
+          <span>
+            Elections
+          </span>
+
+        </a>
+
+
+
+        <!-- EVENTS -->
+
+        <a href="events.html">
+
+          <i class="fa-solid fa-calendar-days"></i>
+
+          <span>
+            Events
+          </span>
+
+        </a>
+
+
+
+        <!-- CANDIDATES -->
+
+        <a href="candidates.html">
+
+          <i class="fa-solid fa-user-tie"></i>
+
+          <span>
+            Candidates
+          </span>
+
+        </a>
+
+
+
+        <!-- ELIGIBLE VOTERS -->
+
+        <a href="voters.html">
+
+          <i class="fa-solid fa-user-check"></i>
+
+          <span>
+            Eligible Voters
+          </span>
+
+        </a>
+
+
+
+        <!-- RESULTS -->
+
+        <a href="results.html">
+
+          <i class="fa-solid fa-chart-column"></i>
+
+          <span>
+            Results
+          </span>
+
+        </a>
+
+
+
+        <!-- ANNOUNCEMENTS -->
+
+        <a href="announcements.html">
+
+          <i class="fa-solid fa-bullhorn"></i>
+
+          <span>
+            Announcements
+          </span>
+
+        </a>
+
+
+
+        <!-- VIEW WEBSITE -->
+
+        <a href="../index.html">
+
+          <i class="fa-solid fa-globe"></i>
+
+          <span>
+            View Website
+          </span>
+
+        </a>
+
+
+      </nav>
+
+
+
+      <!-- ========================================
+           SIGN OUT
+      ========================================= -->
+
+      <button
+        id="logoutButton"
+        class="logout-button"
+        type="button"
+      >
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>
+          Sign Out
+        </span>
+
+      </button>
+
+
+    </aside>
+
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ========================================= -->
 
     <main class="admin-main">
 
+
+      <!-- ========================================
+           HEADER
+      ========================================= -->
+
       <header class="admin-header">
 
+
         <div>
-          <h1>Election Dashboard</h1>
+
+          <h1>
+            Election Dashboard
+          </h1>
 
           <p>
             Papua New Guinea Student Association
           </p>
+
         </div>
 
+
         <div class="admin-user">
+
           <span id="adminEmail">
             Loading...
           </span>
+
         </div>
+
 
       </header>
 
 
-      <!-- SUMMARY -->
+
+      <!-- ========================================
+           SUMMARY
+      ========================================= -->
 
       <section class="dashboard-grid">
 
+
+        <!-- ELIGIBLE VOTERS -->
+
         <div class="stat-card">
 
-          <h3>Eligible Voters</h3>
+          <h3>
+            Eligible Voters
+          </h3>
 
-          <p class="stat-number" id="eligibleCount">
+          <p
+            class="stat-number"
+            id="eligibleCount"
+          >
             0
           </p>
 
         </div>
 
 
+
+        <!-- VOTES SUBMITTED -->
+
         <div class="stat-card">
 
-          <h3>Votes Submitted</h3>
+          <h3>
+            Votes Submitted
+          </h3>
 
-          <p class="stat-number" id="voteCount">
+          <p
+            class="stat-number"
+            id="voteCount"
+          >
             0
           </p>
 
         </div>
 
 
+
+        <!-- CANDIDATES -->
+
         <div class="stat-card">
 
-          <h3>Candidates</h3>
+          <h3>
+            Candidates
+          </h3>
 
-          <p class="stat-number" id="candidateCount">
+          <p
+            class="stat-number"
+            id="candidateCount"
+          >
             0
           </p>
 
         </div>
 
 
+
+        <!-- ELECTION STATUS -->
+
         <div class="stat-card">
 
-          <h3>Election Status</h3>
+          <h3>
+            Election Status
+          </h3>
 
           <p
             class="status-badge closed"
@@ -193,31 +371,44 @@
 
         </div>
 
+
       </section>
 
 
-      <!-- CURRENT ELECTION -->
+
+      <!-- ========================================
+           CURRENT ELECTION
+      ========================================= -->
 
       <section class="admin-panel">
+
 
         <div class="panel-header">
 
           <div>
-            <h2>Current Election</h2>
+
+            <h2>
+              Current Election
+            </h2>
 
             <p>
               Manage the active PNGSA executive election.
             </p>
+
           </div>
 
         </div>
 
 
+
         <div class="election-info">
+
 
           <div>
 
-            <strong>Election</strong>
+            <strong>
+              Election
+            </strong>
 
             <p id="currentElectionName">
               No election configured
@@ -226,9 +417,12 @@
           </div>
 
 
+
           <div>
 
-            <strong>Start</strong>
+            <strong>
+              Start
+            </strong>
 
             <p id="electionStart">
               —
@@ -237,9 +431,12 @@
           </div>
 
 
+
           <div>
 
-            <strong>End</strong>
+            <strong>
+              End
+            </strong>
 
             <p id="electionEnd">
               —
@@ -247,26 +444,39 @@
 
           </div>
 
+
         </div>
+
 
       </section>
 
 
-      <!-- QUICK LINKS -->
+
+      <!-- ========================================
+           ELECTION MANAGEMENT
+      ========================================= -->
 
       <section class="admin-panel">
 
-        <h2>Election Management</h2>
+
+        <h2>
+          Election Management
+        </h2>
+
 
         <div class="action-grid">
 
+
+          <!-- MANAGE ELECTION -->
 
           <a
             href="elections.html"
             class="action-card"
           >
 
-            <h3>Manage Election</h3>
+            <h3>
+              Manage Election
+            </h3>
 
             <p>
               Create, open, close, and configure elections.
@@ -275,12 +485,17 @@
           </a>
 
 
+
+          <!-- MANAGE CANDIDATES -->
+
           <a
             href="candidates.html"
             class="action-card"
           >
 
-            <h3>Manage Candidates</h3>
+            <h3>
+              Manage Candidates
+            </h3>
 
             <p>
               Add executive candidates and assign positions.
@@ -289,12 +504,17 @@
           </a>
 
 
+
+          <!-- MANAGE VOTERS -->
+
           <a
             href="voters.html"
             class="action-card"
           >
 
-            <h3>Manage Voters</h3>
+            <h3>
+              Manage Voters
+            </h3>
 
             <p>
               Control which PNGSA members are eligible to vote.
@@ -303,12 +523,17 @@
           </a>
 
 
+
+          <!-- RESULTS -->
+
           <a
             href="results.html"
             class="action-card"
           >
 
-            <h3>Election Results</h3>
+            <h3>
+              Election Results
+            </h3>
 
             <p>
               View private totals and determine election winners.
@@ -316,18 +541,30 @@
 
           </a>
 
+
         </div>
+
 
       </section>
 
+
     </main>
+
 
   </div>
 
- <script
-  type="module"
-  src="js/dashboard.js?v=5"
-></script>
+
+
+  <!-- ========================================
+       JAVASCRIPT
+  ========================================= -->
+
+  <script
+    type="module"
+    src="js/dashboard.js?v=5"
+  ></script>
+
 
 </body>
+
 </html>
