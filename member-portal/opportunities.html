@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Opportunities | PNGSA Member Portal
+  </title>
+
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+
+  <link
+    rel="stylesheet"
+    href="css/opportunities.css?v=3"
+  >
+
+</head>
+
+
+<body>
+
+
+  <div class="member-layout">
+
+
+    <!-- ========================================
+         SIDEBAR
+    ========================================= -->
+
+    <aside class="sidebar">
+
+
+      <div class="sidebar-header">
+
+        <img
+          src="../images/pngsa_logo.png"
+          alt="PNGSA Logo"
+          class="sidebar-logo"
+        >
+
+        <h2>
+          PNGSA
+        </h2>
+
+        <span>
+          Member Portal
+        </span>
+
+      </div>
+
+
+
+      <nav class="sidebar-nav">
+
+
+        <a href="dashboard.html">
+
+          <i class="fa-solid fa-house"></i>
+
+          <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="profile.html">
+
+          <i class="fa-solid fa-user"></i>
+
+          <span>My Profile</span>
+
+        </a>
+
+
+        <a href="vote.html">
+
+          <i class="fa-solid fa-square-check"></i>
+
+          <span>Vote</span>
+
+        </a>
+
+
+        <a href="announcements.html">
+
+          <i class="fa-solid fa-bullhorn"></i>
+
+          <span>Announcements</span>
+
+        </a>
+
+
+        <a href="events.html">
+
+          <i class="fa-solid fa-calendar-days"></i>
+
+          <span>Events</span>
+
+        </a>
+
+
+        <a
+          href="opportunities.html"
+          class="active"
+        >
+
+          <i class="fa-solid fa-briefcase"></i>
+
+          <span>Opportunities</span>
+
+        </a>
+
+
+        <a href="resources.html">
+
+          <i class="fa-solid fa-folder-open"></i>
+
+          <span>Resources</span>
+
+        </a>
+
+
+        <a href="documents.html">
+
+          <i class="fa-solid fa-file-lines"></i>
+
+          <span>My Documents</span>
+
+        </a>
+
+
+        <a href="settings.html">
+
+          <i class="fa-solid fa-gear"></i>
+
+          <span>Settings</span>
+
+        </a>
+
+
+      </nav>
+
+
+
+      <button
+        id="logoutButton"
+        class="logout-button"
+        type="button"
+      >
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Sign Out</span>
+
+      </button>
+
+
+    </aside>
+
+
+
+    <!-- ========================================
+         MAIN
+    ========================================= -->
+
+    <main class="member-main">
+
+
+      <!-- HEADER -->
+
+      <header class="opportunities-header">
+
+
+        <div>
+
+          <span class="page-eyebrow">
+            PNGSA MEMBER PORTAL
+          </span>
+
+          <h1>
+            Opportunities
+          </h1>
+
+          <p>
+            Explore internships, employment,
+            scholarships, research, fellowships,
+            STEM programs and volunteer opportunities.
+          </p>
+
+        </div>
+
+
+        <div class="opportunities-header-icon">
+
+          <i class="fa-solid fa-briefcase"></i>
+
+        </div>
+
+
+      </header>
+
+
+
+      <!-- SEARCH -->
+
+      <section class="search-panel">
+
+        <div class="opportunity-search">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          <input
+            type="search"
+            id="opportunitySearch"
+            placeholder="Search opportunities..."
+            autocomplete="off"
+          >
+
+        </div>
+
+      </section>
+
+
+
+      <!-- FILTERS -->
+
+      <section class="filter-section">
+
+
+        <button
+          type="button"
+          class="filter-button active"
+          data-filter="all"
+        >
+          All
+        </button>
+
+
+        <button
+          type="button"
+          class="filter-button"
+          data-filter="internship"
+        >
+          Internships
+        </button>
+
+
+        <button
+          type="button"
+          class="filter-button"
+          data-filter="job"
+        >
+          Jobs
+        </button>
+
+
+        <button
+          type="button"
+          class="filter-button"
+          data-filter="scholarship"
+        >
+          Scholarships
+        </button>
+
+
+        <button
+          type="button"
+          class="filter-button"
+          data-filter="research"
+        >
+          Research
+        </button>
+
+
+        <button
+          type="button"
+          class="filter-button"
+          data-filter="fellowship"
+        >
+          Fellowships
+        </button>
+
+
+        <button
+          type="button"
+          class="filter-button"
+          data-filter="stem"
+        >
+          STEM Programs
+        </button>
+
+
+        <button
+          type="button"
+          class="filter-button"
+          data-filter="volunteer"
+        >
+          Volunteer
+        </button>
+
+
+      </section>
+
+
+
+      <!-- FEATURED -->
+
+      <section
+        class="opportunity-section"
+        id="featuredSection"
+      >
+
+
+        <div class="section-heading">
+
+          <div>
+
+            <span class="section-label">
+              HIGHLIGHTS
+            </span>
+
+            <h2>
+              Featured Opportunities
+            </h2>
+
+            <p>
+              Recommended opportunities for members.
+            </p>
+
+          </div>
+
+
+          <i class="fa-solid fa-star"></i>
+
+        </div>
+
+
+
+        <div
+          class="opportunity-grid"
+          id="featuredOpportunities"
+        ></div>
+
+
+      </section>
+
+
+
+      <!-- ALL -->
+
+      <section class="opportunity-section">
+
+
+        <div class="section-heading">
+
+
+          <div>
+
+            <span class="section-label">
+              EXPLORE
+            </span>
+
+            <h2>
+              All Opportunities
+            </h2>
+
+            <p>
+              Browse currently published opportunities.
+            </p>
+
+          </div>
+
+
+          <span
+            class="result-count"
+            id="resultCount"
+          >
+            0 opportunities
+          </span>
+
+
+        </div>
+
+
+
+        <div
+          class="opportunity-grid"
+          id="allOpportunities"
+        ></div>
+
+
+
+        <div
+          class="empty-state"
+          id="emptyState"
+          hidden
+        >
+
+          <div>
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+          </div>
+
+          <h3>
+            No opportunities found
+          </h3>
+
+          <p>
+            Try another category or search term.
+          </p>
+
+        </div>
+
+
+      </section>
+
+
+    </main>
+
+
+  </div>
+
+
+
+  <!-- ========================================
+       DETAILS MODAL
+  ========================================= -->
+
+  <div
+    class="opportunity-modal"
+    id="opportunityModal"
+    aria-hidden="true"
+  >
+
+
+    <div
+      class="opportunity-modal-backdrop"
+      id="opportunityModalBackdrop"
+    ></div>
+
+
+
+    <div
+      class="opportunity-modal-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+
+
+      <button
+        type="button"
+        class="modal-close"
+        id="modalClose"
+        aria-label="Close"
+      >
+
+        <i class="fa-solid fa-xmark"></i>
+
+      </button>
+
+
+
+      <div class="modal-icon">
+
+        <i class="fa-solid fa-briefcase"></i>
+
+      </div>
+
+
+
+      <span
+        class="modal-type"
+        id="modalType"
+      >
+        Opportunity
+      </span>
+
+
+
+      <h2 id="modalTitle">
+        Opportunity
+      </h2>
+
+
+
+      <p
+        class="modal-organization"
+        id="modalOrganization"
+      ></p>
+
+
+
+      <div class="modal-meta">
+
+
+        <div>
+
+          <i class="fa-solid fa-location-dot"></i>
+
+          <span id="modalLocation"></span>
+
+        </div>
+
+
+        <div>
+
+          <i class="fa-solid fa-calendar"></i>
+
+          <span id="modalDeadline"></span>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="modal-badges">
+
+        <span
+          id="modalRemoteBadge"
+          hidden
+        >
+          Remote
+        </span>
+
+        <span
+          id="modalPaidBadge"
+          hidden
+        >
+          Paid
+        </span>
+
+      </div>
+
+
+
+      <div class="modal-section">
+
+        <h3>
+          About This Opportunity
+        </h3>
+
+        <p id="modalDescription"></p>
+
+      </div>
+
+
+
+      <div class="modal-section">
+
+        <h3>
+          Eligibility
+        </h3>
+
+        <p id="modalEligibility"></p>
+
+      </div>
+
+
+
+      <div class="modal-actions">
+
+
+        <button
+          type="button"
+          class="secondary-modal-button"
+          id="modalCloseButton"
+        >
+          Close
+        </button>
+
+
+
+        <a
+          href="#"
+          class="apply-button"
+          id="modalApplyButton"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          Apply / Learn More
+
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <script
+    type="module"
+    src="js/opportunities.js?v=3"
+  ></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Manage Opportunities | PNGSA Admin
+  </title>
+
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+
+  <link
+    rel="stylesheet"
+    href="css/admin.css"
+  >
+
+
+  <link
+    rel="stylesheet"
+    href="css/opportunities.css?v=2"
+  >
+
+</head>
+
+
+<body>
+
+
+  <div class="admin-layout">
+
+
+    <!-- ========================================
+         SIDEBAR
+    ========================================= -->
+
+    <aside class="sidebar">
+
+
+      <div class="sidebar-header">
+
+        <img
+          src="../images/pngsa_logo.png"
+          alt="PNGSA Logo"
+          class="sidebar-logo"
+        >
+
+        <h2>
+          PNGSA
+        </h2>
+
+        <span>
+          Admin Portal
+        </span>
+
+      </div>
+
+
+
+      <nav class="sidebar-nav">
+
+
+        <a href="dashboard.html">
+
+          <i class="fa-solid fa-chart-line"></i>
+
+          <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="members.html">
+
+          <i class="fa-solid fa-users"></i>
+
+          <span>Members</span>
+
+        </a>
+
+
+        <a href="invite-members.html">
+
+          <i class="fa-solid fa-user-plus"></i>
+
+          <span>Invite Members</span>
+
+        </a>
+
+
+        <a href="elections.html">
+
+          <i class="fa-solid fa-check-to-slot"></i>
+
+          <span>Elections</span>
+
+        </a>
+
+
+        <a href="events.html">
+
+          <i class="fa-solid fa-calendar-days"></i>
+
+          <span>Events</span>
+
+        </a>
+
+
+        <a
+          href="opportunities.html"
+          class="active"
+        >
+
+          <i class="fa-solid fa-briefcase"></i>
+
+          <span>Opportunities</span>
+
+        </a>
+
+
+        <a href="candidates.html">
+
+          <i class="fa-solid fa-user-tie"></i>
+
+          <span>Candidates</span>
+
+        </a>
+
+
+        <a href="voters.html">
+
+          <i class="fa-solid fa-user-check"></i>
+
+          <span>Eligible Voters</span>
+
+        </a>
+
+
+        <a href="results.html">
+
+          <i class="fa-solid fa-chart-column"></i>
+
+          <span>Results</span>
+
+        </a>
+
+
+        <a href="announcements.html">
+
+          <i class="fa-solid fa-bullhorn"></i>
+
+          <span>Announcements</span>
+
+        </a>
+
+
+        <a href="../index.html">
+
+          <i class="fa-solid fa-globe"></i>
+
+          <span>View Website</span>
+
+        </a>
+
+
+      </nav>
+
+
+
+      <button
+        id="logoutButton"
+        class="logout-button"
+        type="button"
+      >
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Sign Out</span>
+
+      </button>
+
+
+    </aside>
+
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ========================================= -->
+
+    <main class="admin-main">
+
+
+      <!-- ========================================
+           HEADER
+      ========================================= -->
+
+      <header class="admin-header">
+
+
+        <div>
+
+          <span class="page-eyebrow">
+            ADMIN PORTAL
+          </span>
+
+          <h1>
+            Opportunities
+          </h1>
+
+          <p>
+            Add and manage internships, jobs,
+            scholarships, fellowships, research,
+            STEM programs and volunteer opportunities.
+          </p>
+
+        </div>
+
+
+        <div class="admin-user">
+
+          <span id="adminEmail">
+            Loading...
+          </span>
+
+        </div>
+
+
+      </header>
+
+
+
+      <!-- ========================================
+           STATS
+      ========================================= -->
+
+      <section class="opportunity-stats">
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon blue">
+
+            <i class="fa-solid fa-briefcase"></i>
+
+          </div>
+
+          <div>
+
+            <span>
+              Total
+            </span>
+
+            <strong id="totalCount">
+              0
+            </strong>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon green">
+
+            <i class="fa-solid fa-eye"></i>
+
+          </div>
+
+          <div>
+
+            <span>
+              Published
+            </span>
+
+            <strong id="publishedCount">
+              0
+            </strong>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon yellow">
+
+            <i class="fa-solid fa-star"></i>
+
+          </div>
+
+          <div>
+
+            <span>
+              Featured
+            </span>
+
+            <strong id="featuredCount">
+              0
+            </strong>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon red">
+
+            <i class="fa-solid fa-file-pen"></i>
+
+          </div>
+
+          <div>
+
+            <span>
+              Drafts
+            </span>
+
+            <strong id="draftCount">
+              0
+            </strong>
+
+          </div>
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- ========================================
+           ADD / EDIT OPPORTUNITY
+      ========================================= -->
+
+      <section class="admin-panel">
+
+
+        <div class="panel-header">
+
+          <div>
+
+            <h2 id="formHeading">
+              Add Opportunity
+            </h2>
+
+            <p>
+              Add an opportunity and provide the official
+              application link members should use.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <form id="opportunityForm">
+
+
+          <input
+            type="hidden"
+            id="opportunityId"
+          >
+
+
+
+          <div class="form-grid">
+
+
+            <!-- TITLE -->
+
+            <div class="form-group full-width">
+
+              <label for="title">
+                Opportunity Title *
+              </label>
+
+              <input
+                type="text"
+                id="title"
+                required
+                placeholder="Example: GIS Internship"
+              >
+
+            </div>
+
+
+
+            <!-- PROVIDER -->
+
+            <div class="form-group">
+
+              <label for="provider">
+                Organization / Provider
+              </label>
+
+              <input
+                type="text"
+                id="provider"
+                placeholder="Example: Esri"
+              >
+
+            </div>
+
+
+
+            <!-- TYPE -->
+
+            <div class="form-group">
+
+              <label for="opportunityType">
+                Opportunity Type *
+              </label>
+
+              <select
+                id="opportunityType"
+                required
+              >
+
+                <option value="">
+                  Select type
+                </option>
+
+                <option value="internship">
+                  Internship
+                </option>
+
+                <option value="job">
+                  Job
+                </option>
+
+                <option value="scholarship">
+                  Scholarship
+                </option>
+
+                <option value="research">
+                  Research
+                </option>
+
+                <option value="fellowship">
+                  Fellowship
+                </option>
+
+                <option value="stem">
+                  STEM Program
+                </option>
+
+                <option value="volunteer">
+                  Volunteer
+                </option>
+
+              </select>
+
+            </div>
+
+
+
+            <!-- LOCATION -->
+
+            <div class="form-group">
+
+              <label for="location">
+                Location
+              </label>
+
+              <input
+                type="text"
+                id="location"
+                placeholder="Remote, Brookings, SD, PNG, etc."
+              >
+
+            </div>
+
+
+
+            <!-- DEADLINE -->
+
+            <div class="form-group">
+
+              <label for="deadline">
+                Application Deadline
+              </label>
+
+              <input
+                type="date"
+                id="deadline"
+              >
+
+            </div>
+
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group full-width">
+
+              <label for="description">
+                Description
+              </label>
+
+              <textarea
+                id="description"
+                rows="5"
+                placeholder="Describe the opportunity..."
+              ></textarea>
+
+            </div>
+
+
+
+            <!-- ELIGIBILITY -->
+
+            <div class="form-group full-width">
+
+              <label for="eligibility">
+                Eligibility
+              </label>
+
+              <textarea
+                id="eligibility"
+                rows="3"
+                placeholder="Example: Undergraduate GIS, Geography, Engineering, or STEM students..."
+              ></textarea>
+
+            </div>
+
+
+
+            <!-- APPLICATION URL -->
+
+            <div class="form-group full-width">
+
+              <label for="applicationUrl">
+                Application Link
+              </label>
+
+              <input
+                type="url"
+                id="applicationUrl"
+                placeholder="https://example.com/apply"
+              >
+
+              <small class="input-help">
+                Paste the official application or opportunity webpage.
+                Members will use this link to apply.
+              </small>
+
+            </div>
+
+
+          </div>
+
+
+
+          <!-- ========================================
+               OPTIONS
+          ========================================= -->
+
+          <div class="option-grid">
+
+
+            <label class="toggle-row">
+
+              <input
+                type="checkbox"
+                id="isRemote"
+              >
+
+              <span>
+
+                <strong>
+                  Remote
+                </strong>
+
+                <small>
+                  Can be completed remotely.
+                </small>
+
+              </span>
+
+            </label>
+
+
+
+            <label class="toggle-row">
+
+              <input
+                type="checkbox"
+                id="isPaid"
+              >
+
+              <span>
+
+                <strong>
+                  Paid
+                </strong>
+
+                <small>
+                  Opportunity includes compensation.
+                </small>
+
+              </span>
+
+            </label>
+
+
+
+            <label class="toggle-row">
+
+              <input
+                type="checkbox"
+                id="isFeatured"
+              >
+
+              <span>
+
+                <strong>
+                  Featured
+                </strong>
+
+                <small>
+                  Highlight for members.
+                </small>
+
+              </span>
+
+            </label>
+
+
+
+            <label class="toggle-row">
+
+              <input
+                type="checkbox"
+                id="published"
+                checked
+              >
+
+              <span>
+
+                <strong>
+                  Published
+                </strong>
+
+                <small>
+                  Members can see this opportunity.
+                </small>
+
+              </span>
+
+            </label>
+
+
+          </div>
+
+
+
+          <!-- MESSAGE -->
+
+          <div
+            id="formMessage"
+            class="form-message"
+          ></div>
+
+
+
+          <!-- ACTIONS -->
+
+          <div class="form-actions">
+
+
+            <button
+              type="button"
+              class="secondary-button"
+              id="cancelEditButton"
+              hidden
+            >
+              Cancel Edit
+            </button>
+
+
+
+            <button
+              type="submit"
+              class="primary-button"
+              id="saveButton"
+            >
+
+              <i class="fa-solid fa-plus"></i>
+
+              <span>
+                Add Opportunity
+              </span>
+
+            </button>
+
+
+          </div>
+
+
+        </form>
+
+
+      </section>
+
+
+
+      <!-- ========================================
+           MANAGE OPPORTUNITIES
+      ========================================= -->
+
+      <section class="admin-panel">
+
+
+        <div class="panel-header list-header">
+
+
+          <div>
+
+            <h2>
+              Manage Opportunities
+            </h2>
+
+            <p>
+              Edit, feature, publish, unpublish or remove opportunities.
+            </p>
+
+          </div>
+
+
+
+          <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+              type="search"
+              id="opportunitySearch"
+              placeholder="Search opportunities..."
+            >
+
+          </div>
+
+
+        </div>
+
+
+
+        <div
+          id="opportunityList"
+          class="opportunity-list"
+        >
+
+          <div class="loading-state">
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            Loading opportunities...
+
+          </div>
+
+        </div>
+
+
+      </section>
+
+
+    </main>
+
+
+  </div>
+
+
+
+  <!-- ========================================
+       DELETE MODAL
+  ========================================= -->
+
+  <div
+    id="deleteModal"
+    class="delete-modal"
+  >
+
+
+    <div class="delete-modal-card">
+
+
+      <div class="delete-icon">
+
+        <i class="fa-solid fa-trash"></i>
+
+      </div>
+
+
+      <h2>
+        Delete Opportunity?
+      </h2>
+
+
+      <p>
+        This action cannot be undone.
+      </p>
+
+
+      <div class="delete-actions">
+
+
+        <button
+          type="button"
+          class="secondary-button"
+          id="cancelDeleteButton"
+        >
+          Cancel
+        </button>
+
+
+        <button
+          type="button"
+          class="delete-button"
+          id="confirmDeleteButton"
+        >
+          Delete
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <script
+    type="module"
+    src="js/opportunities.js?v=2"
+  ></script>
+
+
+</body>
+
+</html>
