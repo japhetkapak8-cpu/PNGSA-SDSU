@@ -1,0 +1,602 @@
+/* ========================================
+   PNGSA ADMIN
+   INVITE MEMBERS
+======================================== */
+
+
+/* ========================================
+   PAGE
+======================================== */
+
+.invite-page {
+
+  width: 100%;
+  max-width: 900px;
+
+  padding: 30px 0 60px;
+
+}
+
+
+/* ========================================
+   PAGE HEADER
+======================================== */
+
+.invite-header {
+
+  margin-bottom: 22px;
+
+}
+
+
+.invite-header h2 {
+
+  margin: 0 0 6px;
+
+  color: #111827;
+
+  font-size: 24px;
+  font-weight: 800;
+
+}
+
+
+.invite-header p {
+
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+  line-height: 1.6;
+
+}
+
+
+/* ========================================
+   MAIN CARD
+======================================== */
+
+.invite-card {
+
+  position: relative;
+
+  width: 100%;
+
+  padding: 30px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.04);
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+}
+
+
+/* GOLD ACCENT */
+
+.invite-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: #f4c430;
+
+}
+
+
+/* ========================================
+   CARD HEADER
+======================================== */
+
+.invite-card-header {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+}
+
+
+.invite-card-header h2 {
+
+  margin: 0 0 5px;
+
+  color: #111827;
+
+  font-size: 20px;
+  font-weight: 800;
+
+}
+
+
+.invite-card-header p {
+
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+}
+
+
+/* ========================================
+   ICON
+======================================== */
+
+.invite-icon {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 12px;
+
+  background: #fff8dc;
+
+  color: #8b0000;
+
+  font-size: 20px;
+
+}
+
+
+/* ========================================
+   DIVIDER
+======================================== */
+
+.invite-divider {
+
+  width: 100%;
+  height: 1px;
+
+  margin: 26px 0;
+
+  background: #e5e7eb;
+
+}
+
+
+/* ========================================
+   FORM
+======================================== */
+
+#inviteMemberForm {
+
+  width: 100%;
+
+}
+
+
+.form-group {
+
+  margin-bottom: 22px;
+
+}
+
+
+.form-group label {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 8px;
+
+  color: #374151;
+
+  font-size: 13px;
+  font-weight: 700;
+
+}
+
+
+.form-group label i {
+
+  color: #8b0000;
+
+}
+
+
+/* ========================================
+   INPUT
+======================================== */
+
+.form-group input {
+
+  width: 100%;
+
+  padding: 14px 15px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #111827;
+
+  font-family: inherit;
+  font-size: 15px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+}
+
+
+.form-group input::placeholder {
+
+  color: #9ca3af;
+
+}
+
+
+.form-group input:focus {
+
+  border-color: #8b0000;
+
+  box-shadow:
+    0 0 0 3px rgba(139, 0, 0, 0.10);
+
+}
+
+
+/* ========================================
+   INPUT HELP
+======================================== */
+
+.input-help {
+
+  display: block;
+
+  margin-top: 7px;
+
+  color: #9ca3af;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+}
+
+
+/* ========================================
+   BUTTON
+======================================== */
+
+.invite-button {
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  min-width: 190px;
+
+  padding: 14px 22px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #8b0000;
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+
+}
+
+
+.invite-button:hover {
+
+  background: #a00000;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 16px rgba(139, 0, 0, 0.18);
+
+}
+
+
+.invite-button:disabled {
+
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+  transform: none;
+  box-shadow: none;
+
+}
+
+
+/* ========================================
+   MESSAGE
+======================================== */
+
+.invite-message {
+
+  display: none;
+
+  margin-top: 18px;
+
+  padding: 13px 15px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  line-height: 1.5;
+
+}
+
+
+.invite-message.success {
+
+  display: block;
+
+  color: #166534;
+
+  background: #f0fdf4;
+
+  border: 1px solid #bbf7d0;
+
+}
+
+
+.invite-message.error {
+
+  display: block;
+
+  color: #991b1b;
+
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+
+}
+
+
+/* ========================================
+   INFORMATION BOX
+======================================== */
+
+.invite-information {
+
+  display: flex;
+
+  gap: 14px;
+
+  margin-top: 30px;
+
+  padding: 18px;
+
+  background: #f9fafb;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+}
+
+
+.information-icon {
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: center;
+
+  width: 26px;
+
+  color: #8b0000;
+
+  font-size: 18px;
+
+  flex-shrink: 0;
+
+}
+
+
+.invite-information strong {
+
+  color: #111827;
+
+  font-size: 13px;
+
+}
+
+
+.invite-information p {
+
+  margin: 5px 0 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+  line-height: 1.7;
+
+}
+
+
+/* ========================================
+   SECURITY BOX
+======================================== */
+
+.invite-security {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 12px;
+
+  margin-top: 16px;
+
+  padding: 16px 18px;
+
+  background: #fffdf2;
+
+  border: 1px solid #f5e6a5;
+  border-radius: 9px;
+
+}
+
+
+.invite-security > i {
+
+  margin-top: 2px;
+
+  color: #c49a00;
+
+  font-size: 17px;
+
+}
+
+
+.invite-security strong {
+
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #5e4b00;
+
+  font-size: 12px;
+
+}
+
+
+.invite-security p {
+
+  margin: 0;
+
+  color: #7c6a28;
+
+  font-size: 12px;
+  line-height: 1.6;
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .invite-page {
+
+    padding-top: 20px;
+
+  }
+
+
+  .invite-card {
+
+    padding: 24px 18px;
+
+  }
+
+
+  .invite-card-header {
+
+    align-items: flex-start;
+
+  }
+
+
+  .invite-card-header h2 {
+
+    font-size: 18px;
+
+  }
+
+
+  .invite-button {
+
+    width: 100%;
+
+  }
+
+}
+
+
+/* ========================================
+   SMALL PHONE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .invite-card-header {
+
+    gap: 12px;
+
+  }
+
+
+  .invite-icon {
+
+    width: 42px;
+    height: 42px;
+
+    font-size: 17px;
+
+  }
+
+
+  .invite-information {
+
+    padding: 15px;
+
+  }
+
+
+  .invite-security {
+
+    padding: 14px;
+
+  }
+
+}

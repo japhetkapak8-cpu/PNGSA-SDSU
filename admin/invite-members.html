@@ -2,232 +2,492 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Invite Member | PNGSA Admin</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <!-- Your existing admin CSS -->
-  <link rel="stylesheet" href="css/admin.css">
+  <title>
+    Invite Member | PNGSA Admin
+  </title>
 
-  <style>
-    .invite-page {
-      max-width: 750px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
 
-    .invite-header {
-      margin-bottom: 30px;
-    }
+  <!-- FONT AWESOME -->
 
-    .invite-header h1 {
-      margin-bottom: 8px;
-    }
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
 
-    .invite-header p {
-      color: #777;
-      line-height: 1.6;
-    }
 
-    .invite-card {
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
-    }
+  <!-- ADMIN STYLES -->
 
-    .invite-card h2 {
-      margin-top: 0;
-      margin-bottom: 8px;
-    }
+  <link
+    rel="stylesheet"
+    href="css/admin.css"
+  >
 
-    .invite-description {
-      color: #777;
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
 
-    .form-group {
-      margin-bottom: 22px;
-    }
+  <!-- INVITE MEMBER STYLES -->
 
-    .form-group label {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 14px 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
-      box-sizing: border-box;
-      outline: none;
-    }
-
-    .form-group input:focus {
-      border-color: #8b0000;
-    }
-
-    .invite-button {
-      width: 100%;
-      border: none;
-      border-radius: 8px;
-      padding: 15px 20px;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-
-      background: #8b0000;
-      color: white;
-    }
-
-    .invite-button:hover {
-      opacity: 0.92;
-    }
-
-    .invite-button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .invite-message {
-      display: none;
-      margin-top: 20px;
-      padding: 14px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .invite-message.success {
-      display: block;
-      background: #ecfdf3;
-      border: 1px solid #a7e8bd;
-      color: #166534;
-    }
-
-    .invite-message.error {
-      display: block;
-      background: #fff1f2;
-      border: 1px solid #fecdd3;
-      color: #9f1239;
-    }
-
-    .invite-information {
-      margin-top: 25px;
-      padding: 18px;
-      background: #fafafa;
-      border-radius: 10px;
-      border-left: 4px solid #ffd700;
-    }
-
-    .invite-information strong {
-      display: block;
-      margin-bottom: 7px;
-    }
-
-    .invite-information p {
-      margin: 0;
-      color: #666;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-  </style>
+  <link
+    rel="stylesheet"
+    href="css/invite-members.css"
+  >
 
 </head>
 
 
 <body>
 
-  <main class="invite-page">
 
-    <div class="invite-header">
-
-      <h1>Invite Member</h1>
-
-      <p>
-        Send a secure PNGSA Member Portal invitation
-        to a new member.
-      </p>
-
-    </div>
+  <div class="admin-layout">
 
 
-    <div class="invite-card">
+    <!-- ========================================
+         SIDEBAR
+    ========================================= -->
 
-      <h2>New Member Invitation</h2>
-
-      <p class="invite-description">
-        Enter the member's email address below.
-        They will receive an email with a secure activation
-        link to create their password.
-      </p>
+    <aside class="sidebar">
 
 
-      <form id="inviteMemberForm">
+      <div class="sidebar-header">
 
-        <div class="form-group">
+        <img
+          src="../images/pngsa_logo.png"
+          alt="PNGSA Logo"
+          class="sidebar-logo"
+        >
 
-          <label for="inviteEmail">
-            Member Email Address
-          </label>
+        <h2>
+          PNGSA
+        </h2>
 
-          <input
-            type="email"
-            id="inviteEmail"
-            name="email"
-            placeholder="name@jacks.sdstate.edu"
-            autocomplete="email"
-            required
-          >
+        <span>
+          Admin Portal
+        </span>
+
+      </div>
+
+
+
+      <!-- NAVIGATION -->
+
+      <nav class="sidebar-nav">
+
+
+        <a href="dashboard.html">
+
+          <i class="fa-solid fa-chart-line"></i>
+
+          <span>
+            Dashboard
+          </span>
+
+        </a>
+
+
+        <a href="members.html">
+
+          <i class="fa-solid fa-users"></i>
+
+          <span>
+            Members
+          </span>
+
+        </a>
+
+
+        <!-- INVITE MEMBER -->
+
+        <a
+          href="invite-members.html"
+          class="active"
+        >
+
+          <i class="fa-solid fa-user-plus"></i>
+
+          <span>
+            Invite Member
+          </span>
+
+        </a>
+
+
+        <a href="elections.html">
+
+          <i class="fa-solid fa-check-to-slot"></i>
+
+          <span>
+            Elections
+          </span>
+
+        </a>
+
+
+        <a href="events.html">
+
+          <i class="fa-solid fa-calendar-days"></i>
+
+          <span>
+            Events
+          </span>
+
+        </a>
+
+
+        <a href="candidates.html">
+
+          <i class="fa-solid fa-user-tie"></i>
+
+          <span>
+            Candidates
+          </span>
+
+        </a>
+
+
+        <a href="voters.html">
+
+          <i class="fa-solid fa-user-check"></i>
+
+          <span>
+            Eligible Voters
+          </span>
+
+        </a>
+
+
+        <a href="results.html">
+
+          <i class="fa-solid fa-chart-column"></i>
+
+          <span>
+            Results
+          </span>
+
+        </a>
+
+
+        <a href="announcements.html">
+
+          <i class="fa-solid fa-bullhorn"></i>
+
+          <span>
+            Announcements
+          </span>
+
+        </a>
+
+
+        <a href="../index.html">
+
+          <i class="fa-solid fa-globe"></i>
+
+          <span>
+            View Website
+          </span>
+
+        </a>
+
+
+      </nav>
+
+
+
+      <!-- LOGOUT -->
+
+      <button
+        id="logoutButton"
+        class="logout-button"
+        type="button"
+      >
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        Sign Out
+
+      </button>
+
+
+    </aside>
+
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ========================================= -->
+
+    <main class="admin-main">
+
+
+      <!-- ========================================
+           HEADER
+      ========================================= -->
+
+      <header class="admin-header">
+
+
+        <div>
+
+          <h1>
+            Invite Member
+          </h1>
+
+          <p>
+            Papua New Guinea Student Association
+          </p>
 
         </div>
 
 
-        <button
-          type="submit"
-          id="inviteButton"
-          class="invite-button"
-        >
-          Send Invitation
-        </button>
+        <div class="admin-user">
+
+          <span id="adminEmail">
+            Loading...
+          </span>
+
+        </div>
 
 
-        <div
-          id="inviteMessage"
-          class="invite-message"
-        ></div>
-
-      </form>
+      </header>
 
 
-      <div class="invite-information">
 
-        <strong>What happens next?</strong>
+      <!-- ========================================
+           PAGE CONTENT
+      ========================================= -->
 
-        <p>
-          The member receives a PNGSA invitation email.
-          After clicking Activate My Account, Supabase
-          verifies the invitation and redirects them to
-          the PNGSA password setup page.
-        </p>
+      <section class="invite-page">
 
-      </div>
 
-    </div>
+        <!-- PAGE INTRO -->
 
-  </main>
+        <div class="invite-header">
 
+          <div>
+
+            <h2>
+              Member Invitation
+            </h2>
+
+            <p>
+              Send a secure invitation to a new PNGSA
+              Member Portal user.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ========================================
+             INVITATION CARD
+        ========================================= -->
+
+        <div class="invite-card">
+
+
+          <div class="invite-card-header">
+
+
+            <div class="invite-icon">
+
+              <i class="fa-solid fa-envelope-open-text"></i>
+
+            </div>
+
+
+            <div>
+
+              <h2>
+                New Member Invitation
+              </h2>
+
+              <p>
+                Invite a member to create their PNGSA
+                Member Portal account.
+              </p>
+
+            </div>
+
+
+          </div>
+
+
+
+          <div class="invite-divider"></div>
+
+
+
+          <!-- ========================================
+               FORM
+          ========================================= -->
+
+          <form id="inviteMemberForm">
+
+
+            <div class="form-group">
+
+
+              <label for="inviteEmail">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                Member Email Address
+
+              </label>
+
+
+              <input
+                type="email"
+                id="inviteEmail"
+                name="email"
+                placeholder="name@jacks.sdstate.edu"
+                autocomplete="email"
+                required
+              >
+
+
+              <small class="input-help">
+
+                Enter the email address that should receive
+                access to the PNGSA Member Portal.
+
+              </small>
+
+
+            </div>
+
+
+
+            <!-- SEND BUTTON -->
+
+            <button
+              type="submit"
+              id="inviteButton"
+              class="invite-button"
+            >
+
+              <i class="fa-solid fa-paper-plane"></i>
+
+              <span>
+                Send Invitation
+              </span>
+
+            </button>
+
+
+
+            <!-- RESPONSE MESSAGE -->
+
+            <div
+              id="inviteMessage"
+              class="invite-message"
+            ></div>
+
+
+          </form>
+
+
+
+          <!-- ========================================
+               WHAT HAPPENS NEXT
+          ========================================= -->
+
+          <div class="invite-information">
+
+
+            <div class="information-icon">
+
+              <i class="fa-solid fa-circle-info"></i>
+
+            </div>
+
+
+            <div>
+
+              <strong>
+                What happens next?
+              </strong>
+
+
+              <p>
+
+                The member will receive a PNGSA invitation
+                email containing a secure activation link.
+
+                After clicking
+                <strong>Activate My Account</strong>,
+                Supabase verifies the invitation and sends
+                the member to the PNGSA password setup page.
+
+              </p>
+
+            </div>
+
+
+          </div>
+
+
+
+          <!-- ========================================
+               SECURITY NOTE
+          ========================================= -->
+
+          <div class="invite-security">
+
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+
+            <div>
+
+              <strong>
+                Secure account activation
+              </strong>
+
+
+              <p>
+
+                Invitation links are generated by Supabase
+                Authentication and should only be used by
+                the intended recipient.
+
+              </p>
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+    </main>
+
+
+  </div>
+
+
+
+  <!-- ========================================
+       JAVASCRIPT
+  ========================================= -->
 
   <script
     type="module"
-    src="js/invite-member.js">
-  </script>
+    src="js/invite-members.js?v=1"
+  ></script>
+
 
 </body>
 

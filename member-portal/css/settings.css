@@ -1,0 +1,690 @@
+/* =====================================================
+   PNGSA MEMBER SETTINGS
+===================================================== */
+
+.settings-main {
+    flex: 1;
+
+    min-height: 100vh;
+
+    margin-left: 245px;
+
+    width: calc(100% - 245px);
+
+    padding: 34px 36px 60px;
+
+    background: #f4f7fa;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.settings-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+.settings-eyebrow {
+    margin: 0 0 6px;
+
+    color: #1476c9;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+
+.settings-header h1 {
+    margin: 0 0 7px;
+
+    color: #082a55;
+
+    font-size: 32px;
+}
+
+
+.settings-header p:not(.settings-eyebrow) {
+    margin: 0;
+
+    color: #68798a;
+
+    font-size: 14px;
+}
+
+
+.settings-header-icon {
+    width: 58px;
+
+    height: 58px;
+
+    min-width: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #e7f3ff;
+
+    color: #1476c9;
+
+    border-radius: 15px;
+
+    font-size: 23px;
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.settings-card {
+    margin-bottom: 22px;
+
+    padding: 25px;
+
+    background: #ffffff;
+
+    border: 1px solid #e0e7ee;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 14px
+        rgba(15, 35, 55, 0.04);
+}
+
+
+.settings-card-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 24px;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid #e8edf2;
+}
+
+
+.settings-card-icon {
+    width: 45px;
+
+    height: 45px;
+
+    min-width: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #e8f4ff;
+
+    color: #1476c9;
+
+    font-size: 18px;
+}
+
+
+.settings-card-icon.security {
+    background: #edf7ee;
+
+    color: #29934a;
+}
+
+
+.settings-card-icon.account {
+    background: #f3ecff;
+
+    color: #7555c7;
+}
+
+
+.settings-card-header h2 {
+    margin: 0 0 4px;
+
+    color: #082a55;
+
+    font-size: 19px;
+}
+
+
+.settings-card-header p {
+    margin: 0;
+
+    color: #738395;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   PHOTO
+===================================================== */
+
+.profile-photo-setting {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 24px;
+
+    padding: 15px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e4ebf1;
+
+    border-radius: 11px;
+}
+
+
+.settings-avatar {
+    position: relative;
+
+    width: 70px;
+
+    height: 70px;
+
+    min-width: 70px;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background: #e5eef7;
+}
+
+
+.settings-avatar img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.settings-avatar-fallback {
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #1476c9;
+
+    font-size: 25px;
+}
+
+
+.profile-photo-setting strong {
+    color: #23384d;
+
+    font-size: 14px;
+}
+
+
+.profile-photo-setting p {
+    margin: 3px 0 7px;
+
+    color: #7c8c9c;
+
+    font-size: 11px;
+}
+
+
+.small-settings-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: #1476c9;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.settings-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+.settings-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.settings-field label {
+    color: #34495e;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.settings-field input,
+.settings-field select,
+.settings-field textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 11px 12px;
+
+    border: 1px solid #ccd8e2;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #34495e;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.settings-field input,
+.settings-field select {
+    height: 42px;
+}
+
+
+.settings-field textarea {
+    resize: vertical;
+
+    min-height: 120px;
+
+    line-height: 1.6;
+}
+
+
+.settings-field input:focus,
+.settings-field select:focus,
+.settings-field textarea:focus {
+    border-color: #1476c9;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(20, 118, 201, 0.1);
+}
+
+
+.settings-field input:disabled {
+    background: #f3f6f8;
+
+    color: #8292a0;
+
+    cursor: not-allowed;
+}
+
+
+.settings-field small {
+    color: #8292a0;
+
+    font-size: 10px;
+}
+
+
+.settings-full-width {
+    margin-top: 19px;
+}
+
+
+.character-counter {
+    text-align: right;
+
+    color: #8a99a8;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   PASSWORD
+===================================================== */
+
+.password-form {
+    max-width: 650px;
+
+    display: grid;
+
+    gap: 18px;
+}
+
+
+.password-input-wrapper {
+    position: relative;
+}
+
+
+.password-input-wrapper input {
+    padding-right: 45px;
+}
+
+
+.password-toggle {
+    position: absolute;
+
+    top: 50%;
+
+    right: 7px;
+
+    width: 32px;
+
+    height: 32px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    background: transparent;
+
+    color: #788a9b;
+
+    cursor: pointer;
+}
+
+
+.password-toggle:hover {
+    color: #1476c9;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.settings-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 22px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #edf1f5;
+}
+
+
+.primary-settings-button {
+    min-height: 40px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 17px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #1476c9;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.18s ease;
+}
+
+
+.primary-settings-button:hover {
+    background: #0e5f9f;
+}
+
+
+.primary-settings-button:disabled {
+    opacity: 0.6;
+
+    cursor: wait;
+}
+
+
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+.settings-message {
+    display: none;
+
+    margin-bottom: 18px;
+
+    padding: 11px 13px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+}
+
+
+.settings-message.success {
+    display: block;
+
+    background: #edf9f0;
+
+    border: 1px solid #bfe3c8;
+
+    color: #24733b;
+}
+
+
+.settings-message.error {
+    display: block;
+
+    background: #fff0f0;
+
+    border: 1px solid #efc2c2;
+
+    color: #a72c2c;
+}
+
+
+/* =====================================================
+   ACCOUNT INFO
+===================================================== */
+
+.account-information-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+.account-information-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 14px;
+
+    border: 1px solid #e5ebf0;
+
+    border-radius: 9px;
+
+    background: #fafcfd;
+}
+
+
+.account-information-row span {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #708295;
+
+    font-size: 11px;
+}
+
+
+.account-information-row span i {
+    color: #1476c9;
+}
+
+
+.account-information-row strong {
+    color: #2d4358;
+
+    font-size: 11px;
+
+    text-align: right;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+    .settings-main {
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 26px 20px;
+    }
+
+
+    .settings-grid,
+    .account-information-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .settings-main {
+        padding: 20px 14px;
+    }
+
+
+    .settings-header h1 {
+        font-size: 27px;
+    }
+
+
+    .settings-header-icon {
+        display: none;
+    }
+
+
+    .settings-card {
+        padding: 18px;
+    }
+
+
+    .profile-photo-setting {
+        align-items: flex-start;
+    }
+
+
+    .settings-actions {
+        justify-content: stretch;
+    }
+
+
+    .primary-settings-button {
+        width: 100%;
+    }
+
+
+    .account-information-row {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .account-information-row strong {
+        text-align: left;
+    }
+
+}

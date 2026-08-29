@@ -2,377 +2,766 @@ import { supabase }
 from "../../js/supabase.js";
 
 
+// =====================================================
+// ELEMENTS
+// =====================================================
+
 const form =
-  document.getElementById(
-    "setPasswordForm"
-  );
+    document.getElementById(
+        "setPasswordForm"
+    );
 
 
 const statusBox =
-  document.getElementById(
-    "activationStatus"
-  );
+    document.getElementById(
+        "activationStatus"
+    );
 
 
 const message =
-  document.getElementById(
-    "passwordMessage"
-  );
+    document.getElementById(
+        "passwordMessage"
+    );
 
 
 const activateButton =
-  document.getElementById(
-    "activateButton"
-  );
+    document.getElementById(
+        "activateButton"
+    );
 
 
-// ========================================
-// VERIFY INVITATION SESSION
-// ========================================
-
-async function verifyInvitation() {
-
-  /*
-    Supabase normally converts the invite link
-    into an authenticated recovery/invite session.
-  */
-
-  const {
-    data: { session },
-    error
-  } =
-    await supabase.auth.getSession();
+const newPasswordInput =
+    document.getElementById(
+        "newPassword"
+    );
 
 
-  if (
-    error ||
-    !session
-  ) {
-
-    statusBox.innerHTML = `
-
-      <div class="status-error">
-
-        <i class="fa-solid fa-circle-exclamation"></i>
-
-        <div>
-
-          <strong>
-            Invitation link unavailable
-          </strong>
-
-          <p>
-            This invitation link may have expired or already been used.
-            Please request a new invitation.
-          </p>
-
-        </div>
-
-      </div>
-
-    `;
-
-    return false;
-  }
+const confirmPasswordInput =
+    document.getElementById(
+        "confirmPassword"
+    );
 
 
-  statusBox.innerHTML = `
+// =====================================================
+// STATE
+// =====================================================
 
-    <div class="status-success">
-
-      <i class="fa-solid fa-circle-check"></i>
-
-      <div>
-
-        <strong>
-          Invitation verified
-        </strong>
-
-        <p>
-          Create your password to finish activating your account.
-        </p>
-
-      </div>
-
-    </div>
-
-  `;
-
-
-  form.hidden =
+let invitationVerified =
     false;
 
 
-  return true;
+// =====================================================
+// START
+// =====================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    initializeActivation
+);
+
+
+// =====================================================
+// INITIALIZE
+// =====================================================
+
+async function initializeActivation() {
+
+    form.hidden =
+        true;
+
+
+    clearMessage();
+
+
+    await verifyInvitation();
+
 }
 
 
-// ========================================
+// =====================================================
+// VERIFY INVITATION
+// =====================================================
+
+async function verifyInvitation() {
+
+    try {
+
+        // =================================================
+        // CHECK FOR ERROR RETURNED BY SUPABASE
+        // =================================================
+
+        const hashParams =
+            new URLSearchParams(
+                window.location.hash.substring(1)
+            );
+
+
+        const searchParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const returnedErrorCode =
+            hashParams.get(
+                "error_code"
+            )
+            ||
+            searchParams.get(
+                "error_code"
+            );
+
+
+        const returnedErrorDescription =
+            hashParams.get(
+                "error_description"
+            )
+            ||
+            searchParams.get(
+                "error_description"
+            );
+
+
+        if (returnedErrorCode) {
+
+            console.error(
+                "Supabase invitation error:",
+                returnedErrorCode,
+                returnedErrorDescription
+            );
+
+
+            showInvitationError(
+                returnedErrorDescription
+                ||
+                "This invitation link is invalid or has expired."
+            );
+
+
+            return false;
+        }
+
+
+        // =================================================
+        // PKCE CALLBACK
+        // =================================================
+
+        const code =
+            searchParams.get(
+                "code"
+            );
+
+
+        if (code) {
+
+            const {
+                data,
+                error
+            } =
+                await supabase.auth
+                    .exchangeCodeForSession(
+                        code
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Unable to exchange invitation code:",
+                    error
+                );
+
+
+                showInvitationError(
+                    error.message
+                    ||
+                    "This invitation link is invalid or has expired."
+                );
+
+
+                return false;
+            }
+
+
+            if (
+                !data?.session
+                ||
+                !data?.user
+            ) {
+
+                showInvitationError(
+                    "The invitation could not be verified."
+                );
+
+
+                return false;
+            }
+
+
+            // Remove the one-time auth code from the URL
+            // after successful exchange.
+
+            window.history.replaceState(
+                {},
+                document.title,
+                window.location.pathname
+            );
+
+        }
+
+
+        // =================================================
+        // GET SESSION
+        // =================================================
+
+        const {
+            data: {
+                session
+            },
+            error
+        } =
+            await supabase.auth
+                .getSession();
+
+
+        if (error) {
+
+            console.error(
+                "Session verification error:",
+                error
+            );
+
+
+            showInvitationError(
+                error.message
+                ||
+                "Unable to verify this invitation."
+            );
+
+
+            return false;
+        }
+
+
+        if (!session) {
+
+            showInvitationError(
+                "This invitation link may have expired, already been used, or was not completed correctly. Please request a new invitation."
+            );
+
+
+            return false;
+        }
+
+
+        // =================================================
+        // VALID INVITATION SESSION
+        // =================================================
+
+        invitationVerified =
+            true;
+
+
+        statusBox.innerHTML = `
+
+            <div class="status-success">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <div>
+
+                    <strong>
+                        Invitation verified
+                    </strong>
+
+                    <p>
+                        Create your password to finish activating your account.
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        form.hidden =
+            false;
+
+
+        newPasswordInput
+            ?.focus();
+
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Unexpected invitation verification error:",
+            error
+        );
+
+
+        showInvitationError(
+            "Unable to verify the invitation. Please request a new invitation."
+        );
+
+
+        return false;
+    }
+
+}
+
+
+// =====================================================
 // SET PASSWORD
-// ========================================
+// =====================================================
 
 form.addEventListener(
-  "submit",
-  async function(event) {
+    "submit",
+    async function(
+        event
+    ) {
 
-    event.preventDefault();
+        event.preventDefault();
 
+
+        clearMessage();
+
+
+        if (!invitationVerified) {
+
+            showError(
+                "Your invitation has not been verified."
+            );
+
+
+            return;
+        }
+
+
+        const password =
+            newPasswordInput.value;
+
+
+        const confirmation =
+            confirmPasswordInput.value;
+
+
+        // =================================================
+        // VALIDATION
+        // =================================================
+
+        if (
+            password.length <
+            8
+        ) {
+
+            showError(
+                "Password must be at least 8 characters long."
+            );
+
+
+            return;
+        }
+
+
+        if (
+            password !==
+            confirmation
+        ) {
+
+            showError(
+                "The passwords do not match."
+            );
+
+
+            return;
+        }
+
+
+        activateButton.disabled =
+            true;
+
+
+        activateButton.innerHTML = `
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            Activating Account...
+
+        `;
+
+
+        try {
+
+            // =================================================
+            // CONFIRM SESSION STILL EXISTS
+            // =================================================
+
+            const {
+                data: {
+                    session
+                },
+                error: sessionError
+            } =
+                await supabase.auth
+                    .getSession();
+
+
+            if (
+                sessionError
+                ||
+                !session
+            ) {
+
+                throw new Error(
+                    "Your activation session has expired. Please request a new invitation."
+                );
+            }
+
+
+            // =================================================
+            // SET PASSWORD
+            // =================================================
+
+            const {
+                data,
+                error
+            } =
+                await supabase.auth
+                    .updateUser({
+
+                        password:
+                            password
+
+                    });
+
+
+            if (error) {
+
+                throw error;
+            }
+
+
+            if (!data?.user) {
+
+                throw new Error(
+                    "Unable to complete account activation."
+                );
+            }
+
+
+            // =================================================
+            // SUCCESS
+            // =================================================
+
+            message.textContent =
+                "Account activated successfully.";
+
+
+            message.className =
+                "form-message success";
+
+
+            statusBox.innerHTML = `
+
+                <div class="status-success">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <div>
+
+                        <strong>
+                            Account activated
+                        </strong>
+
+                        <p>
+                            Your password has been created successfully.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            activateButton.innerHTML = `
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Account Activated
+
+            `;
+
+
+            // =================================================
+            // REDIRECT
+            // =================================================
+
+            setTimeout(
+                () => {
+
+                    window.location.replace(
+                        "profile.html"
+                    );
+
+                },
+                1000
+            );
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Unable to set password:",
+                error
+            );
+
+
+            showError(
+                error?.message
+                ||
+                "Unable to activate your account."
+            );
+
+
+            resetButton();
+        }
+
+    }
+);
+
+
+// =====================================================
+// INVITATION ERROR
+// =====================================================
+
+function showInvitationError(
+    text
+) {
+
+    invitationVerified =
+        false;
+
+
+    form.hidden =
+        true;
+
+
+    statusBox.innerHTML = `
+
+        <div class="status-error">
+
+            <i class="fa-solid fa-circle-exclamation"></i>
+
+            <div>
+
+                <strong>
+                    Invitation link unavailable
+                </strong>
+
+                <p>
+                    ${escapeHTML(
+                        text
+                    )}
+                </p>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+// =====================================================
+// FORM ERROR
+// =====================================================
+
+function showError(
+    text
+) {
 
     message.textContent =
-      "";
+        text;
 
 
-    const password =
-      document
-        .getElementById(
-          "newPassword"
-        )
-        .value;
+    message.className =
+        "form-message error";
+
+}
 
 
-    const confirmation =
-      document
-        .getElementById(
-          "confirmPassword"
-        )
-        .value;
+// =====================================================
+// CLEAR MESSAGE
+// =====================================================
+
+function clearMessage() {
+
+    message.textContent =
+        "";
 
 
-    if (
-      password.length < 8
-    ) {
+    message.className =
+        "form-message";
 
-      showError(
-        "Password must be at least 8 characters long."
-      );
-
-      return;
-    }
+}
 
 
-    if (
-      password !== confirmation
-    ) {
+// =====================================================
+// RESET BUTTON
+// =====================================================
 
-      showError(
-        "The passwords do not match."
-      );
-
-      return;
-    }
-
+function resetButton() {
 
     activateButton.disabled =
-      true;
+        false;
 
 
     activateButton.innerHTML = `
 
-      <i class="fa-solid fa-spinner fa-spin"></i>
+        <i class="fa-solid fa-shield-halved"></i>
 
-      Activating Account...
+        Activate Account
 
     `;
 
-
-    const {
-      data,
-      error
-    } =
-      await supabase.auth.updateUser({
-
-        password:
-          password
-
-      });
+}
 
 
-    if (error) {
+// =====================================================
+// PASSWORD VISIBILITY
+// =====================================================
 
-      console.error(
-        "Unable to set password:",
-        error
-      );
+function setupPasswordToggle(
+    buttonId,
+    inputId
+) {
+
+    const button =
+        document.getElementById(
+            buttonId
+        );
 
 
-      showError(
-        error.message ||
-        "Unable to activate your account."
-      );
-
-
-      resetButton();
-
-      return;
-    }
+    const input =
+        document.getElementById(
+            inputId
+        );
 
 
     if (
-      !data.user
+        !button
+        ||
+        !input
     ) {
 
-      showError(
-        "Unable to complete account activation."
-      );
-
-      resetButton();
-
-      return;
+        return;
     }
 
 
-    message.textContent =
-      "Account activated successfully.";
+    button.addEventListener(
+        "click",
+        function() {
 
-    message.className =
-      "form-message success";
+            const icon =
+                button.querySelector(
+                    "i"
+                );
 
 
-    /*
-      After setting the password, send the member
-      to their profile.
+            const currentlyHidden =
+                input.type ===
+                "password";
 
-      Your profile page can then collect any
-      missing student details.
-    */
 
-    setTimeout(
-      () => {
+            input.type =
+                currentlyHidden
+                    ?
+                    "text"
+                    :
+                    "password";
 
-        window.location.replace(
-          "profile.html"
-        );
 
-      },
-      900
+            if (icon) {
+
+                icon.className =
+                    currentlyHidden
+                        ?
+                        "fa-solid fa-eye-slash"
+                        :
+                        "fa-solid fa-eye";
+            }
+
+        }
     );
 
-  }
-);
-
-
-// ========================================
-// ERROR MESSAGE
-// ========================================
-
-function showError(text) {
-
-  message.textContent =
-    text;
-
-
-  message.className =
-    "form-message error";
-
 }
 
 
-// ========================================
-// RESET BUTTON
-// ========================================
+// =====================================================
+// ESCAPE HTML
+// =====================================================
 
-function resetButton() {
-
-  activateButton.disabled =
-    false;
-
-
-  activateButton.innerHTML = `
-
-    <i class="fa-solid fa-shield-halved"></i>
-
-    Activate Account
-
-  `;
-
-}
-
-
-// ========================================
-// PASSWORD VISIBILITY
-// ========================================
-
-function setupPasswordToggle(
-  buttonId,
-  inputId
+function escapeHTML(
+    value
 ) {
 
-  const button =
-    document.getElementById(
-      buttonId
-    );
+    if (
+        value === null
+        ||
+        value === undefined
+    ) {
 
-
-  const input =
-    document.getElementById(
-      inputId
-    );
-
-
-  if (
-    !button ||
-    !input
-  ) {
-
-    return;
-
-  }
-
-
-  button.addEventListener(
-    "click",
-    function() {
-
-      const icon =
-        button.querySelector(
-          "i"
-        );
-
-
-      if (
-        input.type === "password"
-      ) {
-
-        input.type =
-          "text";
-
-
-        icon.className =
-          "fa-solid fa-eye-slash";
-
-      }
-
-      else {
-
-        input.type =
-          "password";
-
-
-        icon.className =
-          "fa-solid fa-eye";
-
-      }
-
+        return "";
     }
-  );
+
+
+    return String(
+        value
+    )
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
 
+// =====================================================
+// PASSWORD TOGGLES
+// =====================================================
+
 setupPasswordToggle(
-  "toggleNewPassword",
-  "newPassword"
+    "toggleNewPassword",
+    "newPassword"
 );
 
 
 setupPasswordToggle(
-  "toggleConfirmPassword",
-  "confirmPassword"
+    "toggleConfirmPassword",
+    "confirmPassword"
 );
-
-
-// ========================================
-// START
-// ========================================
-
-verifyInvitation();

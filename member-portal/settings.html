@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Settings | PNGSA Member Portal
+  </title>
+
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  >
+
+  <!-- FONT AWESOME -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+
+  <!-- MEMBER PORTAL -->
+
+  <link
+    rel="stylesheet"
+    href="css/member.css"
+  >
+
+
+  <!-- SETTINGS -->
+
+  <link
+    rel="stylesheet"
+    href="css/settings.css"
+  >
+
+</head>
+
+
+<body>
+
+
+<div class="member-layout">
+
+
+  <!-- =====================================================
+       SIDEBAR
+  ====================================================== -->
+
+  <aside class="member-sidebar">
+
+
+    <div class="member-sidebar-header">
+
+      <img
+        src="../images/pngsa_logo.png"
+        alt="PNGSA Logo"
+      >
+
+      <h2>
+        PNGSA
+      </h2>
+
+      <span>
+        Member Portal
+      </span>
+
+    </div>
+
+
+    <nav class="member-nav">
+
+
+      <a href="dashboard.html">
+
+        <i class="fa-solid fa-house"></i>
+
+        Dashboard
+
+      </a>
+
+
+      <a href="profile.html">
+
+        <i class="fa-solid fa-user"></i>
+
+        My Profile
+
+      </a>
+
+
+      <a href="vote.html">
+
+        <i class="fa-solid fa-check-to-slot"></i>
+
+        Vote
+
+      </a>
+
+
+      <a href="announcements.html">
+
+        <i class="fa-solid fa-bullhorn"></i>
+
+        Announcements
+
+        <span
+          id="announcementNavBadge"
+          class="announcement-nav-badge hidden"
+        ></span>
+
+      </a>
+
+
+      <a href="events.html">
+
+        <i class="fa-solid fa-calendar-days"></i>
+
+        Events
+
+      </a>
+
+
+      <a href="opportunities.html">
+
+        <i class="fa-solid fa-briefcase"></i>
+
+        Opportunities
+
+      </a>
+
+
+      <a href="resources.html">
+
+        <i class="fa-solid fa-folder-open"></i>
+
+        Resources
+
+      </a>
+
+
+      <a href="documents.html">
+
+        <i class="fa-solid fa-file-lines"></i>
+
+        My Documents
+
+      </a>
+
+
+      <a
+        href="settings.html"
+        class="active"
+      >
+
+        <i class="fa-solid fa-gear"></i>
+
+        Settings
+
+      </a>
+
+
+    </nav>
+
+
+    <button
+      type="button"
+      id="logoutButton"
+      class="member-logout-button"
+    >
+
+      <i class="fa-solid fa-right-from-bracket"></i>
+
+      Sign Out
+
+    </button>
+
+
+  </aside>
+
+
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
+  <main class="settings-main">
+
+
+    <!-- HEADER -->
+
+    <header class="settings-header">
+
+
+      <div>
+
+        <p class="settings-eyebrow">
+
+          PNGSA MEMBER PORTAL
+
+        </p>
+
+
+        <h1>
+
+          Settings
+
+        </h1>
+
+
+        <p>
+
+          Manage your profile, account security,
+          and member preferences.
+
+        </p>
+
+      </div>
+
+
+      <div class="settings-header-icon">
+
+        <i class="fa-solid fa-gear"></i>
+
+      </div>
+
+
+    </header>
+
+
+    <!-- =====================================================
+         PROFILE SECTION
+    ====================================================== -->
+
+    <section class="settings-card">
+
+
+      <div class="settings-card-header">
+
+
+        <div class="settings-card-icon">
+
+          <i class="fa-solid fa-user-pen"></i>
+
+        </div>
+
+
+        <div>
+
+          <h2>
+            Profile Information
+          </h2>
+
+          <p>
+            Update information shown on your PNGSA profile.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+      <div
+        id="profileMessage"
+        class="settings-message"
+      ></div>
+
+
+      <form
+        id="profileSettingsForm"
+        class="settings-form"
+      >
+
+
+        <!-- PHOTO -->
+
+        <div class="profile-photo-setting">
+
+
+          <div class="settings-avatar">
+
+
+            <img
+              id="settingsProfilePhoto"
+              src=""
+              alt="Profile"
+              hidden
+            >
+
+
+            <div
+              id="settingsAvatarFallback"
+              class="settings-avatar-fallback"
+            >
+
+              <i class="fa-solid fa-user"></i>
+
+            </div>
+
+
+          </div>
+
+
+          <div>
+
+
+            <strong>
+              Profile Photo
+            </strong>
+
+
+            <p>
+              Your current PNGSA profile picture.
+            </p>
+
+
+            <a
+              href="profile.html"
+              class="small-settings-link"
+            >
+
+              Manage profile photo
+
+              <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+          </div>
+
+
+        </div>
+
+
+        <!-- NAME -->
+
+        <div class="settings-grid">
+
+
+          <div class="settings-field">
+
+            <label for="firstName">
+
+              First Name
+
+            </label>
+
+            <input
+              type="text"
+              id="firstName"
+              autocomplete="given-name"
+            >
+
+          </div>
+
+
+          <div class="settings-field">
+
+            <label for="lastName">
+
+              Last Name
+
+            </label>
+
+            <input
+              type="text"
+              id="lastName"
+              autocomplete="family-name"
+            >
+
+          </div>
+
+
+          <!-- EMAIL -->
+
+          <div class="settings-field">
+
+            <label for="memberEmail">
+
+              Email Address
+
+            </label>
+
+            <input
+              type="email"
+              id="memberEmail"
+              disabled
+            >
+
+            <small>
+              Your login email cannot be changed here.
+            </small>
+
+          </div>
+
+
+          <!-- PHONE -->
+
+          <div class="settings-field">
+
+            <label for="phone">
+
+              Phone
+
+            </label>
+
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Optional"
+            >
+
+          </div>
+
+
+          <!-- MAJOR -->
+
+          <div class="settings-field">
+
+            <label for="major">
+
+              Major
+
+            </label>
+
+            <input
+              type="text"
+              id="major"
+              placeholder="Example: Geographic Information Science"
+            >
+
+          </div>
+
+
+          <!-- YEAR -->
+
+          <div class="settings-field">
+
+            <label for="academicYear">
+
+              Academic Year
+
+            </label>
+
+            <select id="academicYear">
+
+              <option value="">
+                Select year
+              </option>
+
+              <option value="Freshman">
+                Freshman
+              </option>
+
+              <option value="Sophomore">
+                Sophomore
+              </option>
+
+              <option value="Junior">
+                Junior
+              </option>
+
+              <option value="Senior">
+                Senior
+              </option>
+
+              <option value="Graduate">
+                Graduate
+              </option>
+
+              <option value="Alumni">
+                Alumni
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- GRADUATION -->
+
+          <div class="settings-field">
+
+            <label for="graduationYear">
+
+              Expected Graduation
+
+            </label>
+
+            <input
+              type="text"
+              id="graduationYear"
+              placeholder="Example: May 2027"
+            >
+
+          </div>
+
+
+          <!-- LINKEDIN -->
+
+          <div class="settings-field">
+
+            <label for="linkedin">
+
+              LinkedIn
+
+            </label>
+
+            <input
+              type="url"
+              id="linkedin"
+              placeholder="https://linkedin.com/in/..."
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <!-- BIO -->
+
+        <div class="settings-field settings-full-width">
+
+          <label for="bio">
+
+            About Me
+
+          </label>
+
+          <textarea
+            id="bio"
+            maxlength="500"
+            rows="5"
+            placeholder="Tell PNGSA members a little about yourself..."
+          ></textarea>
+
+
+          <div class="character-counter">
+
+            <span id="bioCharacterCount">
+              0
+            </span>
+
+            / 500
+
+          </div>
+
+        </div>
+
+
+        <div class="settings-actions">
+
+          <button
+            type="submit"
+            id="saveProfileButton"
+            class="primary-settings-button"
+          >
+
+            <i class="fa-solid fa-floppy-disk"></i>
+
+            Save Profile
+
+          </button>
+
+        </div>
+
+
+      </form>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         PASSWORD
+    ====================================================== -->
+
+    <section class="settings-card">
+
+
+      <div class="settings-card-header">
+
+
+        <div class="settings-card-icon security">
+
+          <i class="fa-solid fa-lock"></i>
+
+        </div>
+
+
+        <div>
+
+          <h2>
+            Password & Security
+          </h2>
+
+          <p>
+            Change the password used to access your member account.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+      <div
+        id="passwordMessage"
+        class="settings-message"
+      ></div>
+
+
+      <form
+        id="passwordForm"
+        class="password-form"
+      >
+
+
+        <div class="settings-field">
+
+          <label for="newPassword">
+
+            New Password
+
+          </label>
+
+
+          <div class="password-input-wrapper">
+
+            <input
+              type="password"
+              id="newPassword"
+              minlength="8"
+              autocomplete="new-password"
+              placeholder="Minimum 8 characters"
+            >
+
+
+            <button
+              type="button"
+              class="password-toggle"
+              data-password-target="newPassword"
+            >
+
+              <i class="fa-solid fa-eye"></i>
+
+            </button>
+
+
+          </div>
+
+
+        </div>
+
+
+        <div class="settings-field">
+
+          <label for="confirmPassword">
+
+            Confirm Password
+
+          </label>
+
+
+          <div class="password-input-wrapper">
+
+            <input
+              type="password"
+              id="confirmPassword"
+              minlength="8"
+              autocomplete="new-password"
+              placeholder="Confirm password"
+            >
+
+
+            <button
+              type="button"
+              class="password-toggle"
+              data-password-target="confirmPassword"
+            >
+
+              <i class="fa-solid fa-eye"></i>
+
+            </button>
+
+
+          </div>
+
+
+        </div>
+
+
+        <div class="settings-actions">
+
+          <button
+            type="submit"
+            id="updatePasswordButton"
+            class="primary-settings-button"
+          >
+
+            <i class="fa-solid fa-key"></i>
+
+            Update Password
+
+          </button>
+
+        </div>
+
+
+      </form>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         ACCOUNT INFO
+    ====================================================== -->
+
+    <section class="settings-card">
+
+
+      <div class="settings-card-header">
+
+
+        <div class="settings-card-icon account">
+
+          <i class="fa-solid fa-circle-info"></i>
+
+        </div>
+
+
+        <div>
+
+          <h2>
+            Account Information
+          </h2>
+
+          <p>
+            Information associated with your PNGSA membership.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="account-information-grid">
+
+
+        <div class="account-information-row">
+
+          <span>
+
+            <i class="fa-solid fa-envelope"></i>
+
+            Login Email
+
+          </span>
+
+          <strong id="accountEmail">
+            —
+          </strong>
+
+        </div>
+
+
+        <div class="account-information-row">
+
+          <span>
+
+            <i class="fa-solid fa-id-card"></i>
+
+            SDSU ID
+
+          </span>
+
+          <strong id="accountStudentId">
+            Not provided
+          </strong>
+
+        </div>
+
+
+        <div class="account-information-row">
+
+          <span>
+
+            <i class="fa-solid fa-user-check"></i>
+
+            Membership Status
+
+          </span>
+
+          <strong id="accountMembershipStatus">
+
+            Active Member
+
+          </strong>
+
+        </div>
+
+
+        <div class="account-information-row">
+
+          <span>
+
+            <i class="fa-solid fa-calendar"></i>
+
+            Member Since
+
+          </span>
+
+          <strong id="accountMemberSince">
+            —
+          </strong>
+
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+</div>
+
+
+<script
+  type="module"
+  src="js/settings.js"
+></script>
+
+
+</body>
+
+</html>
