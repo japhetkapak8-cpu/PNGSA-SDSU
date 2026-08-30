@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>My Documents | PNGSA Member Portal</title>
+
+  <link
+    rel="stylesheet"
+    href="css/documents.css"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+</head>
+
+<body>
+
+  <div class="portal-layout">
+
+    <!-- ========================================
+         SIDEBAR
+    ========================================= -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-brand">
+
+        <img
+          src="../images/pngsa_logo.png"
+          alt="PNGSA Logo"
+          class="sidebar-logo"
+        >
+
+        <h2>PNGSA</h2>
+
+        <p>Member Portal</p>
+
+      </div>
+
+
+      <nav class="sidebar-nav">
+
+        <a href="dashboard.html">
+          <i class="fa-solid fa-house"></i>
+          <span>Dashboard</span>
+        </a>
+
+
+        <a href="profile.html">
+          <i class="fa-solid fa-user"></i>
+          <span>My Profile</span>
+        </a>
+
+
+        <a
+          href="documents.html"
+          class="active"
+        >
+          <i class="fa-solid fa-folder-open"></i>
+          <span>My Documents</span>
+        </a>
+
+
+        <a href="opportunities.html">
+          <i class="fa-solid fa-briefcase"></i>
+          <span>Opportunities</span>
+        </a>
+
+
+        <a href="resources.html">
+          <i class="fa-solid fa-book-open"></i>
+          <span>Resources</span>
+        </a>
+
+
+        <a href="settings.html">
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </a>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <button
+          type="button"
+          id="logoutBtn"
+          class="logout-btn"
+        >
+          <i class="fa-solid fa-right-from-bracket"></i>
+          Logout
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ========================================= -->
+
+    <main class="main-content">
+
+
+      <!-- ========================================
+           PAGE HEADER
+      ========================================= -->
+
+      <section class="documents-header">
+
+        <div>
+
+          <span class="page-eyebrow">
+            PNGSA MEMBER PORTAL
+          </span>
+
+          <h1>My Documents</h1>
+
+          <p>
+            Upload and securely manage your personal PNGSA documents.
+          </p>
+
+        </div>
+
+
+        <div class="header-icon">
+
+          <i class="fa-solid fa-folder-open"></i>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ========================================
+           DOCUMENT OVERVIEW
+      ========================================= -->
+
+      <section class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-icon blue">
+
+            <i class="fa-solid fa-file"></i>
+
+          </div>
+
+          <div>
+
+            <span>Total Documents</span>
+
+            <strong id="totalDocuments">
+              0
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon green">
+
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+          </div>
+
+          <div>
+
+            <span>Storage Used</span>
+
+            <strong id="storageUsed">
+              0 MB
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon gold">
+
+            <i class="fa-solid fa-clock"></i>
+
+          </div>
+
+          <div>
+
+            <span>Last Upload</span>
+
+            <strong id="lastUpload">
+              —
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ========================================
+           UPLOAD SECTION
+      ========================================= -->
+
+      <section class="documents-card">
+
+        <div class="card-header">
+
+          <div class="card-title-wrap">
+
+            <div class="section-icon">
+
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+
+            </div>
+
+            <div>
+
+              <h2>Upload Document</h2>
+
+              <p>
+                Add documents to your personal PNGSA account.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="card-body">
+
+          <div
+            id="uploadArea"
+            class="upload-area"
+          >
+
+            <div class="upload-icon">
+
+              <i class="fa-solid fa-file-arrow-up"></i>
+
+            </div>
+
+            <h3>
+              Upload a document
+            </h3>
+
+            <p>
+              Drag and drop your file here or choose a file from your device.
+            </p>
+
+
+            <input
+              type="file"
+              id="documentFile"
+              hidden
+              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt"
+            >
+
+
+            <button
+              type="button"
+              id="chooseFileBtn"
+              class="primary-btn"
+            >
+
+              <i class="fa-solid fa-folder-open"></i>
+
+              Choose File
+
+            </button>
+
+
+            <span class="upload-help">
+              PDF, DOC, DOCX, JPG, PNG or TXT · Maximum 10 MB
+            </span>
+
+          </div>
+
+
+          <!-- SELECTED FILE -->
+
+          <div
+            id="selectedFileBox"
+            class="selected-file-box hidden"
+          >
+
+            <div class="selected-file-info">
+
+              <div class="file-type-icon">
+
+                <i class="fa-solid fa-file"></i>
+
+              </div>
+
+              <div>
+
+                <strong id="selectedFileName"></strong>
+
+                <span id="selectedFileSize"></span>
+
+              </div>
+
+            </div>
+
+
+            <button
+              type="button"
+              id="removeSelectedFile"
+              class="icon-button danger"
+            >
+
+              <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+          </div>
+
+
+          <!-- DOCUMENT TITLE -->
+
+          <div class="form-group">
+
+            <label for="documentTitle">
+              Document Name
+            </label>
+
+            <input
+              type="text"
+              id="documentTitle"
+              placeholder="Example: Resume 2026"
+            >
+
+          </div>
+
+
+          <!-- DOCUMENT CATEGORY -->
+
+          <div class="form-group">
+
+            <label for="documentCategory">
+              Category
+            </label>
+
+            <select id="documentCategory">
+
+              <option value="">
+                Select category
+              </option>
+
+              <option value="resume">
+                Resume / CV
+              </option>
+
+              <option value="academic">
+                Academic
+              </option>
+
+              <option value="immigration">
+                Immigration
+              </option>
+
+              <option value="pngsa">
+                PNGSA
+              </option>
+
+              <option value="certificate">
+                Certificate
+              </option>
+
+              <option value="other">
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <button
+            type="button"
+            id="uploadBtn"
+            class="primary-btn upload-document-btn"
+          >
+
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+            Upload Document
+
+          </button>
+
+
+          <div
+            id="uploadStatus"
+            class="status-message"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ========================================
+           DOCUMENT LIST
+      ========================================= -->
+
+      <section class="documents-card document-list-card">
+
+        <div class="card-header document-list-header">
+
+          <div class="card-title-wrap">
+
+            <div class="section-icon">
+
+              <i class="fa-solid fa-folder"></i>
+
+            </div>
+
+            <div>
+
+              <h2>Your Documents</h2>
+
+              <p>
+                Documents stored in your PNGSA account.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="document-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+              type="search"
+              id="documentSearch"
+              placeholder="Search documents"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="card-body">
+
+          <!-- LOADING -->
+
+          <div
+            id="documentsLoading"
+            class="loading-state"
+          >
+
+            <div class="spinner"></div>
+
+            <p>
+              Loading your documents...
+            </p>
+
+          </div>
+
+
+          <!-- EMPTY -->
+
+          <div
+            id="emptyDocuments"
+            class="empty-state hidden"
+          >
+
+            <div class="empty-icon">
+
+              <i class="fa-regular fa-folder-open"></i>
+
+            </div>
+
+            <h3>
+              No documents yet
+            </h3>
+
+            <p>
+              Documents you upload will appear here.
+            </p>
+
+          </div>
+
+
+          <!-- DOCUMENTS -->
+
+          <div
+            id="documentsList"
+            class="documents-list"
+          ></div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- ========================================
+       DELETE MODAL
+  ========================================= -->
+
+  <div
+    id="deleteModal"
+    class="modal-overlay hidden"
+  >
+
+    <div class="modal">
+
+      <div class="modal-icon danger">
+
+        <i class="fa-solid fa-trash"></i>
+
+      </div>
+
+      <h3>
+        Delete Document?
+      </h3>
+
+      <p>
+        This document will be permanently removed from your account.
+      </p>
+
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          id="cancelDeleteBtn"
+          class="secondary-btn"
+        >
+          Cancel
+        </button>
+
+
+        <button
+          type="button"
+          id="confirmDeleteBtn"
+          class="delete-btn"
+        >
+
+          <i class="fa-solid fa-trash"></i>
+
+          Delete
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script
+    type="module"
+    src="js/documents.js"
+  ></script>
+
+</body>
+
+</html>

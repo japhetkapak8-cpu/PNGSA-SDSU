@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Chat Groups | PNGSA Admin
+  </title>
+
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+
+  <link
+    rel="stylesheet"
+    href="css/admin.css"
+  >
+
+
+  <link
+    rel="stylesheet"
+    href="css/chat-groups.css?v=1"
+  >
+
+</head>
+
+
+<body>
+
+
+  <div class="admin-layout">
+
+
+    <!-- ========================================
+         SIDEBAR
+    ========================================= -->
+
+    <aside class="sidebar">
+
+
+      <div class="sidebar-header">
+
+        <img
+          src="../images/pngsa_logo.png"
+          alt="PNGSA Logo"
+          class="sidebar-logo"
+        >
+
+        <h2>PNGSA</h2>
+
+        <span>
+          Admin Portal
+        </span>
+
+      </div>
+
+
+
+      <nav class="sidebar-nav">
+
+
+        <a href="dashboard.html">
+
+          <i class="fa-solid fa-chart-line"></i>
+
+          <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="members.html">
+
+          <i class="fa-solid fa-users"></i>
+
+          <span>Members</span>
+
+        </a>
+
+
+        <a href="invite-members.html">
+
+          <i class="fa-solid fa-user-plus"></i>
+
+          <span>Invite Members</span>
+
+        </a>
+
+
+        <a href="elections.html">
+
+          <i class="fa-solid fa-check-to-slot"></i>
+
+          <span>Elections</span>
+
+        </a>
+
+
+        <a href="events.html">
+
+          <i class="fa-solid fa-calendar-days"></i>
+
+          <span>Events</span>
+
+        </a>
+
+
+        <a href="opportunities.html">
+
+          <i class="fa-solid fa-briefcase"></i>
+
+          <span>Opportunities</span>
+
+        </a>
+
+
+        <a href="announcements.html">
+
+          <i class="fa-solid fa-bullhorn"></i>
+
+          <span>Announcements</span>
+
+        </a>
+
+
+        <a
+          href="chat-groups.html"
+          class="active"
+        >
+
+          <i class="fa-solid fa-comments"></i>
+
+          <span>Chat Groups</span>
+
+        </a>
+
+
+        <a href="../index.html">
+
+          <i class="fa-solid fa-globe"></i>
+
+          <span>View Website</span>
+
+        </a>
+
+
+      </nav>
+
+
+
+      <button
+        type="button"
+        class="logout-button"
+        id="logoutButton"
+      >
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Sign Out</span>
+
+      </button>
+
+
+    </aside>
+
+
+
+    <!-- ========================================
+         MAIN
+    ========================================= -->
+
+    <main class="admin-main">
+
+
+      <header class="admin-header">
+
+
+        <div>
+
+          <span class="page-eyebrow">
+            ADMIN PORTAL
+          </span>
+
+          <h1>
+            Chat Groups
+          </h1>
+
+          <p>
+            Create groups and control which members
+            can participate in each conversation.
+          </p>
+
+        </div>
+
+
+        <div class="admin-user">
+
+          <span id="adminEmail">
+            Loading...
+          </span>
+
+        </div>
+
+
+      </header>
+
+
+
+      <!-- ========================================
+           CREATE GROUP
+      ========================================= -->
+
+      <section class="admin-panel">
+
+
+        <div class="panel-header">
+
+          <h2>
+            Create Group
+          </h2>
+
+          <p>
+            Create a General, Executive,
+            organization or private group.
+          </p>
+
+        </div>
+
+
+
+        <form id="groupForm">
+
+
+          <div class="form-grid">
+
+
+            <div class="form-group">
+
+              <label for="groupName">
+                Group Name *
+              </label>
+
+              <input
+                type="text"
+                id="groupName"
+                required
+                maxlength="100"
+                placeholder="PNGSA Executive Team"
+              >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+              <label for="groupType">
+                Group Type *
+              </label>
+
+              <select
+                id="groupType"
+                required
+              >
+
+                <option value="general">
+                  General
+                </option>
+
+                <option value="executive">
+                  Executive
+                </option>
+
+                <option value="organization">
+                  Organization
+                </option>
+
+                <option value="private">
+                  Private
+                </option>
+
+              </select>
+
+            </div>
+
+
+
+            <div class="form-group full-width">
+
+              <label for="groupDescription">
+                Description
+              </label>
+
+              <textarea
+                id="groupDescription"
+                rows="3"
+                placeholder="What is this group used for?"
+              ></textarea>
+
+            </div>
+
+
+          </div>
+
+
+
+          <div
+            class="form-message"
+            id="formMessage"
+          ></div>
+
+
+
+          <div class="form-actions">
+
+            <button
+              type="submit"
+              class="primary-button"
+              id="createGroupButton"
+            >
+
+              <i class="fa-solid fa-plus"></i>
+
+              Create Group
+
+            </button>
+
+          </div>
+
+
+        </form>
+
+
+      </section>
+
+
+
+      <!-- ========================================
+           GROUP LIST
+      ========================================= -->
+
+      <section class="admin-panel">
+
+
+        <div class="list-heading">
+
+
+          <div>
+
+            <h2>
+              Existing Groups
+            </h2>
+
+            <p>
+              Manage members, permissions and group status.
+            </p>
+
+          </div>
+
+
+          <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+              type="search"
+              id="groupAdminSearch"
+              placeholder="Search groups..."
+            >
+
+          </div>
+
+
+        </div>
+
+
+
+        <div
+          class="admin-group-list"
+          id="adminGroupList"
+        >
+
+          <div class="loading-state">
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            Loading groups...
+
+          </div>
+
+        </div>
+
+
+      </section>
+
+
+    </main>
+
+
+  </div>
+
+
+
+  <!-- ========================================
+       MANAGE MEMBERS MODAL
+  ========================================= -->
+
+  <div
+    class="member-manager-modal"
+    id="memberManagerModal"
+  >
+
+
+    <div class="member-manager-card">
+
+
+      <button
+        type="button"
+        class="modal-close"
+        id="memberManagerClose"
+      >
+
+        <i class="fa-solid fa-xmark"></i>
+
+      </button>
+
+
+
+      <h2 id="managerGroupName">
+        Manage Members
+      </h2>
+
+
+      <p>
+        Select the members who should have
+        access to this chat.
+      </p>
+
+
+
+      <div class="member-search-box">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+          type="search"
+          id="memberSearch"
+          placeholder="Search members..."
+        >
+
+      </div>
+
+
+
+      <div
+        class="admin-member-list"
+        id="adminMemberList"
+      ></div>
+
+
+
+      <div
+        class="manager-message"
+        id="managerMessage"
+      ></div>
+
+
+
+      <div class="modal-actions">
+
+
+        <button
+          type="button"
+          class="secondary-button"
+          id="cancelMemberChanges"
+        >
+          Cancel
+        </button>
+
+
+        <button
+          type="button"
+          class="primary-button"
+          id="saveMemberChanges"
+        >
+
+          <i class="fa-solid fa-floppy-disk"></i>
+
+          Save Members
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <script
+    type="module"
+    src="js/chat-groups.js?v=1"
+  ></script>
+
+
+</body>
+
+</html>

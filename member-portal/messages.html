@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Messages | PNGSA Member Portal
+  </title>
+
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+
+  <link
+    rel="stylesheet"
+    href="css/messages.css?v=1"
+  >
+
+</head>
+
+
+<body>
+
+
+  <div class="member-layout">
+
+
+    <!-- ========================================
+         SIDEBAR
+    ========================================= -->
+
+    <aside class="sidebar">
+
+
+      <div class="sidebar-header">
+
+        <img
+          src="../images/pngsa_logo.png"
+          alt="PNGSA Logo"
+          class="sidebar-logo"
+        >
+
+        <h2>
+          PNGSA
+        </h2>
+
+        <span>
+          Member Portal
+        </span>
+
+      </div>
+
+
+
+      <nav class="sidebar-nav">
+
+
+        <a href="dashboard.html">
+
+          <i class="fa-solid fa-house"></i>
+
+          <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="profile.html">
+
+          <i class="fa-solid fa-user"></i>
+
+          <span>My Profile</span>
+
+        </a>
+
+
+        <a href="vote.html">
+
+          <i class="fa-solid fa-square-check"></i>
+
+          <span>Vote</span>
+
+        </a>
+
+
+        <a href="announcements.html">
+
+          <i class="fa-solid fa-bullhorn"></i>
+
+          <span>Announcements</span>
+
+        </a>
+
+
+        <a
+          href="messages.html"
+          class="active"
+        >
+
+          <i class="fa-solid fa-comments"></i>
+
+          <span>
+            Messages
+          </span>
+
+          <span
+            class="sidebar-message-count"
+            id="sidebarMessageCount"
+            hidden
+          >
+            0
+          </span>
+
+        </a>
+
+
+        <a href="events.html">
+
+          <i class="fa-solid fa-calendar-days"></i>
+
+          <span>Events</span>
+
+        </a>
+
+
+        <a href="opportunities.html">
+
+          <i class="fa-solid fa-briefcase"></i>
+
+          <span>Opportunities</span>
+
+        </a>
+
+
+        <a href="resources.html">
+
+          <i class="fa-solid fa-folder-open"></i>
+
+          <span>Resources</span>
+
+        </a>
+
+
+        <a href="documents.html">
+
+          <i class="fa-solid fa-file-lines"></i>
+
+          <span>My Documents</span>
+
+        </a>
+
+
+        <a href="settings.html">
+
+          <i class="fa-solid fa-gear"></i>
+
+          <span>Settings</span>
+
+        </a>
+
+
+      </nav>
+
+
+
+      <button
+        id="logoutButton"
+        class="logout-button"
+        type="button"
+      >
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Sign Out</span>
+
+      </button>
+
+
+    </aside>
+
+
+
+    <!-- ========================================
+         MAIN
+    ========================================= -->
+
+    <main class="member-main">
+
+
+      <header class="page-header">
+
+
+        <div>
+
+          <span class="page-eyebrow">
+            PNGSA MEMBER PORTAL
+          </span>
+
+          <h1>
+            Messages
+          </h1>
+
+          <p>
+            Communicate with PNGSA groups,
+            committees and executive teams.
+          </p>
+
+        </div>
+
+
+        <div class="page-header-icon">
+
+          <i class="fa-solid fa-comments"></i>
+
+        </div>
+
+
+      </header>
+
+
+
+      <!-- ========================================
+           CHAT APP
+      ========================================= -->
+
+      <section class="chat-shell">
+
+
+        <!-- ========================================
+             GROUP PANEL
+        ========================================= -->
+
+        <aside class="chat-groups-panel">
+
+
+          <div class="group-panel-header">
+
+            <div>
+
+              <h2>
+                Chats
+              </h2>
+
+              <span id="groupCount">
+                0 groups
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="group-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+              type="search"
+              id="groupSearch"
+              placeholder="Search chats..."
+              autocomplete="off"
+            >
+
+          </div>
+
+
+
+          <div
+            class="group-list"
+            id="groupList"
+          >
+
+            <div class="group-loading">
+
+              <i class="fa-solid fa-spinner fa-spin"></i>
+
+              Loading chats...
+
+            </div>
+
+          </div>
+
+
+        </aside>
+
+
+
+        <!-- ========================================
+             CONVERSATION
+        ========================================= -->
+
+        <section class="conversation-panel">
+
+
+          <!-- EMPTY -->
+
+          <div
+            class="no-chat-selected"
+            id="noChatSelected"
+          >
+
+            <div class="empty-chat-icon">
+
+              <i class="fa-solid fa-comments"></i>
+
+            </div>
+
+            <h2>
+              Select a conversation
+            </h2>
+
+            <p>
+              Choose one of your groups to start messaging.
+            </p>
+
+          </div>
+
+
+
+          <!-- ACTIVE CHAT -->
+
+          <div
+            class="active-chat"
+            id="activeChat"
+            hidden
+          >
+
+
+            <!-- HEADER -->
+
+            <header class="conversation-header">
+
+
+              <div class="conversation-avatar">
+
+                <i
+                  class="fa-solid fa-users"
+                  id="conversationIcon"
+                ></i>
+
+              </div>
+
+
+              <div class="conversation-info">
+
+                <h2 id="conversationName">
+                  Group
+                </h2>
+
+                <div class="conversation-subtitle">
+
+                  <span id="conversationMemberCount">
+                    0 members
+                  </span>
+
+                  <span class="dot">
+                    •
+                  </span>
+
+                  <span id="conversationType">
+                    Group
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="group-info-button"
+                id="groupInfoButton"
+                title="Group information"
+              >
+
+                <i class="fa-solid fa-circle-info"></i>
+
+              </button>
+
+
+            </header>
+
+
+
+            <!-- MESSAGE AREA -->
+
+            <div
+              class="message-area"
+              id="messageArea"
+            >
+
+              <div class="messages-loading">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                Loading messages...
+
+              </div>
+
+            </div>
+
+
+
+            <!-- COMPOSER -->
+
+            <footer class="message-composer">
+
+
+              <div class="message-input-wrap">
+
+                <textarea
+                  id="messageInput"
+                  rows="1"
+                  maxlength="5000"
+                  placeholder="Type a message..."
+                ></textarea>
+
+              </div>
+
+
+              <button
+                type="button"
+                id="sendMessageButton"
+                class="send-message-button"
+                title="Send message"
+              >
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+              </button>
+
+
+            </footer>
+
+
+          </div>
+
+
+        </section>
+
+
+      </section>
+
+
+    </main>
+
+
+  </div>
+
+
+
+  <!-- ========================================
+       GROUP INFORMATION MODAL
+  ========================================= -->
+
+  <div
+    class="group-modal"
+    id="groupModal"
+    aria-hidden="true"
+  >
+
+
+    <div
+      class="group-modal-backdrop"
+      id="groupModalBackdrop"
+    ></div>
+
+
+    <div class="group-modal-card">
+
+
+      <button
+        type="button"
+        class="modal-close"
+        id="groupModalClose"
+      >
+
+        <i class="fa-solid fa-xmark"></i>
+
+      </button>
+
+
+      <div class="group-modal-icon">
+
+        <i class="fa-solid fa-users"></i>
+
+      </div>
+
+
+      <h2 id="groupModalName">
+        Group
+      </h2>
+
+
+      <p id="groupModalDescription">
+      </p>
+
+
+      <div class="group-detail-box">
+
+        <span>
+          Group Type
+        </span>
+
+        <strong id="groupModalType">
+          Private
+        </strong>
+
+      </div>
+
+
+      <div class="member-modal-heading">
+
+        <h3>
+          Members
+        </h3>
+
+        <span id="groupModalMemberCount">
+          0
+        </span>
+
+      </div>
+
+
+      <div
+        class="group-member-list"
+        id="groupMemberList"
+      ></div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <script
+    type="module"
+    src="js/messages.js?v=1"
+  ></script>
+
+
+</body>
+
+</html>
