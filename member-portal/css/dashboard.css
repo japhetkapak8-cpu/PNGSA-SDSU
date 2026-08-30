@@ -914,3 +914,590 @@ body {
   }
 
 }
+
+/* ============================================================
+   PNGSA DASHBOARD THEME OVERRIDES
+   Black • Burgundy • Red • Gold • White
+============================================================ */
+
+:root {
+  --pngsa-black: #090909;
+  --pngsa-black-soft: #111111;
+
+  --pngsa-burgundy: #4b0000;
+  --pngsa-red-dark: #650000;
+  --pngsa-red: #850000;
+  --pngsa-red-light: #a00000;
+
+  --pngsa-gold: #ffd400;
+  --pngsa-gold-dark: #e5b900;
+
+  --pngsa-white: #ffffff;
+
+  --pngsa-bg: #f6f4f2;
+  --pngsa-card: #ffffff;
+
+  --pngsa-border: #e3d8d4;
+
+  --pngsa-text: #171717;
+  --pngsa-muted: #706865;
+}
+
+
+/* ============================================================
+   PAGE
+============================================================ */
+
+body {
+  background: var(--pngsa-bg);
+
+  color: var(--pngsa-text);
+}
+
+
+/* ============================================================
+   DASHBOARD HEADER
+============================================================ */
+
+.dashboard-eyebrow {
+  color: var(--pngsa-red);
+
+  font-weight: 900;
+}
+
+
+.dashboard-header h1 {
+  color: var(--pngsa-black);
+}
+
+
+.dashboard-header > div > p:last-child {
+  color: var(--pngsa-muted);
+}
+
+
+/* ============================================================
+   SIGNED IN BOX
+============================================================ */
+
+.signed-in-box {
+  background: var(--pngsa-white);
+
+  border:
+    1px solid
+    var(--pngsa-border);
+
+  box-shadow:
+    0 5px 15px
+    rgba(75, 0, 0, 0.05);
+}
+
+
+.signed-in-box > i {
+  color: var(--pngsa-red);
+}
+
+
+.signed-in-box span {
+  color: var(--pngsa-muted);
+}
+
+
+.signed-in-box strong {
+  color: var(--pngsa-black);
+}
+
+
+/* ============================================================
+   COMMON DASHBOARD CARDS
+============================================================ */
+
+.profile-summary-card,
+.status-card,
+.information-card,
+.activity-card,
+.quick-access-card {
+  background: var(--pngsa-white);
+
+  border:
+    1px solid
+    var(--pngsa-border);
+
+  box-shadow:
+    0 6px 18px
+    rgba(75, 0, 0, 0.05);
+}
+
+
+/* ============================================================
+   PROFILE CARD
+============================================================ */
+
+.profile-summary-card {
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #fffaf7 100%
+    );
+}
+
+
+.dashboard-avatar {
+  background: #f3e6e1;
+
+  border:
+    5px solid
+    var(--pngsa-white);
+
+  box-shadow:
+    0 8px 25px
+    rgba(75, 0, 0, 0.13);
+}
+
+
+.avatar-fallback {
+  background:
+    linear-gradient(
+      135deg,
+      #f6e5df,
+      #ead2ca
+    );
+
+  color: var(--pngsa-red);
+}
+
+
+.profile-summary-info h2 {
+  color: var(--pngsa-black);
+}
+
+
+/* ============================================================
+   MEMBERSHIP BADGE
+============================================================ */
+
+.membership-badge {
+  background:
+    linear-gradient(
+      135deg,
+      var(--pngsa-red),
+      var(--pngsa-burgundy)
+    );
+
+  color: var(--pngsa-white);
+
+  border:
+    1px solid
+    rgba(255, 212, 0, 0.35);
+}
+
+
+.profile-summary-info p {
+  color: #473c39;
+}
+
+
+.profile-summary-info p i {
+  color: var(--pngsa-red);
+}
+
+
+/* ============================================================
+   CARD HEADINGS
+============================================================ */
+
+.card-heading {
+  color: #3a2d29;
+}
+
+
+/* ============================================================
+   DASHBOARD CARD ICONS
+============================================================ */
+
+.card-icon.blue {
+  color: var(--pngsa-red);
+
+  background: #f8e7e2;
+}
+
+
+.card-icon.purple {
+  color: var(--pngsa-burgundy);
+
+  background: #f1dfda;
+}
+
+
+.card-icon.green {
+  color: #167a40;
+
+  background: #e8f7ed;
+}
+
+
+.card-icon.gold {
+  color: #9e7500;
+
+  background: #fff2bf;
+}
+
+
+/* ============================================================
+   PROFILE COMPLETION CIRCLE
+============================================================ */
+
+.completion-circle {
+  background:
+    conic-gradient(
+      var(--pngsa-red) var(--progress),
+      #ece4e1 0
+    );
+}
+
+
+.completion-circle::before {
+  background: var(--pngsa-white);
+}
+
+
+.completion-circle strong {
+  color: var(--pngsa-black);
+}
+
+
+.completion-circle span {
+  color: var(--pngsa-red-dark);
+}
+
+
+/* ============================================================
+   STATUS
+============================================================ */
+
+.big-status {
+  color: var(--pngsa-red);
+}
+
+
+.big-status.eligible,
+.active-status {
+  color: #167a40;
+}
+
+
+.status-description {
+  color: var(--pngsa-muted);
+}
+
+
+/* ============================================================
+   LINKS
+============================================================ */
+
+.card-link {
+  color: var(--pngsa-red);
+}
+
+
+.card-link:hover {
+  color: var(--pngsa-black);
+}
+
+
+/* ============================================================
+   INFORMATION CARDS
+============================================================ */
+
+.information-title h2 {
+  color: var(--pngsa-black);
+}
+
+
+.information-list span {
+  color: #584a46;
+}
+
+
+.information-list strong {
+  color: #241b19;
+}
+
+
+/* ============================================================
+   ACTIVITY CARDS
+============================================================ */
+
+.activity-card {
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff,
+      #fffaf7
+    );
+}
+
+
+/* ============================================================
+   SMALL OUTLINE BUTTON
+============================================================ */
+
+.small-outline-button {
+  border:
+    1px solid
+    #c88f7d;
+
+  background: var(--pngsa-white);
+
+  color: var(--pngsa-red);
+}
+
+
+.small-outline-button:hover {
+  border-color: var(--pngsa-red);
+
+  background: var(--pngsa-red);
+
+  color: var(--pngsa-white);
+}
+
+
+/* ============================================================
+   ANNOUNCEMENTS
+============================================================ */
+
+.announcement-dot {
+  background: var(--pngsa-red);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(133, 0, 0, 0.08);
+}
+
+
+.announcement-item strong {
+  color: var(--pngsa-black);
+}
+
+
+.announcement-item p {
+  color: var(--pngsa-muted);
+}
+
+
+/* ============================================================
+   EMPTY STATES
+============================================================ */
+
+.empty-dashboard-state,
+.election-empty-state {
+  color: var(--pngsa-muted);
+}
+
+
+.empty-dashboard-state > i {
+  color: var(--pngsa-red);
+}
+
+
+.empty-dashboard-state strong {
+  color: var(--pngsa-black);
+}
+
+
+.election-empty-state > i {
+  color: #ba8b00;
+}
+
+
+.election-empty-state h3 {
+  color: var(--pngsa-black);
+}
+
+
+.election-empty-state p {
+  color: var(--pngsa-muted);
+}
+
+
+/* ============================================================
+   ELECTION NOTICE
+============================================================ */
+
+.election-notice {
+  border:
+    1px solid
+    #e6c14d;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff8dc,
+      #fffdf4
+    );
+
+  color: #725400;
+}
+
+
+/* ============================================================
+   QUICK ACCESS
+============================================================ */
+
+.quick-access-card {
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #fffaf7
+    );
+}
+
+
+.quick-access-card h2 {
+  color: var(--pngsa-black);
+}
+
+
+.quick-access-grid a {
+  color: #2c211e;
+}
+
+
+.quick-access-grid a:hover {
+  color: var(--pngsa-red);
+
+  transform: translateY(-2px);
+}
+
+
+.quick-access-grid > a > i {
+  color: var(--pngsa-red);
+}
+
+
+.quick-access-grid strong {
+  color: var(--pngsa-red);
+}
+
+
+.quick-access-grid span {
+  color: var(--pngsa-muted);
+}
+
+
+/* ============================================================
+   CARD HOVER
+============================================================ */
+
+.profile-summary-card:hover,
+.status-card:hover,
+.information-card:hover,
+.activity-card:hover,
+.quick-access-card:hover {
+  border-color: #d5b7ad;
+
+  box-shadow:
+    0 9px 24px
+    rgba(75, 0, 0, 0.08);
+}
+
+
+/* ============================================================
+   GOLD ACCENT LINE
+============================================================ */
+
+.dashboard-header {
+  position: relative;
+
+  padding-bottom: 18px;
+}
+
+
+.dashboard-header::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 90px;
+  height: 4px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--pngsa-red) 0%,
+      var(--pngsa-gold) 100%
+    );
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 850px) {
+
+  .dashboard-main {
+    background: var(--pngsa-bg);
+  }
+
+
+  .signed-in-box {
+    width: 100%;
+  }
+
+
+  .profile-summary-card,
+  .status-card,
+  .information-card,
+  .activity-card,
+  .quick-access-card {
+    border-color: #e5d8d4;
+  }
+
+}
+
+
+@media (max-width: 550px) {
+
+  .dashboard-header {
+    padding-bottom: 14px;
+  }
+
+
+  .dashboard-header::after {
+    width: 70px;
+    height: 3px;
+  }
+
+
+  .dashboard-header h1 {
+    color: var(--pngsa-black);
+  }
+
+
+  .profile-summary-card {
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff,
+        #fff8f4
+      );
+  }
+
+
+  .membership-badge {
+    border-radius: 20px;
+
+    padding:
+      6px
+      13px;
+  }
+
+}

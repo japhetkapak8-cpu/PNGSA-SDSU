@@ -23,7 +23,7 @@
 
   <link
     rel="stylesheet"
-    href="css/messages.css?v=1"
+    href="css/messages.css?v=2"
   >
 
 </head>
@@ -69,7 +69,9 @@
 
           <i class="fa-solid fa-house"></i>
 
-          <span>Dashboard</span>
+          <span>
+            Dashboard
+          </span>
 
         </a>
 
@@ -78,7 +80,9 @@
 
           <i class="fa-solid fa-user"></i>
 
-          <span>My Profile</span>
+          <span>
+            My Profile
+          </span>
 
         </a>
 
@@ -87,7 +91,9 @@
 
           <i class="fa-solid fa-square-check"></i>
 
-          <span>Vote</span>
+          <span>
+            Vote
+          </span>
 
         </a>
 
@@ -96,7 +102,9 @@
 
           <i class="fa-solid fa-bullhorn"></i>
 
-          <span>Announcements</span>
+          <span>
+            Announcements
+          </span>
 
         </a>
 
@@ -127,7 +135,9 @@
 
           <i class="fa-solid fa-calendar-days"></i>
 
-          <span>Events</span>
+          <span>
+            Events
+          </span>
 
         </a>
 
@@ -136,7 +146,9 @@
 
           <i class="fa-solid fa-briefcase"></i>
 
-          <span>Opportunities</span>
+          <span>
+            Opportunities
+          </span>
 
         </a>
 
@@ -145,7 +157,9 @@
 
           <i class="fa-solid fa-folder-open"></i>
 
-          <span>Resources</span>
+          <span>
+            Resources
+          </span>
 
         </a>
 
@@ -154,7 +168,9 @@
 
           <i class="fa-solid fa-file-lines"></i>
 
-          <span>My Documents</span>
+          <span>
+            My Documents
+          </span>
 
         </a>
 
@@ -163,7 +179,9 @@
 
           <i class="fa-solid fa-gear"></i>
 
-          <span>Settings</span>
+          <span>
+            Settings
+          </span>
 
         </a>
 
@@ -180,7 +198,9 @@
 
         <i class="fa-solid fa-right-from-bracket"></i>
 
-        <span>Sign Out</span>
+        <span>
+          Sign Out
+        </span>
 
       </button>
 
@@ -195,6 +215,10 @@
 
     <main class="member-main">
 
+
+      <!-- ========================================
+           PAGE HEADER
+      ========================================= -->
 
       <header class="page-header">
 
@@ -260,6 +284,8 @@
 
 
 
+          <!-- SEARCH -->
+
           <div class="group-search">
 
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -274,6 +300,8 @@
           </div>
 
 
+
+          <!-- GROUP LIST -->
 
           <div
             class="group-list"
@@ -296,38 +324,15 @@
 
 
         <!-- ========================================
-             CONVERSATION
+             CONVERSATION PANEL
         ========================================= -->
 
         <section class="conversation-panel">
 
 
-          <!-- EMPTY -->
-
-          <div
-            class="no-chat-selected"
-            id="noChatSelected"
-          >
-
-            <div class="empty-chat-icon">
-
-              <i class="fa-solid fa-comments"></i>
-
-            </div>
-
-            <h2>
-              Select a conversation
-            </h2>
-
-            <p>
-              Choose one of your groups to start messaging.
-            </p>
-
-          </div>
-
-
-
-          <!-- ACTIVE CHAT -->
+          <!-- ========================================
+               ACTIVE CHAT
+          ========================================= -->
 
           <div
             class="active-chat"
@@ -336,7 +341,9 @@
           >
 
 
-            <!-- HEADER -->
+            <!-- ========================================
+                 CONVERSATION HEADER
+            ========================================= -->
 
             <header class="conversation-header">
 
@@ -356,6 +363,7 @@
                 <h2 id="conversationName">
                   Group
                 </h2>
+
 
                 <div class="conversation-subtitle">
 
@@ -381,6 +389,7 @@
                 class="group-info-button"
                 id="groupInfoButton"
                 title="Group information"
+                aria-label="Group information"
               >
 
                 <i class="fa-solid fa-circle-info"></i>
@@ -392,7 +401,9 @@
 
 
 
-            <!-- MESSAGE AREA -->
+            <!-- ========================================
+                 MESSAGE AREA
+            ========================================= -->
 
             <div
               class="message-area"
@@ -411,7 +422,9 @@
 
 
 
-            <!-- COMPOSER -->
+            <!-- ========================================
+                 MESSAGE COMPOSER
+            ========================================= -->
 
             <footer class="message-composer">
 
@@ -423,6 +436,7 @@
                   rows="1"
                   maxlength="5000"
                   placeholder="Type a message..."
+                  aria-label="Type a message"
                 ></textarea>
 
               </div>
@@ -433,6 +447,7 @@
                 id="sendMessageButton"
                 class="send-message-button"
                 title="Send message"
+                aria-label="Send message"
               >
 
                 <i class="fa-solid fa-paper-plane"></i>
@@ -476,13 +491,19 @@
     ></div>
 
 
-    <div class="group-modal-card">
+    <div
+      class="group-modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="groupModalName"
+    >
 
 
       <button
         type="button"
         class="modal-close"
         id="groupModalClose"
+        aria-label="Close group information"
       >
 
         <i class="fa-solid fa-xmark"></i>
@@ -545,9 +566,13 @@
 
 
 
+  <!-- ========================================
+       JAVASCRIPT
+  ========================================= -->
+
   <script
     type="module"
-    src="js/messages.js?v=1"
+    src="js/messages.js?v=2"
   ></script>
 
 
