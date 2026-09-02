@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Leadership | PNGSA Admin</title>
+
+
+  <!-- FONT AWESOME -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+
+  <!-- SHARED ADMIN CSS -->
+
+  <link
+    rel="stylesheet"
+    href="css/admin.css"
+  >
+
+
+  <!-- LEADERSHIP CSS -->
+
+  <link
+    rel="stylesheet"
+    href="css/leadership.css?v=1"
+  >
+
+</head>
+
+
+<body>
+
+
+  <div class="admin-layout">
+
+
+    <!-- ========================================
+         SIDEBAR
+    ========================================= -->
+
+    <aside class="sidebar">
+
+
+      <div class="sidebar-header">
+
+        <img
+          src="../images/pngsa_logo.png"
+          alt="PNGSA Logo"
+          class="sidebar-logo"
+        >
+
+        <h2>
+          PNGSA
+        </h2>
+
+        <span>
+          Admin Portal
+        </span>
+
+      </div>
+
+
+      <!-- ========================================
+           NAVIGATION
+      ========================================= -->
+
+      <nav class="sidebar-nav">
+
+
+        <a href="dashboard.html">
+
+          <i class="fa-solid fa-chart-line"></i>
+
+          <span>
+            Dashboard
+          </span>
+
+        </a>
+
+
+        <a href="members.html">
+
+          <i class="fa-solid fa-users"></i>
+
+          <span>
+            Members
+          </span>
+
+        </a>
+
+
+        <a href="invite-members.html">
+
+          <i class="fa-solid fa-user-plus"></i>
+
+          <span>
+            Invite Members
+          </span>
+
+        </a>
+
+
+        <!-- LEADERSHIP -->
+
+        <a
+          href="leadership.html"
+          class="active"
+        >
+
+          <i class="fa-solid fa-people-group"></i>
+
+          <span>
+            Leadership
+          </span>
+
+        </a>
+
+
+        <a href="elections.html">
+
+          <i class="fa-solid fa-check-to-slot"></i>
+
+          <span>
+            Elections
+          </span>
+
+        </a>
+
+
+        <a href="events.html">
+
+          <i class="fa-solid fa-calendar-days"></i>
+
+          <span>
+            Events
+          </span>
+
+        </a>
+
+
+        <a href="candidates.html">
+
+          <i class="fa-solid fa-user-tie"></i>
+
+          <span>
+            Candidates
+          </span>
+
+        </a>
+
+
+        <a href="voters.html">
+
+          <i class="fa-solid fa-user-check"></i>
+
+          <span>
+            Eligible Voters
+          </span>
+
+        </a>
+
+
+        <a href="results.html">
+
+          <i class="fa-solid fa-chart-column"></i>
+
+          <span>
+            Results
+          </span>
+
+        </a>
+
+
+        <a href="announcements.html">
+
+          <i class="fa-solid fa-bullhorn"></i>
+
+          <span>
+            Announcements
+          </span>
+
+        </a>
+
+
+        <a href="chat-groups.html">
+
+          <i class="fa-solid fa-comments"></i>
+
+          <span>
+            Messages
+          </span>
+
+        </a>
+
+
+        <a href="opportunities.html">
+
+          <i class="fa-solid fa-hands-helping"></i>
+
+          <span>
+            Opportunities
+          </span>
+
+        </a>
+
+
+        <a href="../index.html">
+
+          <i class="fa-solid fa-globe"></i>
+
+          <span>
+            View Website
+          </span>
+
+        </a>
+
+
+      </nav>
+
+
+      <!-- ========================================
+           SIGN OUT
+      ========================================= -->
+
+      <button
+        id="logoutButton"
+        class="logout-button"
+        type="button"
+      >
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>
+          Sign Out
+        </span>
+
+      </button>
+
+
+    </aside>
+
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ========================================= -->
+
+    <main class="admin-main">
+
+
+      <!-- ========================================
+           HEADER
+      ========================================= -->
+
+      <header class="admin-header">
+
+        <div>
+
+          <p class="page-eyebrow">
+            PNGSA ADMIN PORTAL
+          </p>
+
+          <h1>
+            Leadership Management
+          </h1>
+
+          <p>
+            Add, edit, organize, publish, or remove PNGSA student leaders.
+          </p>
+
+        </div>
+
+
+        <div class="admin-user">
+
+          <i class="fa-regular fa-user"></i>
+
+          <span id="adminEmail">
+            Loading...
+          </span>
+
+        </div>
+
+      </header>
+
+
+
+      <!-- ========================================
+           SUMMARY CARDS
+      ========================================= -->
+
+      <section class="leadership-stats">
+
+
+        <article class="leadership-stat-card">
+
+          <div class="leadership-stat-icon purple">
+
+            <i class="fa-solid fa-people-group"></i>
+
+          </div>
+
+          <div>
+
+            <span>
+              Total Leaders
+            </span>
+
+            <strong id="totalLeaders">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="leadership-stat-card">
+
+          <div class="leadership-stat-icon green">
+
+            <i class="fa-solid fa-eye"></i>
+
+          </div>
+
+          <div>
+
+            <span>
+              Published
+            </span>
+
+            <strong id="publishedLeaders">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="leadership-stat-card">
+
+          <div class="leadership-stat-icon gold">
+
+            <i class="fa-solid fa-eye-slash"></i>
+
+          </div>
+
+          <div>
+
+            <span>
+              Hidden
+            </span>
+
+            <strong id="hiddenLeaders">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+
+      </section>
+
+
+
+      <!-- ========================================
+           MANAGEMENT TOOLBAR
+      ========================================= -->
+
+      <section class="leadership-panel">
+
+
+        <div class="leadership-panel-header">
+
+          <div>
+
+            <h2>
+              PNGSA Leadership
+            </h2>
+
+            <p>
+              Leaders are displayed on the public website according to their display order.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            id="addLeaderButton"
+            class="primary-button"
+          >
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add Leader
+
+          </button>
+
+        </div>
+
+
+
+        <!-- SEARCH / FILTER -->
+
+        <div class="leadership-toolbar">
+
+
+          <div class="leadership-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+              type="search"
+              id="leadershipSearch"
+              placeholder="Search leaders..."
+            >
+
+          </div>
+
+
+          <select id="leadershipFilter">
+
+            <option value="all">
+              All Leaders
+            </option>
+
+            <option value="active">
+              Published
+            </option>
+
+            <option value="hidden">
+              Hidden
+            </option>
+
+          </select>
+
+
+        </div>
+
+
+
+        <!-- ========================================
+             LEADER LIST
+        ========================================= -->
+
+        <div
+          id="leadershipList"
+          class="leadership-list"
+        >
+
+
+          <div
+            id="leadershipLoading"
+            class="leadership-loading"
+          >
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            <p>
+              Loading leadership...
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+    </main>
+
+
+  </div>
+
+
+
+  <!-- ========================================
+       ADD / EDIT LEADER MODAL
+  ========================================= -->
+
+  <div
+    id="leaderModal"
+    class="modal-overlay hidden"
+  >
+
+
+    <div class="leader-modal">
+
+
+      <div class="leader-modal-header">
+
+        <div>
+
+          <p class="page-eyebrow">
+            PNGSA LEADERSHIP
+          </p>
+
+          <h2 id="leaderModalTitle">
+            Add Leader
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          id="closeLeaderModal"
+          class="modal-close-button"
+          aria-label="Close"
+        >
+
+          <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+      </div>
+
+
+
+      <form id="leaderForm">
+
+
+        <input
+          type="hidden"
+          id="leaderId"
+        >
+
+
+
+        <!-- PHOTO -->
+
+        <div class="leader-photo-section">
+
+
+          <div class="leader-photo-preview">
+
+            <img
+              id="leaderPhotoPreview"
+              src=""
+              alt="Leadership preview"
+              hidden
+            >
+
+            <div
+              id="leaderPhotoPlaceholder"
+              class="leader-photo-placeholder"
+            >
+
+              <i class="fa-solid fa-user"></i>
+
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <label
+              for="leaderPhoto"
+              class="secondary-button upload-photo-button"
+            >
+
+              <i class="fa-solid fa-camera"></i>
+
+              Choose Photo
+
+            </label>
+
+
+            <input
+              type="file"
+              id="leaderPhoto"
+              accept=".jpg,.jpeg,.png,.webp"
+              hidden
+            >
+
+
+            <p class="form-help">
+              JPG, PNG, or WEBP recommended.
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- NAME / POSITION -->
+
+        <div class="form-grid">
+
+
+          <div class="form-group">
+
+            <label for="leaderName">
+              Full Name *
+            </label>
+
+            <input
+              type="text"
+              id="leaderName"
+              placeholder="Example: Japhet Kapak"
+              required
+            >
+
+          </div>
+
+
+
+          <div class="form-group">
+
+            <label for="leaderPosition">
+              Position *
+            </label>
+
+            <input
+              type="text"
+              id="leaderPosition"
+              placeholder="Example: Media Coordinator"
+              required
+            >
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- MAJOR / YEAR -->
+
+        <div class="form-grid">
+
+
+          <div class="form-group">
+
+            <label for="leaderMajor">
+              Major / Program
+            </label>
+
+            <input
+              type="text"
+              id="leaderMajor"
+              placeholder="Example: Geographic Information Science"
+            >
+
+          </div>
+
+
+
+          <div class="form-group">
+
+            <label for="leaderYear">
+              Year
+            </label>
+
+            <select id="leaderYear">
+
+              <option value="">
+                Select year
+              </option>
+
+              <option value="Freshman">
+                Freshman
+              </option>
+
+              <option value="Sophomore">
+                Sophomore
+              </option>
+
+              <option value="Junior">
+                Junior
+              </option>
+
+              <option value="Senior">
+                Senior
+              </option>
+
+              <option value="Graduate">
+                Graduate
+              </option>
+
+              <option value="Other">
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- BIO -->
+
+        <div class="form-group">
+
+          <label for="leaderBio">
+            Biography
+          </label>
+
+          <textarea
+            id="leaderBio"
+            rows="6"
+            placeholder="Write a short biography about this leader..."
+          ></textarea>
+
+          <div class="field-footer">
+
+            <span>
+              Short biographies work best on the public website.
+            </span>
+
+            <span id="bioCharacterCount">
+              0 / 600
+            </span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- EMAIL / LINKEDIN -->
+
+        <div class="form-grid">
+
+
+          <div class="form-group">
+
+            <label for="leaderEmail">
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="leaderEmail"
+              placeholder="name@jacks.sdstate.edu"
+            >
+
+          </div>
+
+
+
+          <div class="form-group">
+
+            <label for="leaderLinkedIn">
+              LinkedIn URL
+            </label>
+
+            <input
+              type="url"
+              id="leaderLinkedIn"
+              placeholder="https://www.linkedin.com/in/..."
+            >
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- DISPLAY ORDER / ACTIVE -->
+
+        <div class="form-grid">
+
+
+          <div class="form-group">
+
+            <label for="leaderDisplayOrder">
+              Display Order
+            </label>
+
+            <input
+              type="number"
+              id="leaderDisplayOrder"
+              min="0"
+              value="0"
+            >
+
+            <span class="form-help">
+              Lower numbers appear first.
+            </span>
+
+          </div>
+
+
+
+          <div class="form-group">
+
+            <label>
+              Website Status
+            </label>
+
+
+            <label class="toggle-row">
+
+              <input
+                type="checkbox"
+                id="leaderActive"
+                checked
+              >
+
+              <span class="toggle-switch"></span>
+
+              <span>
+                Publish on website
+              </span>
+
+            </label>
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- STATUS -->
+
+        <div
+          id="leaderFormStatus"
+          class="form-status"
+        ></div>
+
+
+
+        <!-- ACTIONS -->
+
+        <div class="modal-actions">
+
+
+          <button
+            type="button"
+            id="cancelLeaderButton"
+            class="secondary-button"
+          >
+
+            Cancel
+
+          </button>
+
+
+          <button
+            type="submit"
+            id="saveLeaderButton"
+            class="primary-button"
+          >
+
+            <i class="fa-solid fa-floppy-disk"></i>
+
+            Save Leader
+
+          </button>
+
+
+        </div>
+
+
+      </form>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- ========================================
+       DELETE CONFIRMATION
+  ========================================= -->
+
+  <div
+    id="deleteLeaderModal"
+    class="modal-overlay hidden"
+  >
+
+
+    <div class="delete-modal">
+
+
+      <div class="delete-warning-icon">
+
+        <i class="fa-solid fa-trash"></i>
+
+      </div>
+
+
+      <h2>
+        Delete Leader?
+      </h2>
+
+
+      <p>
+        This will permanently remove
+        <strong id="deleteLeaderName">
+          this leader
+        </strong>
+        from the PNGSA leadership database.
+      </p>
+
+
+      <div class="modal-actions">
+
+
+        <button
+          type="button"
+          id="cancelDeleteLeader"
+          class="secondary-button"
+        >
+
+          Cancel
+
+        </button>
+
+
+        <button
+          type="button"
+          id="confirmDeleteLeader"
+          class="danger-button"
+        >
+
+          <i class="fa-solid fa-trash"></i>
+
+          Delete
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- ========================================
+       JAVASCRIPT
+  ========================================= -->
+
+  <script
+    type="module"
+    src="js/leadership.js?v=1"
+  ></script>
+
+
+</body>
+
+</html>

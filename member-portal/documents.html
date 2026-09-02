@@ -10,6 +10,13 @@
 
   <title>My Documents | PNGSA Member Portal</title>
 
+  <!-- Shared Member Portal Sidebar / Layout CSS -->
+  <link
+    rel="stylesheet"
+    href="css/member.css"
+  >
+
+  <!-- Documents Page CSS -->
   <link
     rel="stylesheet"
     href="css/documents.css"
@@ -24,84 +31,93 @@
 
 <body>
 
-  <div class="portal-layout">
+  <div class="member-layout">
 
     <!-- ========================================
          SIDEBAR
     ========================================= -->
 
-    <aside class="sidebar">
+    <aside class="member-sidebar">
 
-      <div class="sidebar-brand">
+      <div class="member-sidebar-header">
 
         <img
           src="../images/pngsa_logo.png"
           alt="PNGSA Logo"
-          class="sidebar-logo"
         >
 
         <h2>PNGSA</h2>
 
-        <p>Member Portal</p>
+        <span>
+          Member Portal
+        </span>
 
       </div>
 
 
-      <nav class="sidebar-nav">
+      <nav class="member-nav">
 
         <a href="dashboard.html">
           <i class="fa-solid fa-house"></i>
-          <span>Dashboard</span>
+          Dashboard
         </a>
-
 
         <a href="profile.html">
           <i class="fa-solid fa-user"></i>
-          <span>My Profile</span>
+          My Profile
         </a>
 
-
-        <a
-          href="documents.html"
-          class="active"
-        >
-          <i class="fa-solid fa-folder-open"></i>
-          <span>My Documents</span>
+        <a href="vote.html">
+          <i class="fa-solid fa-check-to-slot"></i>
+          Vote
         </a>
 
+        <a href="announcements.html">
+          <i class="fa-solid fa-bullhorn"></i>
+          Announcements
+        </a>
+
+        <a href="messages.html">
+          <i class="fa-solid fa-comments"></i>
+          Messages
+        </a>
+
+        <a href="events.html">
+          <i class="fa-solid fa-calendar-days"></i>
+          Events
+        </a>
 
         <a href="opportunities.html">
           <i class="fa-solid fa-briefcase"></i>
-          <span>Opportunities</span>
+          Opportunities
         </a>
-
 
         <a href="resources.html">
-          <i class="fa-solid fa-book-open"></i>
-          <span>Resources</span>
+          <i class="fa-solid fa-folder-open"></i>
+          Resources
         </a>
 
+        <a href="documents.html" class="active">
+          <i class="fa-solid fa-file-lines"></i>
+          My Documents
+        </a>
 
         <a href="settings.html">
           <i class="fa-solid fa-gear"></i>
-          <span>Settings</span>
+          Settings
         </a>
 
       </nav>
 
 
-      <div class="sidebar-bottom">
-
-        <button
-          type="button"
-          id="logoutBtn"
-          class="logout-btn"
-        >
-          <i class="fa-solid fa-right-from-bracket"></i>
-          Logout
-        </button>
-
-      </div>
+      <button
+        type="button"
+        id="logoutBtn"
+        class="member-logout-button"
+      >
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Sign Out
+      </button>
 
     </aside>
 
