@@ -1,19 +1,5 @@
-import { createClient }
-from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-
-
-const SUPABASE_URL =
-  "YOUR_SUPABASE_URL";
-
-const SUPABASE_ANON_KEY =
-  "YOUR_SUPABASE_PUBLISHABLE_KEY";
-
-
-const supabase =
-  createClient(
-    SUPABASE_URL,
-    SUPABASE_ANON_KEY
-  );
+import { supabase }
+from "./supabase.js";
 
 
 const leadershipGrid =
@@ -39,10 +25,54 @@ function escapeHTML(value = "") {
 
 
 // ========================================
-// LOAD LEADERS
+// SAFE URL
+// ========================================
+
+function safeUrl(value = "") {
+
+  if (!value) {
+    return "";
+  }
+
+  try {
+
+    const url =
+      new URL(value);
+
+    if (
+      url.protocol !== "http:" &&
+      url.protocol !== "https:"
+    ) {
+      return "";
+    }
+
+    return url.href;
+
+  } catch {
+
+    return "";
+
+  }
+
+}
+
+
+// ========================================
+// LOAD LEADERSHIP
 // ========================================
 
 async function loadLeadership() {
+
+  if (!leadershipGrid) {
+
+    console.error(
+      "leadershipGrid element not found."
+    );
+
+    return;
+
+  }
+
 
   const {
     data,
@@ -50,10 +80,32 @@ async function loadLeadership() {
   } =
     await supabase
       .from("leadership")
-      .select("*")
-      .eq("is_active", true)
+      .select(`
+        id,
+        full_name,
+        position,
+        major,
+        year_level,
+        bio,
+        email,
+        linkedin_url,
+        photo_url,
+        display_order,
+        is_active,
+        created_at
+      `)
+      .eq(
+        "is_active",
+        true
+      )
       .order(
         "display_order",
+        {
+          ascending: true
+        }
+      )
+      .order(
+        "created_at",
         {
           ascending: true
         }
@@ -66,7 +118,6 @@ async function loadLeadership() {
       "Leadership error:",
       error
     );
-
 
     leadershipGrid.innerHTML = `
       <div class="leadership-empty">
@@ -89,7 +140,10 @@ async function loadLeadership() {
   }
 
 
-  if (!data || data.length === 0) {
+  if (
+    !data ||
+    data.length === 0
+  ) {
 
     leadershipGrid.innerHTML = `
       <div class="leadership-empty">
@@ -99,6 +153,10 @@ async function loadLeadership() {
         <h3>
           Leadership information coming soon
         </h3>
+
+        <p>
+          PNGSA leadership information is currently being updated.
+        </p>
 
       </div>
     `;
@@ -126,37 +184,28 @@ function createLeadershipCard(member) {
 
   const name =
     escapeHTML(
-      member.full_name
+      member.full_name || ""
     );
-
 
   const position =
     escapeHTML(
-      member.position
+      member.position || ""
     );
-
 
   const major =
     escapeHTML(
       member.major || ""
     );
 
-
   const year =
     escapeHTML(
       member.year_level || ""
     );
 
-
   const bio =
     escapeHTML(
       member.bio || ""
     );
-
-
-  const photo =
-    member.photo_url ||
-    "images/leadership/default-profile.png";
 
 
   const details =
@@ -166,6 +215,31 @@ function createLeadershipCard(member) {
     ]
       .filter(Boolean)
       .join(" • ");
+
+
+  const photo =
+    safeUrl(
+      member.photo_url
+    );
+
+
+  const photoHTML =
+    photo
+      ? `
+        <img
+          src="${photo}"
+          alt="${name}"
+          class="executive-photo"
+          loading="lazy"
+        >
+      `
+      : `
+        <div class="executive-photo-placeholder">
+
+          <i class="fa-solid fa-user"></i>
+
+        </div>
+      `;
 
 
   const emailButton =
@@ -185,11 +259,17 @@ function createLeadershipCard(member) {
       : "";
 
 
+  const linkedin =
+    safeUrl(
+      member.linkedin_url
+    );
+
+
   const linkedinButton =
-    member.linkedin_url
+    linkedin
       ? `
         <a
-          href="${escapeHTML(member.linkedin_url)}"
+          href="${linkedin}"
           target="_blank"
           rel="noopener noreferrer"
           class="executive-contact-link"
@@ -207,15 +287,12 @@ function createLeadershipCard(member) {
   return `
     <article class="executive-card">
 
-      <img
-        src="${escapeHTML(photo)}"
-        alt="${name}"
-        class="executive-photo"
-        loading="lazy"
-      >
+
+      ${photoHTML}
 
 
       <div class="executive-info">
+
 
         <p class="executive-role">
           ${position}
@@ -264,12 +341,18 @@ function createLeadershipCard(member) {
             : ""
         }
 
+
       </div>
+
 
     </article>
   `;
 
 }
 
+
+// ========================================
+// START
+// ========================================
 
 loadLeadership();
