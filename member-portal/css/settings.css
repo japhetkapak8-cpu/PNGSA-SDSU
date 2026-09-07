@@ -2,6 +2,30 @@
    PNGSA MEMBER SETTINGS
 ===================================================== */
 
+:root {
+    --png-black: #050505;
+    --png-black-soft: #121212;
+
+    --png-red: #CE1126;
+    --png-red-dark: #9F0D1D;
+
+    --png-gold: #F4C430;
+    --png-yellow: #FFD84D;
+
+    --png-white: #FFFFFF;
+
+    --png-bg: #F5F5F3;
+    --png-border: #E4E4DF;
+
+    --png-text: #181818;
+    --png-muted: #6B6B68;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
 .settings-main {
     flex: 1;
 
@@ -9,11 +33,18 @@
 
     margin-left: 245px;
 
-    width: calc(100% - 245px);
+    width:
+        calc(100% - 245px);
 
-    padding: 34px 36px 60px;
+    padding:
+        34px 36px 60px;
 
-    background: #f4f7fa;
+    background:
+        linear-gradient(
+            135deg,
+            #FAFAF8,
+            #F3F3EF
+        );
 }
 
 
@@ -35,41 +66,51 @@
 
 
 .settings-eyebrow {
-    margin: 0 0 6px;
+    margin:
+        0 0 6px;
 
-    color: #1476c9;
+    color:
+        var(--png-red);
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    font-weight: 800;
+    font-weight:
+        800;
 
-    letter-spacing: 0.08em;
+    letter-spacing:
+        0.08em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 
 .settings-header h1 {
-    margin: 0 0 7px;
+    margin:
+        0 0 7px;
 
-    color: #082a55;
+    color:
+        var(--png-black);
 
-    font-size: 32px;
+    font-size:
+        32px;
 }
 
 
 .settings-header p:not(.settings-eyebrow) {
     margin: 0;
 
-    color: #68798a;
+    color:
+        var(--png-muted);
 
-    font-size: 14px;
+    font-size:
+        14px;
 }
 
 
 .settings-header-icon {
     width: 58px;
-
     height: 58px;
 
     min-width: 58px;
@@ -80,13 +121,25 @@
 
     justify-content: center;
 
-    background: #e7f3ff;
+    border:
+        1px solid
+        rgba(244, 196, 48, 0.50);
 
-    color: #1476c9;
+    background:
+        #FFF8DD;
 
-    border-radius: 15px;
+    color:
+        var(--png-red);
 
-    font-size: 23px;
+    border-radius:
+        15px;
+
+    font-size:
+        23px;
+
+    box-shadow:
+        0 4px 14px
+        rgba(0, 0, 0, 0.04);
 }
 
 
@@ -95,89 +148,135 @@
 ===================================================== */
 
 .settings-card {
-    margin-bottom: 22px;
+    margin-bottom:
+        22px;
 
-    padding: 25px;
+    padding:
+        25px;
 
-    background: #ffffff;
+    background:
+        #ffffff;
 
-    border: 1px solid #e0e7ee;
+    border:
+        1px solid
+        var(--png-border);
 
-    border-radius: 14px;
+    border-top:
+        3px solid
+        var(--png-gold);
+
+    border-radius:
+        14px;
 
     box-shadow:
         0 4px 14px
-        rgba(15, 35, 55, 0.04);
+        rgba(0, 0, 0, 0.04);
 }
 
 
 .settings-card-header {
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 14px;
+    gap:
+        14px;
 
-    margin-bottom: 24px;
+    margin-bottom:
+        24px;
 
-    padding-bottom: 18px;
+    padding-bottom:
+        18px;
 
-    border-bottom: 1px solid #e8edf2;
+    border-bottom:
+        1px solid
+        #ECECE7;
 }
 
 
 .settings-card-icon {
-    width: 45px;
+    width:
+        45px;
 
-    height: 45px;
+    height:
+        45px;
 
-    min-width: 45px;
+    min-width:
+        45px;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    border-radius: 11px;
+    border:
+        1px solid
+        rgba(244, 196, 48, 0.45);
 
-    background: #e8f4ff;
+    border-radius:
+        11px;
 
-    color: #1476c9;
+    background:
+        #FFF8DD;
 
-    font-size: 18px;
+    color:
+        var(--png-red);
+
+    font-size:
+        18px;
 }
 
 
 .settings-card-icon.security {
-    background: #edf7ee;
+    background:
+        rgba(206, 17, 38, 0.08);
 
-    color: #29934a;
+    color:
+        var(--png-red);
+
+    border-color:
+        rgba(206, 17, 38, 0.20);
 }
 
 
 .settings-card-icon.account {
-    background: #f3ecff;
+    background:
+        #F3F3EF;
 
-    color: #7555c7;
+    color:
+        var(--png-black);
+
+    border-color:
+        #DADAD5;
 }
 
 
 .settings-card-header h2 {
-    margin: 0 0 4px;
+    margin:
+        0 0 4px;
 
-    color: #082a55;
+    color:
+        var(--png-black);
 
-    font-size: 19px;
+    font-size:
+        19px;
 }
 
 
 .settings-card-header p {
     margin: 0;
 
-    color: #738395;
+    color:
+        var(--png-muted);
 
-    font-size: 12px;
+    font-size:
+        12px;
 }
 
 
@@ -186,97 +285,145 @@
 ===================================================== */
 
 .profile-photo-setting {
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 15px;
+    gap:
+        15px;
 
-    margin-bottom: 24px;
+    margin-bottom:
+        24px;
 
-    padding: 15px;
+    padding:
+        15px;
 
-    background: #f8fafc;
+    background:
+        #FAFAF8;
 
-    border: 1px solid #e4ebf1;
+    border:
+        1px solid
+        var(--png-border);
 
-    border-radius: 11px;
+    border-radius:
+        11px;
 }
 
 
 .settings-avatar {
-    position: relative;
+    position:
+        relative;
 
-    width: 70px;
+    width:
+        70px;
 
-    height: 70px;
+    height:
+        70px;
 
-    min-width: 70px;
+    min-width:
+        70px;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    border-radius: 50%;
+    border:
+        2px solid
+        var(--png-gold);
 
-    background: #e5eef7;
+    border-radius:
+        50%;
+
+    background:
+        #FFF8DD;
 }
 
 
 .settings-avatar img {
-    width: 100%;
+    width:
+        100%;
 
-    height: 100%;
+    height:
+        100%;
 
-    object-fit: cover;
+    object-fit:
+        cover;
 }
 
 
 .settings-avatar-fallback {
-    width: 100%;
+    width:
+        100%;
 
-    height: 100%;
+    height:
+        100%;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    color: #1476c9;
+    color:
+        var(--png-red);
 
-    font-size: 25px;
+    font-size:
+        25px;
 }
 
 
 .profile-photo-setting strong {
-    color: #23384d;
+    color:
+        var(--png-black);
 
-    font-size: 14px;
+    font-size:
+        14px;
 }
 
 
 .profile-photo-setting p {
-    margin: 3px 0 7px;
+    margin:
+        3px 0 7px;
 
-    color: #7c8c9c;
+    color:
+        var(--png-muted);
 
-    font-size: 11px;
+    font-size:
+        11px;
 }
 
 
 .small-settings-link {
-    display: inline-flex;
+    display:
+        inline-flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 5px;
+    gap:
+        5px;
 
-    color: #1476c9;
+    color:
+        var(--png-red);
 
-    font-size: 11px;
+    font-size:
+        11px;
 
-    font-weight: 700;
+    font-weight:
+        700;
 
-    text-decoration: none;
+    text-decoration:
+        none;
+}
+
+
+.small-settings-link:hover {
+    text-decoration:
+        underline;
 }
 
 
@@ -285,115 +432,149 @@
 ===================================================== */
 
 .settings-grid {
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
         repeat(2, minmax(0, 1fr));
 
-    gap: 18px;
+    gap:
+        18px;
 }
 
 
 .settings-field {
-    display: flex;
+    display:
+        flex;
 
-    flex-direction: column;
+    flex-direction:
+        column;
 
-    gap: 7px;
+    gap:
+        7px;
 }
 
 
 .settings-field label {
-    color: #34495e;
+    color:
+        var(--png-black);
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    font-weight: 700;
+    font-weight:
+        700;
 }
 
 
 .settings-field input,
 .settings-field select,
 .settings-field textarea {
-    width: 100%;
+    width:
+        100%;
 
-    box-sizing: border-box;
+    box-sizing:
+        border-box;
 
-    padding: 11px 12px;
+    padding:
+        11px 12px;
 
-    border: 1px solid #ccd8e2;
+    border:
+        1px solid
+        #D4D4CE;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
-    background: #ffffff;
+    background:
+        #ffffff;
 
-    color: #34495e;
+    color:
+        var(--png-text);
 
-    font-family: inherit;
+    font-family:
+        inherit;
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    outline: none;
+    outline:
+        none;
 
     transition:
         border-color 0.18s ease,
-        box-shadow 0.18s ease;
+        box-shadow 0.18s ease,
+        background 0.18s ease;
 }
 
 
 .settings-field input,
 .settings-field select {
-    height: 42px;
+    height:
+        42px;
 }
 
 
 .settings-field textarea {
-    resize: vertical;
+    resize:
+        vertical;
 
-    min-height: 120px;
+    min-height:
+        120px;
 
-    line-height: 1.6;
+    line-height:
+        1.6;
 }
 
 
 .settings-field input:focus,
 .settings-field select:focus,
 .settings-field textarea:focus {
-    border-color: #1476c9;
+    border-color:
+        var(--png-red);
 
     box-shadow:
         0 0 0 3px
-        rgba(20, 118, 201, 0.1);
+        rgba(206, 17, 38, 0.10);
 }
 
 
 .settings-field input:disabled {
-    background: #f3f6f8;
+    background:
+        #F3F3EF;
 
-    color: #8292a0;
+    color:
+        #85857F;
 
-    cursor: not-allowed;
+    cursor:
+        not-allowed;
 }
 
 
 .settings-field small {
-    color: #8292a0;
+    color:
+        #85857F;
 
-    font-size: 10px;
+    font-size:
+        10px;
 }
 
 
 .settings-full-width {
-    margin-top: 19px;
+    margin-top:
+        19px;
 }
 
 
 .character-counter {
-    text-align: right;
+    text-align:
+        right;
 
-    color: #8a99a8;
+    color:
+        #8A8A84;
 
-    font-size: 10px;
+    font-size:
+        10px;
 }
 
 
@@ -402,55 +583,74 @@
 ===================================================== */
 
 .password-form {
-    max-width: 650px;
+    max-width:
+        650px;
 
-    display: grid;
+    display:
+        grid;
 
-    gap: 18px;
+    gap:
+        18px;
 }
 
 
 .password-input-wrapper {
-    position: relative;
+    position:
+        relative;
 }
 
 
 .password-input-wrapper input {
-    padding-right: 45px;
+    padding-right:
+        45px;
 }
 
 
 .password-toggle {
-    position: absolute;
+    position:
+        absolute;
 
-    top: 50%;
+    top:
+        50%;
 
-    right: 7px;
+    right:
+        7px;
 
-    width: 32px;
+    width:
+        32px;
 
-    height: 32px;
+    height:
+        32px;
 
-    transform: translateY(-50%);
+    transform:
+        translateY(-50%);
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    border: none;
+    border:
+        none;
 
-    background: transparent;
+    background:
+        transparent;
 
-    color: #788a9b;
+    color:
+        #777771;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 }
 
 
 .password-toggle:hover {
-    color: #1476c9;
+    color:
+        var(--png-red);
 }
 
 
@@ -459,61 +659,99 @@
 ===================================================== */
 
 .settings-actions {
-    display: flex;
+    display:
+        flex;
 
-    justify-content: flex-end;
+    justify-content:
+        flex-end;
 
-    margin-top: 22px;
+    margin-top:
+        22px;
 
-    padding-top: 18px;
+    padding-top:
+        18px;
 
-    border-top: 1px solid #edf1f5;
+    border-top:
+        1px solid
+        #ECECE7;
 }
 
 
 .primary-settings-button {
-    min-height: 40px;
+    min-height:
+        40px;
 
-    display: inline-flex;
+    display:
+        inline-flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    gap: 7px;
+    gap:
+        7px;
 
-    padding: 0 17px;
+    padding:
+        0 17px;
 
-    border: none;
+    border:
+        none;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
-    background: #1476c9;
+    background:
+        linear-gradient(
+            135deg,
+            var(--png-red),
+            var(--png-red-dark)
+        );
 
-    color: #ffffff;
+    color:
+        #ffffff;
 
-    font-family: inherit;
+    font-family:
+        inherit;
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    font-weight: 700;
+    font-weight:
+        700;
 
-    cursor: pointer;
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 4px 12px
+        rgba(206, 17, 38, 0.18);
 
     transition:
-        background 0.18s ease;
+        background 0.18s ease,
+        transform 0.18s ease;
 }
 
 
 .primary-settings-button:hover {
-    background: #0e5f9f;
+    background:
+        var(--png-red-dark);
+
+    transform:
+        translateY(-1px);
 }
 
 
 .primary-settings-button:disabled {
-    opacity: 0.6;
+    opacity:
+        0.6;
 
-    cursor: wait;
+    cursor:
+        wait;
+
+    transform:
+        none;
 }
 
 
@@ -522,37 +760,52 @@
 ===================================================== */
 
 .settings-message {
-    display: none;
+    display:
+        none;
 
-    margin-bottom: 18px;
+    margin-bottom:
+        18px;
 
-    padding: 11px 13px;
+    padding:
+        11px 13px;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
-    font-size: 12px;
+    font-size:
+        12px;
 }
 
 
 .settings-message.success {
-    display: block;
+    display:
+        block;
 
-    background: #edf9f0;
+    background:
+        #EDF9F0;
 
-    border: 1px solid #bfe3c8;
+    border:
+        1px solid
+        #BFE3C8;
 
-    color: #24733b;
+    color:
+        #24733B;
 }
 
 
 .settings-message.error {
-    display: block;
+    display:
+        block;
 
-    background: #fff0f0;
+    background:
+        #FFF1F3;
 
-    border: 1px solid #efc2c2;
+    border:
+        1px solid
+        rgba(206, 17, 38, 0.25);
 
-    color: #a72c2c;
+    color:
+        var(--png-red-dark);
 }
 
 
@@ -561,79 +814,132 @@
 ===================================================== */
 
 .account-information-grid {
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
         repeat(2, minmax(0, 1fr));
 
-    gap: 12px;
+    gap:
+        12px;
 }
 
 
 .account-information-row {
-    display: flex;
+    display:
+        flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 15px;
+    gap:
+        15px;
 
-    padding: 14px;
+    padding:
+        14px;
 
-    border: 1px solid #e5ebf0;
+    border:
+        1px solid
+        var(--png-border);
 
-    border-radius: 9px;
+    border-radius:
+        9px;
 
-    background: #fafcfd;
+    background:
+        #FAFAF8;
+
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease;
+}
+
+
+.account-information-row:hover {
+    border-color:
+        rgba(244, 196, 48, 0.60);
+
+    background:
+        #FFFDF5;
 }
 
 
 .account-information-row span {
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 8px;
+    gap:
+        8px;
 
-    color: #708295;
+    color:
+        var(--png-muted);
 
-    font-size: 11px;
+    font-size:
+        11px;
 }
 
 
 .account-information-row span i {
-    color: #1476c9;
+    color:
+        var(--png-gold);
 }
 
 
 .account-information-row strong {
-    color: #2d4358;
+    color:
+        var(--png-black);
 
-    font-size: 11px;
+    font-size:
+        11px;
 
-    text-align: right;
+    text-align:
+        right;
 }
 
 
 /* =====================================================
-   MOBILE
+   RESPONSIVE
 ===================================================== */
+
+@media (max-width: 1000px) {
+
+    .settings-main {
+        margin-left:
+            220px;
+
+        width:
+            calc(100% - 220px);
+
+        padding:
+            30px 24px 50px;
+    }
+
+}
+
 
 @media (max-width: 800px) {
 
     .settings-main {
-        margin-left: 0;
+        margin-left:
+            0;
 
-        width: 100%;
+        width:
+            100%;
 
-        padding: 26px 20px;
+        padding:
+            26px 20px;
     }
 
 
     .settings-grid,
     .account-information-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
 }
@@ -642,49 +948,65 @@
 @media (max-width: 520px) {
 
     .settings-main {
-        padding: 20px 14px;
+        padding:
+            20px 14px;
+    }
+
+
+    .settings-header {
+        align-items:
+            flex-start;
     }
 
 
     .settings-header h1 {
-        font-size: 27px;
+        font-size:
+            27px;
     }
 
 
     .settings-header-icon {
-        display: none;
+        display:
+            none;
     }
 
 
     .settings-card {
-        padding: 18px;
+        padding:
+            18px;
     }
 
 
     .profile-photo-setting {
-        align-items: flex-start;
+        align-items:
+            flex-start;
     }
 
 
     .settings-actions {
-        justify-content: stretch;
+        justify-content:
+            stretch;
     }
 
 
     .primary-settings-button {
-        width: 100%;
+        width:
+            100%;
     }
 
 
     .account-information-row {
-        align-items: flex-start;
+        align-items:
+            flex-start;
 
-        flex-direction: column;
+        flex-direction:
+            column;
     }
 
 
     .account-information-row strong {
-        text-align: left;
+        text-align:
+            left;
     }
 
 }

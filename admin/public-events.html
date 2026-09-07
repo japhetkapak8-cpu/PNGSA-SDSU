@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    PNGSA Admin | Public Events
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/admin.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/public-events.css"
+  >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-layout">
+
+
+  <!-- ========================================
+       SIDEBAR
+  ========================================= -->
+
+  <aside class="sidebar">
+
+
+    <div class="sidebar-header">
+
+      <img
+        src="../images/pngsa_logo.png"
+        alt="PNGSA Logo"
+        class="sidebar-logo"
+      >
+
+      <h2>
+        PNGSA
+      </h2>
+
+      <span>
+        Admin Portal
+      </span>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+
+      <a href="dashboard.html">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+        Dashboard
+
+      </a>
+
+
+      <a href="members.html">
+
+        <i class="fa-solid fa-users"></i>
+
+        Members
+
+      </a>
+
+
+      <a href="invite-members.html">
+
+        <i class="fa-solid fa-user-plus"></i>
+
+        Invite Members
+
+      </a>
+
+
+      <a href="leadership.html">
+
+        <i class="fa-solid fa-people-group"></i>
+
+        Leadership
+
+      </a>
+
+
+      <a href="elections.html">
+
+        <i class="fa-solid fa-check-to-slot"></i>
+
+        Elections
+
+      </a>
+
+
+      <!-- MEMBER EVENTS -->
+
+      <a href="events.html">
+
+        <i class="fa-solid fa-calendar-days"></i>
+
+        Member Events
+
+      </a>
+
+
+      <!-- PUBLIC EVENTS -->
+
+      <a
+        href="public-events.html"
+        class="active"
+      >
+
+        <i class="fa-solid fa-globe"></i>
+
+        Public Events
+
+      </a>
+
+
+      <a href="candidates.html">
+
+        <i class="fa-solid fa-user-tie"></i>
+
+        Candidates
+
+      </a>
+
+
+      <a href="voters.html">
+
+        <i class="fa-solid fa-user-check"></i>
+
+        Eligible Voters
+
+      </a>
+
+
+      <a href="results.html">
+
+        <i class="fa-solid fa-chart-column"></i>
+
+        Results
+
+      </a>
+
+
+      <a href="announcements.html">
+
+        <i class="fa-solid fa-bullhorn"></i>
+
+        Announcements
+
+      </a>
+
+
+      <a href="opportunities.html">
+
+        <i class="fa-solid fa-hands-helping"></i>
+
+        Opportunities
+
+      </a>
+
+
+      <a
+        href="../events.html"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+        View Public Events
+
+      </a>
+
+
+    </nav>
+
+
+    <button
+      id="logoutButton"
+      class="logout-button"
+      type="button"
+    >
+
+      <i class="fa-solid fa-right-from-bracket"></i>
+
+      Sign Out
+
+    </button>
+
+
+  </aside>
+
+
+  <!-- ========================================
+       MAIN
+  ========================================= -->
+
+  <main class="admin-main public-events-main">
+
+
+    <!-- ========================================
+         HEADER
+    ========================================= -->
+
+    <header class="admin-header public-events-header">
+
+
+      <div>
+
+        <p class="page-eyebrow">
+          Public Website
+        </p>
+
+        <h1>
+          Public Events
+        </h1>
+
+        <p>
+          Create and manage events displayed on
+          the public PNGSA website.
+        </p>
+
+      </div>
+
+
+      <div class="header-actions">
+
+
+        <a
+          href="../events.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="preview-site-button"
+        >
+
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+          View Website
+
+        </a>
+
+
+        <button
+          id="addPublicEventButton"
+          class="primary-button"
+          type="button"
+        >
+
+          <i class="fa-solid fa-plus"></i>
+
+          Add Public Event
+
+        </button>
+
+
+      </div>
+
+
+    </header>
+
+
+    <!-- ========================================
+         MESSAGE
+    ========================================= -->
+
+    <div
+      id="publicEventMessage"
+      class="public-event-message"
+    ></div>
+
+
+    <!-- ========================================
+         STATS
+    ========================================= -->
+
+    <section class="public-event-stats">
+
+
+      <article class="public-stat-card">
+
+        <div class="public-stat-icon">
+
+          <i class="fa-solid fa-calendar-days"></i>
+
+        </div>
+
+        <div>
+
+          <span>
+            Total Events
+          </span>
+
+          <strong id="publicTotalCount">
+            0
+          </strong>
+
+        </div>
+
+      </article>
+
+
+      <article class="public-stat-card">
+
+        <div class="public-stat-icon published">
+
+          <i class="fa-solid fa-globe"></i>
+
+        </div>
+
+        <div>
+
+          <span>
+            Published
+          </span>
+
+          <strong id="publicPublishedCount">
+            0
+          </strong>
+
+        </div>
+
+      </article>
+
+
+      <article class="public-stat-card">
+
+        <div class="public-stat-icon upcoming">
+
+          <i class="fa-solid fa-clock"></i>
+
+        </div>
+
+        <div>
+
+          <span>
+            Upcoming
+          </span>
+
+          <strong id="publicUpcomingCount">
+            0
+          </strong>
+
+        </div>
+
+      </article>
+
+
+      <article class="public-stat-card">
+
+        <div class="public-stat-icon featured">
+
+          <i class="fa-solid fa-star"></i>
+
+        </div>
+
+        <div>
+
+          <span>
+            Featured
+          </span>
+
+          <strong id="publicFeaturedCount">
+            0
+          </strong>
+
+        </div>
+
+      </article>
+
+
+    </section>
+
+
+    <!-- ========================================
+         MANAGEMENT PANEL
+    ========================================= -->
+
+    <section class="admin-panel">
+
+
+      <div class="panel-header public-panel-header">
+
+
+        <div>
+
+          <h2>
+            Website Events
+          </h2>
+
+          <p>
+            Published events automatically appear
+            on the public PNGSA Events page.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- ========================================
+           FILTERS
+      ========================================= -->
+
+      <div class="public-event-filters">
+
+
+        <div class="public-event-search">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          <input
+            id="publicEventSearch"
+            type="search"
+            placeholder="Search public events..."
+          >
+
+        </div>
+
+
+        <select id="publicStatusFilter">
+
+          <option value="">
+            All Events
+          </option>
+
+          <option value="published">
+            Published
+          </option>
+
+          <option value="draft">
+            Draft
+          </option>
+
+          <option value="featured">
+            Featured
+          </option>
+
+          <option value="upcoming">
+            Upcoming
+          </option>
+
+          <option value="past">
+            Past
+          </option>
+
+        </select>
+
+
+      </div>
+
+
+      <!-- ========================================
+           EVENTS
+      ========================================= -->
+
+      <div
+        id="publicEventsContainer"
+        class="public-events-list"
+      >
+
+        <div class="public-events-loading">
+
+          <i class="fa-solid fa-spinner fa-spin"></i>
+
+          Loading public events...
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+</div>
+
+
+<!-- ========================================
+     ADD / EDIT PUBLIC EVENT MODAL
+======================================== -->
+
+<div
+  id="publicEventModal"
+  class="public-event-modal"
+>
+
+
+  <div class="public-event-modal-content">
+
+
+    <!-- ========================================
+         MODAL HEADER
+    ========================================= -->
+
+    <div class="public-event-modal-header">
+
+
+      <div>
+
+        <p class="modal-eyebrow">
+          Public Website
+        </p>
+
+        <h2 id="publicEventModalTitle">
+          Add Public Event
+        </h2>
+
+        <p>
+          This information will appear on the
+          public PNGSA website.
+        </p>
+
+      </div>
+
+
+      <button
+        id="closePublicEventModal"
+        class="modal-close"
+        type="button"
+        aria-label="Close"
+      >
+
+        <i class="fa-solid fa-xmark"></i>
+
+      </button>
+
+
+    </div>
+
+
+    <!-- ========================================
+         EVENT FORM
+    ========================================= -->
+
+    <form id="publicEventForm">
+
+
+      <input
+        type="hidden"
+        id="publicEventId"
+      >
+
+
+      <!-- ========================================
+           BASIC INFORMATION
+      ========================================= -->
+
+      <div class="public-form-section">
+
+        <h3>
+          <i class="fa-solid fa-circle-info"></i>
+          Event Information
+        </h3>
+
+
+        <div class="form-group">
+
+          <label for="publicEventTitle">
+            Event Title *
+          </label>
+
+          <input
+            id="publicEventTitle"
+            type="text"
+            required
+            maxlength="150"
+            placeholder="PNGSA Post Independence Celebration"
+          >
+
+        </div>
+
+
+        <div class="form-row">
+
+
+          <div class="form-group">
+
+            <label for="publicEventType">
+              Event Type
+            </label>
+
+            <input
+              id="publicEventType"
+              type="text"
+              maxlength="80"
+              placeholder="PNG Night"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="publicEventShortDescription">
+              Short Description
+            </label>
+
+            <input
+              id="publicEventShortDescription"
+              type="text"
+              maxlength="180"
+              placeholder="Short description for the event card"
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="publicEventDescription">
+            Full Description
+          </label>
+
+          <textarea
+            id="publicEventDescription"
+            rows="5"
+            placeholder="Enter full event details..."
+          ></textarea>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- ========================================
+           DATE / LOCATION
+      ========================================= -->
+
+      <div class="public-form-section">
+
+        <h3>
+          <i class="fa-solid fa-calendar-days"></i>
+          Schedule & Location
+        </h3>
+
+
+        <div class="form-row three">
+
+
+          <div class="form-group">
+
+            <label for="publicEventDate">
+              Event Date *
+            </label>
+
+            <input
+              id="publicEventDate"
+              type="date"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="publicEventStartTime">
+              Start Time
+            </label>
+
+            <input
+              id="publicEventStartTime"
+              type="time"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="publicEventEndTime">
+              End Time
+            </label>
+
+            <input
+              id="publicEventEndTime"
+              type="time"
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <div class="form-row">
+
+
+          <div class="form-group">
+
+            <label for="publicEventLocation">
+              Location
+            </label>
+
+            <input
+              id="publicEventLocation"
+              type="text"
+              placeholder="Volstorff Ballroom, SDSU"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="publicEventMapUrl">
+              Map URL
+            </label>
+
+            <input
+              id="publicEventMapUrl"
+              type="url"
+              placeholder="https://maps.google.com/..."
+            >
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+      <!-- ========================================
+           PUBLIC LINKS & MEDIA
+      ========================================= -->
+
+      <div class="public-form-section">
+
+        <h3>
+          <i class="fa-solid fa-link"></i>
+          Public Links & Media
+        </h3>
+
+
+        <!-- KEEP ORIGINAL IMAGE URL + TICKET URL -->
+
+        <div class="form-row">
+
+
+          <div class="form-group">
+
+            <label for="publicEventImageUrl">
+              Poster / Image URL
+            </label>
+
+            <input
+              id="publicEventImageUrl"
+              type="url"
+              placeholder="https://..."
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="publicEventTicketUrl">
+              Ticket URL
+            </label>
+
+            <input
+              id="publicEventTicketUrl"
+              type="url"
+              placeholder="https://..."
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <!-- ========================================
+             IMAGE UPLOAD
+        ========================================= -->
+
+        <div class="form-group">
+
+          <label>
+            Upload Image / Poster
+          </label>
+
+
+          <div class="public-upload-box">
+
+
+            <input
+              id="publicEventImageFile"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              hidden
+            >
+
+
+            <button
+              id="choosePublicEventImage"
+              type="button"
+              class="public-upload-button"
+            >
+
+              <i class="fa-solid fa-image"></i>
+
+              Choose Image
+
+            </button>
+
+
+            <div class="public-upload-info">
+
+              <strong id="publicEventImageFileName">
+                No image selected
+              </strong>
+
+              <span>
+                JPG, PNG or WebP • Maximum 5 MB
+              </span>
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+        <!-- ========================================
+             VIDEO UPLOAD
+        ========================================= -->
+
+        <div class="form-group">
+
+          <label>
+            Upload Video
+          </label>
+
+
+          <div class="public-upload-box">
+
+
+            <input
+              id="publicEventVideoFile"
+              type="file"
+              accept="video/mp4,video/webm"
+              hidden
+            >
+
+
+            <button
+              id="choosePublicEventVideo"
+              type="button"
+              class="public-upload-button"
+            >
+
+              <i class="fa-solid fa-video"></i>
+
+              Choose Video
+
+            </button>
+
+
+            <div class="public-upload-info">
+
+              <strong id="publicEventVideoFileName">
+                No video selected
+              </strong>
+
+              <span>
+                MP4 or WebM • Maximum 50 MB
+              </span>
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+        <!-- ========================================
+             VIDEO URL
+        ========================================= -->
+
+        <div class="form-group">
+
+          <label for="publicEventVideoUrl">
+            Video URL
+          </label>
+
+          <input
+            id="publicEventVideoUrl"
+            type="url"
+            placeholder="YouTube or external video URL"
+          >
+
+        </div>
+
+
+        <!-- ========================================
+             REGISTRATION URL
+        ========================================= -->
+
+        <div class="form-group">
+
+          <label for="publicEventRegistrationUrl">
+            Registration URL
+          </label>
+
+          <input
+            id="publicEventRegistrationUrl"
+            type="url"
+            placeholder="https://..."
+          >
+
+        </div>
+
+
+        <!-- ========================================
+             IMAGE PREVIEW
+        ========================================= -->
+
+        <div
+          id="publicEventImagePreview"
+          class="public-image-preview hidden"
+        >
+
+          <img
+            id="publicEventImagePreviewImage"
+            alt="Event poster preview"
+          >
+
+        </div>
+
+
+        <!-- ========================================
+             VIDEO PREVIEW
+        ========================================= -->
+
+        <div
+          id="publicEventVideoPreviewContainer"
+          class="public-image-preview hidden"
+        >
+
+          <video
+            id="publicEventVideoPreview"
+            controls
+            preload="metadata"
+          ></video>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- ========================================
+           WEBSITE VISIBILITY
+      ========================================= -->
+
+      <div class="public-form-section">
+
+        <h3>
+          <i class="fa-solid fa-eye"></i>
+          Website Visibility
+        </h3>
+
+
+        <div class="public-options">
+
+
+          <label class="public-option">
+
+            <input
+              id="publicEventFeatured"
+              type="checkbox"
+            >
+
+            <div>
+
+              <strong>
+                Featured Event
+              </strong>
+
+              <span>
+                Highlight this event on the public
+                Events page.
+              </span>
+
+            </div>
+
+          </label>
+
+
+          <label class="public-option">
+
+            <input
+              id="publicEventPublished"
+              type="checkbox"
+            >
+
+            <div>
+
+              <strong>
+                Publish to Website
+              </strong>
+
+              <span>
+                Make this event visible to everyone
+                visiting PNGSA's public website.
+              </span>
+
+            </div>
+
+          </label>
+
+
+        </div>
+
+
+      </div>
+
+
+      <!-- ========================================
+           ACTIONS
+      ========================================= -->
+
+      <div class="modal-actions">
+
+
+        <button
+          id="cancelPublicEventButton"
+          class="secondary-button"
+          type="button"
+        >
+
+          Cancel
+
+        </button>
+
+
+        <button
+          id="savePublicEventButton"
+          class="primary-button"
+          type="submit"
+        >
+
+          <i class="fa-solid fa-floppy-disk"></i>
+
+          <span>
+            Save Event
+          </span>
+
+        </button>
+
+
+      </div>
+
+
+    </form>
+
+
+  </div>
+
+
+</div>
+
+
+<!-- ========================================
+     DELETE MODAL
+======================================== -->
+
+<div
+  id="deletePublicEventModal"
+  class="public-event-modal"
+>
+
+
+  <div class="public-event-modal-content delete-public-modal">
+
+
+    <div class="delete-icon">
+
+      <i class="fa-solid fa-trash"></i>
+
+    </div>
+
+
+    <h2>
+      Delete Public Event?
+    </h2>
+
+
+    <p>
+      This will permanently remove the event from
+      the public events database.
+    </p>
+
+
+    <div class="modal-actions">
+
+
+      <button
+        id="cancelPublicDeleteButton"
+        class="secondary-button"
+        type="button"
+      >
+
+        Cancel
+
+      </button>
+
+
+      <button
+        id="confirmPublicDeleteButton"
+        class="danger-button"
+        type="button"
+      >
+
+        Delete Event
+
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+<!-- ========================================
+     JAVASCRIPT
+======================================== -->
+
+<script
+  type="module"
+  src="js/public-events.js"
+></script>
+
+
+</body>
+
+</html>

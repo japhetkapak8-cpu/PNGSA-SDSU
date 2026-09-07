@@ -1,4 +1,30 @@
 /* ========================================
+   PNGSA MEMBER OPPORTUNITIES
+======================================== */
+
+:root {
+  --png-black: #050505;
+  --png-black-soft: #121212;
+
+  --png-red: #CE1126;
+  --png-red-dark: #9F0D1D;
+
+  --png-gold: #F4C430;
+  --png-yellow: #FFD84D;
+
+  --png-white: #FFFFFF;
+
+  --png-bg: #F5F5F3;
+  --png-panel: #FFFFFF;
+
+  --png-border: #E4E4DF;
+
+  --png-text: #181818;
+  --png-muted: #6B6B68;
+}
+
+
+/* ========================================
    RESET
 ======================================== */
 
@@ -21,9 +47,11 @@ body {
     Helvetica,
     sans-serif;
 
-  background: #f4f7fb;
+  background:
+    var(--png-bg);
 
-  color: #071b39;
+  color:
+    var(--png-text);
 }
 
 
@@ -59,21 +87,44 @@ body {
   display: flex;
   flex-direction: column;
 
-  overflow-y: auto;
-
-  background: #061f3d;
+  overflow: hidden;
 
   color: #ffffff;
+
+  background:
+    linear-gradient(
+      180deg,
+      #050505 0%,
+      #080808 45%,
+      #190305 70%,
+      #4B0811 100%
+    );
+
+  border-right:
+    2px solid
+    var(--png-gold);
+
+  box-shadow:
+    6px 0 25px
+    rgba(0, 0, 0, 0.10);
 
   z-index: 1000;
 }
 
 
+/* ========================================
+   SIDEBAR HEADER
+======================================== */
+
 .sidebar-header {
-  padding: 24px 20px 22px;
+  flex-shrink: 0;
+
+  padding:
+    24px 20px 22px;
 
   border-bottom:
-    1px solid rgba(255, 255, 255, 0.12);
+    1px solid
+    rgba(244, 196, 48, 0.22);
 
   text-align: center;
 }
@@ -85,7 +136,8 @@ body {
   width: 78px;
   height: 78px;
 
-  margin: 0 auto 12px;
+  margin:
+    0 auto 12px;
 
   object-fit: contain;
 }
@@ -97,6 +149,7 @@ body {
   color: #ffffff;
 
   font-size: 26px;
+
   font-weight: 800;
 }
 
@@ -106,25 +159,76 @@ body {
 
   margin-top: 4px;
 
-  color: rgba(255, 255, 255, 0.92);
+  color:
+    var(--png-gold);
 
   font-size: 13px;
+
+  font-weight: 700;
 }
 
 
+/* ========================================
+   SCROLLABLE SIDEBAR NAVIGATION
+======================================== */
+
 .sidebar-nav {
   flex: 1;
+
+  min-height: 0;
 
   display: flex;
   flex-direction: column;
 
   gap: 5px;
 
-  padding: 20px 11px;
+  padding:
+    20px 11px 30px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    rgba(244, 196, 48, 0.40)
+    transparent;
 }
 
 
+/* Chrome / Edge / Safari */
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+
+.sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background:
+    rgba(244, 196, 48, 0.35);
+
+  border-radius: 10px;
+}
+
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background:
+    rgba(244, 196, 48, 0.65);
+}
+
+
+/* ========================================
+   SIDEBAR LINKS
+======================================== */
+
 .sidebar-nav a {
+  position: relative;
+
   min-height: 46px;
 
   display: flex;
@@ -132,16 +236,22 @@ body {
 
   gap: 12px;
 
-  padding: 0 14px;
+  padding:
+    0 14px;
 
   border-radius: 8px;
 
-  color: #ffffff;
+  color: #F5F5F5;
 
   text-decoration: none;
 
   font-size: 16px;
+
   font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 
@@ -149,19 +259,61 @@ body {
   width: 20px;
 
   text-align: center;
+
+  color:
+    var(--png-gold);
 }
 
 
 .sidebar-nav a:hover {
   background:
-    rgba(255, 255, 255, 0.09);
+    rgba(206, 17, 38, 0.18);
+
+  transform:
+    translateX(2px);
 }
 
 
 .sidebar-nav a.active {
-  background: #167cc0;
+  background:
+    linear-gradient(
+      90deg,
+      var(--png-red),
+      var(--png-red-dark)
+    );
+
+  color: #ffffff;
 
   font-weight: 600;
+
+  box-shadow:
+    0 4px 14px
+    rgba(206, 17, 38, 0.25);
+}
+
+
+.sidebar-nav a.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+
+  width: 3px;
+
+  border-radius:
+    0 4px 4px 0;
+
+  background:
+    var(--png-yellow);
+}
+
+
+.sidebar-nav a.active i {
+  color:
+    var(--png-yellow);
 }
 
 
@@ -170,11 +322,15 @@ body {
 ======================================== */
 
 .logout-button {
-  width: calc(100% - 38px);
+  flex-shrink: 0;
+
+  width:
+    calc(100% - 38px);
 
   min-height: 43px;
 
-  margin: 12px 19px 18px;
+  margin:
+    12px 19px 18px;
 
   display: flex;
   align-items: center;
@@ -183,21 +339,32 @@ body {
   gap: 8px;
 
   border:
-    1px solid rgba(255, 255, 255, 0.4);
+    1px solid
+    rgba(244, 196, 48, 0.65);
 
   border-radius: 7px;
 
-  background: transparent;
+  background:
+    rgba(206, 17, 38, 0.10);
 
   color: #ffffff;
 
+  font-weight: 700;
+
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 
 .logout-button:hover {
   background:
-    rgba(255, 255, 255, 0.1);
+    var(--png-red);
+
+  border-color:
+    var(--png-red);
 }
 
 
@@ -206,13 +373,22 @@ body {
 ======================================== */
 
 .member-main {
-  width: calc(100% - 245px);
+  width:
+    calc(100% - 245px);
 
   min-height: 100vh;
 
   margin-left: 245px;
 
-  padding: 36px 38px 60px;
+  padding:
+    36px 38px 60px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #FAFAF8,
+      #F3F3EF
+    );
 }
 
 
@@ -236,21 +412,27 @@ body {
 
   margin-bottom: 6px;
 
-  color: #0069c7;
+  color:
+    var(--png-red);
 
   font-size: 13px;
+
   font-weight: 800;
 
   letter-spacing: 1.1px;
+
+  text-transform: uppercase;
 }
 
 
 .opportunities-header h1 {
   margin: 0;
 
-  color: #051a38;
+  color:
+    var(--png-black);
 
   font-size: 36px;
+
   font-weight: 800;
 }
 
@@ -258,11 +440,14 @@ body {
 .opportunities-header p {
   max-width: 750px;
 
-  margin: 7px 0 0;
+  margin:
+    7px 0 0;
 
-  color: #536a82;
+  color:
+    var(--png-muted);
 
   font-size: 14px;
+
   line-height: 1.55;
 }
 
@@ -277,13 +462,23 @@ body {
 
   flex-shrink: 0;
 
+  border:
+    1px solid
+    rgba(244, 196, 48, 0.45);
+
   border-radius: 17px;
 
-  background: #e5f2ff;
+  background:
+    #FFF8DD;
 
-  color: #0874ca;
+  color:
+    var(--png-red);
 
   font-size: 24px;
+
+  box-shadow:
+    0 4px 15px
+    rgba(0, 0, 0, 0.04);
 }
 
 
@@ -296,10 +491,18 @@ body {
 
   margin-bottom: 16px;
 
-  border: 1px solid #dce5ef;
+  border:
+    1px solid
+    var(--png-border);
+
   border-radius: 14px;
 
-  background: #ffffff;
+  background:
+    #ffffff;
+
+  box-shadow:
+    0 4px 14px
+    rgba(0, 0, 0, 0.035);
 }
 
 
@@ -309,40 +512,54 @@ body {
 
   gap: 11px;
 
-  padding: 0 15px;
+  padding:
+    0 15px;
 
-  border: 1px solid #ccd9e7;
+  border:
+    1px solid
+    #D8D8D2;
+
   border-radius: 10px;
 
-  background: #fafcff;
+  background:
+    #FAFAF8;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 
 .opportunity-search:focus-within {
-  border-color: #1682cd;
+  border-color:
+    var(--png-red);
 
   box-shadow:
     0 0 0 3px
-    rgba(22, 130, 205, 0.1);
+    rgba(206, 17, 38, 0.10);
 }
 
 
 .opportunity-search i {
-  color: #56718c;
+  color:
+    var(--png-red);
 }
 
 
 .opportunity-search input {
   width: 100%;
 
-  padding: 14px 0;
+  padding:
+    14px 0;
 
   border: none;
+
   outline: none;
 
   background: transparent;
 
-  color: #102843;
+  color:
+    var(--png-text);
 
   font-size: 14px;
 }
@@ -365,33 +582,56 @@ body {
 .filter-button {
   min-height: 37px;
 
-  padding: 0 14px;
+  padding:
+    0 14px;
 
-  border: 1px solid #d4dfeb;
+  border:
+    1px solid
+    #D8D8D2;
+
   border-radius: 20px;
 
-  background: #ffffff;
+  background:
+    #ffffff;
 
-  color: #456078;
+  color:
+    #555555;
 
   font-size: 12px;
+
   font-weight: 700;
 
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 
 .filter-button:hover {
-  border-color: #8dbbe3;
+  border-color:
+    var(--png-gold);
+
+  background:
+    #FFF9E6;
 }
 
 
 .filter-button.active {
-  border-color: #0874ca;
+  border-color:
+    var(--png-red);
 
-  background: #0874ca;
+  background:
+    linear-gradient(
+      135deg,
+      var(--png-red),
+      var(--png-red-dark)
+    );
 
-  color: #ffffff;
+  color:
+    #ffffff;
 }
 
 
@@ -404,10 +644,22 @@ body {
 
   margin-bottom: 24px;
 
-  border: 1px solid #dce5ef;
+  border:
+    1px solid
+    var(--png-border);
+
+  border-top:
+    3px solid
+    var(--png-gold);
+
   border-radius: 16px;
 
-  background: #ffffff;
+  background:
+    #ffffff;
+
+  box-shadow:
+    0 4px 14px
+    rgba(0, 0, 0, 0.04);
 }
 
 
@@ -423,26 +675,33 @@ body {
 
 
 .section-heading > i {
-  color: #d79900;
+  color:
+    var(--png-gold);
 
   font-size: 24px;
 }
 
 
 .section-label {
-  color: #0874ca;
+  color:
+    var(--png-red);
 
   font-size: 10px;
+
   font-weight: 800;
 
   letter-spacing: 1px;
+
+  text-transform: uppercase;
 }
 
 
 .section-heading h2 {
-  margin: 3px 0 4px;
+  margin:
+    3px 0 4px;
 
-  color: #071b39;
+  color:
+    var(--png-black);
 
   font-size: 21px;
 }
@@ -451,16 +710,19 @@ body {
 .section-heading p {
   margin: 0;
 
-  color: #667b91;
+  color:
+    var(--png-muted);
 
   font-size: 12px;
 }
 
 
 .result-count {
-  color: #667b91;
+  color:
+    var(--png-muted);
 
   font-size: 12px;
+
   font-weight: 700;
 }
 
@@ -491,10 +753,14 @@ body {
 
   padding: 20px;
 
-  border: 1px solid #dfe7ef;
+  border:
+    1px solid
+    #E2E2DC;
+
   border-radius: 13px;
 
-  background: #fafcff;
+  background:
+    #FAFAF8;
 
   transition:
     transform 0.2s ease,
@@ -504,27 +770,39 @@ body {
 
 
 .opportunity-card:hover {
-  transform: translateY(-2px);
+  transform:
+    translateY(-3px);
 
-  border-color: #b8cee3;
+  border-color:
+    rgba(206, 17, 38, 0.40);
 
   box-shadow:
-    0 7px 18px
-    rgba(15, 49, 83, 0.07);
+    0 9px 22px
+    rgba(0, 0, 0, 0.07);
 }
 
 
 .opportunity-card.featured {
-  border-color: #d6c8ff;
+  border:
+    1px solid
+    rgba(244, 196, 48, 0.75);
 
   background:
     linear-gradient(
       180deg,
-      #fcfaff,
-      #ffffff
+      #FFF9E6,
+      #FFFFFF
     );
+
+  box-shadow:
+    0 5px 16px
+    rgba(244, 196, 48, 0.08);
 }
 
+
+/* ========================================
+   CARD TOP
+======================================== */
 
 .card-top {
   display: flex;
@@ -547,13 +825,19 @@ body {
 
   border-radius: 11px;
 
-  background: #e7f2ff;
+  background:
+    rgba(206, 17, 38, 0.08);
 
-  color: #0874ca;
+  color:
+    var(--png-red);
 
   font-size: 18px;
 }
 
+
+/* ========================================
+   BADGES
+======================================== */
 
 .featured-badge,
 .category-badge {
@@ -562,25 +846,39 @@ body {
 
   gap: 5px;
 
-  padding: 5px 9px;
+  padding:
+    5px 9px;
 
   border-radius: 20px;
 
-  background: #edf3f8;
+  background:
+    #F2F2EF;
 
-  color: #536d85;
+  color:
+    #5E5E59;
 
   font-size: 10px;
+
   font-weight: 800;
 }
 
 
 .featured-badge {
-  background: #fff3d8;
+  background:
+    #FFF4CC;
 
-  color: #9f6b00;
+  color:
+    #7A5900;
+
+  border:
+    1px solid
+    rgba(244, 196, 48, 0.55);
 }
 
+
+/* ========================================
+   TAGS
+======================================== */
 
 .opportunity-tags {
   display: flex;
@@ -593,34 +891,47 @@ body {
 
 
 .opportunity-tags span {
-  padding: 4px 8px;
+  padding:
+    4px 8px;
 
   border-radius: 15px;
 
-  background: #edf4fa;
+  background:
+    #F3F3EF;
 
-  color: #4b667f;
+  color:
+    #575752;
 
   font-size: 10px;
+
   font-weight: 700;
 }
 
 
-.opportunity-card h3 {
-  margin: 0 0 4px;
+/* ========================================
+   CARD TEXT
+======================================== */
 
-  color: #071b39;
+.opportunity-card h3 {
+  margin:
+    0 0 4px;
+
+  color:
+    var(--png-black);
 
   font-size: 18px;
 }
 
 
 .organization {
-  margin: 0 0 11px;
+  margin:
+    0 0 11px;
 
-  color: #0874ca;
+  color:
+    var(--png-red);
 
   font-size: 12px;
+
   font-weight: 700;
 }
 
@@ -628,14 +939,21 @@ body {
 .opportunity-description {
   flex: 1;
 
-  margin: 0 0 15px;
+  margin:
+    0 0 15px;
 
-  color: #65798e;
+  color:
+    var(--png-muted);
 
   font-size: 12px;
+
   line-height: 1.55;
 }
 
+
+/* ========================================
+   META
+======================================== */
 
 .opportunity-meta {
   display: flex;
@@ -645,7 +963,8 @@ body {
 
   margin-bottom: 16px;
 
-  color: #526a82;
+  color:
+    #5E5E59;
 
   font-size: 11px;
 }
@@ -662,7 +981,8 @@ body {
 .opportunity-meta i {
   width: 14px;
 
-  color: #0874ca;
+  color:
+    var(--png-gold);
 
   text-align: center;
 }
@@ -683,7 +1003,8 @@ body {
 
 
 .card-actions.single {
-  grid-template-columns: 1fr;
+  grid-template-columns:
+    1fr;
 }
 
 
@@ -700,39 +1021,62 @@ body {
   border-radius: 8px;
 
   font-size: 12px;
+
   font-weight: 800;
 
   text-decoration: none;
 
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 
 .view-opportunity-button {
-  border: none;
+  border:
+    1px solid
+    var(--png-gold);
 
-  background: #eef6ff;
+  background:
+    #FFF9E6;
 
-  color: #075fa9;
+  color:
+    var(--png-black);
 }
 
 
 .view-opportunity-button:hover {
-  background: #dceeff;
+  background:
+    var(--png-gold);
+
+  transform:
+    translateY(-1px);
 }
 
 
 .direct-apply-button {
   border: none;
 
-  background: #0874ca;
+  background:
+    linear-gradient(
+      135deg,
+      var(--png-red),
+      var(--png-red-dark)
+    );
 
-  color: #ffffff;
+  color:
+    #ffffff;
 }
 
 
 .direct-apply-button:hover {
-  background: #0663aa;
+  background:
+    var(--png-red-dark);
+
+  transform:
+    translateY(-1px);
 }
 
 
@@ -741,7 +1085,8 @@ body {
 ======================================== */
 
 .empty-state {
-  padding: 45px 20px;
+  padding:
+    45px 20px;
 
   text-align: center;
 }
@@ -755,25 +1100,34 @@ body {
   align-items: center;
   justify-content: center;
 
-  margin: 0 auto 12px;
+  margin:
+    0 auto 12px;
 
   border-radius: 50%;
 
-  background: #eaf4fd;
+  background:
+    #FFF8DD;
 
-  color: #0874ca;
+  color:
+    var(--png-red);
+
+  border:
+    1px solid
+    rgba(244, 196, 48, 0.5);
 }
 
 
 .empty-state h3 {
-  margin: 0 0 5px;
+  margin:
+    0 0 5px;
 }
 
 
 .empty-state p {
   margin: 0;
 
-  color: #718397;
+  color:
+    var(--png-muted);
 
   font-size: 12px;
 }
@@ -784,13 +1138,15 @@ body {
 ======================================== */
 
 .loading-opportunities {
-  grid-column: 1 / -1;
+  grid-column:
+    1 / -1;
 
   padding: 40px;
 
   text-align: center;
 
-  color: #718397;
+  color:
+    var(--png-muted);
 }
 
 
@@ -825,34 +1181,53 @@ body {
   inset: 0;
 
   background:
-    rgba(3, 19, 37, 0.72);
+    rgba(5, 5, 5, 0.82);
 
-  backdrop-filter: blur(4px);
+  backdrop-filter:
+    blur(5px);
+
+  -webkit-backdrop-filter:
+    blur(5px);
 }
 
 
 .opportunity-modal-dialog {
   position: relative;
 
-  width: min(650px, 100%);
+  width:
+    min(650px, 100%);
 
-  max-height: 90vh;
+  max-height:
+    90vh;
 
   overflow-y: auto;
 
   padding: 28px;
 
+  border:
+    1px solid
+    rgba(244, 196, 48, 0.35);
+
+  border-top:
+    4px solid
+    var(--png-gold);
+
   border-radius: 16px;
 
-  background: #ffffff;
+  background:
+    #ffffff;
 
   box-shadow:
     0 25px 60px
-    rgba(0, 0, 0, 0.22);
+    rgba(0, 0, 0, 0.25);
 
   z-index: 1;
 }
 
+
+/* ========================================
+   MODAL CLOSE
+======================================== */
 
 .modal-close {
   position: absolute;
@@ -868,15 +1243,35 @@ body {
   justify-content: center;
 
   border: none;
+
   border-radius: 50%;
 
-  background: #edf3f8;
+  background:
+    #F3F3EF;
 
-  color: #3e5871;
+  color:
+    var(--png-black);
 
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
+
+.modal-close:hover {
+  background:
+    var(--png-red);
+
+  color:
+    #ffffff;
+}
+
+
+/* ========================================
+   MODAL ICON
+======================================== */
 
 .modal-icon {
   width: 50px;
@@ -890,43 +1285,57 @@ body {
 
   border-radius: 12px;
 
-  background: #e6f2ff;
+  background:
+    rgba(206, 17, 38, 0.08);
 
-  color: #0874ca;
+  color:
+    var(--png-red);
 
   font-size: 19px;
 }
 
 
 .modal-type {
-  color: #0874ca;
+  color:
+    var(--png-red);
 
   font-size: 11px;
+
   font-weight: 800;
 
-  text-transform: uppercase;
+  text-transform:
+    uppercase;
 
-  letter-spacing: 0.7px;
+  letter-spacing:
+    0.7px;
 }
 
 
 .opportunity-modal-dialog h2 {
-  margin: 5px 45px 5px 0;
+  margin:
+    5px 45px 5px 0;
 
-  color: #071b39;
+  color:
+    var(--png-black);
 
   font-size: 24px;
 }
 
 
 .modal-organization {
-  margin: 0 0 16px;
+  margin:
+    0 0 16px;
 
-  color: #64798f;
+  color:
+    var(--png-muted);
 
   font-size: 13px;
 }
 
+
+/* ========================================
+   MODAL META
+======================================== */
 
 .modal-meta {
   display: grid;
@@ -940,9 +1349,14 @@ body {
 
   margin-bottom: 12px;
 
+  border:
+    1px solid
+    #EEEEEA;
+
   border-radius: 10px;
 
-  background: #f6f9fc;
+  background:
+    #F8F8F5;
 }
 
 
@@ -952,19 +1366,26 @@ body {
 
   gap: 8px;
 
-  color: #536b82;
+  color:
+    #5E5E59;
 
   font-size: 12px;
 }
 
 
 .modal-meta i {
-  color: #0874ca;
+  color:
+    var(--png-gold);
 }
 
 
+/* ========================================
+   MODAL BADGES
+======================================== */
+
 .modal-badges {
   display: flex;
+  flex-wrap: wrap;
 
   gap: 6px;
 
@@ -973,28 +1394,43 @@ body {
 
 
 .modal-badges span {
-  padding: 5px 9px;
+  padding:
+    5px 9px;
 
   border-radius: 15px;
 
-  background: #edf4fa;
+  background:
+    #F3F3EF;
 
-  color: #46637d;
+  color:
+    #575752;
 
   font-size: 10px;
+
   font-weight: 700;
 }
 
 
-.modal-section {
-  padding: 15px 0;
+/* ========================================
+   MODAL SECTION
+======================================== */
 
-  border-bottom: 1px solid #e9eef4;
+.modal-section {
+  padding:
+    15px 0;
+
+  border-bottom:
+    1px solid
+    #ECECE7;
 }
 
 
 .modal-section h3 {
-  margin: 0 0 7px;
+  margin:
+    0 0 7px;
+
+  color:
+    var(--png-black);
 
   font-size: 14px;
 }
@@ -1003,12 +1439,18 @@ body {
 .modal-section p {
   margin: 0;
 
-  color: #65798e;
+  color:
+    var(--png-muted);
 
   font-size: 13px;
+
   line-height: 1.6;
 }
 
+
+/* ========================================
+   MODAL ACTIONS
+======================================== */
 
 .modal-actions {
   display: flex;
@@ -1030,34 +1472,65 @@ body {
 
   gap: 8px;
 
-  padding: 0 16px;
+  padding:
+    0 16px;
 
   border-radius: 8px;
 
   font-size: 12px;
+
   font-weight: 800;
 
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 
 .secondary-modal-button {
-  border: 1px solid #d6e0e9;
+  border:
+    1px solid
+    var(--png-gold);
 
-  background: #ffffff;
+  background:
+    #ffffff;
 
-  color: #425d76;
+  color:
+    var(--png-black);
+}
+
+
+.secondary-modal-button:hover {
+  background:
+    var(--png-gold);
 }
 
 
 .apply-button {
   border: none;
 
-  background: #0874ca;
+  background:
+    linear-gradient(
+      135deg,
+      var(--png-red),
+      var(--png-red-dark)
+    );
 
-  color: #ffffff;
+  color:
+    #ffffff;
 
   text-decoration: none;
+}
+
+
+.apply-button:hover {
+  background:
+    var(--png-red-dark);
+
+  transform:
+    translateY(-1px);
 }
 
 
@@ -1066,7 +1539,8 @@ body {
 ======================================== */
 
 .opportunity-hidden {
-  display: none !important;
+  display:
+    none !important;
 }
 
 
@@ -1082,16 +1556,20 @@ body {
 
 
   .member-main {
-    width: calc(100% - 215px);
+    width:
+      calc(100% - 215px);
 
-    margin-left: 215px;
+    margin-left:
+      215px;
 
-    padding: 30px 24px 50px;
+    padding:
+      30px 24px 50px;
   }
 
 
   .opportunity-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
   }
 
 }
@@ -1111,8 +1589,78 @@ body {
   .sidebar {
     position: relative;
 
+    top: auto;
+    left: auto;
+
     width: 100%;
     height: auto;
+
+    overflow: visible;
+
+    border-right: none;
+
+    border-bottom:
+      3px solid
+      var(--png-gold);
+
+    z-index: auto;
+  }
+
+
+  .sidebar-header {
+    flex-shrink: 0;
+  }
+
+
+  .sidebar-nav {
+    display: flex;
+
+    flex-direction: row;
+
+    flex: none;
+
+    min-height: auto;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 12px;
+
+    white-space: nowrap;
+  }
+
+
+  .sidebar-nav a {
+    flex:
+      0 0 auto;
+
+    min-height: 42px;
+
+    margin-right: 6px;
+
+    padding:
+      0 13px;
+
+    white-space: nowrap;
+  }
+
+
+  .sidebar-nav a:hover {
+    transform: none;
+  }
+
+
+  .sidebar-nav a.active::before {
+    display: none;
+  }
+
+
+  .logout-button {
+    width:
+      calc(100% - 24px);
+
+    margin:
+      10px 12px 15px;
   }
 
 
@@ -1121,48 +1669,107 @@ body {
 
     margin-left: 0;
 
-    padding: 24px 16px 40px;
+    padding:
+      24px 16px 40px;
   }
 
 
   .opportunities-header {
-    align-items: flex-start;
+    align-items:
+      flex-start;
   }
 
 
   .opportunities-header-icon {
-    display: none;
+    display:
+      none;
   }
 
 
   .opportunities-header h1 {
-    font-size: 30px;
+    font-size:
+      30px;
   }
 
 
   .opportunity-section {
-    padding: 18px;
+    padding:
+      18px;
+  }
+
+
+  .opportunity-grid {
+    grid-template-columns:
+      1fr;
   }
 
 
   .card-actions {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
   }
 
 
   .modal-meta {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
   }
 
 
   .modal-actions {
-    flex-direction: column;
+    flex-direction:
+      column;
   }
 
 
   .secondary-modal-button,
   .apply-button {
-    width: 100%;
+    width:
+      100%;
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .member-main {
+    padding:
+      20px 13px 35px;
+  }
+
+
+  .opportunities-header h1 {
+    font-size:
+      27px;
+  }
+
+
+  .opportunity-section {
+    padding:
+      15px;
+  }
+
+
+  .opportunity-card {
+    padding:
+      17px;
+  }
+
+
+  .opportunity-modal {
+    padding:
+      12px;
+  }
+
+
+  .opportunity-modal-dialog {
+    padding:
+      22px 18px;
   }
 
 }

@@ -2,6 +2,15 @@ import { supabase } from "../../js/supabase.js";
 
 
 // ========================================
+// IMAGE PREVIEW
+// ========================================
+
+import {
+  enableProfileImagePreview
+} from "./profile-image-preview.js";
+
+
+// ========================================
 // GLOBAL DATA
 // ========================================
 
@@ -49,12 +58,18 @@ async function checkAdmin() {
   const {
     data: { session },
     error: sessionError
-  } = await supabase.auth.getSession();
+  } =
+    await supabase.auth.getSession();
 
 
-  if (sessionError || !session) {
+  if (
+    sessionError ||
+    !session
+  ) {
 
-    window.location.replace("index.html");
+    window.location.replace(
+      "index.html"
+    );
 
     return false;
   }
@@ -63,11 +78,15 @@ async function checkAdmin() {
   const {
     data: profile,
     error
-  } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", session.user.id)
-    .single();
+  } =
+    await supabase
+      .from("profiles")
+      .select("role")
+      .eq(
+        "id",
+        session.user.id
+      )
+      .single();
 
 
   if (
@@ -81,16 +100,23 @@ async function checkAdmin() {
       error
     );
 
+
     await supabase.auth.signOut();
 
-    window.location.replace("index.html");
+
+    window.location.replace(
+      "index.html"
+    );
+
 
     return false;
   }
 
 
   const adminEmail =
-    document.getElementById("adminEmail");
+    document.getElementById(
+      "adminEmail"
+    );
 
 
   if (adminEmail) {
@@ -113,29 +139,20 @@ async function loadMembers() {
 
   try {
 
-    /*
-      Using select("*") here intentionally.
-
-      This lets the admin page receive all profile
-      columns that currently exist in Supabase.
-
-      Later you can change this to an explicit
-      column list if desired.
-    */
-
     const {
       data,
       error
-    } = await supabase
-      .from("profiles")
-      .select("*")
-      .order(
-        "full_name",
-        {
-          ascending: true,
-          nullsFirst: false
-        }
-      );
+    } =
+      await supabase
+        .from("profiles")
+        .select("*")
+        .order(
+          "full_name",
+          {
+            ascending: true,
+            nullsFirst: false
+          }
+        );
 
 
     if (error) {
@@ -157,7 +174,9 @@ async function loadMembers() {
 
     updateStatistics();
 
-    displayMembers(allMembers);
+    displayMembers(
+      allMembers
+    );
 
   }
 
@@ -180,7 +199,9 @@ async function loadMembers() {
             class="loading-members"
           >
 
-            <i class="fa-solid fa-triangle-exclamation"></i>
+            <i
+              class="fa-solid fa-triangle-exclamation"
+            ></i>
 
             Unable to load member information.
 
@@ -204,13 +225,19 @@ async function loadMembers() {
 function updateStatistics() {
 
   const totalMembers =
-    document.getElementById("totalMembers");
+    document.getElementById(
+      "totalMembers"
+    );
 
   const eligibleMembers =
-    document.getElementById("eligibleMembers");
+    document.getElementById(
+      "eligibleMembers"
+    );
 
   const adminCount =
-    document.getElementById("adminCount");
+    document.getElementById(
+      "adminCount"
+    );
 
 
   if (totalMembers) {
@@ -282,7 +309,9 @@ function displayMembers(members) {
           colspan="8"
           class="loading-members"
         >
+
           No members found.
+
         </td>
 
       </tr>
@@ -356,9 +385,13 @@ function displayMembers(members) {
 
     let photoHTML = `
 
-      <div class="member-avatar-placeholder">
+      <div
+        class="member-avatar-placeholder"
+      >
 
-        <i class="fa-solid fa-user"></i>
+        <i
+          class="fa-solid fa-user"
+        ></i>
 
       </div>
 
@@ -386,9 +419,7 @@ function displayMembers(members) {
       <tr>
 
         <td>
-
           ${photoHTML}
-
         </td>
 
 
@@ -402,23 +433,17 @@ function displayMembers(members) {
 
 
         <td>
-
           ${email}
-
         </td>
 
 
         <td>
-
           ${major}
-
         </td>
 
 
         <td>
-
           ${year}
-
         </td>
 
 
@@ -452,7 +477,9 @@ function displayMembers(members) {
             data-member-id="${escapeHTML(member.id)}"
           >
 
-            <i class="fa-solid fa-eye"></i>
+            <i
+              class="fa-solid fa-eye"
+            ></i>
 
             View
 
@@ -516,7 +543,9 @@ function attachViewButtons() {
         }
 
 
-        showMemberDetails(member);
+        showMemberDetails(
+          member
+        );
 
       }
     );
@@ -554,9 +583,13 @@ function showMemberDetails(member) {
 
   let profilePhoto = `
 
-    <div class="member-detail-avatar-placeholder">
+    <div
+      class="member-detail-avatar-placeholder"
+    >
 
-      <i class="fa-solid fa-user"></i>
+      <i
+        class="fa-solid fa-user"
+      ></i>
 
     </div>
 
@@ -571,6 +604,8 @@ function showMemberDetails(member) {
         src="${escapeHTML(member.avatar_url)}"
         alt="${name}"
         class="member-detail-photo"
+        data-full-image="${escapeHTML(member.avatar_url)}"
+        title="Click to enlarge"
       >
 
     `;
@@ -583,7 +618,9 @@ function showMemberDetails(member) {
   // ========================================
 
   const joined =
-    formatDate(member.created_at);
+    formatDate(
+      member.created_at
+    );
 
 
   memberDetailsContent.innerHTML = `
@@ -592,18 +629,23 @@ function showMemberDetails(member) {
 
       ${profilePhoto}
 
+
       <div>
 
         <h2>
           ${name}
         </h2>
 
+
         <p>
+
           ${escapeHTML(
             member.email ||
             "Email not provided"
           )}
+
         </p>
+
 
         <span
           class="member-role ${
@@ -612,11 +654,13 @@ function showMemberDetails(member) {
               : "member"
           }"
         >
+
           ${
             member.role === "admin"
               ? "Administrator"
               : "Member"
           }
+
         </span>
 
       </div>
@@ -649,7 +693,9 @@ function showMemberDetails(member) {
 
         ${detailItem(
           "Date of Birth",
-          formatDate(member.date_of_birth)
+          formatDate(
+            member.date_of_birth
+          )
         )}
 
         ${detailItem(
@@ -674,7 +720,7 @@ function showMemberDetails(member) {
 
         ${detailItem(
           "PNG Province",
-          member.png_province
+          member.province
         )}
 
         ${detailItem(
@@ -780,7 +826,9 @@ function showMemberDetails(member) {
 
         ${detailItem(
           "Currently Sponsored",
-          yesNo(member.currently_sponsored)
+          yesNo(
+            member.currently_sponsored
+          )
         )}
 
         ${detailItem(
@@ -848,17 +896,23 @@ function showMemberDetails(member) {
 
         ${detailItem(
           "Plans to Return to PNG",
-          yesNo(member.return_to_png)
+          yesNo(
+            member.return_to_png
+          )
         )}
 
         ${detailItem(
           "Interested in PNG Employment",
-          yesNo(member.interested_png_employment)
+          yesNo(
+            member.interested_png_employment
+          )
         )}
 
         ${detailItem(
           "Interested in Internships",
-          yesNo(member.interested_internships)
+          yesNo(
+            member.interested_internships
+          )
         )}
 
         ${detailItem(
@@ -896,17 +950,23 @@ function showMemberDetails(member) {
 
         ${detailItem(
           "Eligible to Vote",
-          yesNo(member.eligible_to_vote)
+          yesNo(
+            member.eligible_to_vote
+          )
         )}
 
         ${detailItem(
           "Information Sharing Consent",
-          yesNo(member.info_sharing_consent)
+          yesNo(
+            member.info_sharing_consent
+          )
         )}
 
         ${detailItem(
           "Profile Completed",
-          yesNo(member.profile_completed)
+          yesNo(
+            member.profile_completed
+          )
         )}
 
         ${detailItem(
@@ -916,7 +976,9 @@ function showMemberDetails(member) {
 
         ${detailItem(
           "Profile Last Updated",
-          formatDate(member.profile_updated_at)
+          formatDate(
+            member.profile_updated_at
+          )
         )}
 
       </div>
@@ -934,6 +996,15 @@ function showMemberDetails(member) {
     "modal-open"
   );
 
+
+  // ========================================
+  // ENABLE IMAGE PREVIEW
+  // ========================================
+
+  enableProfileImagePreview(
+    memberDetailsContent
+  );
+
 }
 
 
@@ -941,7 +1012,10 @@ function showMemberDetails(member) {
 // DETAIL ITEM
 // ========================================
 
-function detailItem(label, value) {
+function detailItem(
+  label,
+  value
+) {
 
   const safeValue =
     value !== null &&
@@ -1079,9 +1153,32 @@ if (memberModalOverlay) {
 }
 
 
+// ========================================
+// ESC KEY
+// ========================================
+
 document.addEventListener(
   "keydown",
   function(event) {
+
+    /*
+      If the full-screen photo preview
+      is open, let profile-image-preview.js
+      close it first.
+
+      Do NOT close the member modal.
+    */
+
+    if (
+      document.getElementById(
+        "profileImagePreview"
+      )
+    ) {
+
+      return;
+
+    }
+
 
     if (
       event.key === "Escape" &&
@@ -1126,7 +1223,7 @@ if (memberSearch) {
                 member.year_of_study,
                 member.living_area,
                 member.role,
-                member.png_province,
+                member.province,
                 member.district,
                 member.sponsor_name,
                 member.sponsorship_program,
@@ -1171,7 +1268,9 @@ if (exportCsvButton) {
 
 function exportCSV() {
 
-  if (allMembers.length === 0) {
+  if (
+    allMembers.length === 0
+  ) {
 
     alert(
       "There are no members to export."
@@ -1191,7 +1290,7 @@ function exportCSV() {
     ["Date of Birth", "date_of_birth"],
     ["Gender", "gender"],
 
-    ["PNG Province", "png_province"],
+    ["PNG Province", "province"],
     ["District", "district"],
     ["Home Town / Village", "home_town"],
     ["Living Area", "living_area"],
@@ -1233,38 +1332,47 @@ function exportCSV() {
   const header =
     columns.map(
       column =>
-        csvEscape(column[0])
+        csvEscape(
+          column[0]
+        )
     );
 
 
   const rows =
-    allMembers.map(member => {
+    allMembers.map(
+      member => {
 
-      return columns.map(column => {
+        return columns.map(
+          column => {
 
-        let value =
-          member[column[1]];
-
-
-        if (
-          typeof value === "boolean"
-        ) {
-
-          value =
-            value
-              ? "Yes"
-              : "No";
-
-        }
+            let value =
+              member[
+                column[1]
+              ];
 
 
-        return csvEscape(
-          value ?? ""
+            if (
+              typeof value ===
+              "boolean"
+            ) {
+
+              value =
+                value
+                  ? "Yes"
+                  : "No";
+
+            }
+
+
+            return csvEscape(
+              value ?? ""
+            );
+
+          }
         );
 
-      });
-
-    });
+      }
+    );
 
 
   const csv =
@@ -1278,11 +1386,6 @@ function exportCSV() {
       )
       .join("\n");
 
-
-  /*
-    BOM helps Excel correctly recognize
-    the CSV as UTF-8.
-  */
 
   const blob =
     new Blob(
@@ -1298,11 +1401,15 @@ function exportCSV() {
 
 
   const url =
-    URL.createObjectURL(blob);
+    URL.createObjectURL(
+      blob
+    );
 
 
   const link =
-    document.createElement("a");
+    document.createElement(
+      "a"
+    );
 
 
   link.href =
@@ -1313,14 +1420,19 @@ function exportCSV() {
     `PNGSA_Members_${getTodayString()}.csv`;
 
 
-  document.body.appendChild(link);
+  document.body.appendChild(
+    link
+  );
+
 
   link.click();
 
   link.remove();
 
 
-  URL.revokeObjectURL(url);
+  URL.revokeObjectURL(
+    url
+  );
 
 }
 
@@ -1332,7 +1444,9 @@ function exportCSV() {
 function csvEscape(value) {
 
   const text =
-    String(value ?? "");
+    String(
+      value ?? ""
+    );
 
 
   return `"${text.replaceAll(
@@ -1359,7 +1473,9 @@ if (exportPdfButton) {
 
 function exportPDF() {
 
-  if (allMembers.length === 0) {
+  if (
+    allMembers.length === 0
+  ) {
 
     alert(
       "There are no members to export."
@@ -1368,15 +1484,6 @@ function exportPDF() {
     return;
   }
 
-
-  /*
-    This opens a print-friendly document.
-
-    The browser's print window lets the
-    administrator choose "Save as PDF".
-
-    This avoids needing another PDF library.
-  */
 
   const printWindow =
     window.open(
@@ -1405,46 +1512,58 @@ function exportPDF() {
       <tr>
 
         <td>
+
           ${escapeHTML(
             member.full_name ||
             "Not provided"
           )}
+
         </td>
 
         <td>
+
           ${escapeHTML(
             member.email ||
             ""
           )}
+
         </td>
 
         <td>
+
           ${escapeHTML(
             member.major ||
             ""
           )}
+
         </td>
 
         <td>
+
           ${escapeHTML(
             member.year_of_study ||
             ""
           )}
+
         </td>
 
         <td>
+
           ${escapeHTML(
             member.sponsor_name ||
             ""
           )}
+
         </td>
 
         <td>
+
           ${
             member.eligible_to_vote
               ? "Yes"
               : "No"
           }
+
         </td>
 
       </tr>
@@ -1472,6 +1591,7 @@ function exportPDF() {
       <style>
 
         body {
+
           font-family:
             Arial,
             sans-serif;
@@ -1479,6 +1599,7 @@ function exportPDF() {
           margin: 35px;
 
           color: #071b3a;
+
         }
 
 
@@ -1498,15 +1619,18 @@ function exportPDF() {
 
 
         .generated {
+
           margin-top: 5px;
 
           color: #777;
 
           font-size: 13px;
+
         }
 
 
         table {
+
           width: 100%;
 
           border-collapse: collapse;
@@ -1514,11 +1638,13 @@ function exportPDF() {
           margin-top: 25px;
 
           font-size: 11px;
+
         }
 
 
         th,
         td {
+
           border: 1px solid #d8dee8;
 
           padding: 8px;
@@ -1526,6 +1652,7 @@ function exportPDF() {
           text-align: left;
 
           vertical-align: top;
+
         }
 
 
@@ -1535,11 +1662,13 @@ function exportPDF() {
 
 
         .summary {
+
           margin-top: 15px;
 
           display: flex;
 
           gap: 30px;
+
         }
 
 
@@ -1564,16 +1693,22 @@ function exportPDF() {
           PNGSA Member Directory
         </h1>
 
+
         <div class="subtitle">
+
           Papua New Guinea Student Association
           — South Dakota State University
+
         </div>
+
 
         <div class="generated">
 
           Generated:
+
           ${escapeHTML(
-            new Date().toLocaleString()
+            new Date()
+              .toLocaleString()
           )}
 
         </div>
@@ -1584,13 +1719,17 @@ function exportPDF() {
       <div class="summary">
 
         <strong>
+
           Total Members:
           ${allMembers.length}
+
         </strong>
+
 
         <strong>
 
           Eligible Voters:
+
           ${
             allMembers.filter(
               member =>
@@ -1619,7 +1758,9 @@ function exportPDF() {
 
             <th>Sponsor</th>
 
-            <th>Voting Eligible</th>
+            <th>
+              Voting Eligible
+            </th>
 
           </tr>
 
@@ -1637,11 +1778,12 @@ function exportPDF() {
 
       <script>
 
-        window.onload = function() {
+        window.onload =
+          function() {
 
-          window.print();
+            window.print();
 
-        };
+          };
 
       <\/script>
 
@@ -1738,6 +1880,7 @@ if (logoutButton) {
     async function() {
 
       await supabase.auth.signOut();
+
 
       window.location.replace(
         "index.html"
