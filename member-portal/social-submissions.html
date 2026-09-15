@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Social Media Submissions | PNGSA
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/social-submissions.css"
+  >
+
+</head>
+
+
+<body>
+
+
+<div class="member-layout">
+
+
+  <!-- =====================================================
+       SIDEBAR
+  ====================================================== -->
+
+  <aside class="sidebar">
+
+
+    <div class="sidebar-header">
+
+      <img
+        src="../images/pngsa_logo.png"
+        alt="PNGSA"
+      >
+
+      <div>
+
+        <strong>
+          PNGSA
+        </strong>
+
+        <span>
+          Member Portal
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+
+      <a href="dashboard.html">
+
+        <i class="fa-solid fa-house"></i>
+
+        Dashboard
+
+      </a>
+
+
+      <a href="profile.html">
+
+        <i class="fa-solid fa-user"></i>
+
+        Profile
+
+      </a>
+
+
+      <a href="events.html">
+
+        <i class="fa-solid fa-calendar-days"></i>
+
+        Events
+
+      </a>
+
+
+      <a href="announcements.html">
+
+        <i class="fa-solid fa-bullhorn"></i>
+
+        Announcements
+
+      </a>
+
+
+      <a href="messages.html">
+
+        <i class="fa-solid fa-comments"></i>
+
+        Messages
+
+      </a>
+
+
+      <a href="resources.html">
+
+        <i class="fa-solid fa-folder-open"></i>
+
+        Resources
+
+      </a>
+
+
+      <a
+        href="social-submissions.html"
+        class="active"
+      >
+
+        <i class="fa-solid fa-video"></i>
+
+        Social Submissions
+
+      </a>
+
+
+      <a href="settings.html">
+
+        <i class="fa-solid fa-gear"></i>
+
+        Settings
+
+      </a>
+
+
+    </nav>
+
+
+    <button
+      type="button"
+      class="logout-button"
+      id="logoutButton"
+    >
+
+      <i class="fa-solid fa-right-from-bracket"></i>
+
+      Logout
+
+    </button>
+
+
+  </aside>
+
+
+  <!-- =====================================================
+       MAIN CONTENT
+  ====================================================== -->
+
+  <main class="social-main">
+
+
+    <div class="page-header">
+
+
+      <div>
+
+        <span class="page-eyebrow">
+          PNGSA Media
+        </span>
+
+        <h1>
+          Social Media Submissions
+        </h1>
+
+        <p>
+          Submit videos for review by the PNGSA media team.
+        </p>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="primary-button"
+        id="openSubmissionModal"
+      >
+
+        <i class="fa-solid fa-plus"></i>
+
+        Submit Video
+
+      </button>
+
+
+    </div>
+
+
+    <!-- =================================================
+         STATS
+    ================================================== -->
+
+    <section class="stats-grid">
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+
+          <i class="fa-solid fa-layer-group"></i>
+
+        </div>
+
+        <div>
+
+          <span>
+            Total
+          </span>
+
+          <strong id="totalSubmissions">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+
+          <i class="fa-regular fa-clock"></i>
+
+        </div>
+
+        <div>
+
+          <span>
+            Pending
+          </span>
+
+          <strong id="pendingSubmissions">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+
+          <i class="fa-solid fa-rotate-left"></i>
+
+        </div>
+
+        <div>
+
+          <span>
+            Returned
+          </span>
+
+          <strong id="returnedSubmissions">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+
+          <i class="fa-solid fa-circle-check"></i>
+
+        </div>
+
+        <div>
+
+          <span>
+            Published
+          </span>
+
+          <strong id="publishedSubmissions">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+    <!-- =================================================
+         FILTER BAR
+    ================================================== -->
+
+    <section class="filter-bar">
+
+
+      <div class="search-box">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+          type="search"
+          id="submissionSearch"
+          placeholder="Search submissions..."
+        >
+
+      </div>
+
+
+      <select id="submissionStatusFilter">
+
+        <option value="">
+          All Statuses
+        </option>
+
+        <option value="pending">
+          Pending
+        </option>
+
+        <option value="returned">
+          Returned
+        </option>
+
+        <option value="approved">
+          Approved
+        </option>
+
+        <option value="rejected">
+          Rejected
+        </option>
+
+        <option value="publishing">
+          Publishing
+        </option>
+
+        <option value="published">
+          Published
+        </option>
+
+        <option value="failed">
+          Failed
+        </option>
+
+      </select>
+
+
+    </section>
+
+
+    <!-- =================================================
+         MESSAGE
+    ================================================== -->
+
+    <div
+      class="submission-message"
+      id="submissionMessage"
+    ></div>
+
+
+    <!-- =================================================
+         SUBMISSIONS
+    ================================================== -->
+
+    <section
+      class="submission-list"
+      id="submissionList"
+    >
+
+
+      <div class="loading-state">
+
+        <i class="fa-solid fa-spinner fa-spin"></i>
+
+        Loading submissions...
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+</div>
+
+
+<!-- =====================================================
+     SUBMISSION MODAL
+====================================================== -->
+
+<div
+  class="submission-modal"
+  id="submissionModal"
+>
+
+
+  <div class="submission-modal-card">
+
+
+    <div class="modal-header">
+
+
+      <div>
+
+        <span>
+          PNGSA Media
+        </span>
+
+        <h2 id="submissionModalTitle">
+          Submit Video
+        </h2>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="close-modal-button"
+        id="closeSubmissionModal"
+      >
+
+        <i class="fa-solid fa-xmark"></i>
+
+      </button>
+
+
+    </div>
+
+
+    <form
+      id="submissionForm"
+      class="submission-form"
+    >
+
+
+      <input
+        type="hidden"
+        id="submissionId"
+      >
+
+
+      <!-- TITLE -->
+
+      <div class="form-group">
+
+        <label for="submissionTitle">
+
+          Video Title
+          <span>*</span>
+
+        </label>
+
+        <input
+          type="text"
+          id="submissionTitle"
+          maxlength="120"
+          required
+          placeholder="Example: PNG Night Cultural Performance"
+        >
+
+      </div>
+
+
+      <!-- CAPTION -->
+
+      <div class="form-group">
+
+        <label for="submissionCaption">
+
+          Suggested Caption
+
+        </label>
+
+        <textarea
+          id="submissionCaption"
+          rows="5"
+          placeholder="Write the caption you would like PNGSA to use..."
+        ></textarea>
+
+      </div>
+
+
+      <!-- HASHTAGS -->
+
+      <div class="form-group">
+
+        <label for="submissionHashtags">
+
+          Hashtags
+
+        </label>
+
+        <input
+          type="text"
+          id="submissionHashtags"
+          placeholder="#PNGSA #PapuaNewGuinea #SDSU"
+        >
+
+      </div>
+
+
+      <!-- VIDEO UPLOAD -->
+
+      <div class="form-group">
+
+        <label>
+
+          Video
+          <span>*</span>
+
+        </label>
+
+
+        <div class="upload-box">
+
+
+          <input
+            type="file"
+            id="submissionVideoFile"
+            accept="video/mp4,video/webm,video/quicktime"
+            hidden
+          >
+
+
+          <button
+            type="button"
+            class="upload-button"
+            id="chooseSubmissionVideo"
+          >
+
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+            Choose Video
+
+          </button>
+
+
+          <span id="submissionVideoFileName">
+
+            No video selected
+
+          </span>
+
+
+        </div>
+
+
+        <small>
+          MP4, WebM, or MOV. Maximum size depends on your Supabase storage limits.
+        </small>
+
+
+      </div>
+
+
+      <!-- VIDEO PREVIEW -->
+
+      <div
+        class="video-preview hidden"
+        id="submissionVideoPreviewContainer"
+      >
+
+        <video
+          id="submissionVideoPreview"
+          controls
+          preload="metadata"
+        ></video>
+
+      </div>
+
+
+      <!-- THUMBNAIL -->
+
+      <div class="form-group">
+
+        <label>
+
+          Thumbnail
+        </label>
+
+
+        <div class="upload-box">
+
+
+          <input
+            type="file"
+            id="submissionThumbnailFile"
+            accept="image/jpeg,image/png,image/webp"
+            hidden
+          >
+
+
+          <button
+            type="button"
+            class="upload-button secondary"
+            id="chooseSubmissionThumbnail"
+          >
+
+            <i class="fa-regular fa-image"></i>
+
+            Choose Thumbnail
+
+          </button>
+
+
+          <span id="submissionThumbnailFileName">
+
+            No thumbnail selected
+
+          </span>
+
+
+        </div>
+
+
+      </div>
+
+
+      <!-- PLATFORM REQUEST -->
+
+      <div class="form-group">
+
+
+        <label>
+          Suggested Platforms
+        </label>
+
+
+        <div class="platform-grid">
+
+
+          <label class="platform-option">
+
+            <input
+              type="checkbox"
+              value="facebook"
+              name="requestedPlatform"
+            >
+
+            <span class="platform-box">
+
+              <i class="fa-brands fa-facebook-f"></i>
+
+              Facebook
+
+            </span>
+
+          </label>
+
+
+          <label class="platform-option">
+
+            <input
+              type="checkbox"
+              value="instagram"
+              name="requestedPlatform"
+            >
+
+            <span class="platform-box">
+
+              <i class="fa-brands fa-instagram"></i>
+
+              Instagram
+
+            </span>
+
+          </label>
+
+
+          <label class="platform-option">
+
+            <input
+              type="checkbox"
+              value="tiktok"
+              name="requestedPlatform"
+            >
+
+            <span class="platform-box">
+
+              <i class="fa-brands fa-tiktok"></i>
+
+              TikTok
+
+            </span>
+
+          </label>
+
+
+          <label class="platform-option">
+
+            <input
+              type="checkbox"
+              value="youtube"
+              name="requestedPlatform"
+            >
+
+            <span class="platform-box">
+
+              <i class="fa-brands fa-youtube"></i>
+
+              YouTube
+
+            </span>
+
+          </label>
+
+
+        </div>
+
+
+      </div>
+
+
+      <!-- NOTES -->
+
+      <div class="form-group">
+
+        <label for="submissionNotes">
+
+          Notes to Admin
+
+        </label>
+
+        <textarea
+          id="submissionNotes"
+          rows="4"
+          placeholder="Add any information the media team should know..."
+        ></textarea>
+
+      </div>
+
+
+      <!-- ACTIONS -->
+
+      <div class="modal-actions">
+
+
+        <button
+          type="button"
+          class="cancel-button"
+          id="cancelSubmission"
+        >
+
+          Cancel
+
+        </button>
+
+
+        <button
+          type="submit"
+          class="primary-button"
+          id="saveSubmissionButton"
+        >
+
+          <i class="fa-solid fa-paper-plane"></i>
+
+          <span>
+            Submit for Review
+          </span>
+
+        </button>
+
+
+      </div>
+
+
+    </form>
+
+
+  </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     DELETE MODAL
+====================================================== -->
+
+<div
+  class="delete-modal"
+  id="deleteSubmissionModal"
+>
+
+
+  <div class="delete-card">
+
+
+    <div class="delete-icon">
+
+      <i class="fa-regular fa-trash-can"></i>
+
+    </div>
+
+
+    <h3>
+      Delete Submission?
+    </h3>
+
+
+    <p>
+      This will permanently remove the submission.
+    </p>
+
+
+    <div class="delete-actions">
+
+
+      <button
+        type="button"
+        class="cancel-button"
+        id="cancelDeleteSubmission"
+      >
+
+        Cancel
+
+      </button>
+
+
+      <button
+        type="button"
+        class="delete-button"
+        id="confirmDeleteSubmission"
+      >
+
+        Delete
+
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+<script
+  type="module"
+  src="js/social-submissions.js"
+></script>
+
+
+</body>
+
+</html>

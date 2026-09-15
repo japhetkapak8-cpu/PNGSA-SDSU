@@ -1,0 +1,1804 @@
+/* =========================================================
+   PNGSA ADMIN SOCIAL MEDIA MANAGER
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.social-admin-main {
+  margin-left: 250px;
+  min-height: 100vh;
+
+  padding:
+    34px clamp(22px, 4vw, 52px) 60px;
+
+  background: #f5f6f8;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.social-page-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 28px;
+}
+
+
+.page-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 5px;
+
+  color: #b20f22;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+}
+
+
+.social-page-header h1 {
+  margin: 0 0 8px;
+
+  color: #101217;
+
+  font-size:
+    clamp(29px, 4vw, 42px);
+
+  line-height: 1.1;
+}
+
+
+.social-page-header p {
+  max-width: 720px;
+
+  margin: 0;
+
+  color: #6a6d75;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primary-button,
+.secondary-button,
+.success-button,
+.warning-button,
+.danger-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 42px;
+
+  padding: 10px 17px;
+
+  border: 0;
+  border-radius: 9px;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: .18s ease;
+}
+
+
+.primary-button {
+  background: #ce1126;
+  color: #fff;
+}
+
+
+.primary-button:hover {
+  background: #a90e20;
+}
+
+
+.secondary-button {
+  border: 1px solid #d9dce2;
+
+  background: #fff;
+
+  color: #252830;
+}
+
+
+.secondary-button:hover {
+  background: #f2f3f5;
+}
+
+
+.success-button {
+  background: #176b35;
+  color: #fff;
+}
+
+
+.success-button:hover {
+  background: #115429;
+}
+
+
+.warning-button {
+  background: #e9a100;
+  color: #151515;
+}
+
+
+.warning-button:hover {
+  background: #d49100;
+}
+
+
+.danger-button {
+  background: #c41528;
+  color: #fff;
+}
+
+
+.danger-button:hover {
+  background: #9e1020;
+}
+
+
+button:disabled {
+  opacity: .55;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.social-stats-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 15px;
+
+  margin-bottom: 22px;
+}
+
+
+.social-stat-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  min-width: 0;
+
+  padding: 18px;
+
+  border: 1px solid #e0e2e6;
+
+  border-radius: 13px;
+
+  background: #fff;
+
+  box-shadow:
+    0 5px 20px
+    rgba(20, 25, 35, .035);
+}
+
+
+.social-stat-icon {
+  width: 46px;
+  height: 46px;
+
+  flex: 0 0 46px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: #f5f1e4;
+
+  color: #9c7210;
+
+  font-size: 18px;
+}
+
+
+.social-stat-icon.pending {
+  background: #fff6d9;
+  color: #856200;
+}
+
+
+.social-stat-icon.approved {
+  background: #e8f6ed;
+  color: #176b35;
+}
+
+
+.social-stat-icon.published {
+  background: #e8effb;
+  color: #285ea8;
+}
+
+
+.social-stat-card span {
+  display: block;
+
+  color: #73767d;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: .55px;
+}
+
+
+.social-stat-card strong {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #17191d;
+
+  font-size: 25px;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.social-toolbar {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 20px;
+}
+
+
+.social-search {
+  position: relative;
+
+  flex: 1;
+}
+
+
+.social-search i {
+  position: absolute;
+
+  top: 50%;
+  left: 14px;
+
+  transform: translateY(-50%);
+
+  color: #858992;
+}
+
+
+.social-search input,
+.social-toolbar select {
+  height: 44px;
+
+  border: 1px solid #d9dce2;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  color: #202228;
+
+  font: inherit;
+
+  outline: none;
+}
+
+
+.social-search input {
+  width: 100%;
+
+  padding: 0 14px 0 42px;
+}
+
+
+.social-toolbar select {
+  width: 195px;
+
+  padding: 0 12px;
+}
+
+
+.social-search input:focus,
+.social-toolbar select:focus {
+  border-color: #ce1126;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(206, 17, 38, .08);
+}
+
+
+.refresh-button {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #d9dce2;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  color: #292c33;
+
+  cursor: pointer;
+}
+
+
+.refresh-button:hover {
+  border-color: #ce1126;
+
+  color: #ce1126;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.admin-social-message {
+  display: none;
+
+  margin-bottom: 17px;
+
+  padding: 12px 15px;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+  font-weight: 750;
+}
+
+
+.admin-social-message.show {
+  display: block;
+}
+
+
+.admin-social-message.success {
+  border: 1px solid #cce6d4;
+
+  background: #edf8f1;
+
+  color: #165e31;
+}
+
+
+.admin-social-message.error {
+  border: 1px solid #f1c8cd;
+
+  background: #fff0f2;
+
+  color: #9d1222;
+}
+
+
+/* =========================================================
+   SUBMISSIONS
+========================================================= */
+
+.social-submission-list {
+  display: grid;
+
+  gap: 18px;
+}
+
+
+.social-submission-card {
+  display: grid;
+
+  grid-template-columns:
+    250px minmax(0, 1fr);
+
+  overflow: hidden;
+
+  border: 1px solid #e0e2e6;
+
+  border-radius: 15px;
+
+  background: #fff;
+
+  box-shadow:
+    0 5px 22px
+    rgba(25, 30, 40, .04);
+}
+
+
+.submission-media {
+  position: relative;
+
+  min-height: 275px;
+
+  overflow: hidden;
+
+  background: #080808;
+}
+
+
+.submission-media video,
+.submission-media img {
+  width: 100%;
+  height: 100%;
+
+  min-height: 275px;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+.submission-media-placeholder {
+  width: 100%;
+  height: 100%;
+
+  min-height: 275px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #f4c430;
+
+  font-size: 40px;
+}
+
+
+.preview-overlay-button {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background:
+    rgba(0, 0, 0, .75);
+
+  color: #fff;
+
+  font-size: 19px;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(4px);
+}
+
+
+.preview-overlay-button:hover {
+  background: #ce1126;
+}
+
+
+.submission-details {
+  min-width: 0;
+
+  padding: 21px 22px;
+}
+
+
+.submission-header {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+
+.submission-heading {
+  min-width: 0;
+}
+
+
+.submission-heading h3 {
+  margin: 7px 0 4px;
+
+  color: #17191d;
+
+  font-size: 21px;
+}
+
+
+.submission-member {
+  margin: 0;
+
+  color: #6e7179;
+
+  font-size: 13px;
+}
+
+
+.submission-member strong {
+  color: #292c31;
+}
+
+
+.submission-section {
+  margin-top: 16px;
+}
+
+
+.submission-section-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #858890;
+
+  font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing: .85px;
+
+  text-transform: uppercase;
+}
+
+
+.submission-section p {
+  margin: 0;
+
+  color: #4d5057;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+}
+
+
+.submission-hashtags {
+  color: #b20f22 !important;
+
+  font-weight: 700;
+}
+
+
+.submission-meta {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px 15px;
+
+  margin-top: 14px;
+
+  color: #74777f;
+
+  font-size: 12px;
+}
+
+
+.submission-meta span {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+
+.platform-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-top: 14px;
+}
+
+
+.platform-tag {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 6px 9px;
+
+  border-radius: 7px;
+
+  background: #f1f2f4;
+
+  color: #393c42;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+
+.admin-feedback {
+  margin-top: 15px;
+
+  padding: 12px 14px;
+
+  border-left:
+    4px solid #ce1126;
+
+  border-radius:
+    0 8px 8px 0;
+
+  background: #fff1f3;
+
+  color: #6d1823;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+.admin-feedback strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #9e1121;
+}
+
+
+.submission-actions {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 19px;
+
+  padding-top: 15px;
+
+  border-top:
+    1px solid #eceef1;
+}
+
+
+.card-action {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  min-height: 36px;
+
+  padding: 8px 11px;
+
+  border: 1px solid #d9dce2;
+
+  border-radius: 7px;
+
+  background: #fff;
+
+  color: #32353c;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+.card-action:hover {
+  border-color: #b5b9c1;
+
+  background: #f6f7f8;
+}
+
+
+.card-action.approve {
+  border-color: #b8dfc5;
+
+  color: #176b35;
+}
+
+
+.card-action.approve:hover {
+  background: #ebf7ef;
+}
+
+
+.card-action.return {
+  border-color: #edd28b;
+
+  color: #8a6200;
+}
+
+
+.card-action.return:hover {
+  background: #fff8e3;
+}
+
+
+.card-action.reject {
+  border-color: #efc3c8;
+
+  color: #b20f22;
+}
+
+
+.card-action.reject:hover {
+  background: #fff0f2;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 6px 9px;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing: .35px;
+
+  text-transform: uppercase;
+}
+
+
+.status-badge.pending {
+  background: #fff3c9;
+
+  color: #765800;
+}
+
+
+.status-badge.returned {
+  background: #fff0dc;
+
+  color: #995000;
+}
+
+
+.status-badge.approved {
+  background: #e4f5ea;
+
+  color: #176b35;
+}
+
+
+.status-badge.rejected,
+.status-badge.failed {
+  background: #fde7ea;
+
+  color: #a81121;
+}
+
+
+.status-badge.publishing {
+  background: #e8effb;
+
+  color: #285ea8;
+}
+
+
+.status-badge.published {
+  background: #e4f5ea;
+
+  color: #176b35;
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.loading-state,
+.empty-state {
+  padding: 65px 25px;
+
+  border: 1px solid #e0e2e6;
+
+  border-radius: 14px;
+
+  background: #fff;
+
+  text-align: center;
+
+  color: #6c7077;
+}
+
+
+.loading-state i,
+.empty-state i {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: #ce1126;
+
+  font-size: 28px;
+}
+
+
+.loading-state h3,
+.empty-state h3 {
+  margin: 0 0 5px;
+
+  color: #22252a;
+}
+
+
+.loading-state p,
+.empty-state p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   MODAL OVERLAY
+
+   IMPORTANT:
+   The background page does not scroll.
+========================================================= */
+
+.social-modal {
+  position: fixed;
+
+  inset: 0;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 22px;
+
+  overflow: hidden;
+
+  background:
+    rgba(6, 8, 12, .76);
+
+  backdrop-filter:
+    blur(5px);
+
+  z-index: 10000;
+}
+
+
+.social-modal.open {
+  display: flex;
+}
+
+
+/* =========================================================
+   MODAL CARD
+
+   The white window stays inside the viewport.
+========================================================= */
+
+.social-modal-card {
+  width: 100%;
+
+  max-height:
+    calc(100vh - 44px);
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, .12);
+
+  border-radius: 15px;
+
+  background: #fff;
+
+  box-shadow:
+    0 35px 100px
+    rgba(0, 0, 0, .38);
+}
+
+
+.social-modal-card.small {
+  max-width: 560px;
+}
+
+
+.social-modal-card.medium {
+  max-width: 720px;
+}
+
+
+.social-modal-card.large {
+  max-width: 850px;
+}
+
+
+/* =========================================================
+   MODAL HEADER
+
+   Header remains visible.
+========================================================= */
+
+.social-modal-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  flex:
+    0 0 auto;
+
+  padding:
+    20px 22px;
+
+  border-bottom:
+    1px solid #e5e7ea;
+
+  background: #fff;
+
+  z-index: 3;
+}
+
+
+.social-modal-header span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #ce1126;
+
+  font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing: 1.2px;
+}
+
+
+.social-modal-header h2 {
+  margin: 0;
+
+  color: #17191d;
+
+  font-size: 21px;
+}
+
+
+.modal-close {
+  width: 38px;
+  height: 38px;
+
+  flex: 0 0 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background: #15171b;
+
+  color: #fff;
+
+  cursor: pointer;
+}
+
+
+.modal-close:hover {
+  background: #ce1126;
+}
+
+
+/* =========================================================
+   MODAL BODY
+
+   THIS IS THE ONLY PART OF THE MODAL THAT SCROLLS.
+========================================================= */
+
+.social-modal-body {
+  flex:
+    1 1 auto;
+
+  min-height: 0;
+
+  padding: 22px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  overscroll-behavior: contain;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    #b7bac0 #f2f3f4;
+}
+
+
+/* Chrome / Edge */
+.social-modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+
+.social-modal-body::-webkit-scrollbar-track {
+  background: #f2f3f4;
+}
+
+
+.social-modal-body::-webkit-scrollbar-thumb {
+  background: #b7bac0;
+
+  border-radius: 20px;
+}
+
+
+.social-modal-body::-webkit-scrollbar-thumb:hover {
+  background: #858991;
+}
+
+
+/* =========================================================
+   MODAL ACTIONS
+
+   Cancel / Queue Post remain visible.
+========================================================= */
+
+.social-modal-actions {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  flex:
+    0 0 auto;
+
+  padding:
+    16px 22px;
+
+  border-top:
+    1px solid #e5e7ea;
+
+  background: #fafafa;
+
+  position: relative;
+
+  z-index: 4;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-group {
+  margin-bottom: 19px;
+}
+
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #2a2d33;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+.form-group label span {
+  color: #ce1126;
+}
+
+
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+
+  border: 1px solid #d8dbe1;
+
+  border-radius: 8px;
+
+  background: #fff;
+
+  color: #202228;
+
+  font: inherit;
+
+  font-size: 13px;
+
+  outline: none;
+}
+
+
+.form-group input[type="text"] {
+  min-height: 43px;
+
+  padding: 0 12px;
+}
+
+
+.form-group textarea {
+  padding: 11px 12px;
+
+  resize: vertical;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #ce1126;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(206, 17, 38, .08);
+}
+
+
+.form-group small {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #7a7d84;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   DIRECT POST FORM
+========================================================= */
+
+#directPostForm {
+  width: 100%;
+
+  max-height: none;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   PLATFORM SELECTOR
+========================================================= */
+
+.platform-select-grid {
+  position: relative;
+
+  width: 100%;
+
+  clear: both;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 9px;
+}
+
+
+.platform-select-option {
+  margin: 0 !important;
+
+  cursor: pointer;
+}
+
+
+.platform-select-option input {
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.platform-select-option span {
+  min-height: 75px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 10px;
+
+  border: 1px solid #d8dbe1;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  color: #373a40;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  transition: .18s ease;
+}
+
+
+.platform-select-option span i {
+  font-size: 20px;
+}
+
+
+.platform-select-option input:checked + span {
+  border-color: #ce1126;
+
+  background: #fff0f2;
+
+  color: #b20f22;
+
+  box-shadow:
+    inset 0 0 0 1px
+    #ce1126;
+}
+
+
+.select-all-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 10px;
+
+  padding: 8px 11px;
+
+  border: 1px solid #d8dbe1;
+
+  border-radius: 7px;
+
+  background: #fff;
+
+  color: #383b42;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+.select-all-button:hover {
+  border-color: #ce1126;
+
+  color: #ce1126;
+}
+
+
+/* =========================================================
+   NOTICE
+========================================================= */
+
+.notice-box,
+.danger-notice {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  margin-bottom: 18px;
+
+  padding: 12px 13px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+.notice-box {
+  border: 1px solid #efd58e;
+
+  background: #fff8df;
+
+  color: #765600;
+}
+
+
+.danger-notice {
+  border: 1px solid #f1c5cb;
+
+  background: #fff0f2;
+
+  color: #a71121;
+}
+
+
+.notice-box p,
+.danger-notice p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   MEDIA UPLOAD
+========================================================= */
+
+.media-upload-box {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px;
+
+  border: 1px dashed #cdd0d6;
+
+  border-radius: 9px;
+
+  background: #fafafa;
+}
+
+
+.upload-media-button {
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 9px 12px;
+
+  border: 0;
+
+  border-radius: 7px;
+
+  background: #ce1126;
+
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+.upload-media-button:hover {
+  background: #a90e20;
+}
+
+
+.media-upload-box > span {
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: #6c7077;
+
+  font-size: 11px;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   DIRECT VIDEO PREVIEW
+
+   Limited height so it does not consume the whole modal.
+========================================================= */
+
+.direct-video-preview,
+#directVideoPreviewContainer {
+  width: 100%;
+
+  margin:
+    0 0 20px;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background: #000;
+}
+
+
+.direct-video-preview video,
+#directVideoPreview {
+  width: 100%;
+
+  height: auto;
+
+  max-height: 300px;
+
+  display: block;
+
+  object-fit: contain;
+
+  background: #000;
+
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   VIDEO VIEWER
+========================================================= */
+
+.video-viewer {
+  position: fixed;
+
+  inset: 0;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+
+  z-index: 20000;
+}
+
+
+.video-viewer.open {
+  display: flex;
+}
+
+
+.video-viewer-backdrop {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    rgba(0, 0, 0, .88);
+
+  backdrop-filter: blur(5px);
+}
+
+
+.video-viewer-card {
+  position: relative;
+
+  z-index: 1;
+
+  width:
+    min(1000px, 94vw);
+
+  max-height: 90vh;
+
+  padding: 10px;
+
+  overflow: hidden;
+
+  border-radius: 13px;
+
+  background: #090909;
+
+  box-shadow:
+    0 30px 100px
+    rgba(0, 0, 0, .5);
+}
+
+
+.video-viewer-card video {
+  width: 100%;
+
+  max-height: 85vh;
+
+  display: block;
+
+  object-fit: contain;
+
+  border-radius: 8px;
+}
+
+
+.video-viewer-close {
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  z-index: 5;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background:
+    rgba(0, 0, 0, .78);
+
+  color: #fff;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+.hidden {
+  display: none !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .social-stats-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .social-submission-card {
+    grid-template-columns:
+      215px minmax(0, 1fr);
+  }
+
+
+  .platform-select-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .social-admin-main {
+    margin-left: 0;
+  }
+
+
+  .social-page-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .social-toolbar {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+
+  .social-toolbar select {
+    width: 100%;
+  }
+
+
+  .refresh-button {
+    width: 100%;
+  }
+
+
+  .social-submission-card {
+    grid-template-columns: 1fr;
+  }
+
+
+  .submission-media {
+    min-height: 300px;
+  }
+
+
+  .submission-media video,
+  .submission-media img,
+  .submission-media-placeholder {
+    min-height: 300px;
+  }
+
+
+  .social-modal {
+    padding: 14px;
+  }
+
+
+  .social-modal-card {
+    max-height:
+      calc(100vh - 28px);
+  }
+
+
+  .direct-video-preview video,
+  #directVideoPreview {
+    max-height: 250px;
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — PHONE
+========================================================= */
+
+@media (max-width: 560px) {
+
+  .social-admin-main {
+    padding:
+      24px 15px 45px;
+  }
+
+
+  .social-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .social-modal {
+    padding: 8px;
+  }
+
+
+  .social-modal-card {
+    max-height:
+      calc(100vh - 16px);
+
+    border-radius: 12px;
+  }
+
+
+  .social-modal-header {
+    padding: 16px;
+  }
+
+
+  .social-modal-body {
+    padding: 16px;
+  }
+
+
+  .platform-select-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+
+  .social-modal-actions {
+    align-items: stretch;
+
+    flex-direction: column-reverse;
+
+    padding:
+      12px 16px;
+  }
+
+
+  .social-modal-actions button {
+    width: 100%;
+  }
+
+
+  .media-upload-box {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .direct-video-preview video,
+  #directVideoPreview {
+    max-height: 200px;
+  }
+
+}

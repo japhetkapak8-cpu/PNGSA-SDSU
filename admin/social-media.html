@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Social Media | PNGSA Admin
+  </title>
+
+
+  <!-- =====================================================
+       FONT AWESOME
+  ====================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+
+  <!-- =====================================================
+       ADMIN CSS
+  ====================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="css/admin.css"
+  >
+
+
+  <!-- =====================================================
+       SOCIAL MEDIA CSS
+  ====================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="css/social-media.css"
+  >
+
+
+  <!-- =====================================================
+       DIRECT POST MODAL SCROLL FIX
+
+       This guarantees:
+       - background page does not move
+       - modal header stays visible
+       - modal body scrolls
+       - footer stays visible
+  ====================================================== -->
+
+  <style>
+
+    body.modal-open {
+      overflow: hidden !important;
+    }
+
+
+    .social-modal {
+      overflow: hidden !important;
+    }
+
+
+    .social-modal-card {
+      max-height:
+        calc(100vh - 44px) !important;
+
+      display:
+        flex !important;
+
+      flex-direction:
+        column !important;
+
+      overflow:
+        hidden !important;
+    }
+
+
+    /*
+     * IMPORTANT:
+     * The form must itself become a flex container.
+     */
+
+    #directPostForm {
+      flex:
+        1 1 auto !important;
+
+      min-height:
+        0 !important;
+
+      display:
+        flex !important;
+
+      flex-direction:
+        column !important;
+
+      overflow:
+        hidden !important;
+
+      width:
+        100%;
+    }
+
+
+    /*
+     * ONLY this section scrolls.
+     */
+
+    #directPostModal .social-modal-body {
+      flex:
+        1 1 auto !important;
+
+      min-height:
+        0 !important;
+
+      overflow-y:
+        auto !important;
+
+      overflow-x:
+        hidden !important;
+
+      overscroll-behavior:
+        contain;
+
+      scrollbar-width:
+        thin;
+    }
+
+
+    /*
+     * Header stays at top.
+     */
+
+    #directPostModal .social-modal-header {
+      flex:
+        0 0 auto !important;
+    }
+
+
+    /*
+     * Footer stays at bottom.
+     */
+
+    #directPostModal .social-modal-actions {
+      flex:
+        0 0 auto !important;
+
+      position:
+        relative !important;
+
+      bottom:
+        auto !important;
+
+      background:
+        #fafafa;
+
+      z-index:
+        10;
+    }
+
+
+    /*
+     * Keep video preview from taking
+     * the whole modal.
+     */
+
+    #directVideoPreviewContainer {
+      width:
+        100%;
+
+      overflow:
+        hidden;
+
+      background:
+        #000;
+
+      border-radius:
+        10px;
+
+      margin-bottom:
+        20px;
+    }
+
+
+    #directVideoPreview {
+      display:
+        block;
+
+      width:
+        100%;
+
+      height:
+        auto;
+
+      max-height:
+        300px !important;
+
+      object-fit:
+        contain;
+
+      background:
+        #000;
+    }
+
+
+    @media (max-width: 560px) {
+
+      .social-modal-card {
+        max-height:
+          calc(100vh - 16px) !important;
+      }
+
+
+      #directVideoPreview {
+        max-height:
+          210px !important;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <div class="admin-layout">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+      <!-- SIDEBAR HEADER -->
+
+      <div class="sidebar-header">
+
+        <img
+          src="../images/pngsa_logo.png"
+          alt="PNGSA Logo"
+          class="sidebar-logo"
+        >
+
+        <h2>
+          PNGSA
+        </h2>
+
+        <span>
+          Admin Portal
+        </span>
+
+      </div>
+
+
+      <!-- ===================================================
+           NAVIGATION
+      ==================================================== -->
+
+      <nav class="sidebar-nav">
+
+
+        <!-- DASHBOARD -->
+
+        <a href="dashboard.html">
+
+          <i class="fa-solid fa-chart-line"></i>
+
+          <span>
+            Dashboard
+          </span>
+
+        </a>
+
+
+        <!-- MEMBERS -->
+
+        <a href="members.html">
+
+          <i class="fa-solid fa-users"></i>
+
+          <span>
+            Members
+          </span>
+
+        </a>
+
+
+        <!-- INVITE MEMBERS -->
+
+        <a href="invite-members.html">
+
+          <i class="fa-solid fa-user-plus"></i>
+
+          <span>
+            Invite Members
+          </span>
+
+        </a>
+
+
+        <!-- LEADERSHIP -->
+
+        <a href="leadership.html">
+
+          <i class="fa-solid fa-people-group"></i>
+
+          <span>
+            Leadership
+          </span>
+
+        </a>
+
+
+        <!-- ELECTIONS -->
+
+        <a href="elections.html">
+
+          <i class="fa-solid fa-check-to-slot"></i>
+
+          <span>
+            Elections
+          </span>
+
+        </a>
+
+
+        <!-- MEMBER EVENTS -->
+
+        <a href="events.html">
+
+          <i class="fa-solid fa-calendar-days"></i>
+
+          <span>
+            Events
+          </span>
+
+        </a>
+
+
+        <!-- PUBLIC EVENTS -->
+
+        <a href="public-events.html">
+
+          <i class="fa-solid fa-calendar-alt"></i>
+
+          <span>
+            Public Events
+          </span>
+
+        </a>
+
+
+        <!-- CANDIDATES -->
+
+        <a href="candidates.html">
+
+          <i class="fa-solid fa-user-tie"></i>
+
+          <span>
+            Candidates
+          </span>
+
+        </a>
+
+
+        <!-- ELIGIBLE VOTERS -->
+
+        <a href="voters.html">
+
+          <i class="fa-solid fa-user-check"></i>
+
+          <span>
+            Eligible Voters
+          </span>
+
+        </a>
+
+
+        <!-- RESULTS -->
+
+        <a href="results.html">
+
+          <i class="fa-solid fa-chart-column"></i>
+
+          <span>
+            Results
+          </span>
+
+        </a>
+
+
+        <!-- ANNOUNCEMENTS -->
+
+        <a href="announcements.html">
+
+          <i class="fa-solid fa-bullhorn"></i>
+
+          <span>
+            Announcements
+          </span>
+
+        </a>
+
+
+        <!-- MESSAGES -->
+
+        <a href="chat-groups.html">
+
+          <i class="fa-solid fa-comments"></i>
+
+          <span>
+            Messages
+          </span>
+
+        </a>
+
+
+        <!-- SOCIAL MEDIA -->
+
+        <a
+          href="social-media.html"
+          class="active"
+        >
+
+          <i class="fa-solid fa-hashtag"></i>
+
+          <span>
+            Social Media
+          </span>
+
+        </a>
+
+
+        <!-- OPPORTUNITIES -->
+
+        <a href="opportunities.html">
+
+          <i class="fa-solid fa-hands-helping"></i>
+
+          <span>
+            Opportunities
+          </span>
+
+        </a>
+
+
+        <!-- VIEW WEBSITE -->
+
+        <a href="../index.html">
+
+          <i class="fa-solid fa-globe"></i>
+
+          <span>
+            View Website
+          </span>
+
+        </a>
+
+
+      </nav>
+
+
+      <!-- ===================================================
+           SIGN OUT
+      ==================================================== -->
+
+      <button
+        id="logoutButton"
+        class="logout-button"
+        type="button"
+      >
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>
+          Sign Out
+        </span>
+
+      </button>
+
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="social-admin-main">
+
+
+      <!-- ===================================================
+           PAGE HEADER
+      ==================================================== -->
+
+      <div class="social-page-header">
+
+
+        <div>
+
+          <span class="page-eyebrow">
+            PNGSA Media Center
+          </span>
+
+          <h1>
+            Social Media Manager
+          </h1>
+
+          <p>
+            Review member content, approve submissions,
+            and manage PNGSA social media publishing.
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="primary-button"
+          id="createDirectPostButton"
+        >
+
+          <i class="fa-solid fa-plus"></i>
+
+          Create Direct Post
+
+        </button>
+
+
+      </div>
+
+
+      <!-- ===================================================
+           STATS
+      ==================================================== -->
+
+      <section class="social-stats-grid">
+
+
+        <article class="social-stat-card">
+
+          <div class="social-stat-icon">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+          </div>
+
+          <div>
+
+            <span>
+              Total Submissions
+            </span>
+
+            <strong id="totalSubmissionCount">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+
+        <article class="social-stat-card">
+
+          <div class="social-stat-icon pending">
+
+            <i class="fa-regular fa-clock"></i>
+
+          </div>
+
+          <div>
+
+            <span>
+              Pending Review
+            </span>
+
+            <strong id="pendingSubmissionCount">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+
+        <article class="social-stat-card">
+
+          <div class="social-stat-icon approved">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+          </div>
+
+          <div>
+
+            <span>
+              Approved
+            </span>
+
+            <strong id="approvedSubmissionCount">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+
+        <article class="social-stat-card">
+
+          <div class="social-stat-icon published">
+
+            <i class="fa-solid fa-paper-plane"></i>
+
+          </div>
+
+          <div>
+
+            <span>
+              Published
+            </span>
+
+            <strong id="publishedSubmissionCount">
+              0
+            </strong>
+
+          </div>
+
+        </article>
+
+
+      </section>
+
+
+      <!-- ===================================================
+           TOOLBAR
+      ==================================================== -->
+
+      <section class="social-toolbar">
+
+
+        <div class="social-search">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          <input
+            type="search"
+            id="submissionSearch"
+            placeholder="Search title, member, caption or hashtags..."
+          >
+
+        </div>
+
+
+        <select id="submissionStatusFilter">
+
+          <option value="">
+            All Statuses
+          </option>
+
+          <option value="pending">
+            Pending
+          </option>
+
+          <option value="returned">
+            Returned
+          </option>
+
+          <option value="approved">
+            Approved
+          </option>
+
+          <option value="rejected">
+            Rejected
+          </option>
+
+          <option value="publishing">
+            Publishing
+          </option>
+
+          <option value="published">
+            Published
+          </option>
+
+          <option value="failed">
+            Failed
+          </option>
+
+        </select>
+
+
+        <button
+          type="button"
+          class="refresh-button"
+          id="refreshSubmissionsButton"
+          title="Refresh"
+        >
+
+          <i class="fa-solid fa-rotate"></i>
+
+        </button>
+
+
+      </section>
+
+
+      <!-- ===================================================
+           MESSAGE
+      ==================================================== -->
+
+      <div
+        class="admin-social-message"
+        id="adminSocialMessage"
+      ></div>
+
+
+      <!-- ===================================================
+           SUBMISSIONS
+      ==================================================== -->
+
+      <section
+        class="social-submission-list"
+        id="socialSubmissionList"
+      >
+
+        <div class="loading-state">
+
+          <i class="fa-solid fa-spinner fa-spin"></i>
+
+          <h3>
+            Loading submissions
+          </h3>
+
+          <p>
+            Please wait...
+          </p>
+
+        </div>
+
+      </section>
+
+
+    </main>
+
+
+  </div>
+
+
+  <!-- =======================================================
+       APPROVE MODAL
+  ======================================================== -->
+
+  <div
+    class="social-modal"
+    id="approveModal"
+  >
+
+
+    <div class="social-modal-card medium">
+
+
+      <div class="social-modal-header">
+
+        <div>
+
+          <span>
+            PNGSA MEDIA
+          </span>
+
+          <h2>
+            Approve Submission
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="modal-close"
+          data-close-modal="approveModal"
+        >
+
+          <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+      </div>
+
+
+      <div class="social-modal-body">
+
+
+        <input
+          type="hidden"
+          id="approveSubmissionId"
+        >
+
+
+        <div class="form-group">
+
+          <label for="approveCaption">
+            Final Caption
+          </label>
+
+          <textarea
+            id="approveCaption"
+            rows="6"
+            placeholder="Enter the final social media caption..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="approveHashtags">
+            Final Hashtags
+          </label>
+
+          <input
+            type="text"
+            id="approveHashtags"
+            placeholder="#PNGSA #PapuaNewGuinea #SDSU"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Publish To
+          </label>
+
+
+          <div class="platform-select-grid">
+
+
+            <label class="platform-select-option">
+
+              <input
+                type="checkbox"
+                name="approvePlatform"
+                value="facebook"
+              >
+
+              <span>
+
+                <i class="fa-brands fa-facebook-f"></i>
+
+                Facebook
+
+              </span>
+
+            </label>
+
+
+            <label class="platform-select-option">
+
+              <input
+                type="checkbox"
+                name="approvePlatform"
+                value="instagram"
+              >
+
+              <span>
+
+                <i class="fa-brands fa-instagram"></i>
+
+                Instagram
+
+              </span>
+
+            </label>
+
+
+            <label class="platform-select-option">
+
+              <input
+                type="checkbox"
+                name="approvePlatform"
+                value="tiktok"
+              >
+
+              <span>
+
+                <i class="fa-brands fa-tiktok"></i>
+
+                TikTok
+
+              </span>
+
+            </label>
+
+
+            <label class="platform-select-option">
+
+              <input
+                type="checkbox"
+                name="approvePlatform"
+                value="youtube"
+              >
+
+              <span>
+
+                <i class="fa-brands fa-youtube"></i>
+
+                YouTube
+
+              </span>
+
+            </label>
+
+
+          </div>
+
+
+          <button
+            type="button"
+            class="select-all-button"
+            id="approveSelectAllPlatforms"
+          >
+
+            <i class="fa-solid fa-check-double"></i>
+
+            Select All Platforms
+
+          </button>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="social-modal-actions">
+
+
+        <button
+          type="button"
+          class="secondary-button"
+          data-close-modal="approveModal"
+        >
+
+          Cancel
+
+        </button>
+
+
+        <button
+          type="button"
+          class="success-button"
+          id="confirmApproveButton"
+        >
+
+          <i class="fa-solid fa-check"></i>
+
+          Approve & Queue
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+  <!-- =======================================================
+       RETURN MODAL
+  ======================================================== -->
+
+  <div
+    class="social-modal"
+    id="returnModal"
+  >
+
+
+    <div class="social-modal-card small">
+
+
+      <div class="social-modal-header">
+
+        <div>
+
+          <span>
+            MEMBER CORRECTION
+          </span>
+
+          <h2>
+            Return for Changes
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="modal-close"
+          data-close-modal="returnModal"
+        >
+
+          <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+      </div>
+
+
+      <div class="social-modal-body">
+
+
+        <input
+          type="hidden"
+          id="returnSubmissionId"
+        >
+
+
+        <div class="notice-box">
+
+          <i class="fa-solid fa-rotate-left"></i>
+
+          <p>
+            The member will see your feedback
+            and can edit and resubmit the video.
+          </p>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="returnReason">
+
+            Changes Required
+            <span>*</span>
+
+          </label>
+
+          <textarea
+            id="returnReason"
+            rows="7"
+            placeholder="Example: Please remove the first 5 seconds and update the caption..."
+          ></textarea>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="social-modal-actions">
+
+
+        <button
+          type="button"
+          class="secondary-button"
+          data-close-modal="returnModal"
+        >
+
+          Cancel
+
+        </button>
+
+
+        <button
+          type="button"
+          class="warning-button"
+          id="confirmReturnButton"
+        >
+
+          <i class="fa-solid fa-rotate-left"></i>
+
+          Return to Member
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+  <!-- =======================================================
+       REJECT MODAL
+  ======================================================== -->
+
+  <div
+    class="social-modal"
+    id="rejectModal"
+  >
+
+
+    <div class="social-modal-card small">
+
+
+      <div class="social-modal-header">
+
+        <div>
+
+          <span>
+            DECLINE SUBMISSION
+          </span>
+
+          <h2>
+            Reject Submission
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="modal-close"
+          data-close-modal="rejectModal"
+        >
+
+          <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+      </div>
+
+
+      <div class="social-modal-body">
+
+
+        <input
+          type="hidden"
+          id="rejectSubmissionId"
+        >
+
+
+        <div class="danger-notice">
+
+          <i class="fa-solid fa-triangle-exclamation"></i>
+
+          <p>
+            The member will see the rejection reason.
+          </p>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="rejectReason">
+
+            Rejection Reason
+            <span>*</span>
+
+          </label>
+
+          <textarea
+            id="rejectReason"
+            rows="7"
+            placeholder="Explain why this content cannot be approved..."
+          ></textarea>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="social-modal-actions">
+
+
+        <button
+          type="button"
+          class="secondary-button"
+          data-close-modal="rejectModal"
+        >
+
+          Cancel
+
+        </button>
+
+
+        <button
+          type="button"
+          class="danger-button"
+          id="confirmRejectButton"
+        >
+
+          <i class="fa-solid fa-xmark"></i>
+
+          Reject Submission
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+  <!-- =======================================================
+       DIRECT ADMIN POST
+
+       FIXED STRUCTURE:
+       CARD
+         HEADER
+         FORM (flex container)
+            SCROLLABLE BODY
+            FIXED ACTIONS
+  ======================================================== -->
+
+  <div
+    class="social-modal"
+    id="directPostModal"
+  >
+
+
+    <div class="social-modal-card large">
+
+
+      <!-- FIXED HEADER -->
+
+      <div class="social-modal-header">
+
+
+        <div>
+
+          <span>
+            PNGSA MEDIA
+          </span>
+
+          <h2>
+            Create Direct Post
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="modal-close"
+          data-close-modal="directPostModal"
+        >
+
+          <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+      </div>
+
+
+      <!-- =================================================
+           FORM IS NOW A FLEX CONTAINER
+      ================================================== -->
+
+      <form id="directPostForm">
+
+
+        <!-- ===============================================
+             ONLY THIS SECTION SCROLLS
+        ================================================ -->
+
+        <div class="social-modal-body">
+
+
+          <!-- TITLE -->
+
+          <div class="form-group">
+
+            <label for="directPostTitle">
+
+              Post Title
+              <span>*</span>
+
+            </label>
+
+            <input
+              type="text"
+              id="directPostTitle"
+              maxlength="120"
+              required
+              placeholder="Example: PNG Night Highlights"
+            >
+
+          </div>
+
+
+          <!-- CAPTION -->
+
+          <div class="form-group">
+
+            <label for="directPostCaption">
+              Caption
+            </label>
+
+            <textarea
+              id="directPostCaption"
+              rows="5"
+              placeholder="Write the social media caption..."
+            ></textarea>
+
+          </div>
+
+
+          <!-- HASHTAGS -->
+
+          <div class="form-group">
+
+            <label for="directPostHashtags">
+              Hashtags
+            </label>
+
+            <input
+              type="text"
+              id="directPostHashtags"
+              placeholder="#PNGSA #PapuaNewGuinea #SDSU"
+            >
+
+          </div>
+
+
+          <!-- VIDEO -->
+
+          <div class="form-group">
+
+            <label>
+
+              Video
+              <span>*</span>
+
+            </label>
+
+
+            <div class="media-upload-box">
+
+
+              <input
+                type="file"
+                id="directPostVideoFile"
+                accept="video/mp4,video/webm,video/quicktime"
+                hidden
+              >
+
+
+              <button
+                type="button"
+                class="upload-media-button"
+                id="chooseDirectPostVideo"
+              >
+
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                Choose Video
+
+              </button>
+
+
+              <span id="directPostVideoFileName">
+                No video selected
+              </span>
+
+
+            </div>
+
+
+            <small>
+              Supported: MP4, MOV and WebM.
+              Maximum size: 200 MB.
+            </small>
+
+
+          </div>
+
+
+          <!-- VIDEO PREVIEW -->
+
+          <div
+            class="direct-video-preview hidden"
+            id="directVideoPreviewContainer"
+          >
+
+            <video
+              id="directVideoPreview"
+              controls
+              preload="metadata"
+            ></video>
+
+          </div>
+
+
+          <!-- PLATFORMS -->
+
+          <div class="form-group">
+
+
+            <label>
+              Platforms
+            </label>
+
+
+            <div class="platform-select-grid">
+
+
+              <label class="platform-select-option">
+
+                <input
+                  type="checkbox"
+                  name="directPlatform"
+                  value="facebook"
+                >
+
+                <span>
+
+                  <i class="fa-brands fa-facebook-f"></i>
+
+                  Facebook
+
+                </span>
+
+              </label>
+
+
+              <label class="platform-select-option">
+
+                <input
+                  type="checkbox"
+                  name="directPlatform"
+                  value="instagram"
+                >
+
+                <span>
+
+                  <i class="fa-brands fa-instagram"></i>
+
+                  Instagram
+
+                </span>
+
+              </label>
+
+
+              <label class="platform-select-option">
+
+                <input
+                  type="checkbox"
+                  name="directPlatform"
+                  value="tiktok"
+                >
+
+                <span>
+
+                  <i class="fa-brands fa-tiktok"></i>
+
+                  TikTok
+
+                </span>
+
+              </label>
+
+
+              <label class="platform-select-option">
+
+                <input
+                  type="checkbox"
+                  name="directPlatform"
+                  value="youtube"
+                >
+
+                <span>
+
+                  <i class="fa-brands fa-youtube"></i>
+
+                  YouTube
+
+                </span>
+
+              </label>
+
+
+            </div>
+
+
+            <button
+              type="button"
+              class="select-all-button"
+              id="directSelectAllPlatforms"
+            >
+
+              <i class="fa-solid fa-check-double"></i>
+
+              Select All Platforms
+
+            </button>
+
+
+          </div>
+
+
+        </div>
+
+
+        <!-- ===============================================
+             FIXED FOOTER
+        ================================================ -->
+
+        <div class="social-modal-actions">
+
+
+          <button
+            type="button"
+            class="secondary-button"
+            data-close-modal="directPostModal"
+          >
+
+            Cancel
+
+          </button>
+
+
+          <button
+            type="submit"
+            class="primary-button"
+            id="submitDirectPostButton"
+          >
+
+            <i class="fa-solid fa-paper-plane"></i>
+
+            <span>
+              Queue Post
+            </span>
+
+          </button>
+
+
+        </div>
+
+
+      </form>
+
+
+    </div>
+
+
+  </div>
+
+
+  <!-- =======================================================
+       FULL VIDEO PREVIEW
+  ======================================================== -->
+
+  <div
+    class="video-viewer"
+    id="videoViewer"
+  >
+
+
+    <div
+      class="video-viewer-backdrop"
+      data-close-video-viewer
+    ></div>
+
+
+    <div class="video-viewer-card">
+
+
+      <button
+        type="button"
+        class="video-viewer-close"
+        data-close-video-viewer
+      >
+
+        <i class="fa-solid fa-xmark"></i>
+
+      </button>
+
+
+      <video
+        id="fullVideoPreview"
+        controls
+        preload="metadata"
+      ></video>
+
+
+    </div>
+
+
+  </div>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script
+    type="module"
+    src="js/social-media.js?v=6"
+  ></script>
+
+
+</body>
+
+</html>
